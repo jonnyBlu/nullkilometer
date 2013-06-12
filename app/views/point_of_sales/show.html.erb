@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @point_of_sale.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @point_of_sale.address %>
+</p>
+
+<p>
+  <b>Latlon:</b>
+  <%= @point_of_sale.latlon %>
+</p>
+
+<p>
+  <b>Type of pos:</b>
+  <%= @point_of_sale.type_of_POS %>
+</p>
+
+<p>
+  <b>Opening time:</b>
+  <%= @point_of_sale.opening_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_point_of_sale_path(@point_of_sale) %> |
+<%= link_to 'Back', point_of_sales_path %>

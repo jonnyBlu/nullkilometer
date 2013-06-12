@@ -1,0 +1,35 @@
+<h1>Listing point_of_sales</h1>
+
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Latlon</th>
+        <th>Type of pos</th>
+        <th>Opening time</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @point_of_sales.each do |point_of_sale| %>
+      <tr>
+        <td><%= point_of_sale.name %></td>
+        <td><%= point_of_sale.address %></td>
+        <td><%= point_of_sale.latlon.lat %>, <%= point_of_sale.latlon.lon %></td>
+        <td><%= point_of_sale.type_of_POS %></td>
+        <td><%= point_of_sale.opening_time %></td>
+        <td><%= link_to 'Show', point_of_sale %></td>
+        <td><%= link_to 'Edit', edit_point_of_sale_path(point_of_sale) %></td>
+        <td><%= link_to 'Destroy', point_of_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Point of sale', new_point_of_sale_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  address: MyString
+  latlon: 
+  type_of_POS: MyString
+  opening_time: MyString
+
+two:
+  name: MyString
+  address: MyString
+  latlon: 
+  type_of_POS: MyString
+  opening_time: MyString
