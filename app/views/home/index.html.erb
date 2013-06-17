@@ -1,1 +1,61 @@
-<h0> Display the map here <h0> 
+<div id="locationinfo"></div>
+<div id="activityPannel">
+	<button class="btn" type="button" id="addAPlaceButton">Neuen Verkaufsort Hinzufügen
+	</button>
+</div>
+<div id="mapContainer">
+	<div id ="mapFilterContainer">
+		<div id="mapFilter" class="hidden">     
+		 	<div class="row">
+		    	<div class="span2"> 
+		      		<p>WAS?</p>
+		      		<ul>
+		      			<li><label class="checkbox"><input type="checkbox">Milchprodukte</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Obst und Gemüse</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Fisch</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Fleisch</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Eier</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Konserven</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Getrocknete Waren</label></li>
+		      		</ul>
+		    	</div>
+		    	<div class="span2"> 
+		      		<p>WO?</p>
+		      		<ul>
+		      			<li><label class="checkbox"><input type="checkbox">Laden</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Markt</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Supermarkt</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Kiosk</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Bauernhofladen</label></li>
+		      		</ul>
+		    	</div>
+		    	<div class="span2"> 
+		      		<p>WANN?</p>
+		      		<ul>
+		      			<li><label class="checkbox"><input type="checkbox">Alle Tage</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Montag</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Dienstag</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Mittwoch</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Donnerstag</label></li>
+						<li><label class="checkbox"><input type="checkbox">Freitag</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Samstag</label></li>
+		      			<li><label class="checkbox"><input type="checkbox">Sonntag</label></li>
+		      		</ul>
+		    	</div>
+		  	</div>
+		</div>
+		<button class="btn btn-large btn-block" type="button" id="mapFilterButton">Nach Verkaufsort Suchen</button>
+	</div>
+	<div id="addressLookupContainer">
+		<div class="control-group">
+<!-- 			<label class="control-label" for="inputIcon">Email address</label> -->
+			<div class="controls">
+		   		<div class="input-prepend">
+		      		<input class="span2" id="inputIcon" type="text" placeholder="Adresse eingeben">
+		      		<a class="btn" href="#"><i class="icon-search"></i></a>
+		   		 </div>
+		  	</div>
+		</div>
+	</div>
+	<div id="map"></div>
+</div> 
