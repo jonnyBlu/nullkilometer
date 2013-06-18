@@ -1,6 +1,4 @@
 Nullkilometer::Application.routes.draw do
-  resources :point_of_sales
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
