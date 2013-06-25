@@ -139,7 +139,11 @@ a#remove{
     font-weight: bold;
 }
 
-
+.container{
+    h1{
+        text-align: left;
+    }
+}
 
 #content{
     margin:15px auto;
@@ -255,7 +259,7 @@ span.error{
     width:$formWidth;
     padding:5px 0px 5px 0px;
     margin:0px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     border-bottom:1px solid #fff;
     border-top:1px solid #d9d9d9;
 }
