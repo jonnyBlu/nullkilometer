@@ -1,3 +1,11 @@
+var shopTypeNames = ["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"];
+var productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Konserven", "Brot",
+"Getrocknete Waren"];
+var weekDayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+var MARKETINDEX = 1;
+
+var marketStallObjectsArray = [];
+
 $(function() {
 	addAPos();	
 });
@@ -41,7 +49,6 @@ var loadForm = function(){
     $('#navigation a').bind('click',function(e){
     	if($(this).attr("id") == "overviewTab"){
     		generateOverview();
-    		return;
     	}
 		var $this	= $(this);
 		var clickedStepNumber = $this.parent().index() + 1;
@@ -132,13 +139,13 @@ var loadForm = function(){
 		var hasError = false;
 		var error = 1;
 
-		if(step == 1){
-			hasError = validateFirstStep();
-		} else if(step == 2){
-			hasError = validateSecondStep();
-		} else{
-			if(!requiredFieldsFilled('#formElem')) hasError = true;		
-		}
+		// if(step == 1){
+		// 	hasError = validateFirstStep();
+		// } else if(step == 2){
+		// 	hasError = validateSecondStep();
+		// } else{
+		// 	if(!requiredFieldsFilled('#formElem')) hasError = true;		
+		// }
 
 		var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
 		$link.parent().find('.error,.checked').remove();

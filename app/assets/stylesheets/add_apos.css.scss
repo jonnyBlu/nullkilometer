@@ -61,58 +61,82 @@ body{
     }
 }
 
-
 /*second step styling end*/
 
+/*third step styling*/
+textarea#description{
+    width: 100%;
+}
+/*third step stylig end*/
 
 
 
 /*market stalls step styling*/
 
-#marketStallsStepContainer.invisible, #marketStallsStepLink.invisible{
-    display: none;
-}
 
 #addAMarketStallButton{
     margin-left: 20px;
 }
 #newMarketStallContainer{
     padding-left: 20px;
+    position: relative;
+}
+a#remove{
+    float: right;
+    right: 20px; 
 }
 
 
+#marketStallsStepContainer.invisible, #marketStallsStepLink.invisible, #marketStallList.invisible {
+/*.invisible{*/
+    display: none;
+}
+
+#marketStallsMoreInfoDiv{
+    display: none;
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    width: 200px;
+    padding: 20px;
+    background-color: #fff;
+    z-index: 100;
+    -moz-box-shadow:0px 0px 3px #aaa;
+    -webkit-box-shadow:0px 0px 3px #aaa;
+    box-shadow:0px 0px 3px #aaa;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+}
 
 /*market stalls step styling end*/
 
 
-
-
-
+/*overview styling */
+#overviewContainer{
+    button{
+        float:right;
+    }
+}
+.row.invisible{
+    display: none;
+}
 /*general form styling*/
 
 .instruction{
     position: relative;
     font-weight: bold;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 50px 10px 0px;
+/*    max-width: 500px;*/
+
 }
 
 
 #steps form p{
-/*    float:left;
-    clear:both;*/
-    margin: 10px;
-/*    background-color:#f4f4f4;
-    border:1px solid #fff;*/
-    width:400px;
+/*    margin: 10px;*/
+    width: 100%;
     padding:10px;
     font-weight: bold;
-/*    margin-left:100px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow:0px 0px 3px #aaa;
-    -webkit-box-shadow:0px 0px 3px #aaa;
-    box-shadow:0px 0px 3px #aaa;*/
 }
 
 
@@ -221,6 +245,7 @@ span.error{
 
 
 #steps form legend{
+    position: relative;
     text-align:left;
     color:$grayTextColor;
     font-size:24px;

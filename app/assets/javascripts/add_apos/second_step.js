@@ -5,9 +5,13 @@ var secondStepActions = function(){
 
 	$('#mainInformationFieldset input[name=shopType]').click(function(){
 	   if ($(this).is(':checked'))  newPosType = $(this).val();
-	   	if(newPosType == "1"){ // market
+	   	if(newPosType == MARKETINDEX){ // market
 			loadMarketStallStep();
-		} else hideMarketStallStep();
+			$("#marketStallsOverviewRow").removeClass("invisible");
+		} else{
+			hideMarketStallStep();
+			$("#marketStallsOverviewRow").addClass("invisible");
+		} 
 	});
 
 	openingTimeListeners();
