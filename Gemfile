@@ -25,6 +25,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap-timepicker-rails-addon'
+gem 'jquery-timepicker-rails'
 
 gem 'simple_form'
 

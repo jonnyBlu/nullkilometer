@@ -1,0 +1,120 @@
+<%=  render 'newPosHeader' %> 
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "add_apos/add_apos.js" %>
+    <%= javascript_include_tag "add_apos/first_step.js" %>
+    <%= javascript_include_tag "add_apos/second_step.js" %>
+    <%= javascript_include_tag "add_apos/market_stalls_step.js" %>
+    <%= javascript_include_tag "add_apos/overview.js" %>
+<% end %>
+<div id="wrapper">
+	    <div id="navigation" style="display:none;">
+        <ul>
+            <li class="selected">
+                <a href="#" class="available">Ort Bestimmen</a>
+            </li>
+            <li>
+                <a href="#" class="available">Hauptinformationen</a>
+            </li>
+            <li class="unactive">
+                <a href="#">Zusätzliche Informationen</a>
+            </li>
+            <li class="unactive">
+                <a href="#" id="marketStallsStepLink" class="invisible">Marktstände</a>
+            </li>
+			<li>
+                <a href="#" id="overviewTab">Bestätigen</a>
+            </li>
+        </ul>
+    </div>
+    <div id="steps">
+        <form id="addAPosForm" name="addAPosForm" action="" method="post">
+            <fieldset class="step">
+                <legend>Ort Bestimmen</legend>
+                <div class = "instruction">Suche nach einer Adresse oder präzisiere die Lokation auf der Karte</div>
+				<div class="control-group">
+				  <div class="controls">
+				    <div class="input-prepend">
+					    <input class="span2" id="locationInput" type="text" placeholder="Adresse eingeben">
+					    <a class="btn" href="#" id="locationSubmit"><i class="icon-search"></i></a>
+				    </div>
+				  </div>
+				</div>
+				<div id="locationSearchResults"></div>
+				<div id="newPosMap"></div>
+                <%=  render 'buttonToTheNextStep' %>
+            </fieldset>
+            <fieldset class="step" id="mainInformationFieldset">
+                <legend>Hauptinformationen</legend>
+                <div class="row">
+                    <div class="span2"> <label for="name">Name*:</label></div>
+                    <div class="span2">  <input class="requiredField" id="name" name="name" type="text" AUTOCOMPLETE=OFF /></div>
+                </div>
+                <div class="row">
+                    <div class="span2"> <label for="address">Adresse:</label> </div>
+                    <div class="span6"> <label id="loadedAddressLabel"><a href="#" id="addresseBestimmenLink">Adresse bestimmen</a></label></div>
+                </div>
+                 <div class="row">
+                    <div class="span2"> 
+                        <ul>
+                            <li><label for="shopType">Laden Typ*:</label></li>
+                        </ul>
+                    </div>
+                    <div class="span2"> 
+                        <%=  render 'choosePOSTypeList' %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2"> 
+                        <ul>
+                            <li><label for="productCategory">Produktkategorien:</label></li>
+                            <li>(* mindestens 1)</li>
+                        </ul>
+                    </div>
+                    <div class="span3"> 
+                        <%=  render 'chooseProductCategoriesList' %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                        <ul>
+                            <li><label for="openingDay">Öffnungszeiten:</label></li>
+                            <li>(* mindestens einen Tag markieren)</li>
+                        </ul>
+                    </div>
+                    <div class="span7" id="openingDaysAndTimesList"> 
+                        <%=  render 'openingTimesList' %>                           
+                     </div>
+                </div>  
+                <%=  render 'buttonToTheNextStep' %>   
+            </fieldset>
+            <fieldset class="step">
+                <legend>Zusätzliche Informationen</legend>
+                <%=  render 'additionalInformationForm' %>
+                <%=  render 'buttonToTheNextStep' %>
+            </fieldset>
+            <fieldset class="step" >
+                <div id="marketStallsStepContainer">
+                    <legend>Marktstände</legend>
+                    <ul id ="marketStallList"></ul>
+                    <%=  render 'newMarketStallForm' %>
+                </div>
+            </fieldset>
+			<fieldset class="step">
+                <legend>Übersicht</legend>
+				<p>
+					Everything in the form was correctly filled 
+					if all the steps have a green checkmark icon.
+<!-- 					A red checkmark icon indicates that some field 
+					is missing or filled out with invalid data. In this
+					last step the user can confirm the submission of
+					the form. -->
+				</p>
+                <%=  render 'newPosOverview' %>
+                <p class="submit">
+                    <button id="registerButton" type="submit">Register</button>
+                </p>
+            </fieldset>
+        </form>
+    </div>
+</div>
+

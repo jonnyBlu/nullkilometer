@@ -1,0 +1,308 @@
+/*Add a POS page styling*/
+
+$normalInputFieldWidth: 150px;
+$wrapperHeight: 700px;
+$grayTextColor: #444;
+$formWidth: 800px;
+$stepWidth: 800px;
+$navigationHeight: 35px;
+
+
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    color:#444444;
+    font-size:13px;
+    background: #f2f2f2;
+    font-family:"Century Gothic", Helvetica, sans-serif;
+}
+
+
+/*first step styling*/
+
+#locationSearchResults{
+  margin-bottom: 10px;
+  li{
+    list-style-type: none;
+  }
+}
+
+#newPosMap{
+  height: 500px;	
+}
+
+
+/*first step styling end*/
+
+
+
+
+/*second step styling*/
+
+.timePickerInput{
+    position: relative;
+    width: 80px;
+    height: 10px;
+    margin: 0px;
+}
+#locationInput{
+    width: $normalInputFieldWidth;
+}
+
+
+#openingDaysAndTimesList{
+    .span2, .span4, .row.low, .timePickerInput{
+        margin: 0px;
+    }
+    .timePickerInput{
+        height: 18px;
+    }
+}
+
+
+/*second step styling end*/
+
+
+
+
+/*market stalls step styling*/
+
+#marketStallsStepContainer.invisible, #marketStallsStepLink.invisible{
+    display: none;
+}
+
+#addAMarketStallButton{
+    margin-left: 20px;
+}
+#newMarketStallContainer{
+    padding-left: 20px;
+}
+
+
+
+/*market stalls step styling end*/
+
+
+
+
+
+/*general form styling*/
+
+.instruction{
+    position: relative;
+    font-weight: bold;
+    padding: 10px 0px 10px 0px;
+}
+
+
+#steps form p{
+/*    float:left;
+    clear:both;*/
+    margin: 10px;
+/*    background-color:#f4f4f4;
+    border:1px solid #fff;*/
+    width:400px;
+    padding:10px;
+    font-weight: bold;
+/*    margin-left:100px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow:0px 0px 3px #aaa;
+    -webkit-box-shadow:0px 0px 3px #aaa;
+    box-shadow:0px 0px 3px #aaa;*/
+}
+
+
+
+#content{
+    margin:15px auto;
+    text-align:center;
+    width:$formWidth;
+    position:relative;
+    height:100%;
+}
+#wrapper{
+    color:$grayTextColor;
+    -moz-box-shadow:0px 0px 3px #aaa;
+    -webkit-box-shadow:0px 0px 3px #aaa;
+    box-shadow:0px 0px 3px #aaa;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border-right:8px solid #fff;
+    border-left:8px solid #fff;
+/*    height: $wrapperHeight;*/
+    width:$formWidth;
+    overflow:hidden;
+}
+
+#steps{
+    width:$formWidth;
+    overflow:hidden;
+    .span2, span3{
+        ul{
+            margin-left: 0px; 
+        }
+    }
+    .row{
+        margin-bottom:20px;
+    }
+
+}
+.step{
+    float:left;
+    width:$stepWidth;
+    border:none;
+    /*padding: 0px 5px 5px 5px;*/
+}
+#navigation{
+    height: $navigationHeight;
+    -moz-border-radius:0px 0px 10px 10px;
+    -webkit-border-bottom-left-radius:10px;
+    -webkit-border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+}
+#navigation ul{
+    list-style:none;
+    float:left;
+    margin: 0px 0px 0px 22px;
+}
+#navigation ul li{
+    float:left;
+/*    border-right:1px solid #ddd;
+    border-left:1px solid #ddd;*/
+    position:relative;
+    margin:0px 2px;
+}
+#navigation ul li a{
+    display:block;
+    height:$navigationHeight;
+
+    outline:none;
+/*    font-weight:bold;*/
+    text-decoration:none;
+    line-height:$navigationHeight;
+    padding:0px 20px;
+/*    border-right:1px solid #fff;
+    border-left:1px solid #fff;*/
+    background:#efefef;
+    color:#777;
+}
+
+
+#navigation ul li a:hover,
+#navigation ul li.selected a{
+    background:#fff;
+    color:#666;
+    text-shadow:1px 1px 1px #fff;
+}
+
+
+span.checked{
+    background:transparent url(../images/checked.png) no-repeat top left;
+    position:absolute;
+    top:0px;
+    left:1px;
+    width:20px;
+    height:20px;
+}
+span.error{
+    background:transparent url(../images/error.png) no-repeat top left;
+    position:absolute;
+    top:0px;
+    left:1px;
+    width:20px;
+    height:20px;
+}
+
+
+#steps form legend{
+    text-align:left;
+    color:$grayTextColor;
+    font-size:24px;
+    text-shadow:1px 1px 1px #fff;
+    font-weight:bold;
+    float:left;
+    width:$formWidth;
+    padding:5px 0px 5px 0px;
+    margin:0px;
+    margin-bottom: 20px;
+    border-bottom:1px solid #fff;
+    border-top:1px solid #d9d9d9;
+}
+
+
+#steps form p label{
+    width:160px;
+    float:left;
+    margin-right:15px;
+    line-height:26px;
+    color:#666;
+    text-shadow:1px 1px 1px #fff;
+    font-weight:bold;
+}
+
+.checkboxGroup{
+        float:left;
+        list-style-type: none;
+        li{
+            line-height: 25px;
+        }
+}
+
+#steps form input:focus{
+    -moz-box-shadow:0px 0px 3px #aaa;
+    -webkit-box-shadow:0px 0px 3px #aaa;
+    box-shadow:0px 0px 3px #aaa;
+    background-color:#FFFEEF;
+}
+#steps form p.submit{
+    background:none;
+    border:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}
+
+.toTheNextStepButton {
+    margin: 20px;
+    float: right;
+    right: 0px;
+}
+/*#steps form button {
+    border:none;
+    outline:none;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    display: block;
+    cursor:pointer;
+    margin: 0px auto;
+    clear:both;
+    padding: 7px 25px;
+    text-shadow: 0 1px 1px #777;
+    font-weight:bold;
+    font-family:"Century Gothic", Helvetica, sans-serif;
+    font-size:22px;
+    -moz-box-shadow:0px 0px 3px #aaa;
+    -webkit-box-shadow:0px 0px 3px #aaa;
+    box-shadow:0px 0px 3px #aaa;
+    background:#4797ED;
+}
+#steps form button:hover {
+    background:#d8d8d8;
+    color:#666;
+    text-shadow:1px 1px 1px #fff;
+}*/
+
+.invalidLabel{
+    color: red;
+}
+
+
+/*general form styling end*/

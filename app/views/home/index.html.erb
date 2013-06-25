@@ -1,6 +1,10 @@
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "home/home.js" %>
+    <%= javascript_include_tag "home/map_home.js" %>
+<% end %>
 <div id="locationinfo"></div>
 <div id="activityPannel">
-	<button class="btn" type="button" id="addAPlaceButton">Neuen Verkaufsort Hinzufügen
+	<button class="btn btn-info" type="button" id="addAPlaceButton">Neuen Verkaufsort Hinzufügen
 	</button>
 </div>
 <div id="mapContainer">
@@ -46,9 +50,8 @@
 		</div>
 		<button class="btn btn-large btn-block" type="button" id="mapFilterButton">Nach Verkaufsort Suchen</button>
 	</div>
-	<div id="addressLookupContainer">
+	<div class="addressLookupContainer">
 		<div class="control-group">
-<!-- 			<label class="control-label" for="inputIcon">Email address</label> -->
 			<div class="controls">
 		   		<div class="input-prepend">
 		      		<input class="span2" id="inputIcon" type="text" placeholder="Adresse eingeben">
