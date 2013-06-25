@@ -1,4 +1,6 @@
 Nullkilometer::Application.routes.draw do
+  resources :opening_times, :defaults => {:format => :json}
+
   resources :point_of_sales
 
   # The priority is based upon order of creation:
