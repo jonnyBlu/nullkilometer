@@ -1,24 +1,19 @@
 class PointOfSalesController < ApplicationController
+
+  respond_to :html, :json
+
   # GET /point_of_sales
   # GET /point_of_sales.json
   def index
     @point_of_sales = PointOfSale.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @point_of_sales }
-    end
+    respond_with @point_of_sales
   end
 
   # GET /point_of_sales/1
   # GET /point_of_sales/1.json
   def show
     @point_of_sale = PointOfSale.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @point_of_sale }
-    end
+    respond_with @point_of_sale
   end
 
   # GET /point_of_sales/new
@@ -26,15 +21,18 @@ class PointOfSalesController < ApplicationController
   def new
     @point_of_sale = PointOfSale.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @point_of_sale }
+    [1,2,3,4,5,6,0].each do |d|
+      @point_of_sale.opening_times.build(:day => d)
     end
+
+    respond_with @point_of_sale
   end
 
   # GET /point_of_sales/1/edit
   def edit
     @point_of_sale = PointOfSale.find(params[:id])
+
+    respond_with @point_of_sale
   end
 
   # POST /point_of_sales
@@ -75,9 +73,6 @@ class PointOfSalesController < ApplicationController
     @point_of_sale = PointOfSale.find(params[:id])
     @point_of_sale.destroy
 
-    respond_to do |format|
-      format.html { redirect_to point_of_sales_url }
-      format.json { head :no_content }
-    end
+    respond_with @point_of_sale
   end
 end

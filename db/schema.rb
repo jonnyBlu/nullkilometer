@@ -11,16 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610133138) do
+ActiveRecord::Schema.define(:version => 20130619113017) do
+
+  create_table "opening_times", :force => true do |t|
+    t.integer  "point_of_sale_id"
+    t.integer  "day"
+    t.string   "open_at"
+    t.string   "close_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "point_of_sales", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.spatial  "latlon",       :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.spatial  "latlon",      :limit => {:srid=>4326, :type=>"point", :geographic=>true}
     t.string   "type_of_POS"
-    t.string   "opening_time"
-    t.datetime "created_at",                                                               :null => false
-    t.datetime "updated_at",                                                               :null => false
+    t.text     "description"
+    t.datetime "created_at",                                                              :null => false
+    t.datetime "updated_at",                                                              :null => false
   end
 
 end

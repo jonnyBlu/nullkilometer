@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  point_of_sale: 
+  day: 1
+  open_at: 2013-06-19 13:30:17
+  close_at: 2013-06-19 13:30:17
+
+two:
+  point_of_sale: 
+  day: 1
+  open_at: 2013-06-19 13:30:17
+  close_at: 2013-06-19 13:30:17

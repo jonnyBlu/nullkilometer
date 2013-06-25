@@ -5,7 +5,7 @@ class CreatePointOfSales < ActiveRecord::Migration
       t.string :address
       t.point :latlon, :geographic => true
       t.string :type_of_POS
-      t.string :opening_time
+      t.text :description
 
       t.timestamps
     end

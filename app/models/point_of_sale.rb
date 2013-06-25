@@ -1,39 +1,51 @@
 class PointOfSale < ActiveRecord::Base
-  attr_accessible :address, :latlon, :latitude, :longitude, :name, :opening_time, :type_of_POS
+  attr_accessible :address, :latlon, :lat, :lon, :name, :opening_times, :opening_times_attributes, :open_on, :type_of_POS
+  
+  #relations
+  has_many :opening_times, :dependent => :destroy
+
+  #relation nesting
+  accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:open_at].blank? && a[:close_at].blank?}
+
+  #scopes
+
+  #validations
+  validates :address, :presence => true
+  validates :latlon, :presence => true
+  validates :name, :presence => true
+  validates :type_of_POS, :presence => true
+
 
   set_rgeo_factory_for_column(:latlon, RGeo::Geographic.spherical_factory(:srid => 4326))
-
   after_initialize :init_latlon
-
-  validates :address, :presence => true
-  validates :name, :presence => true
-  validates :opening_time, :presence => true
-  validates :type_of_POS, :presence => true
 
   
   def init_latlon
   	self.latlon ||= PointOfSale.rgeo_factory_for_column(:latlon).point(0, 0)
   end
 
-  #acessing latitude and longitude:
-  def latitude
+  #attr_accessors for lat and lon:
+  def lat
 		self.latlon.lat
   end
 
-  def latitude=(val)
+  def lat=(val)
     init_latlon
-  	longitude = self.latlon.lon
-  	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(longitude, val)
+  	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(self.latlon.lon, val)
   end
 
-	def longitude
+	def lon
 		self.latlon.lon
   end
 
-  def longitude=(val)
+  def lon=(val)
     init_latlon
-  	latitude = self.latlon.lat
-  	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(val, latitude)
-  end  
+  	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(val, self.latlon.lat)
+  end
 
+  #for json outputs:
+  def open_on
+    # @open_on ||= object.opening_times.map(&:day)
+    @open_on ||= opening_times.map{|ot| ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"].at(ot.day)}
+  end
 end
