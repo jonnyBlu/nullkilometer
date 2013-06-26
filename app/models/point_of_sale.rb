@@ -24,7 +24,7 @@ class PointOfSale < ActiveRecord::Base
   	self.latlon ||= PointOfSale.rgeo_factory_for_column(:latlon).point(0, 0)
   end
 
-  #attr_accessors for lat and lon:
+  #attr_accessors for lat
   def lat
 		self.latlon.lat
   end
@@ -34,6 +34,7 @@ class PointOfSale < ActiveRecord::Base
   	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(self.latlon.lon, val)
   end
 
+  #attr_accessors for lon
 	def lon
 		self.latlon.lon
   end
@@ -43,9 +44,8 @@ class PointOfSale < ActiveRecord::Base
   	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(val, self.latlon.lat)
   end
 
-  #for json outputs:
   def open_on
     # @open_on ||= object.opening_times.map(&:day)
-    @open_on ||= opening_times.map{|ot| ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"].at(ot.day)}
+    @open_on ||= opening_times.map{|ot| OpeningTime.weekDayNames.at(ot.day)}
   end
 end
