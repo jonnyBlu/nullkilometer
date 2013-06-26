@@ -1,5 +1,4 @@
 Nullkilometer::Application.routes.draw do
-  resources :product_categories
 
   resources :opening_times, :defaults => {:format => :json}
 

@@ -5,7 +5,6 @@ class PointOfSale < ActiveRecord::Base
   #relations
   has_many :opening_times, :dependent => :destroy
   has_many :product_assignments, :dependent => :destroy
-  has_many :product_categories, :through => :product_assignments
 
   #relation nesting
   accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:open_at].blank? && a[:close_at].blank?}

@@ -6,12 +6,3 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-product_categories = ProductCategory.create([{:name => "Milchprodukte"},
-																						 {:name => "Obst und Gemüse"},
-																						 {:name => "Fisch"},
-																						 {:name => "Fleisch"},
-																						 {:name => "Eier"},
-																						 {:name => "Brot"},
-																						 {:name => "Getrocknete Waren"}])
