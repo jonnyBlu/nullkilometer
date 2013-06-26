@@ -2,8 +2,8 @@ collection @point_of_sales, :root => 'POS', :object_root => false
 
 attributes :lat, :lon, :open_on, :type_of_POS
 
-node :product_categories do |pos|
-	
+child :product_categories, :object_root => false do |pos|
+	attributes :id
 end
 
 node :url do |pos|
