@@ -1,8 +1,11 @@
 class PointOfSale < ActiveRecord::Base
-  attr_accessible :address, :latlon, :lat, :lon, :name, :opening_times, :opening_times_attributes, :open_on, :type_of_POS
+  attr_accessible :address, :latlon, :lat, :lon, :name, :opening_times, 
+                  :opening_times_attributes, :open_on, :type_of_POS, :product_category_ids, :product_categories
   
   #relations
   has_many :opening_times, :dependent => :destroy
+  has_many :product_assignments, :dependent => :destroy
+  has_many :product_categories, :through => :product_assignments
 
   #relation nesting
   accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:open_at].blank? && a[:close_at].blank?}
