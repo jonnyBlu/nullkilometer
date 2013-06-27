@@ -9,7 +9,7 @@ class PointOfSale < ActiveRecord::Base
   belongs_to :shop_type
 
   #relation nesting
-  accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:open_at].blank? && a[:close_at].blank?}
+  accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:from].blank? && a[:to].blank?}
 
   #scopes
 
@@ -48,12 +48,24 @@ class PointOfSale < ActiveRecord::Base
   	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(val, self.latlon.lat)
   end
 
-  def open_on
-    # @open_on ||= object.opening_times.map(&:day)
-    @open_on ||= opening_times.map{|ot| OpeningTime.weekDayNames.at(ot.day)}
+ #getters for json-representation
+  def opening_times_day_array
+    @opening_times_day_array ||= opening_times.map(&:day)
+    # @opening_times_day_array ||= opening_times.map{|ot| OpeningTime.week_day_names.at(ot.day)}
+  end
+
+  def product_category_id_array
+    @product_category_id_array ||= product_categories.map(&:id) 
   end
 
   def shop_type_name
     @shop_type_name ||= shop_type.name
+  end
+
+  def opening_times_string
+    @opening_times_string ||= opening_times.map do|opening_time| 
+      OpeningTime.week_day_names[opening_time.day]+": "+opening_time.from+" - "+opening_time.to
+    end
+    
   end
 end

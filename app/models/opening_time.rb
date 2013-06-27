@@ -1,13 +1,13 @@
 class OpeningTime < ActiveRecord::Base
   belongs_to :point_of_sale
   
-  attr_accessible :day, :close_at, :open_at
+  attr_accessible :day, :to, :from
 
-  validates :day, :close_at, :open_at, :presence => true
+  validates :day, :to, :from, :presence => true
   validates :day, :numericality => { :only_integer => true, :less_than => 7}
-  validates :open_at, :close_at, :format => { :with => /\d{2}:\d{2}/ }
+  validates :from, :to, :format => { :with => /\d{2}:\d{2}/ }
 
-  def self.weekDayNames
+  def self.week_day_names
   	["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
   end
 end

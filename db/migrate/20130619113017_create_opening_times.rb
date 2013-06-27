@@ -3,8 +3,8 @@ class CreateOpeningTimes < ActiveRecord::Migration
     create_table :opening_times do |t|
       t.references :point_of_sale
       t.integer :day
-      t.string :open_at
-      t.string :close_at
+      t.string :from
+      t.string :to
 
       t.timestamps
     end

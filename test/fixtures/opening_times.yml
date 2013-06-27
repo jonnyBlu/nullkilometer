@@ -3,11 +3,11 @@
 one:
   point_of_sale: 
   day: 1
-  open_at: 2013-06-19 13:30:17
-  close_at: 2013-06-19 13:30:17
+  form: "13:30"
+  to: "13:30"
 
 two:
   point_of_sale: 
   day: 1
-  open_at: 2013-06-19 13:30:17
-  close_at: 2013-06-19 13:30:17
+  from: "13:30"
+  to: "13:30"
