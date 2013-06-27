@@ -1,6 +1,6 @@
 collection @point_of_sales, :root => 'POS', :object_root => false
 
-attributes :lat, :lon, :open_on, :type_of_POS
+attributes :lat, :lon, :open_on, :shop_type_id
 
 child :product_categories, :object_root => false do |pos|
 	attributes :id

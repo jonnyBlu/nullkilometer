@@ -1,11 +1,12 @@
 class PointOfSale < ActiveRecord::Base
-  attr_accessible :address, :latlon, :lat, :lon, :name, :opening_times, 
-                  :opening_times_attributes, :open_on, :type_of_POS, :product_category_ids, :product_categories
+  attr_accessible :address, :lat, :lon, :name, :shop_type_id, :shop_type, :opening_times, 
+                  :opening_times_attributes, :product_category_ids
   
   #relations
   has_many :opening_times, :dependent => :destroy
   has_many :product_assignments, :dependent => :destroy
   has_many :product_categories, :through => :product_assignments
+  belongs_to :shop_type
 
   #relation nesting
   accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:open_at].blank? && a[:close_at].blank?}
@@ -16,7 +17,7 @@ class PointOfSale < ActiveRecord::Base
   validates :address, :presence => true
   validates :latlon, :presence => true
   validates :name, :presence => true
-  validates :type_of_POS, :presence => true
+  validates :shop_type, :presence => true
 
 
   set_rgeo_factory_for_column(:latlon, RGeo::Geographic.spherical_factory(:srid => 4326))
@@ -50,5 +51,9 @@ class PointOfSale < ActiveRecord::Base
   def open_on
     # @open_on ||= object.opening_times.map(&:day)
     @open_on ||= opening_times.map{|ot| OpeningTime.weekDayNames.at(ot.day)}
+  end
+
+  def shop_type_name
+    @shop_type_name ||= shop_type.name
   end
 end

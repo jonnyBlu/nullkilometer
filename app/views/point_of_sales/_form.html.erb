@@ -6,8 +6,8 @@
     <%= f.input :address %>
     <%= f.input :lat %>
     <%= f.input :lon %>
-    <%= f.input :type_of_POS %>
     <%= f.association :product_categories, :collection => ProductCategory.all, :as => :check_boxes %>
+    <%= f.association :shop_type, :collection => ShopType.all %>
     <%= f.simple_fields_for :opening_times do |ot| %>
       <%= ot.input :open_at %>
       <%= ot.input :close_at %>

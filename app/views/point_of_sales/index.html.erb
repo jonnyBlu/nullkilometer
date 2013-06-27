@@ -5,9 +5,9 @@
       <tr>
         <th>Name</th>
         <th>Address</th>
-        <th>Latlon</th>
-        <th>Type of pos</th>
-        <th>Opening time</th>
+        <th>Lat,Lon</th>
+        <th>Shop type</th>
+        <th>Opening times</th>
         <th></th>
         <th></th>
         <th></th>
@@ -19,9 +19,9 @@
       <tr>
         <td><%= point_of_sale.name %></td>
         <td><%= point_of_sale.address %></td>
-        <td><%= point_of_sale.latlon.lat %>, <%= point_of_sale.latlon.lon %></td>
-        <td><%= point_of_sale.type_of_POS %></td>
-        <td><%= point_of_sale.opening_times %></td>
+        <td><%= point_of_sale.lat %>, <%= point_of_sale.lon %></td>
+        <td><%= point_of_sale.shop_type_name %></td>
+        <td><%= point_of_sale.opening_times_string %></td>
         <td><%= link_to 'Show', point_of_sale %></td>
         <td><%= link_to 'Edit', edit_point_of_sale_path(point_of_sale) %></td>
         <td><%= link_to 'Destroy', point_of_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>

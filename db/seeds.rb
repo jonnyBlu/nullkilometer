@@ -15,3 +15,9 @@ product_categories = ProductCategory.create([{:name => "Milchprodukte"},
 																						 {:name => "Eier"},
 																						 {:name => "Brot"},
 																						 {:name => "Getrocknete Waren"}])
+
+shop_types = ShopType.create([{:name => "Laden"},
+															{:name => "Markt"},
+															{:name => "Supermarkt"},
+															{:name => "Kiosk"},
+															{:name => "Bauernhofladen"}])
