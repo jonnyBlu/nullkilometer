@@ -1,15 +1,15 @@
 class PointOfSale < ActiveRecord::Base
   attr_accessible :address, :lat, :lon, :name, :shop_type_id, :shop_type, :opening_times, 
-                  :opening_times_attributes, :product_category_ids
+                  :opening_times_attributes, :product_assignments_attributes
   
   #relations
   has_many :opening_times, :dependent => :destroy
   has_many :product_assignments, :dependent => :destroy
-  has_many :product_categories, :through => :product_assignments
   belongs_to :shop_type
 
   #relation nesting
-  accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |a| a[:from].blank? && a[:to].blank?}
+  accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |ot| ot[:from].blank? && ot[:to].blank?}
+  accepts_nested_attributes_for :product_assignments, :allow_destroy => true, :reject_if => lambda { |pa| pa[:product_category].blank?}
 
   #scopes
 
@@ -55,7 +55,7 @@ class PointOfSale < ActiveRecord::Base
   end
 
   def product_category_id_array
-    @product_category_id_array ||= product_categories.map(&:id) 
+    @product_category_id_array ||= product_assignments.map(&:product_category) 
   end
 
   def shop_type_name

@@ -21,9 +21,9 @@ class PointOfSalesController < ApplicationController
   def new
     @point_of_sale = PointOfSale.new
 
-    [1,2,3,4,5,6,0].each do |d|
-      @point_of_sale.opening_times.build(:day => d)
-    end
+    ProductAssignment.product_category_names.each_index{ |i| @point_of_sale.product_assignments.build(:product_category => i)}
+
+    [1,2,3,4,5,6,0].each{ |d| @point_of_sale.opening_times.build(:day => d) }
 
     respond_with @point_of_sale
   end

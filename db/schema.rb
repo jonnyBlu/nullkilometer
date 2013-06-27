@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20130626200125) do
   create_table "opening_times", :force => true do |t|
     t.integer  "point_of_sale_id"
     t.integer  "day"
-    t.string   "open_at"
-    t.string   "close_at"
+    t.string   "from"
+    t.string   "to"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
@@ -34,15 +34,9 @@ ActiveRecord::Schema.define(:version => 20130626200125) do
 
   create_table "product_assignments", :force => true do |t|
     t.integer  "point_of_sale_id"
-    t.integer  "product_category_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  create_table "product_categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "product_category"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "shop_types", :force => true do |t|

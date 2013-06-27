@@ -6,7 +6,9 @@
     <%= f.input :address %>
     <%= f.input :lat %>
     <%= f.input :lon %>
-    <%= f.association :product_categories, :collection => ProductCategory.all, :as => :check_boxes %>
+    <%= f.simple_fields_for :product_assignments do |pa| %>
+      <%= pa.input :product_category %>
+    <% end %>
     <%= f.association :shop_type, :collection => ShopType.all %>
     <%= f.simple_fields_for :opening_times do |ot| %>
       <%= ot.input :from %>

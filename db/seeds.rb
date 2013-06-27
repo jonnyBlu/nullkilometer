@@ -8,13 +8,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-product_categories = ProductCategory.create([{:name => "Milchprodukte"},
-																						 {:name => "Obst und Gemüse"},
-																						 {:name => "Fisch"},
-																						 {:name => "Fleisch"},
-																						 {:name => "Eier"},
-																						 {:name => "Brot"},
-																						 {:name => "Getrocknete Waren"}])
 
 shop_types = ShopType.create([{:name => "Laden"},
 															{:name => "Markt"},
