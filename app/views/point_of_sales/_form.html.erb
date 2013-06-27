@@ -9,7 +9,7 @@
     <%= f.simple_fields_for :product_assignments do |pa| %>
       <%= pa.input :product_category %>
     <% end %>
-    <%= f.association :shop_type, :collection => ShopType.all %>
+    <%= f.input :shop_type %>
     <%= f.simple_fields_for :opening_times do |ot| %>
       <%= ot.input :from %>
       <%= ot.input :to %>

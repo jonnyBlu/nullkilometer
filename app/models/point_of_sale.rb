@@ -1,11 +1,16 @@
 class PointOfSale < ActiveRecord::Base
-  attr_accessible :address, :lat, :lon, :name, :shop_type_id, :shop_type, :opening_times, 
+  #class methods
+  def self.shop_type_names
+    ["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
+  end
+
+  #accessible attributes
+  attr_accessible :address, :lat, :lon, :name, :shop_type, :opening_times, 
                   :opening_times_attributes, :product_assignments_attributes
   
   #relations
   has_many :opening_times, :dependent => :destroy
   has_many :product_assignments, :dependent => :destroy
-  belongs_to :shop_type
 
   #relation nesting
   accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |ot| ot[:from].blank? && ot[:to].blank?}
@@ -17,13 +22,13 @@ class PointOfSale < ActiveRecord::Base
   validates :address, :presence => true
   validates :latlon, :presence => true
   validates :name, :presence => true
-  validates :shop_type, :presence => true
+  validates :shop_type, :presence => true, :numericality => { :only_integer => true, :less_than => PointOfSale.shop_type_names.length }
 
-
+  
+  #initializations
   set_rgeo_factory_for_column(:latlon, RGeo::Geographic.spherical_factory(:srid => 4326))
   after_initialize :init_latlon
 
-  
   def init_latlon
   	self.latlon ||= PointOfSale.rgeo_factory_for_column(:latlon).point(0, 0)
   end
@@ -48,7 +53,8 @@ class PointOfSale < ActiveRecord::Base
   	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(val, self.latlon.lat)
   end
 
- #getters for json-representation
+
+  #attributes for json-representation
   def opening_times_day_array
     @opening_times_day_array ||= opening_times.map(&:day)
     # @opening_times_day_array ||= opening_times.map{|ot| OpeningTime.week_day_names.at(ot.day)}
@@ -59,13 +65,12 @@ class PointOfSale < ActiveRecord::Base
   end
 
   def shop_type_name
-    @shop_type_name ||= shop_type.name
+    @shop_type_name ||= PointOfSale.shop_type_names[shop_type]
   end
 
   def opening_times_string
     @opening_times_string ||= opening_times.map do|opening_time| 
       OpeningTime.week_day_names[opening_time.day]+": "+opening_time.from+" - "+opening_time.to
     end
-    
   end
 end

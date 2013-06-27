@@ -7,10 +7,3 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-
-shop_types = ShopType.create([{:name => "Laden"},
-															{:name => "Markt"},
-															{:name => "Supermarkt"},
-															{:name => "Kiosk"},
-															{:name => "Bauernhofladen"}])
