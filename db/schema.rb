@@ -36,11 +36,10 @@ ActiveRecord::Schema.define(:version => 20130627164613) do
   create_table "point_of_sales", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.spatial  "latlon",      :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.spatial  "latlon",     :limit => {:srid=>4326, :type=>"point", :geographic=>true}
     t.integer  "shop_type"
-    t.text     "description"
-    t.datetime "created_at",                                                              :null => false
-    t.datetime "updated_at",                                                              :null => false
+    t.datetime "created_at",                                                             :null => false
+    t.datetime "updated_at",                                                             :null => false
   end
 
   create_table "product_assignments", :force => true do |t|
