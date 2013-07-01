@@ -19,6 +19,13 @@
     <%= f.input :mail %>
     <%= f.input :phone %>
     <%= f.input :website %>
+    <%= f.simple_fields_for :market_stalls do |ms| %>
+      <%= ms.input :name %>
+      <%= ms.input :description %>
+      <%= ms.input :mail %>
+      <%= ms.input :phone %>
+      <%= ms.input :website %>
+    <% end %>
   </div>
 
   <div class="form-actions">
