@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(:version => 20130630171045) do
   end
 
   create_table "product_assignments", :force => true do |t|
-    t.integer  "point_of_sale_id"
     t.integer  "product_category"
+    t.integer  "assignable_id"
+    t.string   "assignable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

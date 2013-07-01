@@ -6,6 +6,10 @@ module ActiveRecordExtension
     def has_detail_infos
     	include Detailable
     end
+
+    def has_product_assignments
+    	include Assignable
+    end
   end
 end
 

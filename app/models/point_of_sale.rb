@@ -3,7 +3,7 @@ class PointOfSale < ActiveRecord::Base
   SHOP_TYPE_NAMES=["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
 
   attr_accessible :address, :lat, :lon, :name, :shop_type, 
-                  :opening_times_attributes, :product_assignments_attributes, :market_stalls_attributes
+                  :opening_times_attributes, :market_stalls_attributes
   alias_attribute :shopTypeId, :shop_type
   alias_attribute :openingTimes, :opening_times
   alias_attribute :marketStalls, :market_stalls
@@ -12,12 +12,10 @@ class PointOfSale < ActiveRecord::Base
   has_many :opening_times, :dependent => :destroy
   accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |ot| ot[:from].blank? && ot[:to].blank?}
   
-  has_many :product_assignments, :dependent => :destroy
-  accepts_nested_attributes_for :product_assignments, :allow_destroy => true, :reject_if => lambda { |pa| pa[:product_category].blank?}
- 
   has_many :market_stalls, :dependent => :destroy
   accepts_nested_attributes_for :market_stalls, :allow_destroy => true
 
+  has_product_assignments
   has_detail_infos
 
   #scopes
@@ -61,10 +59,6 @@ class PointOfSale < ActiveRecord::Base
   def opening_times_day_array
     @opening_times_day_array ||= opening_times.map(&:day)
     # @opening_times_day_array ||= opening_times.map{|ot| OpeningTime::WEEK_DAY_NAMES.at(ot.day)}
-  end
-
-  def product_category_array
-    @product_category_array ||= product_assignments.map(&:product_category) 
   end
 
   def shop_type_name
