@@ -1,6 +1,6 @@
-class CreateProductAssignments < ActiveRecord::Migration
+class CreateSalesAssignments < ActiveRecord::Migration
   def change
-    create_table :product_assignments do |t|
+    create_table :sales_assignments do |t|
       t.integer :product_category
       t.references :assignable, :polymorphic => true
 

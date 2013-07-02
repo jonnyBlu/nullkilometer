@@ -23,7 +23,7 @@ class PointOfSalesController < ApplicationController
 
     @point_of_sale.market_stalls.build
 
-    ProductAssignment::PRODUCT_CATEGORY_NAMES.each_index{ |i| @point_of_sale.product_assignments.build(:product_category => i)}
+    SalesAssignment::PRODUCT_CATEGORY_NAMES.each_index{ |i| @point_of_sale.sales_assignments.build(:product_category => i)}
 
     [1,2,3,4,5,6,0].each{ |d| @point_of_sale.opening_times.build(:day => d) }
 

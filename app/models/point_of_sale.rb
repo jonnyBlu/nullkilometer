@@ -16,7 +16,7 @@ class PointOfSale < ActiveRecord::Base
   has_many :market_stalls, :dependent => :destroy, :inverse_of => :point_of_sale
   accepts_nested_attributes_for :market_stalls, :allow_destroy => true, :reject_if => :all_blank
 
-  has_product_assignments
+  has_sales_assignments
   has_detail_infos
 
   #scopes

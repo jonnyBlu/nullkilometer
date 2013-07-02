@@ -6,8 +6,8 @@
     <%= f.input :address %>
     <%= f.input :lat %>
     <%= f.input :lon %>
-    <%= f.simple_fields_for :product_assignments do |pa| %>
-      <%= pa.input :product_category %>
+    <%= f.simple_fields_for :sales_assignments do |sa| %>
+      <%= sa.input :product_category %>
     <% end %>
     <%= f.input :shop_type %>
     <%= f.simple_fields_for :opening_times do |ot| %>

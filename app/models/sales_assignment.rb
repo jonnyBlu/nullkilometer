@@ -1,8 +1,10 @@
 #encoding: utf-8
-class ProductAssignment < ActiveRecord::Base
+class SalesAssignment < ActiveRecord::Base
 	PRODUCT_CATEGORY_NAMES = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Konserven", "Brot", "Getrocknete Waren"]
   
   attr_accessible :product_category
 
   belongs_to :assignable, :polymorphic => true
+  has_many :production_assignments, :dependent => :destroy
+  has_many :point_of_productions, :through => :production_assignments
 end
