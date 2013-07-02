@@ -1,6 +1,6 @@
 object @point_of_sale
 attributes :name, :address, :lat, :lon, :shopTypeId, :description, :website, :mail, :phone
-attributes :product_category_id_array => :productCategoryIds
+attributes :product_category_array => :productCategoryIds
 
 child :opening_times => :openingTimes do
 	attributes :day => :dayId
