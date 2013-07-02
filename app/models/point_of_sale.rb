@@ -4,6 +4,7 @@ class PointOfSale < ActiveRecord::Base
 
   attr_accessible :address, :lat, :lon, :name, :shop_type, 
                   :opening_times_attributes, :market_stalls_attributes
+  
   alias_attribute :shopTypeId, :shop_type
   alias_attribute :openingTimes, :opening_times
   alias_attribute :marketStalls, :market_stalls
@@ -12,8 +13,8 @@ class PointOfSale < ActiveRecord::Base
   has_many :opening_times, :dependent => :destroy
   accepts_nested_attributes_for :opening_times, :allow_destroy => true, :reject_if => lambda { |ot| ot[:from].blank? && ot[:to].blank?}
   
-  has_many :market_stalls, :dependent => :destroy
-  accepts_nested_attributes_for :market_stalls, :allow_destroy => true
+  has_many :market_stalls, :dependent => :destroy, :inverse_of => :point_of_sale
+  accepts_nested_attributes_for :market_stalls, :allow_destroy => true, :reject_if => :all_blank
 
   has_product_assignments
   has_detail_infos

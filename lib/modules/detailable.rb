@@ -2,6 +2,7 @@ module Detailable
 	def self.included base
 		base.attr_accessible :description, :mail, :phone, :website
 		base.has_one :detail_info, :as => :detailable, :autosave => true, :dependent => :destroy
+		base.validate :detail_infos_must_be_valid
 	  base.alias_method_chain :detail_info, :build
 	  base.extend ClassMethods 
 	  base.init_detail_info_attributes
@@ -23,5 +24,14 @@ module Detailable
 				end
 			end
   	end
+  end
+
+  protected
+  def detail_infos_must_be_valid
+  	unless detail_info.valid?
+      detail_info.errors.each do |attr, message|
+        errors.add(attr, message)
+      end
+    end
   end
 end
