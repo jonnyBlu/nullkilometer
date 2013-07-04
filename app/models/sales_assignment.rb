@@ -5,6 +5,6 @@ class SalesAssignment < ActiveRecord::Base
   attr_accessible :product_category
 
   belongs_to :assignable, :polymorphic => true
-  has_many :production_assignments, :dependent => :destroy
-  has_many :point_of_productions, :through => :production_assignments
+  has_many :productions, :dependent => :destroy
+  has_many :point_of_productions, :through => :productions
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630171045) do
+ActiveRecord::Schema.define(:version => 20130702174126) do
 
   create_table "detail_infos", :force => true do |t|
     t.string   "website"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(:version => 20130630171045) do
     t.datetime "updated_at",       :null => false
   end
 
+  create_table "point_of_productions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "point_of_sales", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -49,7 +55,14 @@ ActiveRecord::Schema.define(:version => 20130630171045) do
     t.datetime "updated_at",                                                             :null => false
   end
 
-  create_table "product_assignments", :force => true do |t|
+  create_table "production", :force => true do |t|
+    t.integer  "point_of_production_id"
+    t.integer  "sales_assignment_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  create_table "sales_assignments", :force => true do |t|
     t.integer  "product_category"
     t.integer  "assignable_id"
     t.string   "assignable_type"
