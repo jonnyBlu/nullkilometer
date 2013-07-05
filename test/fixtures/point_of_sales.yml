@@ -4,12 +4,10 @@ one:
   name: MyString
   address: MyString
   latlon: 
-  type_of_POS: MyString
-  opening_time: MyString
+  shop_type: MyString
 
 two:
   name: MyString
   address: MyString
   latlon: 
-  type_of_POS: MyString
-  opening_time: MyString
+  shop_type: MyString
