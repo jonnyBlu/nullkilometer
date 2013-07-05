@@ -1,12 +1,12 @@
 class CreateProductions < ActiveRecord::Migration
   def change
-    create_table :production do |t|
+    create_table :productions do |t|
       t.references :point_of_production
-      t.references :sales_assignment
+      t.references :product
 
       t.timestamps
     end
-    add_index :production, :point_of_production_id
-    add_index :production, :sales_assignment_id
+    add_index :productions, :point_of_production_id
+    add_index :productions, :product_id
   end
 end

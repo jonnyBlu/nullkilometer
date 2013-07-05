@@ -2,7 +2,7 @@ class MarketStall < ActiveRecord::Base
   attr_accessible :name
   
   belongs_to :point_of_sale, :inverse_of => :market_stalls
-  has_sales_assignments
+  sells_products
   has_detail_infos
 
   validates :name, :presence => true

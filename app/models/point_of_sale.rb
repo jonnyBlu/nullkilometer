@@ -2,7 +2,7 @@ class PointOfSale < ActiveRecord::Base
 
   SHOP_TYPE_NAMES=["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
 
-  attr_accessible :address, :lat, :lon, :name, :shop_type, 
+  attr_accessible :address, :lat, :lon, :name, :shop_type, :market_stalls,
                   :opening_times_attributes, :market_stalls_attributes
   
   alias_attribute :shopTypeId, :shop_type
@@ -16,7 +16,7 @@ class PointOfSale < ActiveRecord::Base
   has_many :market_stalls, :dependent => :destroy, :inverse_of => :point_of_sale
   accepts_nested_attributes_for :market_stalls, :allow_destroy => true, :reject_if => :all_blank
 
-  has_sales_assignments
+  sells_products
   has_detail_infos
 
   #scopes

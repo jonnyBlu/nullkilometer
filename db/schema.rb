@@ -55,19 +55,19 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "updated_at",                                                             :null => false
   end
 
-  create_table "production", :force => true do |t|
+  create_table "productions", :force => true do |t|
     t.integer  "point_of_production_id"
-    t.integer  "sales_assignment_id"
+    t.integer  "product_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
   end
 
-  create_table "sales_assignments", :force => true do |t|
-    t.integer  "product_category"
-    t.integer  "assignable_id"
-    t.string   "assignable_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+  create_table "products", :force => true do |t|
+    t.integer  "category"
+    t.integer  "seller_id"
+    t.string   "seller_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

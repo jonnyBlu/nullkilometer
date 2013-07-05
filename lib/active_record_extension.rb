@@ -7,8 +7,8 @@ module ActiveRecordExtension
     	include Detailable
     end
 
-    def has_sales_assignments
-    	include Assignable
+    def sells_products
+    	include Seller
     end
   end
 end
