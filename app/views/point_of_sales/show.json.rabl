@@ -1,12 +1,15 @@
-object @point_of_sale
+object @point_of_sale => 'pointOfSale'
 attributes :name, :address, :lat, :lon, :shopTypeId, :description, :website, :mail, :phone
-attributes :product_category_array => :productCategoryIds
 
 child :opening_times => :openingTimes do
 	attributes :day => :dayId
 	attributes :from, :to
 end
 
-child :market_stalls => :marketStalls do
-	attributes :name, :description, :website, :mail, :phone
+child :market_stalls, :if => lambda { |pos| pos.shop_type == 1} do
+	extends "market_stalls/index"
+end
+
+child :products do
+	extends "products/index"
 end

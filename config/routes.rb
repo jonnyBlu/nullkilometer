@@ -1,8 +1,19 @@
 Nullkilometer::Application.routes.draw do
 
-  resources :opening_times, :defaults => {:format => :json}
+  resources :point_of_sales, :defaults => {:format => :json} do
+    resources :market_stalls, :defaults => {:format => :json}
+    resources :products, :defaults => {:format => :json}
+  end
 
-  resources :point_of_sales
+  # resources :opening_times, :defaults => {:format => :json}
+
+  resources :market_stalls, :defaults => {:format => :json} do
+    resources :products, :defaults => {:format => :json}
+  end
+
+  resources :products, :defaults => {:format => :json}
+
+  resources :point_of_productions, :defaults => {:format => :json}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
