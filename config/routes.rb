@@ -1,17 +1,18 @@
 Nullkilometer::Application.routes.draw do
 
   resources :point_of_sales, :defaults => {:format => :json} do
-    resources :market_stalls, :defaults => {:format => :json}
-    resources :products, :defaults => {:format => :json}
+    resources :market_stalls, :only => [:index, :create], :defaults => {:format => :json}
+    resources :products, :only => [:index], :defaults => {:format => :json}
   end
-
-  # resources :opening_times, :defaults => {:format => :json}
 
   resources :market_stalls, :defaults => {:format => :json} do
-    resources :products, :defaults => {:format => :json}
+    resources :products, :only => [:index], :defaults => {:format => :json}
   end
 
-  resources :products, :defaults => {:format => :json}
+  resources :products, :only => [:index], :defaults => {:format => :json}
+
+  get "point_of_sales/:point_of_sale_id/product_category/:category", :to => "products#show", :defaults => {:format => :json} 
+  get "market_stalls/:market_stall_id/product_category/:category", :to => "products#show", :defaults => {:format => :json}
 
   resources :point_of_productions, :defaults => {:format => :json}
 

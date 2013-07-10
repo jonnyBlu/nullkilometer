@@ -4,25 +4,24 @@ class ProductsController < ApplicationController
 	respond_to :html, :json
 
 	def index
-		if @seller.empty?
+		if !@seller
 			@products = Product.all
 		else
-			@products = Product.for_seller(@seller[0], @seller[1])
+			@products = Product.for_seller(@seller[:type], @seller[:id])
 		end
 		respond_with @products
 	end
 
 	def show
-    @product = Product.find(params[:id])
+    @product = Product.find_by_seller_type_and_seller_id_and_category(@seller[:type], @seller[:id], params[:category])
     respond_with @product
   end
 
 	def set_seller
-		@seller = []
 		if id = params[:pointOfSale] || params[:point_of_sale_id]
-			@seller << "PointOfSale" << id
+			@seller = {:type => "PointOfSale", :id => id}
 		elsif id = params[:marketStall] || params[:market_stall_id]
-			@seller << "MarketStall" << id
+			@seller = {:type => "MarketStall", :id => id}
 		end
 	end
 end

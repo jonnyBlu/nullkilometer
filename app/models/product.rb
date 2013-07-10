@@ -2,7 +2,7 @@
 class Product < ActiveRecord::Base
 	CATEGORY_NAMES = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Konserven", "Brot", "Getrocknete Waren"]
   
-  attr_accessible :category, :productions_attributes
+  attr_accessible :category, :productions_attributes, :point_of_productions
 
   belongs_to :seller, :polymorphic => true
   has_many :productions, :dependent => :destroy
