@@ -4,4 +4,4 @@ node :url do |stall|
 	market_stall_url(stall)
 end
 
-attributes :name
+attributes :id, :name
