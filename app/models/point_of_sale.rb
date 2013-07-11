@@ -1,14 +1,11 @@
 class PointOfSale < ActiveRecord::Base
-
   SHOP_TYPE_NAMES=["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
-  GEO_FACTORY = RGeo::Geographic.spherical_factory(:srid => 4326)
-
-  attr_accessible :address, :lat, :lon, :name, :shop_type, :market_stalls,
-                  :opening_times_attributes, :market_stalls_attributes
+  
+  attr_accessible :shopTypeId, :openingTimes, :marketStalls
   
   alias_attribute :shopTypeId, :shop_type
-  alias_attribute :openingTimes, :opening_times
-  alias_attribute :marketStalls, :market_stalls
+  alias_attribute :openingTimes, :opening_times_attributes
+  alias_attribute :marketStalls, :market_stalls_attributes
   
   #relations
   has_many :opening_times, :dependent => :destroy
@@ -19,41 +16,13 @@ class PointOfSale < ActiveRecord::Base
 
   sells_products
   has_detail_infos
+  is_location
 
   #scopes
   default_scope includes(:opening_times)
-  scope :nearby, lambda{ |lat, lon, distance| where("ST_DWithin(latlon, ST_GeomFromText('POINT (? ?)'), ?)", lon.to_f, lat.to_f, distance)}
-
-  #validations
-  validates :address, :presence => true
-  validates :latlon, :presence => true
-  validates :name, :presence => true
-  validates :shop_type, :presence => true, :numericality => { :only_integer => true, :less_than => SHOP_TYPE_NAMES.length }
   
-  #initializations
-  set_rgeo_factory_for_column(:latlon, GEO_FACTORY)
-  after_initialize :init_latlon
-
-  #attr_accessors for lat
-  def lat
-		self.latlon.lat
-  end
-
-  def lat=(val)
-    init_latlon
-  	self.latlon = @latlon_factory.point(self.latlon.lon, val)
-  end
-
-  #attr_accessors for lon
-	def lon
-		self.latlon.lon
-  end
-
-  def lon=(val)
-    init_latlon
-  	self.latlon = @latlon_factory.point(val, self.latlon.lat)
-  end
-
+  #validations
+  validates :shop_type, :presence => true, :numericality => { :only_integer => true, :less_than => SHOP_TYPE_NAMES.length }
 
   #attributes for json-representation
   def opening_times_day_array
@@ -71,9 +40,4 @@ class PointOfSale < ActiveRecord::Base
     end
   end
 
-  private
-  def init_latlon
-    @latlon_factory = PointOfSale.rgeo_factory_for_column(:latlon)
-    self.latlon ||= @latlon_factory.point(0, 0)
-  end
 end

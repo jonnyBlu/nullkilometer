@@ -4,8 +4,7 @@ node :url do |pos|
 	point_of_sale_url(pos)
 end
 
-attributes :id, :lat, :lon, :shopTypeId
-attributes :product_category_ids => :productCategoryIds
+attributes :id, :lat, :lon, :shopTypeId, :productCategoryIds
 
 child :opening_times => :openingTimes do
 	attributes :day => :dayId

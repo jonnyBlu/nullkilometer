@@ -8,7 +8,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 for i in (1..10)
-	producer = PointOfProduction.create!(:name => "producer#{i}")
+	lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
+	lon = rand * 9.0 + 6.0    #between 6,0 and 15,0 with 8 after-comma-digits
+	producer = PointOfProduction.create!(:name => "producer#{i}",
+																		:address => "bauer test address",
+																				:lat => lat,
+																				:lon => lon)
 end
 
 for i in (1..5)
@@ -18,19 +23,15 @@ for i in (1..5)
 														:address => "test address", 
 																:lat => lat, 
 																:lon => lon, 
-													:shop_type => 1,
-								:products_attributes => [{:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)},
-																																															 {:point_of_production_id => rand(1..10)}]}, 
-																				 {:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)}]}, 
-																				 {:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)}]}],
-					 :opening_times_attributes => [{:day => 4, :from => "10:00", :to => "17:00"}, {:day => 0, :from => "10:00", :to => "17:00"}],
+												 :shopTypeId => 1,
+								 :productCategoryIds => [rand(1..7), rand(1..7), rand(1..7)],
+					 						 :openingTimes => [{:dayId => 4, :from => "10:00", :to => "17:00"}, {:dayId => 0, :from => "10:00", :to => "17:00"}],
 												:description => "xxx", 
 															 :mail => "mail@markt#{i}.de",
 														:website => "http://www.markt#{i}.de",
-					 :market_stalls_attributes => [{:name => "standXaufMarkt#{i}", 
+					 						 :marketStalls => [{:name => "standXaufMarkt#{i}", 
 					 																:phone => "12345678", 
-					 																:products_attributes => [{:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)},
-																																																												 {:point_of_production_id => rand(1..10)}]}]}, 
+					 																:productCategoryIds => [rand(1..7)]}, 
 																				 {:name => "standYaufMarkt#{i}", :phone => "12345678"}])
 end
 
@@ -41,13 +42,9 @@ for i in (1..10)
 														:address => "test address", 
 																:lat => lat, 
 																:lon => lon, 
-													:shop_type => rand(1..4),
-								:products_attributes => [{:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)},
-																																															 {:point_of_production_id => rand(1..10)}]}, 
-																				 {:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)}]}, 
-																				 {:category => rand(1..7), :productions_attributes => [{:point_of_production_id => rand(1..10)}]}],
-								:products_attributes => [{:category => rand(1..7)}, {:category => rand(1..7)}, {:category => rand(1..7)}],
-					 :opening_times_attributes => [{:day => 2, :from => "10:00", :to => "17:00"}, {:day => 3, :from => "10:00", :to => "17:00"}],
+												 :shopTypeId => rand(1..4),
+								 :productCategoryIds => [rand(1..7), rand(1..7), rand(1..7)],
+					 						 :openingTimes => [{:dayId => 2, :from => "10:00", :to => "17:00"}, {:dayId => 3, :from => "10:00", :to => "17:00"}],
 												:description => "xxx", 
 															 :mail => "mail@shop#{i}.de",
 														:website => "http://www.shop#{i}.de",

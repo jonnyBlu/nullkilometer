@@ -3,7 +3,7 @@ class OpeningTime < ActiveRecord::Base
 
   belongs_to :point_of_sale
   
-  attr_accessible :day, :to, :from
+  attr_accessible :dayId, :to, :from
   alias_attribute :dayId, :day
 
   validates :day, :to, :from, :presence => true

@@ -6,8 +6,10 @@ child :opening_times => :openingTimes do
 	attributes :from, :to
 end
 
-child :market_stalls, :if => lambda { |pos| pos.shop_type == 1} do
-	extends "market_stalls/index"
+if @point_of_sale.shop_type == 1
+	child :market_stalls => :marketStalls do
+		extends "market_stalls/index"
+	end
 end
 
 child :products do
