@@ -1,9 +1,14 @@
 Nullkilometer::Application.routes.draw do
 
-  resources :point_of_sales, :defaults => {:format => :json} do
+  resources :point_of_sales, :defaults => { :format => :json} do
     resources :market_stalls, :only => [:index, :create], :defaults => {:format => :json}
     resources :products, :only => [:index], :defaults => {:format => :json}
   end
+
+  # match "/point_of_sales/:lat/:lon(/:radius)", 
+  #         :to => "point_of_sales#index", 
+  #         :constraints => {:lat => /\-*\d+.\d+/ , :lon => /\-*\d+.\d+/ , :radius => /\d+/},  
+  #         :defaults => {:radius => 20000, :format => :json}
 
   resources :market_stalls, :defaults => {:format => :json} do
     resources :products, :only => [:index], :defaults => {:format => :json}

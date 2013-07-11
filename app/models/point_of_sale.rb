@@ -1,6 +1,7 @@
 class PointOfSale < ActiveRecord::Base
 
   SHOP_TYPE_NAMES=["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
+  GEO_FACTORY = RGeo::Geographic.spherical_factory(:srid => 4326)
 
   attr_accessible :address, :lat, :lon, :name, :shop_type, :market_stalls,
                   :opening_times_attributes, :market_stalls_attributes
@@ -20,6 +21,8 @@ class PointOfSale < ActiveRecord::Base
   has_detail_infos
 
   #scopes
+  default_scope includes(:opening_times)
+  scope :nearby, lambda{ |lat, lon, distance| where("ST_DWithin(latlon, ST_GeomFromText('POINT (? ?)'), ?)", lon.to_f, lat.to_f, distance)}
 
   #validations
   validates :address, :presence => true
@@ -28,12 +31,8 @@ class PointOfSale < ActiveRecord::Base
   validates :shop_type, :presence => true, :numericality => { :only_integer => true, :less_than => SHOP_TYPE_NAMES.length }
   
   #initializations
-  set_rgeo_factory_for_column(:latlon, RGeo::Geographic.spherical_factory(:srid => 4326))
+  set_rgeo_factory_for_column(:latlon, GEO_FACTORY)
   after_initialize :init_latlon
-
-  def init_latlon
-  	self.latlon ||= PointOfSale.rgeo_factory_for_column(:latlon).point(0, 0)
-  end
 
   #attr_accessors for lat
   def lat
@@ -42,7 +41,7 @@ class PointOfSale < ActiveRecord::Base
 
   def lat=(val)
     init_latlon
-  	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(self.latlon.lon, val)
+  	self.latlon = @latlon_factory.point(self.latlon.lon, val)
   end
 
   #attr_accessors for lon
@@ -52,7 +51,7 @@ class PointOfSale < ActiveRecord::Base
 
   def lon=(val)
     init_latlon
-  	self.latlon = PointOfSale.rgeo_factory_for_column(:latlon).point(val, self.latlon.lat)
+  	self.latlon = @latlon_factory.point(val, self.latlon.lat)
   end
 
 
@@ -70,5 +69,11 @@ class PointOfSale < ActiveRecord::Base
     @opening_times_string ||= opening_times.map do|opening_time| 
       OpeningTime::WEEK_DAY_NAMES[opening_time.day]+": "+opening_time.from+" - "+opening_time.to
     end
+  end
+
+  private
+  def init_latlon
+    @latlon_factory = PointOfSale.rgeo_factory_for_column(:latlon)
+    self.latlon ||= @latlon_factory.point(0, 0)
   end
 end
