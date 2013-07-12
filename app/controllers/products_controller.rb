@@ -1,6 +1,4 @@
-class ProductsController < ApplicationController
-	before_filter :set_seller
-
+class ProductsController < ProductCategoriesController
 	respond_to :html, :json
 
 	def index
@@ -16,12 +14,4 @@ class ProductsController < ApplicationController
     @product = Product.find_by_seller_type_and_seller_id_and_category(@seller[:type], @seller[:id], params[:category])
     respond_with @product
   end
-
-	def set_seller
-		if id = params[:pointOfSale] || params[:point_of_sale_id]
-			@seller = {:type => "PointOfSale", :id => id}
-		elsif id = params[:marketStall] || params[:market_stall_id]
-			@seller = {:type => "MarketStall", :id => id}
-		end
-	end
 end

@@ -57,19 +57,20 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "updated_at",                                                             :null => false
   end
 
-  create_table "productions", :force => true do |t|
-    t.integer  "point_of_production_id"
-    t.integer  "product_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
-
   create_table "products", :force => true do |t|
     t.integer  "category"
     t.integer  "seller_id"
     t.string   "seller_type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "supplies", :force => true do |t|
+    t.integer  "point_of_production_id"
+    t.integer  "product_id"
+    t.float    "distance"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
 end

@@ -24,15 +24,17 @@ for i in (1..5)
 																:lat => lat, 
 																:lon => lon, 
 												 :shopTypeId => 1,
-								 :productCategoryIds => [rand(1..7), rand(1..7), rand(1..7)],
+								 :productCategoryIds => [rand(1..7), rand(1..7), rand(1..7), 3],
 					 						 :openingTimes => [{:dayId => 4, :from => "10:00", :to => "17:00"}, {:dayId => 0, :from => "10:00", :to => "17:00"}],
 												:description => "xxx", 
 															 :mail => "mail@markt#{i}.de",
 														:website => "http://www.markt#{i}.de",
 					 						 :marketStalls => [{:name => "standXaufMarkt#{i}", 
 					 																:phone => "12345678", 
-					 																:productCategoryIds => [rand(1..7)]}, 
-																				 {:name => "standYaufMarkt#{i}", :phone => "12345678"}])
+					 																:productCategoryIds => [rand(1..7), 3]}, 
+																				 {:name => "standYaufMarkt#{i}",
+																				  :phone => "12345678",
+																				  :productCategoryIds => [3]}])
 end
 
 for i in (1..10)
@@ -43,10 +45,23 @@ for i in (1..10)
 																:lat => lat, 
 																:lon => lon, 
 												 :shopTypeId => rand(1..4),
-								 :productCategoryIds => [rand(1..7), rand(1..7), rand(1..7)],
+								 :productCategoryIds => [rand(1..7), rand(1..7), rand(1..7), 3],
 					 						 :openingTimes => [{:dayId => 2, :from => "10:00", :to => "17:00"}, {:dayId => 3, :from => "10:00", :to => "17:00"}],
 												:description => "xxx", 
 															 :mail => "mail@shop#{i}.de",
 														:website => "http://www.shop#{i}.de",
 															:phone => "12345677890")
+end
+
+for i in (1..20)
+	if rand(1..10)<8
+		supply = Supply.create!(:pointOfSale => rand(1..15),
+											 				 :category => 3,
+											:pointOfProduction => rand(1..10)) 
+	else
+		supply = Supply.create!(:marketStall => rand(1..10),
+											 				 :category => 3,
+											:pointOfProduction => rand(1..10)) 
+	end
+	
 end
