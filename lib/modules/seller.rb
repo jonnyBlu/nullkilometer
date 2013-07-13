@@ -14,8 +14,10 @@ module Seller
   end
 
   def product_category_ids=(array)
-    array.each do |id|
-      self.products.build(:category => id)
+    array.uniq.each do |id|
+      if !product_category_ids.include?(id)
+        self.products.build(:category => id)
+      end
     end
   end
 end
