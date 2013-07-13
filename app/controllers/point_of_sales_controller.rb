@@ -24,7 +24,7 @@ class PointOfSalesController < ApplicationController
 
     Product::CATEGORY_NAMES.each_index{ |i| @point_of_sale.products.build(:category => i)}
 
-    [1,2,3,4,5,6,0].each{ |d| @point_of_sale.opening_times.build(:day => d) }
+    [1,2,3,4,5,6,0].each{ |d| @point_of_sale.opening_times.build(:dayId => d) }
 
     respond_with @point_of_sale
   end
