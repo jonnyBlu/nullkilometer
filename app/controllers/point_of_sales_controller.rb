@@ -3,7 +3,7 @@ class PointOfSalesController < ApplicationController
   respond_to :html, :json
 
   def index
-    if params[:lat] && params[:lon]
+    if params[:lat] && params[:lon] && params[:radius]
       @point_of_sales = PointOfSale.nearby(params[:lat], params[:lon], params[:radius])
     else
       @point_of_sales = PointOfSale.all

@@ -55,7 +55,7 @@ end
 
 for i in (1..20)
 	if rand(1..10)<8
-		supply = Supply.create!(:pointOfSale => rand(1..15),
+		supply = Supply.create!(:pointOfSale => rand(11..25),
 											 				 :category => 3,
 											:pointOfProduction => rand(1..10)) 
 	else

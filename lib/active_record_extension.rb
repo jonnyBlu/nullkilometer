@@ -10,10 +10,6 @@ module ActiveRecordExtension
     def sells_products
     	include Seller
     end
-
-    def is_location
-    	include Location    	
-    end
   end
 end
 

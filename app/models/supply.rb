@@ -14,11 +14,11 @@ class Supply < ActiveRecord::Base
   after_initialize :set_distance
 
   def point_of_sale=(val)
-  	@seller = {:type => "PointOfSale", :id => val}
+  	@seller = {:type => "PointOfInterest", :id => val}
   end
 
   def point_of_sale
-  	if product.seller_type == "PointOfSale"
+  	if product.seller_type == "PointOfInterest"
   		product.seller
   	elsif product.seller_type == "MarketStall"
       product.seller.point_of_sale

@@ -1,4 +1,4 @@
-class PointOfSale < ActiveRecord::Base
+class PointOfSale < PointOfInterest
   SHOP_TYPE_NAMES=["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
   
   attr_accessible :shopTypeId, :openingTimes, :marketStalls
@@ -15,8 +15,6 @@ class PointOfSale < ActiveRecord::Base
   accepts_nested_attributes_for :market_stalls, :allow_destroy => true, :reject_if => :all_blank
 
   sells_products
-  has_detail_infos
-  is_location
 
   #scopes
   default_scope includes(:opening_times)

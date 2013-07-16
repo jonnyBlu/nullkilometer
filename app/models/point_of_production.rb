@@ -1,9 +1,7 @@
-class PointOfProduction < ActiveRecord::Base
+class PointOfProduction < PointOfInterest
 	default_scope includes(:supplies)
 
   has_many :supplies, :dependent => :destroy 
-
-  is_location
 
   def supply product_id
   	supplies.find{ |supply|
