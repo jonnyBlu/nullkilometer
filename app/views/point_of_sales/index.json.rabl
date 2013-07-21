@@ -1,4 +1,4 @@
-collection @point_of_sales, :root => 'pointOfSales', :object_root => false
+collection @point_of_interests # => :pointOfSales
 
 node :url do |pos|
 	point_of_sale_url(pos)

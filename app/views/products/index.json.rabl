@@ -1,4 +1,4 @@
-collection @products, :object_root => false
+collection @products, :root => 'products', :object_root => false
 
 node :url do |p|
 	seller_product_category_url(p)

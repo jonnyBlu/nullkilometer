@@ -1,4 +1,4 @@
-object @point_of_sale => 'pointOfSale'
+object @point_of_interest # => :pointOfSale
 attributes :name, :address, :lat, :lon, :shopTypeId, :description, :website, :mail, :phone
 
 child :opening_times => :openingTimes do
@@ -6,7 +6,7 @@ child :opening_times => :openingTimes do
 	attributes :from, :to
 end
 
-if @point_of_sale.shop_type == 1
+if @point_of_interest.shop_type == 1
 	child :market_stalls => :marketStalls do
 		extends "market_stalls/index"
 	end
