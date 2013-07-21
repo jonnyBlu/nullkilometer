@@ -13,28 +13,54 @@ class Supply < ActiveRecord::Base
   after_initialize :set_product
   after_initialize :set_distance
 
+  validate :add_error_messages_for_invalid_attributes
+
+  def market_stall=(val)
+    begin
+      @seller = MarketStall.find(val)
+    rescue ActiveRecord::RecordNotFound
+      @market_stall_invalid = "MarketStall with id=#{val} is invalid"
+    end
+  end
+
   def point_of_sale=(val)
-  	@seller = {:type => "PointOfInterest", :id => val}
+    begin
+      @seller = PointOfSale.find(val)
+    rescue ActiveRecord::RecordNotFound
+      @point_of_sale_invalid = "PointOfSale with id=#{val} is invalid"
+    end
   end
 
   def point_of_sale
-  	if product.seller_type == "PointOfInterest"
+  	if product && product.seller_type == "PointOfInterest"
   		product.seller
-  	elsif product.seller_type == "MarketStall"
+  	elsif product && product.seller_type == "MarketStall"
       product.seller.point_of_sale
     end
   end
 
-  def market_stall=(val)
- 		@seller = {:type => "MarketStall", :id => val}  	
-  end
-
   private
   def set_product
-  	self.product_id ||= Product.find_by_seller_type_and_seller_id_and_category(@seller[:type], @seller[:id], category).id if self.new_record?
+    if self.new_record? && @seller
+      self.product = @seller.products.select{|p| p.category == category}.first
+      @category_invalid = "PorductCategory with id=#{category} for #{@seller.class.name} with id=#{@seller.id} is invalid" unless product
+    end
   end
 
   def set_distance
-   	self.distance ||= point_of_production.latlon.distance(point_of_sale.latlon)/1000 if self.new_record?
-  end  
+    if self.new_record?
+     	begin
+        self.distance = point_of_production.latlon.distance(point_of_sale.latlon)/1000
+      rescue
+        @point_of_production_invalid = "PointOfProduction with id=#{point_of_production_id} is invalid"
+      end
+    end
+  end 
+
+  def add_error_messages_for_invalid_attributes
+    self.errors.add(:point_of_sale, @point_of_sale_invalid) if @point_of_sale_invalid
+    self.errors.add(:market_stall, @market_stall_invalid) if @market_stall_invalid  
+    self.errors.add(:product_category, @category_invalid) if @category_invalid
+    self.errors.add(:point_of_production, @point_of_production_invalid) if @point_of_production_invalid
+  end
 end

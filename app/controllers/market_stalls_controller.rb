@@ -1,18 +1,27 @@
 class MarketStallsController < ApplicationController
-
 	respond_to :json, :html
 
 	def index
-		if pos = params[:point_of_sale_id] || params[:pointOfSale]
-			@market_stalls = PointOfSale.find(pos).market_stalls
+		if pos_id = params[:point_of_sale_id] || params[:pointOfSale]
+			begin
+				@pos = PointOfSale.find(pos_id)
+			rescue ActiveRecord::RecordNotFound
+				raise Errors::InvalidPointOfSale, "Couldn't find PointOfSale with id=#{pos_id}"
+			end
+			raise Errors::InvalidPointOfSale, "PointOfSale with id=#{pos_id} is not a Market" if @pos.shop_type != 1
+			@market_stalls = @pos.market_stalls
 		else
 			@market_stalls = MarketStall.all
-		end
-		respond_with @market_stalls		
+		end		
+		respond_with @market_stalls
 	end
 
 	def show
-		@market_stall = MarketStall.find(params[:id])
+		begin
+			@market_stall = MarketStall.find(params[:id])
+		rescue ActiveRecord::RecordNotFound
+			raise Errors::InvalidMarketStall, "Couldn't find MarketStall with id=#{params[:id]}"
+		end
 		respond_with @market_stall
 	end
 

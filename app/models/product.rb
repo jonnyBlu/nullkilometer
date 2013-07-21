@@ -9,4 +9,6 @@ class Product < ActiveRecord::Base
   has_many :point_of_productions, :through => :supplies
 
   scope :for_seller, lambda { |seller_type, seller_id| where(["seller_type = ? and seller_id = ?", seller_type, seller_id])}
+
+  validates :category, :presence => true
 end
