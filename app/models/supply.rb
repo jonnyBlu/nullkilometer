@@ -1,11 +1,11 @@
 class Supply < ActiveRecord::Base
-	attr_accessible :pointOfProduction, :pointOfSale, :marketStall, :category, :product, :distance
+	attr_accessible :pointOfProductionId, :pointOfSaleId, :marketStallId, :category, :product, :distance
 
 	attr_accessor :category
 
-	alias_attribute :pointOfProduction, :point_of_production_id
-	alias_attribute :pointOfSale, :point_of_sale
-	alias_attribute :marketStall, :market_stall
+	alias_attribute :pointOfProductionId, :point_of_production_id
+	alias_attribute :pointOfSaleId, :point_of_sale
+	alias_attribute :marketStallId, :market_stall
 
   belongs_to :point_of_production
   belongs_to :product

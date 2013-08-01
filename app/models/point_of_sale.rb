@@ -1,5 +1,5 @@
 class PointOfSale < PointOfInterest
-  SHOP_TYPE_NAMES=["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"]
+  SHOP_TYPE_NAMES = I18n.t("point_of_sale.shop_type_names")
   
   attr_accessible :shopTypeId, :openingTimes, :marketStalls
   
@@ -21,21 +21,4 @@ class PointOfSale < PointOfInterest
   
   #validations
   validates :shop_type, :presence => true, :numericality => { :only_integer => true, :less_than => SHOP_TYPE_NAMES.length }
-
-  # #attributes for json-representation
-  # def opening_times_day_array
-  #   @opening_times_day_array ||= opening_times.map(&:day)
-  #   # @opening_times_day_array ||= opening_times.map{|ot| OpeningTime::WEEK_DAY_NAMES.at(ot.day)}
-  # end
-
-  # def shop_type_name
-  #   @shop_type_name ||= SHOP_TYPE_NAMES[shop_type]
-  # end
-
-  # def opening_times_string
-  #   @opening_times_string ||= opening_times.map do|opening_time| 
-  #     OpeningTime::WEEK_DAY_NAMES[opening_time.day]+": "+opening_time.from+" - "+opening_time.to
-  #   end
-  # end
-
 end

@@ -1,6 +1,5 @@
-#encoding: utf-8
 class Product < ActiveRecord::Base
-	CATEGORY_NAMES = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Konserven", "Brot", "Getrocknete Waren"]
+	CATEGORY_NAMES = I18n.t("product.category_names")
   
   attr_accessible :category, :point_of_productions
 
@@ -8,7 +7,7 @@ class Product < ActiveRecord::Base
   has_many :supplies, :dependent => :destroy
   has_many :point_of_productions, :through => :supplies
 
-  scope :for_seller, lambda { |seller_type, seller_id| where(["seller_type = ? and seller_id = ?", seller_type, seller_id])}
+  scope :with_category, lambda { |category| where(["category = ?", category])}
 
   validates :category, :presence => true
 end

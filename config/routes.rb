@@ -1,30 +1,37 @@
 Nullkilometer::Application.routes.draw do
+  scope "/api", :defaults => {:format => :json} do
 
-  resources :point_of_sales, :controller => "point_of_interests", :defaults => { :type => "PointOfSale", :format => :json} do
-    resources :market_stalls, :only => [:index, :create], :defaults => {:format => :json}
-    resources :products, :only => [:index], :defaults => {:format => :json}
+    resources :point_of_sales, :controller => "point_of_interests", :defaults => { :type => "PointOfSale" } do
+      resources :market_stalls, :only => [:index, :create]
+      resources :products, :only => :index do
+        collection do
+          match "category/:category", :to => "products#show", :via => :get
+          match "category/:category/point_of_production/:point_of_production_id", :to => "supplies#create", :via => :post
+        end
+      end
+      resources :supplies, :only => :index
+    end
+
+    resources :market_stalls do
+      resources :products, :only => :index do
+        collection do
+          match "category/:category", :to => "products#show", :via => :get
+          match "category/:category/point_of_production/:point_of_production_id", :to => "supplies#create", :via => :post
+        end
+      end
+    end
+
+    resources :products, :only => :index
+ 
+    resources :point_of_productions, :controller => "point_of_interests", :defaults => { :type => "PointOfProduction" }
+
+    resources :point_of_interests, :only => :index
+
+    resources :supplies, :only => :create
+
+    get "product_categories", :to => "products#categories"
+    get "shop_types", :to => "point_of_interests#shop_types"
   end
-
-  resources :market_stalls, :defaults => {:format => :json} do
-    resources :products, :only => [:index], :defaults => {:format => :json}
-  end
-
-  resources :products, :only => [:index], :defaults => {:format => :json}
-
-  get "point_of_sales/:point_of_sale_id/product_category/:category", :to => "products#show", :defaults => {:format => :json} 
-  get "market_stalls/:market_stall_id/product_category/:category", :to => "products#show", :defaults => {:format => :json}
-
-
-  post "point_of_sales/:point_of_sale_id/product_category/:category/point_of_production/:point_of_production_id", 
-            :to => "supplies#create", 
-            :defaults => {:format => :json} 
-  post "market_stalls/:market_stall_id/product_category/:category/point_of_production/:point_of_production_id", 
-            :to => "supplies#create", 
-            :defaults => {:format => :json}
-
-  resources :point_of_productions, :controller => "point_of_interests", :defaults => { :type => "PointOfProduction", :format => :json}
-
-  resources :point_of_interests, :only => :index, :defaults => {:type => "PointOfInterest", :format => :json}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

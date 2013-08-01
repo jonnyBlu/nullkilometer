@@ -1,5 +1,5 @@
 class SuppliesController < ApplicationController
-	respond_to :html, :json
+	respond_to :xml, :json
 
 	def create
 		@supply = Supply.new(params[:supply])

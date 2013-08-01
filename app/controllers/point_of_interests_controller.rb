@@ -1,5 +1,5 @@
 class PointOfInterestsController < ApplicationController
-	respond_to :html, :json
+	respond_to :xml, :json
   before_filter :set_poi_type
 
 	def index
@@ -48,6 +48,10 @@ class PointOfInterestsController < ApplicationController
     end
     @point_of_interest.destroy
     respond_with @point_of_interest
+  end
+
+  def shop_types
+    respond_with object_representation_for_constant(PointOfSale::SHOP_TYPE_NAMES, "shop_types")
   end
 
   private

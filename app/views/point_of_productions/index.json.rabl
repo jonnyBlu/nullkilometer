@@ -1,4 +1,4 @@
-collection @point_of_interests # => :pointOfProductions
+collection @point_of_interests #, :root => :pointOfProductions, :object_root => false
 
 attributes :id, :name, :lat, :lon
 

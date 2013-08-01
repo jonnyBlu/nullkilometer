@@ -1,0 +1,19 @@
+de:
+  hello: "Hallo Welt"
+  point_of_sale:
+    shop_type_names:
+    - "Laden"
+    - "Markt"
+    - "Supermarkt"
+    - "Kiosk"
+    - "Bauernhofladen"
+  product:
+    category_names:
+    - "Milchprodukte"
+    - "Obst und Gemüse"
+    - "Fisch"
+    - "Fleisch"
+    - "Eier"
+    - "Konserven"
+    - "Brot"
+    - "Getrocknete Waren"

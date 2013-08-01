@@ -8,5 +8,12 @@ class ApplicationController < ActionController::Base
 	# rescue_from Errors::UnprocessableEntityError do |e|
 	# 	render :json => {:errors => e.message}, :status => 422
 	# end
+
+	private
+	def object_representation_for_constant(constant, object_name)
+    objects = []
+    constant.each_index{ |i| objects[i] = {i => constant[i]}}
+    {object_name => objects}
+  end
 	
 end
