@@ -25,6 +25,12 @@ class PointOfInterestsController < ApplicationController
 	end
 
 	def create
+    if params[:type] == "PointOfSale" && params[:posTypeId] == 0
+      @poi_class = "Market".constantize
+    elsif params[:type] == "PointOfSale" && params[:posTypeId] > 0
+      @poi_class = "Shop".constantize
+    end
+
     @point_of_interest = @poi_class.new(params[:point_of_interest])
     @point_of_interest.save
     respond_with @point_of_interest
@@ -50,8 +56,8 @@ class PointOfInterestsController < ApplicationController
     respond_with @point_of_interest
   end
 
-  def shop_types
-    respond_with object_representation_for_constant(PointOfSale::SHOP_TYPE_NAMES, "shop_types")
+  def pos_types
+    respond_with object_representation_for_constant(PointOfSale::POS_TYPE_NAMES, "pos_types")
   end
 
   private

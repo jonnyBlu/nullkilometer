@@ -3,13 +3,13 @@
 one:
   name: MyString
   address: MyString
-  latlon: 
+  location: 
   type: 
-  shop_type: 1
+  pos_type: 1
 
 two:
   name: MyString
   address: MyString
-  latlon: 
+  location: 
   type: 
-  shop_type: 1
+  pos_type: 1

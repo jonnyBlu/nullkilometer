@@ -4,8 +4,7 @@
 en:
   hello: "Hello world"
   point_of_sale:
-    shop_type_names:
-    - "convenience store"
+    pos_type_names:
     - "market"
     - "supermarket"
     - "kiosk"

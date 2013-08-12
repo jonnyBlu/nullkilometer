@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20130702174126) do
 
+  create_table "deliveries", :force => true do |t|
+    t.integer  "point_of_production_id"
+    t.integer  "product_id"
+    t.float    "distance"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
   create_table "detail_infos", :force => true do |t|
     t.string   "website"
     t.string   "mail"
@@ -26,9 +34,9 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
 
   create_table "market_stalls", :force => true do |t|
     t.string   "name"
-    t.integer  "point_of_sale_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.integer  "market_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "opening_times", :force => true do |t|
@@ -43,8 +51,8 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
   create_table "point_of_interests", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.spatial  "latlon",     :limit => {:srid=>4326, :type=>"point", :geographic=>true}
-    t.integer  "shop_type"
+    t.spatial  "location",   :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.integer  "pos_type"
     t.string   "type"
     t.datetime "created_at",                                                             :null => false
     t.datetime "updated_at",                                                             :null => false
@@ -56,14 +64,6 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.string   "seller_type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "supplies", :force => true do |t|
-    t.integer  "point_of_production_id"
-    t.integer  "product_id"
-    t.float    "distance"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
   end
 
 end

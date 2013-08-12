@@ -3,8 +3,8 @@ class CreatePointOfInterests < ActiveRecord::Migration
     create_table :point_of_interests do |t|
       t.string :name
       t.string :address
-      t.point :latlon, :geographic => true
-      t.integer :shop_type
+      t.point :location, :geographic => true
+      t.integer :pos_type
       t.string :type
 
       t.timestamps

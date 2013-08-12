@@ -18,7 +18,7 @@ class PointOfSalesControllerTest < ActionController::TestCase
 
   test "should create point_of_sale" do
     assert_difference('PointOfSale.count') do
-      post :create, point_of_sale: { address: @point_of_sale.address, latlon: @point_of_sale.latlon, name: @point_of_sale.name, shop_type: @point_of_sale.shop_type }
+      post :create, point_of_sale: { address: @point_of_sale.address, location: @point_of_sale.location, name: @point_of_sale.name, pos_type: @point_of_sale.pos_type }
     end
 
     assert_redirected_to point_of_sale_path(assigns(:point_of_sale))
@@ -35,7 +35,7 @@ class PointOfSalesControllerTest < ActionController::TestCase
   end
 
   test "should update point_of_sale" do
-    put :update, id: @point_of_sale, point_of_sale: { address: @point_of_sale.address, latlon: @point_of_sale.latlon, name: @point_of_sale.name, shop_type: @point_of_sale.shop_type }
+    put :update, id: @point_of_sale, point_of_sale: { address: @point_of_sale.address, location: @point_of_sale.location, name: @point_of_sale.name, pos_type: @point_of_sale.pos_type }
     assert_redirected_to point_of_sale_path(assigns(:point_of_sale))
   end
 

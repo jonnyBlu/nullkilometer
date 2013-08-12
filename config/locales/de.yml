@@ -1,8 +1,7 @@
 de:
   hello: "Hallo Welt"
   point_of_sale:
-    shop_type_names:
-    - "Laden"
+    pos_type_names:
     - "Markt"
     - "Supermarkt"
     - "Kiosk"

@@ -1,4 +1,4 @@
-class Supply < ActiveRecord::Base
+class Delivery < ActiveRecord::Base
 	attr_accessible :pointOfProductionId, :pointOfSaleId, :marketStallId, :category, :product, :distance
 
 	attr_accessor :category
@@ -35,7 +35,7 @@ class Supply < ActiveRecord::Base
   	if product && product.seller_type == "PointOfInterest"
   		product.seller
   	elsif product && product.seller_type == "MarketStall"
-      product.seller.point_of_sale
+      product.seller.market
     end
   end
 
@@ -50,7 +50,7 @@ class Supply < ActiveRecord::Base
   def set_distance
     if self.new_record?
      	begin
-        self.distance = point_of_production.latlon.distance(point_of_sale.latlon)/1000
+        self.distance = point_of_production.location.distance(point_of_sale.location)/1000
       rescue
         @point_of_production_invalid = "PointOfProduction with id=#{point_of_production_id} is invalid"
       end

@@ -1,11 +1,11 @@
 class PointOfProduction < PointOfInterest
-	default_scope includes(:supplies)
+	default_scope includes(:deliveries)
 
-  has_many :supplies, :dependent => :destroy 
+  has_many :deliveries, :dependent => :destroy 
 
-  def supply product_id
-  	supplies.find{ |supply|
-  		supply.product_id == product_id
+  def delivery product_id
+  	deliveries.find{ |delivery|
+  		delivery.product_id == product_id
   	}
   end
 end
