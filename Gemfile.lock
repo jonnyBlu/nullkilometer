@@ -68,6 +68,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    railroady (1.0.7)
     rails (3.2.8)
       actionmailer (= 3.2.8)
       actionpack (= 3.2.8)
@@ -124,6 +125,7 @@ DEPENDENCIES
   oj
   pg
   rabl
+  railroady
   rails (= 3.2.8)
   rgeo
   sass-rails (~> 3.2.3)

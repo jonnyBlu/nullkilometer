@@ -44,7 +44,7 @@ for i in (1..10)
 										:address => "test address", 
 												:lat => lat, 
 												:lon => lon, 
-								  :posTypeId => rand(1..4),
+								  :posTypeId => rand(1..3),
 				 :productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
 	 						 :openingTimes => [{:dayId => 2, :from => "10:00", :to => "17:00"}, {:dayId => 3, :from => "10:00", :to => "17:00"}],
 								:description => "xxx", 

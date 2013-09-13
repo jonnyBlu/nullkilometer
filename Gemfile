@@ -31,6 +31,8 @@ gem 'oj'
 
 #gem "active_model_serializers"
 
+gem 'railroady'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
