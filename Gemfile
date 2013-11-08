@@ -9,7 +9,6 @@ gem 'pg'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -30,6 +29,12 @@ gem 'bootstrap-timepicker-rails-addon'
 gem 'jquery-timepicker-rails'
 
 gem 'simple_form'
+
+gem 'rabl'
+gem 'oj'
+
+#gem "active_model_serializers"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -3,3 +3,19 @@
 
 en:
   hello: "Hello world"
+  point_of_sale:
+    pos_type_names:
+    - "market"
+    - "supermarket"
+    - "kiosk"
+    - "farmers shop"
+  product:
+    category_names:
+    - "milkproducts"
+    - "fruits and veggies"
+    - "fish"
+    - "meat"
+    - "eggs"
+    - "tinned food"
+    - "bread"
+    - "dried food"

@@ -1,4 +1,5 @@
 Nullkilometer::Application.routes.draw do
+
   # get "profile_page/new"
 
   # get "profile_page/create"
@@ -6,52 +7,40 @@ Nullkilometer::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  scope "/api", :defaults => {:format => :json} do
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+    resources :point_of_sales, :controller => "point_of_interests", :defaults => { :type => "PointOfSale" } do
+      resources :market_stalls, :only => [:index, :create]
+      resources :products, :only => :index do
+        collection do
+          match "category/:category", :to => "products#show", :via => :get
+          match "category/:category/point_of_production/:point_of_production_id", :to => "deliveries#create", :via => :post
+        end
+      end
+      resources :deliveries, :only => :index
+    end
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    resources :market_stalls do
+      resources :products, :only => :index do
+        collection do
+          match "category/:category", :to => "products#show", :via => :get
+          match "category/:category/point_of_production/:point_of_production_id", :to => "deliveries#create", :via => :post
+        end
+      end
+    end
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :products, :only => :index
+ 
+    resources :point_of_productions, :controller => "point_of_interests", :defaults => { :type => "PointOfProduction" }
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+    resources :point_of_interests, :only => :index
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+    resources :deliveries, :only => :create
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+    get "product_categories", :to => "products#categories"
+    get "pos_types", :to => "point_of_interests#pos_types"
+  end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
   root :to => 'home#index'
   match '/addShop' => 'add_apos#index'
   match '/profilePage' => 'profile_page#index'
@@ -63,4 +52,6 @@ Nullkilometer::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  match "*stuff", :to => "home#routing_error"
+
 end
