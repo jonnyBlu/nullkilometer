@@ -1,0 +1,25 @@
+{
+    "marketStall": {
+        "id" : "3",
+        "name": "fischstand",
+        "products": [
+            {
+                "url": "host/point_of_sales/1/product_categories/1",
+                "categoryId": 1
+            },
+            {
+                "url": "host/point_of_sales/1/product_categories/0",
+                "categoryId": 0
+            },
+            {
+                "url": "host/point_of_sales/1/product_categories/3",
+                "categoryId": 3
+            }
+        ],
+        "description": "blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla",
+        "website": "http://www.mstall.com",
+        "mail": "test@mstall.de",
+        "phone": "+49 30 1233333"
+    }
+}
+

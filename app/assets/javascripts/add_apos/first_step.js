@@ -1,9 +1,3 @@
-var INITIALLAT = 52.5233;
-var INITIALLON = 13.4127;
-var ZOOMONMARKERLEVEL = 17;
-
-var TEXT_ADDRESSSELECTION = "Wähle eine Adresse aus der Liste aus:";
-
 var addAPosMap;
 var newPOSMarker;
 var newPosPlotlayers=[];
@@ -16,64 +10,32 @@ var firstStepActions = function(){
 	$("#newPosMap").show();
 	initPosMap(INITIALLAT, INITIALLON, 9); // around Berlin
 	placeMarker(INITIALLAT, INITIALLON, "", 9, true);
-	registerSearch();
-}
-
-
-var ajaxCall = function(url, dataToSend, onSuccessFunction){
-	$.ajax({
-		type: 'GET',
-		url: url,
-		data: dataToSend,
-		dataType: 'json',
-		success: onSuccessFunction,
-		error: function(jqXHR, textStatus, errorThrown){
-			$('#locationSearchResults').html('<div>Something went wrong while communicating with nomination.openstreetmaps.org</div>');
-			console.warn("searching in OSM DB failed: "+textStatus+": "+jqXHR+" - "+errorThrown);
-		}
-	});
-}
-
-var registerSearch = function(){
-	$('#locationSubmit').click(function(event){
-		event.preventDefault();
-		$('#locationSearchResults').html('');
-		var input = $('#locationInput').val();
-		if(input.trim() != ""){
-			$('#map').append('<img alt="Loading" id="loading-animation" src="//'+window.location.host+'/assets/ajax-loader.gif" />');
-			var dataToSend = {
-				format: 'json',
-				q: input,
-				polygon: 0,
-				addressdetails: 0
-			};
-			ajaxCall('http://nominatim.openstreetmap.org/search', dataToSend, getOSMAddress);
-		}
-		$('#locationInput').val("");
-	});
-	$("#locationInput").keyup(function(event){
-			if(event.keyCode == 13){
-    			$("#locationSubmit").click();
-			}
-	});
-
+	var buttonSelector = $('#locationSubmit');
+	var inputSelector = $('#locationInput');
+	var resultsSelector = $('#locationSearchResults');
+	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, getOSMAddress);
 }
 
 
 var getOSMAddress = function(data, textStatus, jqXHR){
-
-	$('#loading-animation').remove();
+	// $('#loading-animation').remove();
 	$('#locationSearchResults').html(TEXT_ADDRESSSELECTION+'<ul></ul>');
 	var resultAmount = data.length;
 	if(resultAmount > 1){
 		console.log("received "+resultAmount+" Search Results from OSM");
 		var resultArr = new Array();
-		$("#locationSearchResults").append("<ul></ul>");
+
+		var previousAddress = "";
 		for(var i = 0; i < resultAmount; i++){
+			// var address = formatAddress(data[i].display_name);
 			var address = formatAddress(data[i].display_name);
-			$("#locationSearchResults ul").append("<li title='"+data[i].lon+","+data[i].lat+"'><a href='#'>"+address+"</a></li>"); 
-			$("#locationSearchResults").show();
+			if(address != previousAddress){
+				$("#locationSearchResults ul").append("<li title='"+data[i].lon+","+data[i].lat+"'><a href='#'>"+address+"</a></li>"); 
+			}			
+			previousAddress = address;
 		}
+		$("#locationSearchResults").show();
+
 		$("#locationSearchResults li").click(function(){
 			var lon = this.title.split(",")[0];
 			var lat = this.title.split(",")[1];
@@ -139,7 +101,7 @@ var setMarkerListener = function(){
 			polygon: 0,
 			addressdetails: 0
 		};
-		ajaxCall('http://nominatim.openstreetmap.org/search', dataToSend, function(response){
+		ajaxCallOSM('http://nominatim.openstreetmap.org/search', dataToSend, function(response){
 			var address = formatAddress(response[0].display_name);
 			displayAddress(address);
 		});
@@ -155,5 +117,6 @@ var formatAddress = function(osmAddress){
 var displayAddress = function(address){
 	$("#locationSearchResults").html(address);
 	$("#loadedAddressLabel").html(address);
+	$("#loadedAddressLabel").parent().parent().find("label[for=address]").removeClass("invalidLabel");
 	newPosAddress = address;
 }

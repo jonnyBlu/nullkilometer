@@ -1,4 +1,4 @@
-@import "bootstrap";
+
 
 $mapHeight: 600px;
 $halfOfmapHeight: 300px;
@@ -6,36 +6,61 @@ $mapFilterWidth: 600px;
 $mapFilterHeight: 300px;
 $zIndexMapElements: 10;
 $buttonAndInputHeight: 35px;
+$buttonColor1: #D5D0A4;
+
+@mixin roundedCorners($round) {
+  -moz-border-radius:$round;
+  -webkit-border-radius:$round;
+  border-radius:$round;
+}
+
+@mixin roundedCorners_bottom($round) {
+   -moz-border-radius-bottomleft:$round;  -webkit-border-bottom-left-radius:$round;  border-bottom-left-radius:$round;
+   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
+}
+
+@mixin boxShadow($expansion,$color){
+    -moz-box-shadow:0px 0px $expansion $color;
+    -webkit-box-shadow:0px 0px $expansion $color;
+    box-shadow:0px 0px $expansion $color;
+}
 
 ul{
 	list-style: none;
 }
+
 
 #activityPannel{
 	position:relative;
 	width: 100%;
 	height: 30px;
 	margin: 10px 0px 10px 0px;
-	#addAPlaceButton{
-	}
 }
 
 #mapContainer{
 	position:relative;
 }
 #map { height: $mapHeight; }
+
+/* map filter styling */
+
 #mapFilterContainer {
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	z-index: $zIndexMapElements;
 	border-radius: 5px;
-	background-color: $white;
+	background-color: white;
 	padding: 0px;
 }
 #mapFilterButton{
 	width:$mapFilterWidth;
 	height: $buttonAndInputHeight;
+     background-image: linear-gradient(to bottom, #fff, $buttonColor1);
+     &:hover { background-color: $buttonColor1 }
+     font-weight: bold;
+     font-size: 17px;
+     padding: 0px;
 }
 
 #mapFilter{
@@ -51,13 +76,17 @@ ul{
 		}
 		ul{
 			font-size: 15px;
-			margin: 10px 0px 0px 0px;
+			margin: 10px 0px 0px 10px;
 			li{
 				height: 30px; 
 			}
 		}
 	}
 }
+
+/* map filter styling end */
+
+
 .hidden{
 	display: none;
 }
@@ -67,18 +96,57 @@ ul{
 }
 
 
-.addressLookupContainer{
+#addressLookupContainer{
 	position: absolute;
 	top: 0px;
 	float: right;
 	right:0px;
 	z-index: $zIndexMapElements;
-	#inputIcon{
+	#locationInput{
 		width: 150px;
+	}
+}
+
+#locationResultPopup{
+	display: none;
+	position: absolute;
+	z-index: 11;
+	top: 0px;
+	width: 100%;
+	padding: 20px 0px 20px 0px;
+	background-color: white;
+	@include boxShadow(10px, #aaa);
+	@include roundedCorners_bottom(10px);
+	p{
+		margin-left: 20px;
 	}
 }
 
 .leaflet-control-container{
 	position:relative;
 	top: $halfOfmapHeight;
+	.leaflet-control-attribution{
+		display: none;
+	}
 }
+
+
+
+/* map infbox styling */
+
+
+#hiddenInfoboxContentContainer{
+	display: none;
+}
+
+#infoboxContent{
+	div{
+		padding-bottom: 20px;
+	}
+	.footer a{
+		float: right;
+	}
+
+} 
+
+/* map infobox styling end */

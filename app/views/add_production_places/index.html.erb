@@ -1,0 +1,26 @@
+<% content_for :javascript_includes do %>
+     <%= javascript_include_tag "production_places/production_places.js" %> 
+<% end %>
+<div>
+  <h1>Herstellungsorte verwalten</h1>
+</div>
+<div class="wrapper">
+
+	<div class="row">
+ 		<div class="span3">
+        	<label class="checkbox"><input name ="prodctionEnPlace" type="checkbox" value="0">Herstellung vor ort</label>
+        </div>
+     	<div class="span7">
+        
+   		</div>
+	</div>
+	<div class="row">
+ 		<div class="span3">
+        	
+   		</div>
+     	<div class="span7">
+       	 	<button class="btn" type="button" id="addNewPop">Neuen verkaufsort Hinzufügen</button>
+   		</div>
+	</div>
+</div>
+

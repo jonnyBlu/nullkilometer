@@ -1,4 +1,3 @@
-<%=  render 'newPosHeader' %> 
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "add_apos/add_apos.js" %>
     <%= javascript_include_tag "add_apos/first_step.js" %>
@@ -6,8 +5,11 @@
     <%= javascript_include_tag "add_apos/market_stalls_step.js" %>
     <%= javascript_include_tag "add_apos/overview.js" %>
 <% end %>
+<div class="newPosHeader">
+  <h1>Neuer Verkaufsort</h1>
+</div>
 <div id='marketStallsMoreInfoDiv'></div>
-<div id="wrapper">
+<div class="wrapper">
 	    <div id="navigation" style="display:none;">
         <ul>
             <li class="selected">
@@ -31,7 +33,7 @@
         <form id="addAPosForm" name="addAPosForm" action="" method="post">
             <fieldset class="step">
                 <legend>Ort Bestimmen</legend>
-                <div class = "instruction">Suche nach einer Adresse oder präzisiere die Lokation auf der Karte</div>
+                <div class = "instruction"><p>Suche nach einer Adresse oder präzisiere die Lokation auf der Karte</p></div>
 				<div class="control-group">
 				  <div class="controls">
 				    <div class="input-prepend">
@@ -42,6 +44,7 @@
 				</div>
 				<div id="locationSearchResults"></div>
 				<div id="newPosMap"></div>
+                <div class="tooltip" id="markerTooltip">Um die die Lokation auf der Karte zu präzisieren, klicke und schiebe den Marker</div>
                 <%=  render 'buttonToTheNextStep' %>
             </fieldset>
             <fieldset class="step" id="mainInformationFieldset">
@@ -58,6 +61,7 @@
                 <div id="marketStallsStepContainer">
                     <legend>Marktstände</legend>
                     <%=  render 'newMarketStallForm' %>
+                    <%=  render 'buttonToTheNextStep' %>
                 </div>
             </fieldset>
 			<fieldset class="step" id="overviewContainer">
@@ -69,6 +73,15 @@
                     </div>
 <!--                 </div>  -->          
                 <%=  render 'newPosOverview' %>
+                <div id="invisibleOverviewContainer">
+                    <div class="instruction">
+                        <p>Danke für die information, die Daten über den Verkaufsort werden bald online veröffentlicht werden.</p>
+                    </div>
+                    <div class="row">
+                        <div class="span4"> <a href="/addProductionPlaces" class="btn btn-info" type="button">Herstellungsorte hinzufügen</a></div>
+                        <div class="span4"> <a href="/" class="btn" type="button">Zu der Home Page</a></div>
+                    </div>
+                </div>
             </fieldset>
         </form>
     </div>

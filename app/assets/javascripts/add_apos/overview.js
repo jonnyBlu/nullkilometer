@@ -1,41 +1,21 @@
 var generateOverview = function(){
 	var newPosInformation = readInformation("#mainInformationFieldset, #additionalInformationFieldset");
-    displayInformation(newPosInformation); 
+    
+    displayInformation(newPosInformation, $("#overviewContainer"));
 
-}
-
-var displayInformation = function(information){
-    $.each(information, function(key, value){
-        var readableValue = value;
-        if(key=="shopType"){
-            readableValue = shopTypeNames[value];
-            if(value == MARKETINDEX){//market
-                $(".row.invisible").removeClass("invisible");
-            }
-        } 
-        else if(key=="productCategories"){
-            readableValue = "";
-            for(v in value) readableValue += productCategoryNames[v]+", ";             
-        } else if(key == "openingDays"){
-            readableValue = "<ul>";
-            $.each(value, function(){
-                var dayName = weekDayNames[this.dayId];
-                var times;
-                if(this.from == "" || this.to == "") times = ": ?";
-                else times = ": "+this.from+"  -  "+this.to;
-                readableValue += "<li>"+dayName+times+"</li>";    
-            });
-            readableValue += "</ul>";
-        }
-
-        $("#overviewContainer label[for="+key+"]").html(readableValue);
+    $("#confirmPosData").click(function(){
+        $("#navigation").css("display", "none");
+        $("#overviewContainer").html($("#invisibleOverviewContainer").html());
     });
-    // $("#overviewContainer").
+
+    $("#goToMarketStallsLink").click(function(e){
+        $('#navigation li:nth-child(4) a').click();
+        e.preventDefault();
+    });
 }
 
 
 var readInformation = function(containers){		
-
     var newPosInformation = {};
     var openingDays = [];
     var productCategories = [];
@@ -68,8 +48,8 @@ var readInformation = function(containers){
                         to : to
                     }
                     openingDays.push(dayTimeObj);                   
-                } else if(n.name == "shopType"){
-                    newPosInformation[n.name] = $(n).val(); 
+                } else if(n.name == "shopTypeId"){
+                    newPosInformation["shopTypeId"] = $(n).val(); 
                     if($(n).val() == MARKETINDEX){
                         isMarket = true;
                     }
@@ -77,20 +57,48 @@ var readInformation = function(containers){
             }
         }
     });
-    if($(descriptionTextarea).val()!= ""){
+    if($(descriptionTextarea).val()!= "")
         newPosInformation["description"] = $(descriptionTextarea).val();
-    }
 
-    newPosInformation["productCategories"] = productCategories;
+    newPosInformation["products"] = productCategories;
     newPosInformation["openingDays"] = openingDays;
 
-    if(isMarket){
-        // $.each(marketStallObjectsArray, function(){
-        // });
+    if(isMarket)
         newPosInformation["marketStalls"] = marketStallObjectsArray;
-    }
-
 
     console.log(JSON.stringify(newPosInformation, null, 4));
     return newPosInformation;
+}
+
+var displayInformation = function(information, container){
+    $.each(information, function(key, value){
+        var readableValue = value;
+        if(key=="shopTypeId"){
+            readableValue = shopTypeNames[value];
+            if(value == MARKETINDEX){//market
+                $(".row.invisible").removeClass("invisible");
+            }
+        } 
+        else if(key=="products"){
+            readableValue = representProductCategoriesInReadableForm(value);           
+        } else if(key == "openingDays"){
+            readableValue = "<ul>";
+            $.each(value, function(){
+                var dayName = weekDayNames[this.dayId];
+                var times;
+                if(this.from == "" || this.to == "") times = ": ?";
+                else times = ": "+this.from+"  -  "+this.to;
+                readableValue += "<li>"+dayName+times+"</li>";    
+            });
+            readableValue += "</ul>";
+        } else if(key == "marketStalls") {
+            readableValue = "<a href='#' id='goToMarketStallsLink'><ul>";
+            $.each(value, function(){
+                readableValue += "<li>"+this.name+"</li>"; 
+            });
+            readableValue += "</ul></a>";
+        }
+
+        container.find("label[for="+key+"]").html(readableValue);
+    });
 }

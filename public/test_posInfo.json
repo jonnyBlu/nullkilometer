@@ -1,0 +1,62 @@
+{
+    "pointOfSale": {
+        "name": "Test Market",
+        "address": "Schaönhauseraööee 125",
+        "lat": 52.2223,
+        "lon": 13.7654,
+        "shopTypeId": 1,
+        "products": [
+            {
+                "url": "host/point_of_sales/1/products/1",
+                "categoryId": 1
+            },
+            {
+                "url": "host/point_of_sales/1/products/0",
+                "categoryId": 0
+            },
+            {
+                "url": "host/point_of_sales/1/products/5",
+                "categoryId": 5
+            }
+        ],
+        "openingTimes": [
+            {
+                "dayId": 0,
+                "from": "12:00",
+                "to": "20:00"
+            },
+            {
+                "dayId": 1,
+                "from": "12:00",
+                "to": "20:00"
+            },
+            {
+                "dayId": 4,
+                "from": "",
+                "to": ""
+            }
+        ],
+        "description": "blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla",
+        "website": "http://www.blackle.com",
+        "mail": "test@bla.de",
+        "phone": "+49 30 1234556",
+        "marketStalls": [
+            {
+                "url": "host/market_stalls/3",
+                "name": "fischstand",
+                "id" : 3
+            },
+            {
+                "url": "host/market_stalls/4",
+                "name": "fleisch stand",
+                "id" : 4
+            },
+            {
+                "url": "host/market_stalls/5",
+                "name": "misch masch",
+                "id" : 5
+            }
+        ]
+    }
+}
+

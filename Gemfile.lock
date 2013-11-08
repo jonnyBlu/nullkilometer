@@ -53,6 +53,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-timepicker-rails (1.1.0.0)
       railties (>= 3.1.0)
+    jquery-ui-rails (4.0.3)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.8.0)
     leaflet-rails (0.5.0)
     mail (2.4.4)
@@ -125,6 +128,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   jquery-timepicker-rails
+  jquery-ui-rails
   leaflet-rails (~> 0.5.0)
   pg
   rails (= 3.2.8)

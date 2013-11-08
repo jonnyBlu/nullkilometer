@@ -1,24 +1,22 @@
 <div id ="test"><ul></ul></div>
+  <%=  render 'marketStallinformationContainer' %>
 <div id="newMarketStallContainer">
-     <h4>Neuen Marktstand hinzufügen</h4>
-     <div class="row">
-        <div class="span2"> <label for="name">Name:</label></div>
-        <div class="span2">  <input class="requiredField" id="name" name="name" type="text" AUTOCOMPLETE=OFF /></div>
-    </div>
-    <div class="row">
-        <div class="span2"> 
-            <ul>
-                <li><label for="productCategory">Produktkategorien:</label></li>
-                <li>(mindestens 1)</li>
-            </ul>
-        </div>
-        <div class="span3"> 
-            <%=  render 'chooseProductCategoriesList' %>
-        </div>
-    </div>
-    <%=  render 'additionalInformationForm' %>
+    <h4>Neuen Marktstand hinzufügen</h4>
+    <%=  render 'marketStallMainInformationForm' %>
     <div class="row">
         <button class="btn btn-info" type="button" id="addAMarketStallButton">Marktstand Hinzufügen
         </button>
+    </div>
+</div>
+<div id="invisibleMarketStallContainer">
+    <div id="editdMarketStallContainer">
+        <%=  render 'marketStallMainInformationForm' %>
+        <div class="row">
+            <button class="btn btn-info" type="button" id="confirmEditingMarketStallButton">Änderungen speichern
+            </button>
+            <button class="btn btn-alert" type="button" id="cancelEditingMarketStallButton">Schliessen
+            </button>
+        </div>  
+
     </div>
 </div>

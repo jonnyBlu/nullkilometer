@@ -3,6 +3,10 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$fontFamilyLogo: 'Fenix';
+$backgroundColor: #F7F2C6;
+$buttonColor1: #D5D0A4;
+
 
 /* universal */
 
@@ -12,7 +16,10 @@ html {
 
 body {
   padding-top: 60px;
+  background-color: $backgroundColor !important;
 }
+
+
 
 section {
   overflow: auto;
@@ -60,13 +67,14 @@ p {
 /* header */
 
 #logo {
+  font-family: $fontFamilyLogo;
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 30px;
   color: white;
+  padding-top:10px;
   text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
+  letter-spacing: 2px;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -102,3 +110,13 @@ footer {
   }
 }
 
+/* naviation bar*/
+.navbar-inverse .navbar-inner, .navbar{
+    background-image: linear-gradient(rgb(80, 60, 30), rgb(70, 50, 20));
+    height: 50px;
+}
+
+.btn-default{
+     background-image: linear-gradient(to bottom, #fff, $buttonColor1);
+     &:hover { background-color: $buttonColor1 }
+}

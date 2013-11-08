@@ -1,12 +1,36 @@
 /*Add a POS page styling*/
 
 $normalInputFieldWidth: 150px;
-$wrapperHeight: 700px;
 $grayTextColor: #444;
 $formWidth: 800px;
 $stepWidth: 800px;
 $navigationHeight: 35px;
+$mapHeight: 500px;
 
+@mixin roundedCorners($round) {
+  -moz-border-radius:$round;
+  -webkit-border-radius:$round;
+  border-radius:$round;
+}
+
+@mixin boxShadow($expansion,$color){
+    -moz-box-shadow:0px 0px $expansion $color;
+    -webkit-box-shadow:0px 0px $expansion $color;
+    box-shadow:0px 0px $expansion $color;
+}
+
+@mixin tooltip(){
+    position: relative;
+    top: -$mapHeight+20px;
+    left:40%;
+    z-index:10;
+    padding: 20px 10px 20px 10px;
+    max-width: 400px;
+    background: #fff;
+    border: 1px solid #ccc;
+    @include roundedCorners(10px);
+    color: #cc8800;
+}
 
 *{
     margin:0px;
@@ -30,9 +54,21 @@ body{
 }
 
 #newPosMap{
-  height: 500px;	
+  height: $mapHeight;	
 }
 
+#markerTooltip {
+    position: relative;
+    top: -$mapHeight+20px;
+    left:40%;
+    z-index:10;
+    padding: 20px 10px 20px 10px;
+    max-width: 400px;
+    background: #fff;
+    border: 1px solid #ccc;
+    @include roundedCorners(10px);
+    color: #cc8800;
+}
 
 /*first step styling end*/
 
@@ -74,21 +110,63 @@ textarea#description{
 /*market stalls step styling*/
 
 
-#addAMarketStallButton{
+#addAMarketStallButton, #confirmEditingMarketStallButton{
     margin-left: 20px;
 }
+
+#cancelEditingMarketStallButton{
+    float: right;   
+}
+
 #newMarketStallContainer{
     padding-left: 20px;
     position: relative;
 }
-a#remove{
+
+
+a#removeMarketStall, a#editMarketStall{
     float: right;
     right: 20px; 
 }
 
+#marketStallinformationContainer{
+    display: none;
+}
+
+
+#test{
+/*    position: relative;
+    top: 60px;*/
+    margin-bottom: 20px;
+    padding: 0px 20px 0px 20px;
+    ul{
+        margin: 0px;
+    }
+    .marketStallTitleRow{
+        border-bottom: 1px solid #aaa;
+        padding: 10px;
+/*        height: 35px;*/
+        :hover{
+            cursor: pointer;
+            font-weight: bolder;
+        }
+        span{
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    .moreMarketStallInformation{
+        display : none;
+        border: solid 1px #aaa;
+        border-top:  none;
+        padding: 10px;
+        .row{
+            margin-bottom: 0px;
+        }
+    }
+}
 
 #marketStallsStepContainer.invisible, #marketStallsStepLink.invisible, #marketStallList.invisible {
-/*.invisible{*/
     display: none;
 }
 
@@ -101,14 +179,13 @@ a#remove{
     padding: 20px;
     background-color: #fff;
     z-index: 100;
-    -moz-box-shadow:0px 0px 3px #aaa;
-    -webkit-box-shadow:0px 0px 3px #aaa;
-    box-shadow:0px 0px 3px #aaa;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius:10px;
+    @include boxShadow(3px, #aaa);
+    @include roundedCorners(10px);
 }
 
+#invisibleMarketStallContainer{
+    display: none;
+}
 /*market stalls step styling end*/
 
 
@@ -118,6 +195,12 @@ a#remove{
         float:right;
     }
 }
+
+#invisibleOverviewContainer{
+    display:none;
+}
+
+
 .row.invisible{
     display: none;
 }
@@ -152,8 +235,9 @@ a#remove{
     position:relative;
     height:100%;
 }
-#wrapper{
+.wrapper{
     color:$grayTextColor;
+    background-color: #fff;
     -moz-box-shadow:0px 0px 3px #aaa;
     -webkit-box-shadow:0px 0px 3px #aaa;
     box-shadow:0px 0px 3px #aaa;
@@ -162,7 +246,6 @@ a#remove{
     border-radius:10px;
     border-right:8px solid #fff;
     border-left:8px solid #fff;
-/*    height: $wrapperHeight;*/
     width:$formWidth;
     overflow:hidden;
 }
@@ -259,7 +342,7 @@ span.error{
     width:$formWidth;
     padding:5px 0px 5px 0px;
     margin:0px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-bottom:1px solid #fff;
     border-top:1px solid #d9d9d9;
 }

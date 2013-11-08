@@ -1,0 +1,37 @@
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "profile_page/profile_page.js" %>
+    <%= javascript_include_tag "profile_page/map_profile_page.js" %>
+<% end %>
+<div id="profilePageHeader">
+	<ul>
+	  	<li id="posName">Profilseite</li>
+	 	<li id="posType"></li>
+	 	<li id="posLocationDegree">todo locality degree
+<!-- 	 		<div class="progress">
+ 			 	<div class="bar bar-success" style="width: 35%;"></div>
+ 			</div> -->
+ 		</li>
+	</ul>
+</div>
+<div class="wrapper profileWrapper" id="profilePageWrapper">
+	<div id="profilePageContainer" class="profileContainer">
+		<div class="row">
+			<div class="span6">
+				<%=  render 'posInfoList' %>
+			</div>
+			<div class="span5">
+				<div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div>		
+				<div id="profilePagePosMap">map cntainer</div>
+			</div>
+		</div>
+	</div>
+	<div id="marketStallsTitle" class="row">
+		<div class="span6"><h4>Marktstände:</h4></div>
+		<div class="span5"><div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div></div>
+	</div>
+						
+	<div id="marketStallsContainer">
+		<div class="accordion" id="accordion2"></div>
+	</div>
+	<%=  render 'marketStallsContainer' %>
+</div>

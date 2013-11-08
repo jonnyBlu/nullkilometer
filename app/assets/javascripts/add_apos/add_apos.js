@@ -1,8 +1,10 @@
-var shopTypeNames = ["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"];
-var productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Konserven", "Brot",
-"Getrocknete Waren"];
-var weekDayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-var MARKETINDEX = 1;
+//TODO: see if form is correct after a market stall has been edited
+//TODO: comment out step validation 
+//TODO: implement ajax post function after he information is confirmed
+//TODO: authentification if clicked on "herstellungsorte hinzufügen"
+//TODO: name validation (no weird characters),or maybe then - tag id shoud be generated differently
+//TODO: when adding market stall categories, only those available, which were set up for the whole market?
+
 
 var marketStallObjectsArray = [];
 
@@ -51,17 +53,19 @@ var loadForm = function(){
     		generateOverview();
     	}
 		var $this	= $(this);
-		var clickedStepNumber = $this.parent().index() + 1;
+		// could only be a triggered event on MarketStalls tab, which is unavailable
+		// in that case - bring to the one after
+		if($this.hasClass("invisible")){ 
+			$this = $("#navigation a#overviewTab");
+    	}
 
-		var mainInfoToBeSaved = true;
-
-		if(!$(this).hasClass("available")){
-			if((current <= 2 && mainInfoToBeSaved)){
-				if(!validateStep(2)) { // no errors
-					$(this).addClass("available");
+		if(!$this.hasClass("available")){
+			if((current <= 2)){
+				if(!validateStep(2) && !validateStep(1)) { // no errors
+					$this.addClass("available");
 				} 
 			}else 
-				$(this).addClass("available");
+				$this.addClass("available");
 		} 
 	 	goToStep($this);
 		e.preventDefault();
@@ -81,7 +85,7 @@ var loadForm = function(){
 	
 
 
-	$("#addresseBestimmenLink").click(function(e){
+	$("#goToSetAddressLink").click(function(e){
 		$('#navigation li:nth-child(1) a').click();
 	 	e.preventDefault();
 	});
@@ -109,8 +113,6 @@ var loadForm = function(){
 				if(prev == 1 || prev == 3) validateStep(prev);
 			$('#formElem').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
 		});
-
-
 	}
 
 
@@ -120,13 +122,13 @@ var loadForm = function(){
 	records if the Form has errors in $('#formElem').data()
 	*/
 	function validateSteps(){
-		var FormErrors = false;
+		var formErrors = false;
 		for(var i = 1; i < fieldsetCount; ++i){
 			var error = validateStep(i);
 			if(error == -1)
-				FormErrors = true;
+				formErrors = true;
 		}
-		$('#formElem').data('errors',FormErrors);	
+		$('#formElem').data('errors',formErrors);	
 	}
 	
 	/*
@@ -139,14 +141,14 @@ var loadForm = function(){
 		var hasError = false;
 		var error = 1;
 
-		// if(step == 1){
-		// 	hasError = validateFirstStep();
-		// } else if(step == 2){
-		// 	hasError = validateSecondStep();
-		// } else{
-		// 	if(!requiredFieldsFilled('#formElem')) hasError = true;		
-		// }
-
+/*		if(step == 1){
+			hasError = validateFirstStep();
+		} else if(step == 2){
+			hasError = validateSecondStep();
+		} else{
+			if(!requiredFieldsFilled('#formElem')) hasError = true;		
+		}
+*/
 		var $link = $('#navigation li:nth-child(' + parseInt(step) + ') a');
 		$link.parent().find('.error,.checked').remove();
 		
@@ -166,7 +168,8 @@ var loadForm = function(){
 	*/
 	function validateFirstStep(){
 		var hasError = true; 
-		if($("#locationSearchResults").html()!=""){
+		if(
+			$("#locationSearchResults").html()!=""){
 			if(typeof(newPosLat) != "undefined" && typeof(newPosLat) != "undefined"){
 				hasError = false; 
 			}
@@ -181,21 +184,26 @@ var loadForm = function(){
 	var validateSecondStep = function(){
 		var hasError = true;
 		var hasName = requiredFieldsFilled("#mainInformationFieldset");
-		var listsChecked = true;
+		var listsChecked = areListsChecked("#mainInformationFieldset");
+
 		if($("#mainInformationFieldset #loadedAddressLabel").find("a").length > 0)
 			$("#mainInformationFieldset label[for=address]").addClass("invalidLabel");
 		else $("#mainInformationFieldset label[for=address]").removeClass("invalidLabel");
 
-		$(["shopType", "productCategory", "openingDay"]).each(function(index, value) {
-			if($("#mainInformationFieldset input[name="+value+"]:checked").length <= 0){
-				$("#mainInformationFieldset label[for="+value+"]").addClass("invalidLabel");
-				listsChecked = false;
-			} else $("#mainInformationFieldset label[for="+value+"]").removeClass("invalidLabel");
-		});
 		if(hasName && listsChecked) hasError = false;
 		return hasError;
 	}
 
+	var areListsChecked = function(containerName){
+		var checked = true;
+		$(["shopTypeId", "productCategory", "openingDay"]).each(function(index, value) {
+			if($(containerName+" input[name="+value+"]:checked").length <= 0){
+				$(containerName+" label[for="+value+"]").addClass("invalidLabel");
+				checked = false;
+			} else $(containerName+" label[for="+value+"]").removeClass("invalidLabel");
+		});
+		return checked;
+	}
 
 	/*
 	if there are errors don't allow the user to submit
@@ -209,22 +217,11 @@ var loadForm = function(){
 }
 
 
-var requiredFieldsFilled = function(containerName){
-	var filled =  false;
-	if($(containerName).find('.requiredField').length <= 0) filled = true;
-	$(containerName).find('.requiredField').each(function(){
-		var $this 		= $(this);
-		var name = $this.attr("name");
-		var valueLength = jQuery.trim($this.val()).length;				
-		if(valueLength == ''){
-			$this.css('background-color','#FFEDEF');
-			$(containerName+" label[for="+name+"]").addClass("invalidLabel");
-		}
-		else{
-			filled = true;
-			$this.css('background-color','#FFFFFF');	
-			$(containerName+" label[for="+name+"]").removeClass("invalidLabel");
-		}
+var representProductCategoriesInReadableForm = function(values){
+	var readableForm = "";
+	$.each(values, function(key, value){
+		readableForm += productCategoryNames[value]+", ";  
 	});
-	return filled;
+    readableForm = readableForm.substring(0, readableForm.length -2 );
+    return readableForm;
 }

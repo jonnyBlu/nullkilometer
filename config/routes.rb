@@ -1,7 +1,7 @@
 Nullkilometer::Application.routes.draw do
-  get "add_apos/new"
+  # get "profile_page/new"
 
-  get "add_apos/create"
+  # get "profile_page/create"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,7 +53,10 @@ Nullkilometer::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#index'
-  match '/addAPos' => 'add_apos#index'
+  match '/addShop' => 'add_apos#index'
+  match '/profilePage' => 'profile_page#index'
+  match '/profilePage/edit' => 'profile_page#edit'
+  match '/addProductionPlaces' => 'add_production_places#index'
 
   # See how all your routes lay out with "rake routes"
 

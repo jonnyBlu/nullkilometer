@@ -1,0 +1,47 @@
+<div id="helperEditMarketStallsContainer" class="helperContainer">	
+	<div class="accordion" id="accordion2">
+	  	<div class="accordion-group">
+		    <div class="accordion-heading">
+		         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+		        market stall name
+		      	</a>
+		    </div>
+		    <div id="collapseOne" class="accordion-body collapse">
+			     <div class="accordion-inner">
+			     	<div class="row">
+					    <div class="span2"> 
+					        <ul>
+					            <li><label for="productCategory">Produktkategorien:</label></li>
+					            <li>(* mindestens 1)</li>
+					        </ul>
+					    </div>
+					    <div class="span3"> 
+							<%=  render './add_apos/chooseProductCategoriesList.html' %>
+						</div>
+					</div>
+					<%=  render './add_apos/additionalInformationForm' %>
+
+					<div class="row"><div class="span3"><a class="btn btn-success" href="/addProductionPlaces" type="button" id="addProductionPlaces">Herstellungsorte Verwalten</a></div></div>
+
+					<div class="row" id="editMarketStallsButtonRow">
+						<ul>
+							<li>	
+								<button class="btn" type="button" id="cancelEditingMarketStallButton">Änderungen zurücksetzen
+				            	</button>
+							</li>
+							<li>
+								<button class="btn btn-warning" type="button" id="removeMarketStallButton">Marktstand entfernen
+				           		</button>
+							</li>
+							<li>
+								<button class="btn btn-info" type="button" id="confirmEditingMarketStallButton">Änderungen speichern
+				            	</button>
+							</li>
+						</ul>
+			        </div> 
+		     	</div>
+	    	</div>
+
+	    </div>
+	</div>
+</div>
