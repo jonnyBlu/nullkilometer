@@ -1,5 +1,8 @@
 Nullkilometer::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   # get "profile_page/new"
 
   # get "profile_page/create"
@@ -42,6 +45,7 @@ Nullkilometer::Application.routes.draw do
   end
 
   root :to => 'home#index'
+  match '/map' => 'home#map'
   match '/addShop' => 'add_apos#index'
   match '/profilePage' => 'profile_page#index'
   match '/profilePage/edit' => 'profile_page#edit'

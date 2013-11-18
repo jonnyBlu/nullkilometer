@@ -31,9 +31,15 @@ var productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleis
 var weekDayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 var MARKETINDEX = 1;
 
-var shopTypeIconImageLocation = "../images/map_icons/shop_categories/";
+var iconImageLocation =  "../images/map_icons/";
+var productCategoryIconImageLocation = iconImageLocation + "food_categories/";
+var productTypeIconImageUrls = ["milk.png", "vegetables.png", "fish.png", "meat.png", "eggs.png", "conserves.png", "bread.png", "dried.png"];
+
+var shopTypeIconImageLocation = iconImageLocation + "shop_categories/";
 var shopTypeIconImageUrls = ["1.png", "2.png", "3.png", "4.png", "5.png"];
+
 var shopTypeIconImageUrlDefault = "default.png";
+var userIconImageLocation = "../images/map_icons/user.png";
 
 var callAjax = function(url, dataToSend, onSuccess){
     $.ajax({

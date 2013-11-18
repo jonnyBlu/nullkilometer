@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	initmap(INITIALLAT, INITIALLON, 9); // around Berlin;
-	locateUser();
+	initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
+	locateUser(12);
 	loadMarkers();
 	loadFilterListeners();
 	var buttonSelector = $("#addressLookupContainer #locationSubmit");
@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 function loadFilterListeners(){
 	$("#mapFilterButton").click(function(){
-		$("#mapFilter").slideToggle();//toggleClass("hidden");
+		$("#mapFilter").slideToggle();
 	});
 
 	var productCategoryFilterInputs = $("#mapFilter").find("input[name='productCategory']");

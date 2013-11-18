@@ -1,12 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Nullkilometer", '#', id: "logo" %>
+      <%= link_to "Nullkilometer", :root, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home",    :root %></li>
-          <li><%= link_to "Registrieren",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
+          <li><%= link_to "Map",    "/map" %></li>          
+      <!--    <li><%= link_to "Registrieren",    '#' %></li>
+          <li><%= link_to "Sign in", '#' %></li> -->
         </ul>
       </nav>
     </div>

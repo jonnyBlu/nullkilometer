@@ -8,6 +8,7 @@ $(function() {
 });
 
 var loadProfilePage = function(){
+    //TODO: hit backend passing posId
     callAjax("test_posInfo.json", onSuccessReadPosInformation);
 }
 
@@ -69,9 +70,13 @@ var displayInformationInProfilePage = function(posInformation, container){
 var fillInProductCategoriesInfo = function(productCategoriesInformation, container){
     readableValue = "" ;
     $.each(productCategoriesInformation, function(key, value){
-        readableValue += productCategoryNames[value.categoryId]+", ";  
+        //readableValue += productCategoryNames[value.categoryId]+", ";  
+        var name = productCategoryNames[value.categoryId];
+        var url = productCategoryIconImageLocation +productTypeIconImageUrls[value.categoryId];
+        readableValue = readableValue +" " +"<img class = 'categoryIcon' src = '" + url + "' title='" + name+ "' />"  
     });  
-    readableValue = readableValue.substring(0, readableValue.length-2);   
+//    readableValue = readableValue.substring(0, readableValue.length-2); 
+
     container.find("label[for='productCategories']").html(readableValue);  
 }
 

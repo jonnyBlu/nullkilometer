@@ -33,7 +33,7 @@ class PointOfInterestsController < ApplicationController
 
     @point_of_interest = @poi_class.new(params[:point_of_interest])
     @point_of_interest.save
-    respond_with @point_of_interest
+    respond_with '{"lalala" : "papa"}'#@point_of_interest
   end
 
   def update

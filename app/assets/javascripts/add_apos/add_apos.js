@@ -1,3 +1,5 @@
+
+
 //TODO: see if form is correct after a market stall has been edited
 //TODO: comment out step validation 
 //TODO: implement ajax post function after he information is confirmed

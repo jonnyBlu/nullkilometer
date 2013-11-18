@@ -6,6 +6,7 @@ var generateOverview = function(){
     $("#confirmPosData").click(function(){
         $("#navigation").css("display", "none");
         $("#overviewContainer").html($("#invisibleOverviewContainer").html());
+        postPOSInformation(newPosInformation);
     });
 
     $("#goToMarketStallsLink").click(function(e){
@@ -14,6 +15,13 @@ var generateOverview = function(){
     });
 }
 
+
+var postPOSInformation = function(posInformation){
+    $.get( "/api/point_of_sales", function( posInformation ) {
+      //$( ".result" ).html( data );
+      console.log("Posted Info"+posInformation);
+    });
+}
 
 var readInformation = function(containers){		
     var newPosInformation = {};

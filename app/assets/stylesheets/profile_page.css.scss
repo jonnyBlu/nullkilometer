@@ -50,6 +50,7 @@ $mapWidth:	100%;
 		margin-left: 0px;
 	}
 }
+
 #editProfilePageContainer{
 	label[for=name]{
 		font-size: 18px;
@@ -106,10 +107,13 @@ $mapWidth:	100%;
 .helperContainer, #marketStallsTitle{
 	display: none;
 }
+
 .accordion-heading{
 	background: #eee;
+	color: #444;
 	:hover{
 		background: #fff;
+		color: #666;
 	}
 }
 .accordion-inner{

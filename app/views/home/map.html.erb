@@ -1,0 +1,67 @@
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "home/home.js" %>
+    <%= javascript_include_tag "home/map_home.js" %>
+<% end %>
+<%=  render 'infoboxContent' %>
+
+<div id="activityPannel">
+	<a href="/addShop" class="btn btn-default" type="button" id="addAPlaceButton">Neuen Verkaufsort Hinzufügen
+	</a>
+	<div class="tooltip" id="tooltipAddAPosButton"></div>
+</div>
+<div id="mapContainer">
+	<div id="locationResultPopup"></div>
+	<div id ="mapFilterContainer">
+		<div id="mapFilter" class="hidden">     
+		 	<div class="row">
+		    	<div class="span2"> 
+		      		<p>WAS?</p>
+		      		<ul>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="0" checked><span class="productCategoryIcon" id="productCategoryIcon_1"></span>Milchprodukte</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="1" checked><span class="productCategoryIcon" id="productCategoryIcon_2"></span>Obst und Gemüse</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="2" checked><span class="productCategoryIcon" id="productCategoryIcon_3"></span>Fisch</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="3" checked><span class="productCategoryIcon" id="productCategoryIcon_4"></span>Fleisch</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="4" checked><span class="productCategoryIcon" id="productCategoryIcon_5"></span>Eier</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="5" checked><span class="productCategoryIcon" id="productCategoryIcon_6"></span>Konserven</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="6" checked><span class="productCategoryIcon" id="productCategoryIcon_7"></span>Brot</label></li>
+		      			<li><label class="checkbox"><input name ="productCategory" type="checkbox" value="7" checked><span class="productCategoryIcon" id="productCategoryIcon_8"></span>Getrocknete Waren</label></li>
+		      		</ul>
+		    	</div>
+		    	<div class="span2"> 
+		      		<p>WO?</p>
+		      		<ul>
+		      			<li><label class="checkbox"><input name="shopTypeId" type="checkbox" value="0" checked>Laden</label><span class="shopCategoryIcon" id="shopCategoryIcon_1"></span></li>
+		      			<li><label class="checkbox"><input name="shopTypeId" type="checkbox" value="1" checked>Markt</label><span class="shopCategoryIcon" id="shopCategoryIcon_2"></span></li>
+		      			<li><label class="checkbox"><input name="shopTypeId" type="checkbox" value="2" checked>Supermarkt</label><span class="shopCategoryIcon" id="shopCategoryIcon_3"></span></li>
+		      			<li><label class="checkbox"><input name="shopTypeId" type="checkbox" value="3" checked>Kiosk</label><span class="shopCategoryIcon" id="shopCategoryIcon_4"></span></li>
+		      			<li><label class="checkbox"><input name="shopTypeId" type="checkbox" value="4" checked>Bauernhofladen</label><span class="shopCategoryIcon" id="shopCategoryIcon_5"></span></li>
+		      		</ul>
+		    	</div>
+		    	<div class="span2"> 
+		      		<p>WANN?</p>
+		      		<ul>
+		      			<li><label class="checkbox"><input name="openingDay" type="checkbox" value="1" checked>Montag</label></li>
+		      			<li><label class="checkbox"><input name="openingDay" type="checkbox" value="2" checked>Dienstag</label></li>
+		      			<li><label class="checkbox"><input name="openingDay" type="checkbox" value="3" checked>Mittwoch</label></li>
+		      			<li><label class="checkbox"><input name="openingDay" type="checkbox" value="4" checked>Donnerstag</label></li>
+						<li><label class="checkbox"><input name="openingDay" type="checkbox" value="5" checked>Freitag</label></li>
+		      			<li><label class="checkbox"><input name="openingDay" type="checkbox" value="6" checked>Samstag</label></li>
+		      			<li><label class="checkbox"><input name="openingDay" type="checkbox" value="0" checked>Sonntag</label></li>
+		      		</ul>
+		    	</div>
+		  	</div>
+		</div>
+		<button class="btn btn-large btn-block" type="button" id="mapFilterButton">Nach Verkaufsort Suchen</button>
+	</div>
+	<div id="addressLookupContainer">
+		<div class="control-group">
+			<div class="controls">
+		   		<div class="input-prepend">
+		      		<input class="span2" id="locationInput" type="text" placeholder="Adresse eingeben">
+		      		<a class="btn" href="#" id="locationSubmit"><i class="icon-search"></i></a>
+		   		 </div>
+		  	</div>
+		</div>
+	</div>
+	<div id="map"></div>
+</div> 

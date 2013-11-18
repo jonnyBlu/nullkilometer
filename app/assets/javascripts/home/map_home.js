@@ -3,12 +3,13 @@ var ajaxRequest;
 var pos;
 var plotlayers=[];
 var customLocationMarkerLayer;
+var zoomLevel;
 
 var initmap = function(lat, lon, zoomLevel){
-    var options = {center : new L.LatLng(lat, lon), zoom : zoomLevel };    
+    var options = {center : new L.LatLng(lat, lon), zoom : zoomLevel };     
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       	osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors',
-        osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttribution});    
+        osm = new L.TileLayer(osmUrl, {maxZoom: 18, minZoom:2, attribution: osmAttribution});    
     var mapLayer = new L.TileLayer(osmUrl);    
     this.map = new L.Map('map', options).addLayer(mapLayer);
     map.on('locationfound', onLocationFound);
@@ -16,9 +17,8 @@ var initmap = function(lat, lon, zoomLevel){
 }
 
 var customLocationMarkerIcon = L.icon({
-	//TODO: offline image, different color
-    iconUrl: 'http://png-4.findicons.com/files/icons/1742/ecqlipse_2/128/user_m.png',
-    iconSize:     [70, 70], // size of the icon
+    iconUrl: userIconImageLocation,
+    iconSize:     [50, 66], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
@@ -27,8 +27,9 @@ var customLocationMarkerIcon = L.icon({
 
 
 
-function locateUser(){
-	this.map.locate({setView : true});
+function locateUser(zoomLevel){
+	this.zoomLevel = zoomLevel;
+	this.map.locate({setView : true, maxZoom:  zoomLevel});
 }
 
 function onLocationFound(e) {

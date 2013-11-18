@@ -14,6 +14,14 @@ var initProfileMap = function(lat, lon, zoomLevel){
 	map.on('locationerror', onLocationError);
 }
 
+var markerIcon = L.icon({
+    iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
+    iconSize:     [24, 40], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 
 function onLocationFound(e) {
 	var marker = new L.Marker(e.latlng);
@@ -25,8 +33,10 @@ function onLocationError(e) {
 }
 
 var loadMarker = function(data){
+	var shopTypeId = data.shopTypeId;
+	markerIcon.options.iconUrl = shopTypeIconImageLocation+shopTypeIconImageUrls[shopTypeId];
 	var latlon = new L.LatLng(data.lat,data.lon, true);
-	var marker = new L.Marker(latlon);
+	var marker = new L.Marker(latlon, {icon: markerIcon});
 	marker.data=data;
 	map.addLayer(marker);
 	// bindListeners(marker);

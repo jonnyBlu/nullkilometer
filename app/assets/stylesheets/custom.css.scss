@@ -7,6 +7,12 @@ $fontFamilyLogo: 'Fenix';
 $backgroundColor: #F7F2C6;
 $buttonColor1: #D5D0A4;
 
+@font-face
+{
+    font-family : "Ubuntu-R";
+    src: url('/assets/fonts/Ubuntu-R.ttf');
+}
+
 
 /* universal */
 
@@ -15,11 +21,19 @@ html {
 }
 
 body {
-  padding-top: 60px;
-  background-color: $backgroundColor !important;
+  padding-top: 50px;
+  background-color: $backgroundColor !important;  
+  /* http://lea.verou.me/css3patterns/# */
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
 }
 
+a, a:link, a:visited {
+  text-decoration: none;
+}
 
+a:hover {
+  background-color: none;
+}
 
 section {
   overflow: auto;
@@ -64,6 +78,15 @@ p {
 }
 
 
+.contentContainer {
+  background-color: $backgroundColor;
+  padding: 10px;
+  -moz-box-shadow: 0 0px 40px 2px #888;
+  -webkit-box-shadow: 0 0px 40px 2px#888;
+  box-shadow: 0 0px 40px 2px #888;
+}
+
+
 /* header */
 
 #logo {
@@ -77,10 +100,10 @@ p {
   letter-spacing: 2px;
   font-weight: bold;
   line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+}
+
+#logo:hover{
+  color: white;
 }
 
 /* footer */
@@ -119,4 +142,17 @@ footer {
 .btn-default{
      background-image: linear-gradient(to bottom, #fff, $buttonColor1);
      &:hover { background-color: $buttonColor1 }
+}
+
+
+.infoDiv {
+  font-family : "Ubuntu-R";
+  margin: 30px;
+  p{
+      font-size: 18px;
+      line-height: 150%;
+  }
+  span{
+    font-weight: bold;
+  }
 }
