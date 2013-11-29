@@ -46,7 +46,8 @@ function loadMarkers(){
 	$.ajax({
 		type: "GET",
   		dataType: "json",
-		url: "test.json",
+		  //url: "test.json",
+		  url: "api/point_of_productions",
 	  	success: onSuccessLoadMarkers,
 	  	error: function(xhr, error){
         	console.debug(xhr); console.debug(error);
@@ -66,6 +67,7 @@ var markerIcon = L.icon({
 
 
 function onSuccessLoadMarkers(pos){
+	console.log(pos);
 	removeMarkers();
 	for (i=0;i<pos.length;i++) {
 		var shopTypeId = pos[i].shopTypeId;

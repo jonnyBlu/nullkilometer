@@ -36,7 +36,7 @@ var productCategoryIconImageLocation = iconImageLocation + "food_categories/";
 var productTypeIconImageUrls = ["milk.png", "vegetables.png", "fish.png", "meat.png", "eggs.png", "conserves.png", "bread.png", "dried.png"];
 
 var shopTypeIconImageLocation = iconImageLocation + "shop_categories/";
-var shopTypeIconImageUrls = ["1.png", "2.png", "3.png", "4.png", "5.png"];
+var shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"];
 
 var shopTypeIconImageUrlDefault = "default.png";
 var userIconImageLocation = "../images/map_icons/user.png";
