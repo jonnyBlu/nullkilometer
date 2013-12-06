@@ -1,4 +1,6 @@
 class PointOfInterestsController < ApplicationController
+  require_dependency 'market'
+  require_dependency 'shop'
 	respond_to :xml, :json
   before_filter :set_poi_type
 
