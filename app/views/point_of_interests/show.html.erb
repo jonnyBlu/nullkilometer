@@ -1,9 +1,8 @@
 <div class="row address"><%= @point_of_interest.address %></div>
 <div class="row productCategories">
-	<% @point_of_interest.products.each do |product|  %>
-		<!-- TODO: unique product category names-->
-		<% catName = Product::CATEGORY_NAMES[product.category] %>
-		<img class="categoryIcon" src="" title="<%= catName %>" alt="<%= catName %>" />
+
+	<% @point_of_interest.product_category_ids.each do |category_id|  %>
+		<img class="categoryIcon" src="<%= root_url+"images/map_icons/food_categories/"+category_id.to_s+".png" %>" title="<%= Product::CATEGORY_NAMES[category_id] %>" alt="<%= Product::CATEGORY_NAMES[category_id] %>" />
 	<% end %>
 </div>
 <div class="row">

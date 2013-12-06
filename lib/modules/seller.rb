@@ -11,13 +11,13 @@ module Seller
 	end
 
 	def product_category_ids
-    @product_category_ids ||= products.map(&:category) 
+    @product_category_ids ||= products.map(&:category)
   end
 
   def product_category_ids=(array)
     array.uniq.each do |id|
       if !product_category_ids.include?(id)
-        self.products.build(:category => id)
+        self.products.create(:category => id)
       end
     end
   end
