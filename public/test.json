@@ -1,47 +1,50 @@
-[
-  {
-    "id": "1",
-    "name":"Verkaufsort 1",
-    "lon":"11.7654",
-    "lat":"50.1429",
-    "openOn":["1", "2", "3", "4" ],
-    "shopTypeId": 1,
-    "address" : "beispiel adresse",
-    "productCategoryIds": [
+{
+  "pointOfSales":
+  [
+    {
+      "id": 1,
+      "name":"Verkaufsort 1",
+      "lon":"11.7654",
+      "lat":"50.1429",
+      "openingTimes":["1", "2", "3", "4" ],
+      "posTypeId": 1,
+      "address" : "beispiel adresse",
+      "productCategoryIds": [
+              "0",
+              "1",
+              "4",
+              "5"
+          ]
+    },
+    {
+      "id": 2,
+      "name":"Verkaufsort 2",
+      "lon":"12.7654",
+      "lat":"52.1429",
+      "openingTimes":["1", "2", "4" ],
+      "posTypeId": 2,
+      "address" : "beispiel adresse",
+      "productCategoryIds": [
             "0",
             "1",
-            "4",
-            "5"
+            "2",
+            "7"
         ]
-  },
-  {
-    "id": "2",
-    "name":"Verkaufsort 2",
-    "lon":"12.7654",
-    "lat":"52.1429",
-    "openOn":["1", "2", "4" ],
-    "shopTypeId": 2,
-    "address" : "beispiel adresse",
-    "productCategoryIds": [
-          "0",
-          "1",
-          "2",
-          "7"
-      ]
-  },
-  {
-    "id": "3",
-    "name":"Verkaufsort 3",
-    "lon":"13.0",
-    "lat":"51.1429",
-    "openOn":["1", "2", "3", "5"],
-    "shopTypeId": 2,
-    "address" : "beispiel adresse",
-    "productCategoryIds": [
-          "0",
-          "2",
-          "3",
-          "7"
-      ]
-  }
-]
+    },
+    {
+      "id": 3,
+      "name":"Verkaufsort 3",
+      "lon":"13.0",
+      "lat":"51.1429",
+      "openingTimes":["1", "2", "3", "5"],
+      "posTypeId": 2,
+      "address" : "beispiel adresse",
+      "productCategoryIds": [
+            "0",
+            "2",
+            "3",
+            "7"
+        ]
+    }
+  ]
+}

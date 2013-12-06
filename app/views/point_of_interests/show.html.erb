@@ -1,0 +1,24 @@
+<div class="row address"><%= @point_of_interest.address %></div>
+<div class="row productCategories">
+	<% @point_of_interest.products.each do |product|  %>
+		<!-- TODO: unique product category names-->
+		<% catName = Product::CATEGORY_NAMES[product.category] %>
+		<img class="categoryIcon" src="" title="<%= catName %>" alt="<%= catName %>" />
+	<% end %>
+</div>
+<div class="row">
+    <div class="span2">Geöffnet am:</div>
+    <div class="span4 openingTimes">
+    	<ul>
+	    	<% @point_of_interest.opening_times.each do |day| %>
+	    		<li><span class="openingTimeDay"><%= I18n.t("date.day_names")[day.dayId] %></span ><%= day.from + " - " + day.to %></li>
+	    	<% end %>
+    	</ul>
+    </div>
+</div> 
+<div class="row website"><%= @point_of_interest.detail_info.website %></div>
+<div class="row">
+        <div class="mail"><%= @point_of_interest.detail_info.mail %></div>
+        <div class="phone"><%= @point_of_interest.detail_info.phone %></div>
+</div>
+<div class="row description"><%=  @point_of_interest.detail_info.description %></div>

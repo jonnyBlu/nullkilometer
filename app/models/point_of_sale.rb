@@ -26,4 +26,6 @@ class PointOfSale < PointOfInterest
   
   #validations
   validates :pos_type, :presence => true, :numericality => { :only_integer => true, :less_than => POS_TYPE_NAMES.length }
+
+
 end

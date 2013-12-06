@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var map = new homeMap();
+	var map = new HomeMap();
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
 	map.locateUser(12);
 	map.loadMarkers();

@@ -58,8 +58,6 @@ $mapWidth:	100%;
 	}
 }
 
-
-
 #profilePageWrapper{
 	#editPosLinkWrapper{
 		text-align:right;
@@ -70,6 +68,13 @@ $mapWidth:	100%;
 		border: none;
 	}
 }
+
+span.openingTimeDay{
+	display: inline-block;
+	width: 100px;
+	margin-right: 10px;
+}
+
 #profilePageHeader{
 	margin-top: 10px;
 	width: $profilePageWrapperWidth;

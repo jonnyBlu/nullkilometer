@@ -1,34 +1,32 @@
-
-var ajaxRequest;
-var pos;
-var plotlayers=[];
-var customLocationMarkerLayer;
-var zoomLevel;
-
-//TODO:
-var homeMap = function(){
-	var map;
-
-	var customLocationMarkerIcon = L.icon({
+var HomeMap = function(){
+	var 
+	ajaxRequest,
+	pos, 
+	plotlayers=[],
+	curPosMarkerLayer,
+	zoomLevel,
+	map,
+	markerIconWidth = 24,
+	markerIconHeight = 40,
+	curPosMarkerIconWidth = 50,
+	curPosMarkerIconHeight = 66,	
+	curPosMarkerIcon = L.icon({
 	    iconUrl: userIconImageLocation,
-	    iconSize:     [50, 66], // size of the icon
+	    iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
 	    shadowSize:   [50, 64], // size of the shadow
-	    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+	    iconAnchor:   [curPosMarkerIconWidth/2, curPosMarkerIconHeight], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
 	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	});
-
-	var markerIcon = L.icon({
+	}),
+	markerIcon = L.icon({
 	    iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
-	    iconSize:     [24, 40], // size of the icon
+	    iconSize:     [markerIconWidth, markerIconHeight], // size of the icon
 	    shadowSize:   [50, 64], // size of the shadow
-	    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+	    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
 	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	});
-
-	
-	this.initmap = function(lat, lon, zoomLevel){
+	}),
+	initmap = function(lat, lon, zoomLevel){
 	    var options = {center : new L.LatLng(lat, lon), zoom : zoomLevel };     
 	    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	      	osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors',
@@ -37,29 +35,25 @@ var homeMap = function(){
 	    map = new L.Map('map', options).addLayer(mapLayer);
 	    map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
-	}
-
-	this.locateUser = function(zoomLevel){
+	},
+	locateUser = function(zoomLevel){
 		this.zoomLevel = zoomLevel;
 		map.locate({setView : true, maxZoom:  zoomLevel});
-	}
-
-	this.loadMarkers = function (){
+	},
+	loadMarkers = function (){
 		// set up AJAX request
 		$.ajax({
 			type: "GET",
 	  		dataType: "json",
-			  url: "test.json",
-			  //url: "api/point_of_productions",
+			url: "api/point_of_sales",
 		  	success: onSuccessLoadMarkers,
 		  	error: function(xhr, error){
 	        	console.debug(xhr); console.debug(error);
 	 		}
 		}).done(function() {
 		});
-	}
-
-	this.getOSMAddressHome = function (data){
+	},
+	getOSMAddressHome = function (data){
 		var resultsSelector = $("#locationResultPopup");
 
 		resultsSelector.html("<p>"+TEXT_ADDRESSSELECTION+'</p><ul></ul>');
@@ -97,22 +91,20 @@ var homeMap = function(){
 			resultsSelector.html('<div>No Search Results</div>');
 			console.warn("No Search Results received from OSM or something went wrong");
 		}
-	}
-
-	function onLocationFound(e) {
-		customLocationMarkerLayer = new L.Marker(e.latlng, {icon: customLocationMarkerIcon});
-		map.addLayer(customLocationMarkerLayer);
-	}
-
-	function onLocationError(e) {
+	},
+	onLocationFound = function(e) {
+		curPosMarkerLayer = new L.Marker(e.latlng, {icon: curPosMarkerIcon});
+		map.addLayer(curPosMarkerLayer);
+	},
+	onLocationError = function(e) {
 		console.log(e.message);
-	}
-
-	function onSuccessLoadMarkers(pos){
-		console.log(pos);
+	},
+	onSuccessLoadMarkers = function(results){
+		console.log(results);
+		var pos = results.pointOfSales;
 		removeMarkers();
 		for (i=0;i<pos.length;i++) {
-			var shopTypeId = pos[i].shopTypeId;
+			var shopTypeId = pos[i].posTypeId;
 			markerIcon.options.iconUrl = shopTypeIconImageLocation+shopTypeIconImageUrls[shopTypeId];
 
 			var latlon = new L.LatLng(pos[i].lat,pos[i].lon, true);
@@ -123,14 +115,13 @@ var homeMap = function(){
 			bindListeners(marker);
 			plotlayers.push(marker);
 		}
-	}
-
-	function bindListeners(marker){
+	},
+	bindListeners = function(marker){
 		var posId = marker.data.id;
 		var posName = marker.data.name;//plot.name;
-		var posType = shopTypeNames[marker.data.shopTypeId];
+		var posType = shopTypeNames[marker.data.posTypeId];
 		var productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames);
-		var openingTimes = generateReadableList(marker.data.openOn, weekDayNames);
+		var openingTimes = generateReadableList(marker.data.openingTimes, weekDayNames);
 		var address =  marker.data.address;
 
 		marker.on('click', function(evt) {
@@ -156,30 +147,33 @@ var homeMap = function(){
 				$(".mouseover-popup").remove();
 			//}	
 		});
-	}
-
-	function removeMarkers() {
+	}, 
+	removeMarkers = function() {
 		for (i=0;i<plotlayers.length;i++) {
 			map.removeLayer(plotlayers[i]);
 		}
 		plotlayers=[];
-	}
-
-
-	function zoomTo(lat, lon, zoomLevel){
+	},
+	zoomTo = function(lat, lon, zoomLevel){
 		var coordinates = new L.LatLng(lat, lon, true);
 		map.panTo(coordinates);
 		map.setZoom(zoomLevel);
-		customLocationMarkerLayer.setLatLng(coordinates);
-	}
-
-	function generateReadableList(ids, arrayWithNames){
+		curPosMarkerLayer.setLatLng(coordinates);
+	},
+	generateReadableList = function(ids, arrayWithNames){
 		var list = "";
 		$.each(ids, function(){
 			list += arrayWithNames[this]+", ";
 		});
 		list = list.substring(0, list.length-2);
 		return list;
+	};
+
+	return {
+		initmap: initmap,
+		locateUser: locateUser,
+		loadMarkers: loadMarkers,
+		getOSMAddressHome: getOSMAddressHome		
 	}
 }
 
