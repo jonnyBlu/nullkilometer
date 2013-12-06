@@ -1,6 +1,6 @@
 collection @point_of_interests #, :root => :pointOfSales, :object_root => false
 
-node do :self |pos|
+node :self do |pos|
 	point_of_sale_path(pos)
 end
 # node do :links |pos|
