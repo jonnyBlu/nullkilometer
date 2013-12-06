@@ -57,6 +57,7 @@ de:
     pos_type_names:
     - "Markt"
     - "Supermarkt"
+    - "Laden"
     - "Kiosk"
     - "Bauernhofladen"
   product:
@@ -69,3 +70,25 @@ de:
     - "Konserven"
     - "Brot"
     - "Getrocknete Waren"
+  button:
+    add_new_point_of_sales: "Neuen Verkaufsort hinzufügen"
+    search_point_of_sales: "Nach Verkaufsort suchen"
+  filter:
+    what: "WAS?"
+    where: "WO?"
+    when: "WANN?" 
+  input:
+    commands:
+        add_an_address: "Adresse eingeben"
+  links:
+    global:
+        about: "Über"
+        contacts: "Kontakte"
+        imprint: "Impressum"
+        home: "Startseite"
+        map: "Karte"
+        register: "Sich registrieren"
+        login: "Sich anmelden"
+  title:
+    main: "Suche nach lokale Produkte"
+    by: "von Nullkilometer"

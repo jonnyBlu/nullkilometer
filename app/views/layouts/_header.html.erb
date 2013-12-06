@@ -3,11 +3,11 @@
     <div class="container">
       <%= link_to "Nullkilometer", :root, id: "logo" %>
       <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home",    :root %></li>
-          <li><%= link_to "Map",    "/map" %></li>          
-      <!--    <li><%= link_to "Registrieren",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li> -->
+        <ul class="nav pull-right" id="topMenuLinks">
+              <li><%= link_to I18n.t('links.global.home'),   :root %></li>
+              <li><%= link_to I18n.t('links.global.map'),   '/map' %></li>
+            <!--     <li><%= link_to I18n.t('links.global.register'),   '#' %></li>
+              <li><%= link_to I18n.t('links.global.login'),   '#' %></li>-->      
         </ul>
       </nav>
     </div>

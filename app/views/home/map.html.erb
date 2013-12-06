@@ -5,7 +5,7 @@
 <%=  render 'infoboxContent' %>
 
 <div id="activityPannel">
-	<a href="/addShop" class="btn btn-default" type="button" id="addAPlaceButton">Neuen Verkaufsort Hinzufügen
+	<a href="/addShop" class="btn btn-default" type="button" id="addAPlaceButton"><%= I18n.t("button.add_new_point_of_sales") %>
 	</a>
 	<div class="tooltip" id="tooltipAddAPosButton"></div>
 </div>
@@ -15,7 +15,7 @@
 		<div id="mapFilter" class="hidden">     
 		 	<div class="row">
 		    	<div class="span2"> 
-		      		<p>WAS?</p>
+		      		<p><%= I18n.t("filter.what") %></p>
 		      		<ul>
 		      			<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
 		      			<li>
@@ -29,7 +29,7 @@
 		      		</ul>
 		    	</div>
 		    	<div class="span2"> 
-		      		<p>WO?</p>
+		      		<p><%= I18n.t("filter.where") %></p>
 		      		<ul>
 		      			<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
 		      			<li>
@@ -42,7 +42,7 @@
 		      		</ul>
 		    	</div>
 		    	<div class="span2"> 
-		      		<p>WANN?</p>
+		      		<p><%= I18n.t("filter.when") %></p>
 		      		<ul>
 			      		<% I18n.t("date.day_names").each_with_index do |day, index| %>
 		      			<li><label class="checkbox">
@@ -54,13 +54,13 @@
 		    	</div>
 		  	</div>
 		</div>
-		<button class="btn btn-large btn-block" type="button" id="mapFilterButton">Nach Verkaufsort Suchen</button>
+		<button class="btn btn-large btn-block" type="button" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
 	</div>
 	<div id="addressLookupContainer">
 		<div class="control-group">
 			<div class="controls">
 		   		<div class="input-prepend">
-		      		<input class="span2" id="locationInput" type="text" placeholder="Adresse eingeben">
+		      		<input class="span2" id="locationInput" type="text" placeholder="<%= I18n.t("input.commands.add_an_address") %>">
 		      		<a class="btn" href="#" id="locationSubmit"><i class="icon-search"></i></a>
 		   		 </div>
 		  	</div>

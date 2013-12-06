@@ -1,16 +1,17 @@
 $(document).ready(function(){
-	initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
-	locateUser(12);
-	loadMarkers();
+	var map = new homeMap();
+	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
+	map.locateUser(12);
+	map.loadMarkers();
 	loadFilterListeners();
 	var buttonSelector = $("#addressLookupContainer #locationSubmit");
 	var inputSelector = $("#addressLookupContainer #locationInput");
 	var resultsSelector = $("#locationResultPopup");
-	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, getOSMAddressHome);
+	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddressHome);
 });
 
 
-function loadFilterListeners(){
+var loadFilterListeners = function(){
 	$("#mapFilterButton").click(function(){
 		$("#mapFilter").slideToggle();
 	});
@@ -66,12 +67,7 @@ function loadFilterListeners(){
 			}
 		});
 	});
-
-}
-
-
-
-
+};
 var getCheckedValues = function(inputName){
 	var array = [];
 	var productCategoryFilterInputs = $("#mapFilter").find("input[name="+inputName+"]");
@@ -79,4 +75,4 @@ var getCheckedValues = function(inputName){
 		if(this.checked) array.push($(this).val());
 	});
 	return array;
-}
+};

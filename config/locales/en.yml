@@ -5,17 +5,40 @@ en:
   hello: "Hello world"
   point_of_sale:
     pos_type_names:
-    - "market"
-    - "supermarket"
-    - "kiosk"
-    - "farmers shop"
+    - "Market"
+    - "Supermarket"
+    - "Shop"
+    - "Kiosk"
+    - "Farmers shop"
   product:
     category_names:
-    - "milkproducts"
-    - "fruits and veggies"
-    - "fish"
-    - "meat"
-    - "eggs"
-    - "tinned food"
-    - "bread"
-    - "dried food"
+    - "Milkproducts"
+    - "Fruits and veggies"
+    - "Fish"
+    - "Meat"
+    - "Eggs"
+    - "Tinned food"
+    - "Bread"
+    - "Dried food"
+  button:
+    add_new_point_of_sales: "Add a new selling place"
+    search_point_of_sales: "Look for selling places"
+  filter:
+    what: "WHAT?"
+    where: "WHERE?"
+    when: "WHEN?" 
+  input:
+    commands:
+        add_an_address: "Enter an address"
+  links:
+    global:
+        about: "About"
+        contacts: "Contacts"
+        imprint: "Imprint"
+        home: "Home"
+        map: "Map"
+        register: "Register"
+        login: "Log in"
+  title:
+    main: "Search for local products"
+    by: "by Nullkilometer"

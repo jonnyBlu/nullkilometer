@@ -2,10 +2,12 @@
 
 /* mixins, variables, etc. */
 
-$grayMediumLight: #eaeaea;
+$grayMediumLight: #eee;
 $fontFamilyLogo: 'Fenix';
 $backgroundColor: #F7F2C6;
 $buttonColor1: #D5D0A4;
+$grayVeryLight: #eee;
+$textFontFamily : "Ubuntu-R";
 
 @font-face
 {
@@ -31,9 +33,6 @@ a, a:link, a:visited {
   text-decoration: none;
 }
 
-a:hover {
-  background-color: none;
-}
 
 section {
   overflow: auto;
@@ -106,7 +105,23 @@ p {
   color: white;
 }
 
+/* links in the header on the right */
+#topMenuLinks > li{
+  line-height: 30px;
+  a {
+    font-size: large;
+    color: $grayVeryLight;
+  }
+}
+
 /* footer */
+
+header, footer{
+  a:hover {
+    text-decoration: none;
+    background: none;
+  }
+}
 
 footer {
 	position: relative;
@@ -146,11 +161,12 @@ footer {
 
 
 .infoDiv {
-  font-family : "Ubuntu-R";
+  
   margin: 30px;
   p{
       font-size: 18px;
       line-height: 150%;
+      font-family : $textFontFamily;
   }
   span{
     font-weight: bold;
