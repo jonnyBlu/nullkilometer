@@ -1,23 +1,38 @@
-<div class="row address"><%= @point_of_interest.address %></div>
-<div class="row productCategories">
+<% content_for :javascript_includes do %>
+    <%#= javascript_include_tag "profile_page/profile_page.js" %>
+    <%#= javascript_include_tag "profile_page/map_profile_page.js" %>
+<% end %>
 
-	<% @point_of_interest.product_category_ids.each do |category_id|  %>
-		<img class="categoryIcon" src="<%= root_url+"images/map_icons/food_categories/"+category_id.to_s+".png" %>" title="<%= Product::CATEGORY_NAMES[category_id] %>" alt="<%= Product::CATEGORY_NAMES[category_id] %>" />
+<div id="profilePageHeader">
+	<ul>
+	  <li id="posName"><%= @point_of_interest.name %></li>
+	 	<li id="posType"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.pos_type] %></li>
+	 	<li id="posLocationDegree">todo locality degree</li>
+	</ul>
+</div>
+
+<div class="wrapper profileWrapper" id="profilePageWrapper">
+	<div id="profilePageContainer" class="profileContainer">
+		<div class="row">
+			<div class="span6">
+				<%=  render 'posInfoList' %>
+			</div>
+			<div class="span5">
+				<!--<div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div>-->		
+				<div id="profilePagePosMap">Map container</div>
+			</div>
+		</div>
+	</div>
+
+	<% if @point_of_interest.pos_type == 0 %>
+		<div id="marketStallsTitle" class="row">
+			<div class="span6"><h4>Marktstände:</h4></div>
+			<!--<div class="span5"><div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div></div>-->
+		</div>
+							
+		<div id="marketStallsContainer">
+			<div class="accordion" id="accordion2"></div>
+		</div>
+		<% # render 'marketStallsContainer' %>
 	<% end %>
 </div>
-<div class="row">
-    <div class="span2">Geöffnet am:</div>
-    <div class="span4 openingTimes">
-    	<ul>
-	    	<% @point_of_interest.opening_times.each do |day| %>
-	    		<li><span class="openingTimeDay"><%= I18n.t("date.day_names")[day.dayId] %></span ><%= day.from + " - " + day.to %></li>
-	    	<% end %>
-    	</ul>
-    </div>
-</div> 
-<div class="row website"><%= @point_of_interest.detail_info.website %></div>
-<div class="row">
-        <div class="mail"><%= @point_of_interest.detail_info.mail %></div>
-        <div class="phone"><%= @point_of_interest.detail_info.phone %></div>
-</div>
-<div class="row description"><%=  @point_of_interest.detail_info.description %></div>
