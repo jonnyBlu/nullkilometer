@@ -25,13 +25,15 @@
 			</div>
 		</div>
 	</div>
-	<div id="marketStallsTitle" class="row">
-		<div class="span6"><h4>Marktstände:</h4></div>
-		<!--<div class="span5"><div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div>--></div>
-	</div>
-						
-	<div id="marketStallsContainer">
-		<div class="accordion" id="accordion2"></div>
-	</div>
-	<%=  render 'marketStallsContainer' %>
+	<% if @point_of_interest.pos_type == 0 %>
+		<div id="marketStallsTitle" class="row">
+			<div class="span6"><h4>Marktstände:</h4></div>
+			<!--<div class="span5"><div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div></div>-->
+		</div>
+							
+		<div id="marketStallsContainer">
+			<div class="accordion" id="accordion2"></div>
+		</div>
+		<% # render 'marketStallsContainer' %>
+	<% end %>
 </div>
