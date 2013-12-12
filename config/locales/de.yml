@@ -63,12 +63,13 @@ de:
   product:
     category_names:
     - "Milchprodukte"
-    - "Obst und Gemüse"
+    - "Obst"
+    - "Gemüse"
     - "Fisch"
     - "Fleisch"
     - "Eier"
-    - "Konserven"
     - "Brot"
+    - "Konserven"
     - "Getrocknete Waren"
   button:
     add_new_point_of_sales: "Neuen Verkaufsort hinzufügen"
