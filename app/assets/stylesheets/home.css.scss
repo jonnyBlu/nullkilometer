@@ -100,52 +100,11 @@ ul{
 	}
 }
 
-.productCategoryIcon{
-	float:left;
-	display: block;
-	background-image: url("../images/map_icons/food_categories/default.jpg");
-	background-repeat: no-repeat;
-	width:50px;
-	height:40px;
-	padding-right: 10px;
-}
-#productCategoryIcon_1{ background-image: url("../images/map_icons/food_categories/milk.png"); }
-#productCategoryIcon_2{ background-image: url("../images/map_icons/food_categories/vegetables.png"); }
-#productCategoryIcon_3{ background-image: url("../images/map_icons/food_categories/fish.png"); }
-#productCategoryIcon_4{ background-image: url("../images/map_icons/food_categories/meat.png"); }
-#productCategoryIcon_5{ background-image: url("../images/map_icons/food_categories/eggs.png"); }
-#productCategoryIcon_6{ background-image: url("../images/map_icons/food_categories/conserves.png"); }
-#productCategoryIcon_7{ background-image: url("../images/map_icons/food_categories/bread.png"); }
-#productCategoryIcon_8{ background-image: url("../images/map_icons/food_categories/dried.png"); }
-
-
-.shopCategoryIcon{
-	float:left;
-	display: block;
-	background-image: url("../images/map_icons/product_categories/default.png");
-	background-size: 16px 20px;
-	background-repeat: no-repeat;
-	width:50px;
-	height:40px;
-}
-
-#shopCategoryIcon_0{ background-image: url("../images/map_icons/shop_categories/0.png"); }
-#shopCategoryIcon_1{ background-image: url("../images/map_icons/shop_categories/1.png"); }
-#shopCategoryIcon_2{ background-image: url("../images/map_icons/shop_categories/2.png"); }
-#shopCategoryIcon_3{ background-image: url("../images/map_icons/shop_categories/3.png"); }
-#shopCategoryIcon_4{ background-image: url("../images/map_icons/shop_categories/4.png"); }
-
 /* map filter styling end */
 
+.hidden{ display: none; }
 
-.hidden{
-	display: none;
-}
-
-.row{
-	margin-left: 0px;
-}
-
+.row{ margin-left: 0px; }
 
 #addressLookupContainer{
 	position: absolute;

@@ -21,8 +21,8 @@
 		      			<li>
 		      				<label class="checkbox">
 		      					<input name ="productCategory" type="checkbox" value="<%= index %>" checked>
-		      					<span class="productCategoryIcon" id="productCategoryIcon_<%= index %>">
-		      					</span><%= category %>
+		      					<%= category %>
+		      					<img class = "icon" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>"/>
 		      				</label>
 		      			</li>
 		      			<% end %>
@@ -36,7 +36,7 @@
 		      				<label class="checkbox">
 		      					<input name="shopTypeId" type="checkbox" value="<%= index %>" checked><%= type %>
 		      				</label>
-		      				<span class="shopCategoryIcon" id="shopCategoryIcon_<%= index %>"></span>
+		      				<img class = "icon" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>"/>
 		      			</li>
 		      			<% end %>
 		      		</ul>

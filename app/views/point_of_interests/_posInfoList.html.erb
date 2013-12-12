@@ -1,0 +1,23 @@
+<div class="row address"><%= @point_of_interest.address %></div>
+<div class="row productCategories">
+
+	<% @point_of_interest.product_category_ids.each do |category_id|  %>
+		<img class="categoryIcon" src="<%= root_url+"images/map_icons/food_categories/"+category_id.to_s+".png" %>" title="<%= Product::CATEGORY_NAMES[category_id] %>" alt="<%= Product::CATEGORY_NAMES[category_id] %>" />
+	<% end %>
+</div>
+<div class="row">
+    <div class="span2">Geöffnet am:</div>
+    <div class="span4 openingTimes">
+    	<ul>
+	    	<% @point_of_interest.opening_times.each do |day| %>
+	    		<li><span class="openingTimeDay"><%= I18n.t("date.day_names")[day.dayId] %></span ><%= day.from + " - " + day.to %></li>
+	    	<% end %>
+    	</ul>
+    </div>
+</div> 
+<div class="row website"><%= @point_of_interest.detail_info.website %></div>
+<div class="row">
+        <div class="mail"><%= @point_of_interest.detail_info.mail %></div>
+        <div class="phone"><%= @point_of_interest.detail_info.phone %></div>
+</div>
+<div class="row description"><%=  @point_of_interest.detail_info.description %></div>
