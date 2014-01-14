@@ -7,7 +7,7 @@ end
 # 	{:self => point_of_sale_path(pos))
 # end
 
-attributes :id, :name, :lat, :lon, :posTypeId
+attributes :id, :name, :lat, :lon, :address, :posTypeId
 
 node :productCategoryIds do |pos|
 	updated_product_category_ids(pos)
