@@ -19,15 +19,15 @@
 //= require bootstrap
 //= require jquery.timepicker.js
 //= require leaflet
+//= tree
 
 var INITIALLAT = 52.5233;
 var INITIALLON = 13.4127;
 var ZOOMONMARKERLEVEL = 17;
 var TEXT_ADDRESSSELECTION = "Wähle eine Adresse aus der Liste aus:";
 
-
-var shopTypeNames = ["Laden", "Markt", "Supermarkt", "Kiosk", "Bauernhofladen"];
-var productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Konserven", "Brot", "Getrocknete Waren"];
+var shopTypeNames = ["Markt", "Supermarkt", "Laden", "Kiosk", "Bauernhofladen"];
+var productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Brot", "Konserven", "Getrocknete Waren"];
 var weekDayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 var MARKETINDEX = 1;
 

@@ -1,40 +1,43 @@
 $(document).ready(function(){
-	var map = new HomeMap();
+	var map = new HomeMap(),
+		buttonSelector = $("#addressLookupContainer #locationSubmit"),
+		inputSelector = $("#addressLookupContainer #locationInput"),
+		resultsSelector = $("#locationResultPopup"),
+		loadFilterListeners = function(){
+			$("#mapFilterButton").click(function(){
+				$("#mapFilter").slideToggle();
+			});
+
+			var productCategoryFilterInputs = $("#mapFilter").find("input[name='productCategory']");
+			productCategoryFilterInputs.each(function(){
+				var inp = $(this);
+				inp.click(function(){
+					var checkedProductCategories = getCheckedValues("productCategory");
+					//console.log(checkedProductCategories);
+					map.setMarkerOpacity(checkedProductCategories, "productCategory");				
+				});
+			});
+		},
+		getCheckedValues = function(inputName){
+			var array = [];
+			var productCategoryFilterInputs = $("#mapFilter").find("input[name="+inputName+"]");
+			productCategoryFilterInputs.each(function(){ ;
+				if(this.checked) {array.push($(this).val());}
+			});
+			return array;
+		};
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
-	map.locateUser(12);
+	map.locateUser(6);
 	map.loadMarkers();
-	loadFilterListeners();
-	var buttonSelector = $("#addressLookupContainer #locationSubmit");
-	var inputSelector = $("#addressLookupContainer #locationInput");
-	var resultsSelector = $("#locationResultPopup");
+
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddressHome);
+	loadFilterListeners();
 });
 
 
-var loadFilterListeners = function(){
-	$("#mapFilterButton").click(function(){
-		$("#mapFilter").slideToggle();
-	});
 
-	var productCategoryFilterInputs = $("#mapFilter").find("input[name='productCategory']");
-	productCategoryFilterInputs.each(function(){
-		var inp = $(this);
-		inp.click(function(){
-			var checkedProductCategories = getCheckedValues("productCategory");
-			for (i=0;i<plotlayers.length;i++) {
-				var prodCat = plotlayers[i].data.productCategoryIds;
-				var atLeastOneIsChecked = false;
-				$.each(prodCat, function(key, value){
-					if(jQuery.inArray(value, checkedProductCategories)>=0)
-						atLeastOneIsChecked = true;					
-				});
-				if(atLeastOneIsChecked) plotlayers[i].setOpacity(1);
-				else  
-					plotlayers[i].setOpacity(0);
-			}
-		});
-	});
 
+/*
 	var shopTypeFilterInputs = $("#mapFilter").find("input[name='shopTypeId']");
 	shopTypeFilterInputs.each(function(){
 		var inp = $(this);
@@ -66,13 +69,6 @@ var loadFilterListeners = function(){
 					plotlayers[i].setOpacity(0);
 			}
 		});
-	});
-};
-var getCheckedValues = function(inputName){
-	var array = [];
-	var productCategoryFilterInputs = $("#mapFilter").find("input[name="+inputName+"]");
-	productCategoryFilterInputs.each(function(){ 
-		if(this.checked) array.push($(this).val());
-	});
-	return array;
-};
+	});*/
+
+

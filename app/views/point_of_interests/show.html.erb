@@ -1,12 +1,12 @@
 <% content_for :javascript_includes do %>
-    <%= javascript_include_tag "profile_page/profile_page.js" %>
-    <%= javascript_include_tag "profile_page/map_profile_page.js" %>
+    <%= javascript_include_tag "point_of_interests/show.js" %>
+    <%= javascript_include_tag "point_of_interests/map_profile_page.js" %>
 <% end %>
 <div id="profilePageHeader">
 	<ul>
-	  	<li id="posName">Profilseite</li>
-	 	<li id="posType"></li>
-	 	<li id="posLocationDegree">todo locality degree
+	  	<li id="posName"><%= @point_of_interest.name %></li>
+	 	<li id="posType"><%= @point_of_interest.type %></li>
+	 	<li id="posLocationDegree">locality degree
 <!-- 	 		<div class="progress">
  			 	<div class="bar bar-success" style="width: 35%;"></div>
  			</div> -->
@@ -20,20 +20,12 @@
 				<%=  render 'posInfoList' %>
 			</div>
 			<div class="span5">
-				<!--<div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div>-->	
-				<div id="profilePagePosMap">Map container</div>
+				<!--<div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div>-->
+				<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
 			</div>
 		</div>
 	</div>
 	<% if @point_of_interest.pos_type == 0 %>
-		<div id="marketStallsTitle" class="row">
-			<div class="span6"><h4>Marktstände:</h4></div>
-			<!--<div class="span5"><div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div></div>-->
-		</div>
-							
-		<div id="marketStallsContainer">
-			<div class="accordion" id="accordion2"></div>
-		</div>
-		<% # render 'marketStallsContainer' %>
+		<%=  render 'marketStalls' %>
 	<% end %>
 </div>

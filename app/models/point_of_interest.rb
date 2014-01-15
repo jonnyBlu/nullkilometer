@@ -33,6 +33,7 @@ class PointOfInterest < ActiveRecord::Base
   	self.location = @location_factory.point(val, self.location.lat)
   end
 
+
 	private
   def init_location
     @location_factory = PointOfInterest.rgeo_factory_for_column(:location)

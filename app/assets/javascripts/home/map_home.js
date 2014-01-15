@@ -16,7 +16,7 @@ var HomeMap = function(){
 	    shadowSize:   [50, 64], // size of the shadow
 	    iconAnchor:   [curPosMarkerIconWidth/2, curPosMarkerIconHeight], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
-	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	markerIcon = L.icon({
 	    iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
@@ -24,10 +24,13 @@ var HomeMap = function(){
 	    shadowSize:   [50, 64], // size of the shadow
 	    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
-	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	initmap = function(lat, lon, zoomLevel){
-	    var options = {center : new L.LatLng(lat, lon), zoom : zoomLevel };     
+	    var options = {
+	    		center : new L.LatLng(lat, lon), 
+	    		zoom : zoomLevel
+	    	};     
 	    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	      	osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors',
 	        osm = new L.TileLayer(osmUrl, {maxZoom: 18, minZoom:2, attribution: osmAttribution});    
@@ -100,7 +103,6 @@ var HomeMap = function(){
 		console.log(e.message);
 	},
 	onSuccessLoadMarkers = function(results){
-		console.log(results);
 		var pos = results.pointOfSales;
 		removeMarkers();
 		for (i=0;i<pos.length;i++) {
@@ -119,24 +121,40 @@ var HomeMap = function(){
 	bindListeners = function(marker){
 		var posId = marker.data.id;
 		var posName = marker.data.name;//plot.name;
+		var posAddress = marker.data.address;
 		var posType = shopTypeNames[marker.data.posTypeId];
-		var productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames);
-		var openingTimes = generateReadableList(marker.data.openingTimes, weekDayNames);
+		var productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames);		
+		var openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames);
 		var address =  marker.data.address;
 
 		marker.on('click', function(evt) {
+
+			//resize all markers' icons to default size
+			for (i=0;i<plotlayers.length;i++) {
+				resizeMarkerIcon(plotlayers[i], false);
+			}
+			map.closePopup();
+
 			$("#infoboxContent .title").html(posName);
 			$("#infoboxContent .type").html(posType);
-			$("#infoboxContent .productCategories").html("Verkaufte Produktkategorien: " + productCategoryIds_readable);
+			$("#infoboxContent .address").html(posAddress);
+			$("#infoboxContent .productCategories").html("Verkauft wird: " + productCategoryIds_readable);
 			$("#infoboxContent .openingTimes").html("Öffnungszeiten: " + openingTimes);
 
 			var infoBoxContent = $("#hiddenInfoboxContentContainer").html();
-			marker.bindPopup(infoBoxContent, {className: 'click-popup'});
-			//TODO: edit correctly
-			$("#linkToProfilePage").attr("href", "/profilePage?id="+posId);
+
+			marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
+			resizeMarkerIcon(marker, true);
+			marker.openPopup();
+
+			$("#map, .leaflet-popup-close-button").click(function(){
+				resizeMarkerIcon(marker, false);
+			});
+
+			$("#linkToProfilePage").attr("href", "/api/point_of_sales/"+posId+".html");
 		});
 
-		marker.on('mouseover', function(evt) {
+/*		marker.on('mouseover', function(evt) {
 			//evt.target.closePopup();
 		    marker.bindPopup(productCategoryIds_readable, {className: 'mouseover-popup'});
 		    marker.openPopup();
@@ -146,7 +164,7 @@ var HomeMap = function(){
 			//if($(".mouseover-popup").length>0){
 				$(".mouseover-popup").remove();
 			//}	
-		});
+		});*/
 	}, 
 	removeMarkers = function() {
 		for (i=0;i<plotlayers.length;i++) {
@@ -160,20 +178,60 @@ var HomeMap = function(){
 		map.setZoom(zoomLevel);
 		curPosMarkerLayer.setLatLng(coordinates);
 	},
+	generateOpeningTimesList = function(ids, arrayWithNames){
+		var list = "<ul>";
+		$.each(ids, function(){
+			list+="<li><span class='openingTimeDay'>"+arrayWithNames[this.dayId]+"</span>"+this.from+ " - "+ this.to;
+			list+="</li>";
+		});
+		list+="</ul>";
+		return list;
+	},
 	generateReadableList = function(ids, arrayWithNames){
-		var list = "";
+		var list = "<div class='productCategories'>";
+		$.each(ids, function(){
+			list += "<img class='categoryIcon' src='http://localhost:3000/images/map_icons/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
+		});
+		list += "</div>";
+/*		var list = "";
 		$.each(ids, function(){
 			list += arrayWithNames[this]+", ";
 		});
-		list = list.substring(0, list.length-2);
+		list = list.substring(0, list.length-2);*/
 		return list;
+	},
+	resizeMarkerIcon = function(marker, enlarge){
+		var width = enlarge ? (markerIconWidth + 20) : markerIconWidth; 
+		var height = enlarge ? (markerIconHeight + 20) : markerIconHeight;
+		var newIcon = marker.options.icon;
+		var posTypeId = marker.data.posTypeId;
+		newIcon.options.iconUrl = shopTypeIconImageLocation+posTypeId+".png";
+		newIcon.options.iconSize[0] = width;
+		newIcon.options.iconSize[1] = height;
+		marker.setIcon(newIcon);
+	},
+	setMarkerOpacity = function(checkedParameterValues, parameterNamesToCheck){
+		for (i=0;i<plotlayers.length;i++) {
+			var atLeastOneIsChecked = false;
+			var parameters;
+			if(parameterNamesToCheck == "productCategory")
+				parameters = plotlayers[i].data.productCategoryIds;
+			$.each(parameters, function(key, value){
+				if(jQuery.inArray(value.toString(), checkedParameterValues)>=0)
+					atLeastOneIsChecked = true;					
+			});
+			if(atLeastOneIsChecked) plotlayers[i].setOpacity(1);
+			else  
+				plotlayers[i].setOpacity(0);
+		}
 	};
 
 	return {
 		initmap: initmap,
 		locateUser: locateUser,
 		loadMarkers: loadMarkers,
-		getOSMAddressHome: getOSMAddressHome		
+		getOSMAddressHome: getOSMAddressHome,
+		setMarkerOpacity: setMarkerOpacity		
 	}
 }
 

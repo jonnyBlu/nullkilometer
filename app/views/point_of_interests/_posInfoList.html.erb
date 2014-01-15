@@ -1,9 +1,6 @@
 <div class="row address"><%= @point_of_interest.address %></div>
 <div class="row productCategories">
-
-	<% @point_of_interest.product_category_ids.each do |category_id|  %>
-		<img class="categoryIcon" src="<%= root_url+"images/map_icons/food_categories/"+category_id.to_s+".png" %>" title="<%= Product::CATEGORY_NAMES[category_id] %>" alt="<%= Product::CATEGORY_NAMES[category_id] %>" />
-	<% end %>
+    <%= render :partial => "productCategoryImages", :locals => {:seller => @point_of_interest} %>
 </div>
 <div class="row">
     <div class="span2">Geöffnet am:</div>
