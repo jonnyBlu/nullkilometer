@@ -2,12 +2,12 @@ var HomeMap = function(){
 	var 
 	ajaxRequest,
 	pos, 
-	plotlayers=[],
+	markersOfTheMap=[],
 	curPosMarkerLayer,
 	zoomLevel,
 	map,
-	markerIconWidth = 24,
-	markerIconHeight = 40,
+	markerIconWidth = 30,
+	markerIconHeight = 43,
 	curPosMarkerIconWidth = 50,
 	curPosMarkerIconHeight = 66,	
 	curPosMarkerIcon = L.icon({
@@ -15,7 +15,7 @@ var HomeMap = function(){
 	    iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
 	    shadowSize:   [50, 64], // size of the shadow
 	    iconAnchor:   [curPosMarkerIconWidth/2, curPosMarkerIconHeight], // point of the icon which will correspond to marker's location
-	    shadowAnchor: [4, 62],  // the same for the shadow
+	    shadowAnchor: [4, 62],  
 	    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	markerIcon = L.icon({
@@ -23,7 +23,7 @@ var HomeMap = function(){
 	    iconSize:     [markerIconWidth, markerIconHeight], // size of the icon
 	    shadowSize:   [50, 64], // size of the shadow
 	    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
-	    shadowAnchor: [4, 62],  // the same for the shadow
+	    shadowAnchor: [4, 62],  
 	    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	initmap = function(lat, lon, zoomLevel){
@@ -43,18 +43,8 @@ var HomeMap = function(){
 		this.zoomLevel = zoomLevel;
 		map.locate({setView : true, maxZoom:  zoomLevel});
 	},
-	loadMarkers = function (){
-		// set up AJAX request
-		$.ajax({
-			type: "GET",
-	  		dataType: "json",
-			url: "api/point_of_sales",
-		  	success: onSuccessLoadMarkers,
-		  	error: function(xhr, error){
-	        	console.debug(xhr); console.debug(error);
-	 		}
-		}).done(function() {
-		});
+	loadMarkers = function(){
+		callAjax("api/point_of_sales", null, onSuccessLoadMarkers);
 	},
 	getOSMAddressHome = function (data){
 		var resultsSelector = $("#locationResultPopup");
@@ -112,10 +102,9 @@ var HomeMap = function(){
 			var latlon = new L.LatLng(pos[i].lat,pos[i].lon, true);
 			var marker = new L.Marker(latlon, {icon: markerIcon});
 			marker.data=pos[i];
-
 			map.addLayer(marker);
 			bindListeners(marker);
-			plotlayers.push(marker);
+			markersOfTheMap.push(marker);
 		}
 	},
 	bindListeners = function(marker){
@@ -130,8 +119,8 @@ var HomeMap = function(){
 		marker.on('click', function(evt) {
 
 			//resize all markers' icons to default size
-			for (i=0;i<plotlayers.length;i++) {
-				resizeMarkerIcon(plotlayers[i], false);
+			for (i=0;i<markersOfTheMap.length;i++) {
+				resizeMarkerIcon(markersOfTheMap[i], false);
 			}
 			map.closePopup();
 
@@ -140,9 +129,11 @@ var HomeMap = function(){
 			$("#infoboxContent .address").html(posAddress);
 			$("#infoboxContent .productCategories").html("Verkauft wird: " + productCategoryIds_readable);
 			$("#infoboxContent .openingTimes").html("Öffnungszeiten: " + openingTimes);
+			
+			$("#infoboxContent #linkToProfilePage").attr("href", "/api/point_of_sales/"+posId+".html");
 
 			var infoBoxContent = $("#hiddenInfoboxContentContainer").html();
-
+			
 			marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
 			resizeMarkerIcon(marker, true);
 			marker.openPopup();
@@ -151,7 +142,7 @@ var HomeMap = function(){
 				resizeMarkerIcon(marker, false);
 			});
 
-			$("#linkToProfilePage").attr("href", "/api/point_of_sales/"+posId+".html");
+
 		});
 
 /*		marker.on('mouseover', function(evt) {
@@ -167,10 +158,10 @@ var HomeMap = function(){
 		});*/
 	}, 
 	removeMarkers = function() {
-		for (i=0;i<plotlayers.length;i++) {
-			map.removeLayer(plotlayers[i]);
+		for (i=0;i<markersOfTheMap.length;i++) {
+			map.removeLayer(markersOfTheMap[i]);
 		}
-		plotlayers=[];
+		markersOfTheMap=[];
 	},
 	zoomTo = function(lat, lon, zoomLevel){
 		var coordinates = new L.LatLng(lat, lon, true);
@@ -207,22 +198,43 @@ var HomeMap = function(){
 		var posTypeId = marker.data.posTypeId;
 		newIcon.options.iconUrl = shopTypeIconImageLocation+posTypeId+".png";
 		newIcon.options.iconSize[0] = width;
+		newIcon.options.iconAnchor[0] = width/2;
 		newIcon.options.iconSize[1] = height;
+		newIcon.options.iconAnchor[1] = height;
 		marker.setIcon(newIcon);
 	},
 	setMarkerOpacity = function(checkedParameterValues, parameterNamesToCheck){
-		for (i=0;i<plotlayers.length;i++) {
-			var atLeastOneIsChecked = false;
-			var parameters;
-			if(parameterNamesToCheck == "productCategory")
-				parameters = plotlayers[i].data.productCategoryIds;
-			$.each(parameters, function(key, value){
-				if(jQuery.inArray(value.toString(), checkedParameterValues)>=0)
-					atLeastOneIsChecked = true;					
-			});
-			if(atLeastOneIsChecked) plotlayers[i].setOpacity(1);
-			else  
-				plotlayers[i].setOpacity(0);
+
+		for (i=0;i<markersOfTheMap.length;i++) {
+			var makeMarkerVisible = false;
+			if(parameterNamesToCheck == "productCategory"){
+				var parameters = markersOfTheMap[i].data.productCategoryIds;
+				$.each(parameters, function(key, value){
+					if(jQuery.inArray(value.toString(), checkedParameterValues)>=0)
+						makeMarkerVisible = true;		
+				});
+			}
+
+			else if(parameterNamesToCheck == "shopTypeId"){
+				var value = markersOfTheMap[i].data.posTypeId; 
+				if(jQuery.inArray(value.toString(), checkedParameterValues)>=0) 
+					makeMarkerVisible = true; 
+			}
+
+			else if(parameterNamesToCheck == "openingDay"){
+				var openingTimes = markersOfTheMap[i].data.openingTimes;
+				$.each(openingTimes, function(key, value){
+					var openingDay = value.dayId.toString();
+					if(jQuery.inArray(openingDay, checkedParameterValues)>=0)
+						makeMarkerVisible = true;	
+				});
+			}
+			if(makeMarkerVisible) markersOfTheMap[i].setOpacity(1);
+			else{ // reset marker to default size, with infobox closed
+				markersOfTheMap[i].setOpacity(0);
+				resizeMarkerIcon(markersOfTheMap[i], false);
+				markersOfTheMap[i].closePopup();
+			}
 		}
 	};
 

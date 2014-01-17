@@ -39,14 +39,14 @@ var shopTypeIconImageLocation = iconImageLocation + "shop_categories/";
 var shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"];
 
 var shopTypeIconImageUrlDefault = "default.png";
-var userIconImageLocation = "../images/map_icons/user.png";
+var userIconImageLocation = iconImageLocation + "user.png";
 
 var callAjax = function(url, dataToSend, onSuccess){
     $.ajax({
         type: "GET",
-        dataType: "json",
-        data: dataToSend,
         url: url,
+        data: dataToSend,
+        dataType: "json",
         success: onSuccess,
         error: function(xhr, error){
             console.debug(xhr); console.debug(error);
