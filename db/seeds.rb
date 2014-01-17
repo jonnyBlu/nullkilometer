@@ -19,22 +19,20 @@ end
 for i in (1..5)
   lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
 	lon = rand * 9.0 + 6.0    #between 6,0 and 15,0 with 8 after-comma-digits
-	market = Market.create!( :name => "markt#{i}", 
-												:address => "test address", 
-														:lat => lat, 
-														:lon => lon, 
-										  :posTypeId => 0,
-						 :productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
-			 						 :openingTimes => [{:dayId => 4, :from => "10:00", :to => "17:00"}, {:dayId => 0, :from => "10:00", :to => "17:00"}],
-										:description => "xxx", 
-													 :mail => "mail@markt#{i}.de",
-												:website => "http://www.markt#{i}.de",
-			 						 :marketStalls => [{:name => "standXaufMarkt#{i}", 
-			 																:phone => "12345678", 
-			 																:productCategoryIds => [rand(0..7), 3]}, 
-																		 {:name => "standYaufMarkt#{i}",
-																		  :phone => "12345678",
-																		  :productCategoryIds => [3]}])
+	market = Market.create!(:name => "markt#{i}", 
+							:address => "test address", 
+							:lat => lat, 
+							:lon => lon, 
+							:posTypeId => 0,
+			 				:openingTimes => [{:dayId => 4, :from => "10:00", :to => "17:00"}, 
+			 								  {:dayId => 0, :from => "10:00", :to => "17:00"}],
+							:description => "xxx", 
+							:mail => "mail@markt#{i}.de",
+							:website => "http://www.markt#{i}.de",
+							:productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
+			 				:marketStalls => [{:name => "standXaufMarkt#{i}", :phone => "12345678", :productCategoryIds => [rand(0..7), 3]}, 
+			 								  {:name => "standYaufMarkt#{i}", :phone => "12345678", :productCategoryIds => [3]}]
+			 				)
 end
 
 for i in (1..10)
