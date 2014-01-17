@@ -1,0 +1,208 @@
+$mapFilterWidth: 600px;
+$zIndexMapElements: 1001;
+$buttonAndInputHeight: 35px;
+$buttonColor1: #D5D0A4;
+$corner-radius: 5px;
+
+@mixin roundedCorners($round) {
+  -moz-border-radius: $round;
+  -webkit-border-radius: $round;
+  border-radius: $round;
+}
+
+@mixin roundedCorners_bottom($round) {
+   -moz-border-radius-bottomleft: $round;  
+   -webkit-border-bottom-left-radius: $round;  
+   border-bottom-left-radius: $round;
+
+   -moz-border-radius-bottomright: $round;  
+   -webkit-border-bottom-right-radius: $round;  
+   border-bottom-right-radius: $round;
+}
+
+@mixin boxShadow($expansion,$color){
+    -moz-box-shadow:0px 0px $expansion $color;
+    -webkit-box-shadow:0px 0px $expansion $color;
+    box-shadow:0px 0px $expansion $color;
+}
+
+.map {
+	header {
+		.container {
+			width: 100%;
+		}
+
+		#logo {
+			margin-left: 20px;
+		}
+	}
+
+	.contentContainer {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	#mapFilterContainer,
+	#addShop,
+	#locationResultPopup,
+	#addressLookupContainer {
+		position: absolute;
+		top: 50px;
+	}
+
+	#mapFilterContainer {
+		left: 0px;
+		z-index: $zIndexMapElements;
+		padding: 0px;
+
+		#mapFilter {
+			border: 1px solid #bbb;
+			@include roundedCorners(0px 0px $corner-radius 0px);
+			background-color:rgba(255,255,255,0.8);
+			padding: 10px;
+
+			.span2{
+				width: 180px;
+				margin:0px;
+				p{
+					font-size: 20px;
+					font-weight: bold;
+				}
+				ul{
+					font-size: 15px;
+					margin: 10px 20px 0px 10px;
+					width: 100%;
+					li{
+						height: 40px; 
+						label{
+							padding-right: 10px;
+							float:left;
+						}
+					}
+				}
+			}
+			.span2:first-child {
+				width: 220px;
+			}
+		}
+
+		button {
+			position: relative;
+			top: -1px;
+			width: 312px;
+			height: $buttonAndInputHeight;
+			border: solid 1px #bbb;
+			@include roundedCorners(0px 0px $corner-radius 0px);
+		    background-image: linear-gradient(to bottom, #fff, $buttonColor1);
+		    &:hover { background-color: $buttonColor1 }
+		    font-weight: bold;
+		    font-size: 17px;
+		    padding: 0px;
+			clear: both;
+
+			&:active {
+				border: 0px none;
+			}
+		}
+	}
+
+	#addShop {
+		left: 322px;
+		z-index: 11;
+		a {
+			width: 250px;
+			@include roundedCorners(0px 0px $corner-radius $corner-radius);
+		}
+	}
+
+	#addressLookupContainer {
+		float: right;
+		right: 0px;
+		z-index: $zIndexMapElements;
+		#locationInput{
+			width: 150px;
+			@include roundedCorners(0px 0px 0px $corner-radius);
+		}
+	}
+
+	#locationResultPopup {
+		display: none;
+		z-index: 11;
+		width: 100%;
+		padding: 20px 0px 20px 0px;
+		background-color: white;
+		@include boxShadow(10px, #aaa);
+		@include roundedCorners_bottom(10px);
+
+		p {
+			margin-left: 20px;
+		}
+	}
+
+	#mapContainer {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 50px 0;
+	}
+
+	#map {
+		height: 100%;
+	}
+
+	.leaflet-control-container{
+		position: absolute;
+		top: 30px;
+		right: 43px;
+		margin: 0;
+
+		.leaflet-control-attribution{
+			display: none;
+		}
+
+		.leaflet-bar {
+			border-right: 0px none;
+			border-top: 0px none;
+			@include roundedCorners(0px 0px 0px $corner-radius);
+			overflow: hidden;
+		}
+
+		.leaflet-bar-part-top {
+			@include roundedCorners(0px);
+		}
+
+		.leaflet-bar-part-bottom {
+			@include roundedCorners(0px);
+		}
+	}
+
+	.leaflet-control-zoom {
+		margin: 0;
+
+		a {
+			width: 42px;
+			height: 28px;
+		}
+	}
+
+
+	footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		margin: 0;
+		background: rgba(255,255,255,0.5);
+
+		ul {
+			margin: 0;
+		}
+	}
+
+	.inner-footer {
+		margin: 0 10px;
+	}
+}

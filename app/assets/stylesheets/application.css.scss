@@ -16,4 +16,16 @@
  *= require custom.css.scss
  */
 
-@import 'bootstrap'
+@import 'bootstrap';
+
+home, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+footer {
+	position: absolute;
+	bottom: 0px;
+}
