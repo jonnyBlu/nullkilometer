@@ -4,7 +4,11 @@
 
 $grayMediumLight: #eee;
 $fontFamilyLogo: 'Fenix';
-$backgroundColor: #F7F2C6;
+$backgroundColor: rgba(213, 208, 164, 1);
+$headerColor1: #5b483c;
+$headerColor2: #745948;
+
+
 $buttonColor1: #D5D0A4;
 $grayVeryLight: #eee;
 $textFontFamily : "Helvetica Neue",  sans-serif; /*"Ubuntu-R";*/
@@ -27,21 +31,23 @@ body {
   padding-top: 50px;
   background-color: $backgroundColor !important;  
   /* http://lea.verou.me/css3patterns/# */
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+  background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
+  background-size: 5px 5px;
+  font-family: $textFontFamily;
+}
+
+/* navigation bar*/
+.navbar-inverse .navbar-inner, .navbar{
+    background-image: linear-gradient($headerColor1, $headerColor2);
+    height: 50px;
 }
 
 a, a:link, a:visited {
   text-decoration: none;
 }
 
-/*
-a:hover {
+a.ordinaryLink:hover, a:hover{
   background-color: transparent !important;
-  color: #666 !important;
-}*/
-
-a.ordinaryLink:hover{
-  background-color: transparent;
   color: #666; /*  stays the same */
 }
 
@@ -92,7 +98,7 @@ button:focus::-moz-focus-inner {
     border: none;
 
 }
-button:focus{
+input:focus, button:focus{
   outline: none;
 }
 
@@ -104,21 +110,13 @@ button:focus{
   box-shadow: 0 0px 40px 2px #888;
 }
 
-img.icon{
-  height:auto; width:auto; max-width:35px; max-height:35px;
-}
-
-.inactive{
-    opacity:0.4;
-    filter:alpha(opacity=40); /* For IE8 and earlier */
-}
-
-
 .hidden{
   display: none;
 }
 
 /* header */
+
+
 
 #logo {
   font-family: $fontFamilyLogo;
@@ -180,11 +178,7 @@ footer {
   }
 }
 
-/* navigation bar*/
-.navbar-inverse .navbar-inner, .navbar{
-    background-image: linear-gradient(rgb(80, 60, 30), rgb(70, 50, 20));
-    height: 50px;
-}
+
 
 .btn-default{
      background-image: linear-gradient(to bottom, #fff, $buttonColor1);
@@ -203,4 +197,32 @@ footer {
   span{
     font-weight: bold;
   }
+}
+
+
+/*universal specific styles*/
+
+/*used in infobox and profile page*/
+.infoHeader{
+  width:100%;
+  height: 30px;
+  ul{
+    display: inline;
+  }
+  li{
+    padding-right:30px;
+    float:left;
+  }
+  li:last-child{
+    float: right;
+  }
+  li:first-child{
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+}
+
+.categoryIcon{
+  margin-left: 4px;
 }

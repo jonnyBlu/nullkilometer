@@ -58,6 +58,9 @@ $mapWidth:	100%;
 		font-weight: bold;
 	}
 }
+#profilePageHeader{
+	padding: 20px 0px 20px 10px;
+}
 
 #profilePageWrapper{
 	#editPosLinkWrapper{
@@ -76,25 +79,7 @@ span.openingTimeDay{
 	margin-right: 10px;
 }
 
-#profilePageHeader{
-	margin-top: 10px;
-	width: $profilePageWrapperWidth;
-	ul{
-		display: inline;
-	}
-	li{
-		padding-right:30px;
-		float:left;
-	}
-	li:last-child{
-		float: right;
-	}
-	li:first-child{
-		font-size: 30px;
-		font-weight: bold;
-		padding-bottom: 10px;
-	}
-}
+
 
 /* market stalls styling */
 #profilePagePosMap{

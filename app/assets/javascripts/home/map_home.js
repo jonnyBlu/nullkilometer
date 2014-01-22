@@ -8,8 +8,8 @@ var HomeMap = function(){
 	map,
 	markerIconWidth = 30,
 	markerIconHeight = 43,
-	curPosMarkerIconWidth = 50,
-	curPosMarkerIconHeight = 66,	
+	curPosMarkerIconWidth = 40,
+	curPosMarkerIconHeight = 40,	
 	curPosMarkerIcon = L.icon({
 	    iconUrl: userIconImageLocation,
 	    iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon

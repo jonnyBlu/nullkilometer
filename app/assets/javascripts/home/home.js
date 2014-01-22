@@ -26,19 +26,20 @@ $(document).ready(function(){
 		filterTagsBy = function(inputName){
 			var inputs = $("#mapFilter").find("input[name='"+inputName+"']");
 			inputs.each(function(){
-				$(this).click(function(){
-					console.log($(this).parent().find("img.icon"));
-					$(this).parent().find("img.icon").toggleClass("inactive");
-					var checkedValues = getCheckedValues(inputName);
-					map.setMarkerOpacity(checkedValues, inputName);				
+				$(this).parent().click(function(){
+					$(this).find("input").toggleClass("inactive");
+					$(this).find("span").toggleClass("inactive");
+					var activeValues = getActiveValues(inputName);
+					map.setMarkerOpacity(activeValues, inputName);				
 				});
 			});
 		},
-		getCheckedValues = function(inputName){
+		getActiveValues = function(inputName){
 			var array = [];
 			var filterInputs = $("#mapFilter").find("input[name="+inputName+"]");
-			filterInputs.each(function(){ ;
-				if(this.checked) {array.push($(this).val());}
+			filterInputs.each(function(){ 
+				var active = ($(this).hasClass("inactive")) ? false : true;;
+				if(active) {array.push($(this).val());}
 			});
 			return array;
 		};

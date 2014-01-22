@@ -21,11 +21,8 @@
 		      		<ul>
 		      			<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
 		      			<li>
-		      				<div class="checkbox">
-		      					<img class = "icon" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>"/>
-		      					<input name ="productCategory" type="checkbox" value="<%= index %>" checked>
-		      					<%= category %>
-		      				</div>
+	      					<input name ="productCategory" type="image" value="<%= index %>" class="imageInput" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>">
+	      					<span><%= category %></span>
 		      			</li>
 		      			<% end %>
 		      		</ul>
@@ -35,11 +32,8 @@
 		      		<ul>
 		      			<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
 		      			<li>
-		      				<label class="checkbox">
-		      					<img class = "icon" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>"/>
-		      					<input name="shopTypeId" type="checkbox" value="<%= index %>" checked><%= type %>
-		      				</label>
-
+		      				<input name="shopTypeId" type="image" value="<%= index %>" class="imageInput" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>">
+		      				<span><%= type %></span>
 		      			</li>
 		      			<% end %>
 		      		</ul>
@@ -48,11 +42,12 @@
 		      		<p><%= I18n.t("filter.when") %></p>
 		      		<ul>
 			      		<% I18n.t("date.day_names").each_with_index do |day, index| %>
-		      			<li><label class="checkbox">
-		      				<input name="openingDay" type="checkbox" value="<%= index %>" checked><%= day %>
-		      			</label>
-		      		</li>
-		      		<% end %>
+		      			<li>
+		      				<!--<input name="openingDay" type="checkbox" value="<%#= index %>" checked><%#= day %>-->
+		      				<input name="openingDay" type="image" value="<%= index %>" class="imageInput" src="<%= root_url+"images/map_icons/round_button.png" %>">
+		      				<span><%= day %></span>
+		      			</li>
+		      			<% end %>
 		      		</ul>
 		    	</div>
 		  	</div>

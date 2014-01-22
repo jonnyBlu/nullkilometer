@@ -1,8 +1,8 @@
 
 $mapHeight: 600px;
 $halfOfmapHeight: 300px;
-$mapFilterWidth: 600px;
-$mapFilterHeight: 350px;
+$mapFilterWidth: 550px;
+$mapFilterHeight: 470px;
 $zIndexMapElements: 1001;
 $buttonAndInputHeight: 35px;
 $transparentBackground: rgba(255, 255, 255, 0.8);
@@ -55,14 +55,7 @@ ul{
 
 /* map filter styling */
 
-#mapFilterContainer {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: $zIndexMapElements;
-	border-radius: 5px;
-	padding: 0px;
-}
+
 .customHomeButton{
 	height: $buttonAndInputHeight;
 	background-color: $transparentBackground;
@@ -79,14 +72,23 @@ ul{
 }
 #mapFilterButton{
 	width:100%;
-	min-width: 600px;
+	min-width: 100px;
 	font-weight: bold;
     font-size: 17px;    
 }
 
+#mapFilterContainer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: $zIndexMapElements;
+	border-radius: 5px;
+	padding: 0px;
+	width: $mapFilterWidth;
+}
 #mapFilter{
 	height: $mapFilterHeight;
-	border: none;/*1px solid #bbb;*/
+	border: none;
 	border-bottom: none;
 	padding: 10px;
 	background-color: $transparentBackground;
@@ -98,21 +100,32 @@ ul{
 			font-weight: bold;
 		}
 		ul{
-			font-size: 15px;
-			margin: 10px 20px 0px 10px;
+			font-size: 12px;
+			margin: 10px 20px 0px 0px;
 			width: 100%;
 			li{
-				height: 40px; 
-				label{
-					padding-right: 10px;
-					float:left;
+				height: 50px; 
+				&:hover {
+					cursor:pointer;
 				}
 			}
 		}
 	}
-	.span2:first-child {
-		width: 220px;
+	.span2:last-child{
+		width: 160px;
+		ul > li{
+			height: 40px; 
+			font-size: 13px;
+		}
 	}
+	input.imageInput{
+		height:auto; width:auto; max-width:40px; max-height:40px;
+	}
+}
+
+.inactive{
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
 /* map filter styling end */
@@ -128,7 +141,7 @@ ul{
 	right:0px;
 	z-index: $zIndexMapElements;
 	#locationInput{
-		width: 150px;
+		width: 250px;
 	}
 }
 
@@ -140,7 +153,6 @@ ul{
 	width: 100%;
 	padding: 20px 0px 20px 0px;
 	background-color: white;
-	@include boxShadow(10px, #aaa);
 	@include roundedCorners_bottom(10px);
 	p{
 		margin-left: 20px;
@@ -164,9 +176,14 @@ ul{
 	display: none;
 }
 
+.leaflet-popup-content-wrapper{
+	width: 350px;
+}
 #infoboxContent{
+	width: 320px;
+	font-size:13px;
 	div{
-		padding-bottom: 20px;
+		padding-bottom: 10px;
 	}
 	.footer a{
 		float: right;
