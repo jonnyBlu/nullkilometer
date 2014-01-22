@@ -21,6 +21,7 @@ en:
     - "Bread"
     - "Tinned food"
     - "Dried food"
+    - "Other products"
   button:
     add_new_point_of_sales: "Add a new selling place"
     search_point_of_sales: "Look for selling places"

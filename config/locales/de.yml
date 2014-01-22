@@ -73,9 +73,10 @@ de:
     - "Fisch"
     - "Fleisch"
     - "Eier"
-    - "Brot"
+    - "Brotprodukte"
     - "Konserven"
     - "Getrocknete Waren"
+    - "Sonstiges"
   button:
     add_new_point_of_sales: "Neuen Verkaufsort hinzufügen"
     search_point_of_sales: "Nach Verkaufsort suchen"
