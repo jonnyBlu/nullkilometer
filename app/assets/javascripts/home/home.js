@@ -45,8 +45,8 @@ $(document).ready(function(){
 		};
 
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
-	map.locateUser(6);
 	map.loadMarkers();
+	map.locateUser(6);
 
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddressHome);
 	loadFilterListeners();

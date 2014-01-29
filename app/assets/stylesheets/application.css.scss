@@ -13,7 +13,274 @@
  *= require jquery.timepicker.css
  *= require jquery.ui.all 
  *= require_tree .
- *= require custom.css.scss
  */
 
-@import 'bootstrap'
+@import 'bootstrap';
+
+/* mixins, variables, etc. */
+$grayMediumLight: #eee;
+$fontFamilyLogo: 'Fenix';
+$backgroundColor: rgba(213, 208, 164, 1);
+$headerColor1: #5b483c;
+$headerColor2: #745948;
+$buttonAndInputHeight: 35px;
+$transparentBackground: rgba(255, 255, 255, 0.8);
+$buttonColor0: rgba(231, 231, 199, 1);
+$buttonColor1: rgba(213, 208, 164, 0.8);  
+
+
+$grayVeryLight: #eee;
+$textFontFamily : "Helvetica Neue",  sans-serif; /*"Ubuntu-R";*/
+
+
+@mixin roundedCorners($round) {
+  -moz-border-radius:$round;
+  -webkit-border-radius:$round;
+  border-radius:$round;
+}
+
+@mixin roundedCorners_bottom($round) {
+   -moz-border-radius-bottomleft:$round;  -webkit-border-bottom-left-radius:$round;  border-bottom-left-radius:$round;
+   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
+}
+
+@mixin roundedCorners_bottomright($round){
+     -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
+}
+
+@mixin boxShadow($expansion,$color){
+    -moz-box-shadow:0px 0px $expansion $color;
+    -webkit-box-shadow:0px 0px $expansion $color;
+    box-shadow:0px 0px $expansion $color;
+}
+
+
+@font-face
+{
+    font-family : "Ubuntu-R";
+    src: url('/assets/fonts/Ubuntu-R.ttf');
+}
+
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  color: #aaa;
+  padding-top: 50px;
+  background-color: $backgroundColor !important;  
+  /* http://lea.verou.me/css3patterns/# */
+  background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
+  background-size: 5px 5px;
+  font-family: $textFontFamily;
+}
+
+/* navigation bar*/
+.navbar-inverse .navbar-inner, .navbar{
+    background-image: linear-gradient($headerColor1, $headerColor2);
+    height: 50px;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+}
+a.ordinaryLink, a.ordinaryLink:visited{
+  color: #444;
+}
+
+a.ordinaryLink:hover, a:hover{
+  background-color: transparent !important;
+  color: #666; /*  stays the same */
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+button:focus::-moz-focus-inner {
+    padding: 3px;
+    border: none;
+
+}
+input:focus, button:focus{
+  outline: none;
+}
+
+.contentContainer {
+  background-color: $backgroundColor;
+  padding: 5px 10px 10px 10px;
+  -moz-box-shadow: 0 0px 40px 2px #888;
+  -webkit-box-shadow: 0 0px 40px 2px#888;
+  box-shadow: 0 0px 40px 2px #888;
+}
+
+.hidden{
+  display: none;
+}
+
+/* header */
+
+
+
+#logo {
+  font-family: $fontFamilyLogo;
+  float: left;
+  margin-right: 10px;
+  font-size: 30px;
+  color: white;
+  padding-top:10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover{
+  color: white;
+}
+
+/* links in the header on the right */
+#topMenuLinks > li{
+  line-height: 30px;
+  a {
+    font-size: large;
+    color: $grayVeryLight;
+  }
+}
+
+/* footer */
+
+header, footer{
+  a:hover {
+    text-decoration: none;
+    background: none;
+  }
+}
+
+footer {
+	position: relative;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover { 
+      color: $grayDarker;
+    }
+  }  
+  small { 
+    float: left; 
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+
+.btn-default{
+     background-image: linear-gradient(to bottom, #fff, $buttonColor1);
+     &:hover { background-color: $buttonColor1 }
+}
+
+
+.infoDiv {
+  
+  margin: 30px;
+  p{
+      font-size: 16px;
+      line-height: 150%;
+      font-family : $textFontFamily;
+  }
+  span{
+    font-weight: bold;
+  }
+}
+
+
+/*universal specific styles*/
+
+/*used in infobox and profile page*/
+.infoHeader{
+  width:100%;
+  height: 30px;
+  ul{
+    display: inline;
+  }
+  li{
+    padding-right:30px;
+    float:left;
+  }
+  li:last-child{
+    float: right;
+  }
+  li:first-child{
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+}
+
+.categoryIcon{
+  margin-left: 4px;
+}
+
+/*used in home page*/
+.customButton{
+  height: $buttonAndInputHeight;
+  background-color: $transparentBackground;
+    &:hover { background-color: $buttonColor1; color: #fff }
+    padding: 0px;
+    border: solid 1px #bbb;
+    border: none;
+    color: #555;
+    @include roundedCorners_bottomright(20px);
+}
+

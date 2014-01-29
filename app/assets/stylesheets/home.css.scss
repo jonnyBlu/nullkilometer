@@ -1,34 +1,12 @@
+@import 'application';
 
 $mapHeight: 600px;
 $halfOfmapHeight: 300px;
 $mapFilterWidth: 550px;
 $mapFilterHeight: 470px;
 $zIndexMapElements: 1001;
-$buttonAndInputHeight: 35px;
 $transparentBackground: rgba(255, 255, 255, 0.8);
-$buttonColor0: rgba(233, 228, 184, 0.8);
-$buttonColor1: rgba(213, 208, 164, 0.8);  /* #D5D0A4 */;
 
-@mixin roundedCorners($round) {
-  -moz-border-radius:$round;
-  -webkit-border-radius:$round;
-  border-radius:$round;
-}
-
-@mixin roundedCorners_bottom($round) {
-   -moz-border-radius-bottomleft:$round;  -webkit-border-bottom-left-radius:$round;  border-bottom-left-radius:$round;
-   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
-}
-
-@mixin roundedCorners_bottomright($round){
-	   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
-}
-
-@mixin boxShadow($expansion,$color){
-    -moz-box-shadow:0px 0px $expansion $color;
-    -webkit-box-shadow:0px 0px $expansion $color;
-    box-shadow:0px 0px $expansion $color;
-}
 
 ul{
 	list-style: none;
@@ -56,16 +34,8 @@ ul{
 /* map filter styling */
 
 
-.customHomeButton{
-	height: $buttonAndInputHeight;
-	background-color: $transparentBackground;
-    &:hover { background-color: $buttonColor1; color: #fff }
-    padding: 0px;
-    border: solid 1px #bbb;
-    border: none;
-    color: #555;
-    @include roundedCorners_bottomright(20px);
-}
+
+
 #addAPlaceButton{
 	padding: 0px 20px 0px 20px;
 	/* &:hover { background-color: #00aa00} */
@@ -142,6 +112,10 @@ ul{
 	z-index: $zIndexMapElements;
 	#locationInput{
 		width: 250px;
+		height: 30px;
+	}
+	#locationSubmit{
+		height: 20px;
 	}
 }
 

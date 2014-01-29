@@ -26,8 +26,8 @@
 	<div class="accordion" id="accordion2">
 		<% @point_of_interest.market_stalls.each do |stall| %>
 		  	<div class="accordion-group">
-			    <div class="accordion-heading">
-			      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
+			    <div class="accordion-heading customButton">
+			      <a class="accordion-toggle ordinaryLink" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
 			        <%= stall.name %>
 			      </a>
 			    </div>

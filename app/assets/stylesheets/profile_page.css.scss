@@ -1,3 +1,5 @@
+@import 'application';
+
 $profilePageWrapperWidth: 900px;
 $mapHeight: 400px;
 $mapWidth:	100%;
@@ -59,7 +61,7 @@ $mapWidth:	100%;
 	}
 }
 #profilePageHeader{
-	padding: 20px 0px 20px 10px;
+	padding: 20px 0px 10px 10px;
 }
 
 #profilePageWrapper{
@@ -98,16 +100,22 @@ span.openingTimeDay{
 .helperContainer{
 	display: none;
 }
-
+.accordion-group{
+	border: none;
+}
 .accordion-heading{
-	background: #eee;
+	background: $buttonColor0;/*#eee;*/
 	color: #444;
 	:hover{
 		background: #fff;
 		color: #666;
 	}
 }
+
 .accordion-inner{
+	border-top:0px;
+	border-left: 1px solid #e5e5e5;
+		border-bottom: 1px solid #e5e5e5;
 	label{
 		word-break: break-word;
 	}

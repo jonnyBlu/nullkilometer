@@ -3,10 +3,8 @@
     <%= javascript_include_tag "home/map_home.js" %>
 <% end %>
 <%=  render 'infoboxContent' %>
-
 <div id="activityPannel">
-	<div id = ""></div>
-	<button class = "customHomeButton" id="addAPlaceButton">
+	<button class = "customButton" id="addAPlaceButton">
 		<a class= "ordinaryLink" href="/addShop"><%= I18n.t("button.add_new_point_of_sales") %></a>
 	</button>
 	<div class="tooltip" id="tooltipAddAPosButton"></div>
@@ -54,7 +52,7 @@
 		</div>
 		<div id = "buttonTextClosed" class = "hidden"><%= I18n.t("button.search_point_of_sales") %></div>
 		<div id = "buttonTextOpen" class = "hidden"><%= I18n.t("button.search_point_of_sales_open") %></div>
-		<button class="customHomeButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
+		<button class="customButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
 	</div>
 	<div id="addressLookupContainer">
 		<div class="control-group">
