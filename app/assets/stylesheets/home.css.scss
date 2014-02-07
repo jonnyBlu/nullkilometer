@@ -62,6 +62,9 @@ ul{
 	border-bottom: none;
 	padding: 10px;
 	background-color: $transparentBackground;
+	.row{
+		margin-left:0px;
+	}
 	.span2{
 		width: 180px;
 		margin:0px;

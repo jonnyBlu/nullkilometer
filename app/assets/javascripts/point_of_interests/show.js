@@ -11,7 +11,7 @@ $(function() {
         $("#profilePagePosMap").html("");
         map.initMap(posInformation.lat, posInformation.lon, ZOOMONMARKERLEVEL-3, 'profilePagePosMap');
         map.loadMarker(posInformation);
-        map.locateUser(6);
+       // map.locateUser(6);
     });
 });
 
