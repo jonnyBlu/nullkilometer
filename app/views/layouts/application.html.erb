@@ -1,6 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:address="http://schemas.talis.com/2005/address/schema#">
 <html>
 <head>
+
   <title>Nullkilometer</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
@@ -8,7 +11,8 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= render 'layouts/shim' %> 
-  <link rel="icon" href="../images/map_icons/user.png" type="image/x-icon" />
+  
+  <link rel="icon" href="<%= root_url+"images/favicon.png" %>" type="image/x-icon" />
   <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css' />
   <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
 </head>

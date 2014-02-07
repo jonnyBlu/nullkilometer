@@ -1,0 +1,20 @@
+@mixin roundedCorners($round) {
+  -moz-border-radius:$round;
+  -webkit-border-radius:$round;
+  border-radius:$round;
+}
+
+@mixin roundedCorners_bottom($round) {
+   -moz-border-radius-bottomleft:$round;  -webkit-border-bottom-left-radius:$round;  border-bottom-left-radius:$round;
+   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
+}
+
+@mixin roundedCorners_bottomright($round){
+     -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
+}
+
+@mixin boxShadow($expansion,$color){
+    -moz-box-shadow:0px 0px $expansion $color;
+    -webkit-box-shadow:0px 0px $expansion $color;
+    box-shadow:0px 0px $expansion $color;
+}

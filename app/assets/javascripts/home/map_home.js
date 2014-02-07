@@ -8,8 +8,8 @@ var HomeMap = function(){
 	map,
 	markerIconWidth = 30,
 	markerIconHeight = 43,
-	curPosMarkerIconWidth = 50,
-	curPosMarkerIconHeight = 66,	
+	curPosMarkerIconWidth = 40,
+	curPosMarkerIconHeight = 40,	
 	curPosMarkerIcon = L.icon({
 	    iconUrl: userIconImageLocation,
 	    iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
@@ -30,11 +30,11 @@ var HomeMap = function(){
 	    var options = {
 	    		center : new L.LatLng(lat, lon), 
 	    		zoom : zoomLevel
-	    	};     
-	    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+	    	},     
+	    	osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	      	osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors',
-	        osm = new L.TileLayer(osmUrl, {maxZoom: 18, minZoom:2, attribution: osmAttribution});    
-	    var mapLayer = new L.TileLayer(osmUrl);    
+	        osm = new L.TileLayer(osmUrl, {maxZoom: 18, minZoom:2, attribution: osmAttribution}),    
+	    	mapLayer = new L.TileLayer(osmUrl);    
 	    map = new L.Map('map', options).addLayer(mapLayer);
 	    map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
@@ -47,14 +47,13 @@ var HomeMap = function(){
 		callAjax("api/point_of_sales", null, onSuccessLoadMarkers);
 	},
 	getOSMAddressHome = function (data){
-		var resultsSelector = $("#locationResultPopup");
-
+		var resultsSelector = $("#locationResultPopup"),
+			resultAmount = data.length;
 		resultsSelector.html("<p>"+TEXT_ADDRESSSELECTION+'</p><ul></ul>');
-		var resultAmount = data.length;
 		if(resultAmount > 1){
-			console.log("received "+resultAmount+" Search Results from OSM");
-			var resultArr = new Array();
-			var previousAddress = "";
+			//console.log("received "+resultAmount+" Search Results from OSM");
+			var resultArr = new Array(),
+				previousAddress = "";
 			for(var i = 0; i < resultAmount; i++){
 				// var address = formatAddress(data[i].display_name);
 				var address = data[i].display_name;
@@ -67,20 +66,19 @@ var HomeMap = function(){
 			$("#mapFilterContainer").slideUp();
 
 			resultsSelector.find("li").click(function(){
-				var lon = this.title.split(",")[0];
-				var lat = this.title.split(",")[1];
-				var chosenAddress = $(this).find("a").html();
+				var lon = this.title.split(",")[0],
+					lat = this.title.split(",")[1],
+					chosenAddress = $(this).find("a").html();
 				zoomTo(lat, lon, ZOOMONMARKERLEVEL);
 				resultsSelector.slideUp();
+				$("#mapFilterContainer").slideDown();
 			});
-		}
-		else if(resultAmount == 1){
-			console.log("recieved one Search Result from OSM");
+		} else if(resultAmount == 1){
+			//console.log("recieved one Search Result from OSM");
 			// var address = formatAddress(data[0].display_name);
 			var address = data[0].display_name;
 			zoomTo(data[0].lat, data[0].lon, ZOOMONMARKERLEVEL);
-		}
-		else {
+		} else {
 			resultsSelector.html('<div>No Search Results</div>');
 			console.warn("No Search Results received from OSM or something went wrong");
 		}
@@ -108,13 +106,13 @@ var HomeMap = function(){
 		}
 	},
 	bindListeners = function(marker){
-		var posId = marker.data.id;
-		var posName = marker.data.name;//plot.name;
-		var posAddress = marker.data.address;
-		var posType = shopTypeNames[marker.data.posTypeId];
-		var productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames);		
-		var openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames);
-		var address =  marker.data.address;
+		var posId = marker.data.id,
+			posName = marker.data.name,//plot.name;
+			posAddress = marker.data.address,
+			posType = shopTypeNames[marker.data.posTypeId],
+			productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames),	
+			openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames),
+			address =  marker.data.address;
 
 		marker.on('click', function(evt) {
 
@@ -165,9 +163,13 @@ var HomeMap = function(){
 	},
 	zoomTo = function(lat, lon, zoomLevel){
 		var coordinates = new L.LatLng(lat, lon, true);
-		map.panTo(coordinates);
 		map.setZoom(zoomLevel);
-		curPosMarkerLayer.setLatLng(coordinates);
+		//callback of setZoom only for this particular event
+		map.on('zoomend', function(e) {
+			//curPosMarkerLayer.setLatLng(coordinates);
+			map.panTo(coordinates);
+			map.off('zoomend');
+    	});
 	},
 	generateOpeningTimesList = function(ids, arrayWithNames){
 		var list = "<ul>";
@@ -184,11 +186,6 @@ var HomeMap = function(){
 			list += "<img class='categoryIcon' src='http://localhost:3000/images/map_icons/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
 		});
 		list += "</div>";
-/*		var list = "";
-		$.each(ids, function(){
-			list += arrayWithNames[this]+", ";
-		});
-		list = list.substring(0, list.length-2);*/
 		return list;
 	},
 	resizeMarkerIcon = function(marker, enlarge){

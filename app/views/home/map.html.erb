@@ -6,7 +6,6 @@
 	p "map"  
  end %>
 <%=  render 'infoboxContent' %>
-
 <div id="mapContainer">
 	<div id="locationResultPopup"></div>
 	<div id ="mapFilterContainer">
@@ -17,11 +16,8 @@
 		      		<ul>
 		      			<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
 		      			<li>
-		      				<div class="checkbox">
-		      					<img class = "icon" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>"/>
-		      					<input name ="productCategory" type="checkbox" value="<%= index %>" checked>
-		      					<%= category %>
-		      				</div>
+	      					<input name ="productCategory" type="image" value="<%= index %>" class="imageInput" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>">
+	      					<span><%= category %></span>
 		      			</li>
 		      			<% end %>
 		      		</ul>
@@ -31,11 +27,8 @@
 		      		<ul>
 		      			<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
 		      			<li>
-		      				<label class="checkbox">
-		      					<img class = "icon" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>"/>
-		      					<input name="shopTypeId" type="checkbox" value="<%= index %>" checked><%= type %>
-		      				</label>
-
+		      				<input name="shopTypeId" type="image" value="<%= index %>" class="imageInput" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>">
+		      				<span><%= type %></span>
 		      			</li>
 		      			<% end %>
 		      		</ul>
@@ -44,22 +37,23 @@
 		      		<p><%= I18n.t("filter.when") %></p>
 		      		<ul>
 			      		<% I18n.t("date.day_names").each_with_index do |day, index| %>
-		      			<li><label class="checkbox">
-		      				<input name="openingDay" type="checkbox" value="<%= index %>" checked><%= day %>
-		      			</label>
-		      		</li>
-		      		<% end %>
+		      			<li>
+		      				<!--<input name="openingDay" type="checkbox" value="<%#= index %>" checked><%#= day %>-->
+		      				<input name="openingDay" type="image" value="<%= index %>" class="imageInput" src="<%= root_url+"images/map_icons/round_button.png" %>">
+		      				<span><%= day %></span>
+		      			</li>
+		      			<% end %>
 		      		</ul>
 		    	</div>
 		  	</div>
 		</div>
-		<div id = "buttonTextClosed" class = "hidden"><%= I18n.t("button.search_point_of_sales") %></div>
-		<div id = "buttonTextOpen" class = "hidden"><%= I18n.t("button.search_point_of_sales_open") %></div>
-		<button class="customHomeButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
+		<div id="buttonTextClosed" class="hidden"><%= I18n.t("button.search_point_of_sales") %></div>
+		<div id="buttonTextOpen" class="hidden"><%= I18n.t("button.search_point_of_sales_open") %></div>
+		<button class="customButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
 	</div>
 
 	<div id="addShop">
-		<button class = "customHomeButton" id="addAPlaceButton">
+		<button class="customHomeButton" id="addAPlaceButton">
 			<a class= "ordinaryLink" href="/addShop"><%= I18n.t("button.add_new_point_of_sales") %></a>
 		</button>
 		<div class="tooltip" id="tooltipAddAPosButton"></div>

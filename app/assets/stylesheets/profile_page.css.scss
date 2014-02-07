@@ -1,3 +1,5 @@
+@import 'application';
+
 $profilePageWrapperWidth: 900px;
 $mapHeight: 400px;
 $mapWidth:	100%;
@@ -58,6 +60,9 @@ $mapWidth:	100%;
 		font-weight: bold;
 	}
 }
+#profilePageHeader{
+	padding: 20px 0px 10px 10px;
+}
 
 #profilePageWrapper{
 	#editPosLinkWrapper{
@@ -76,25 +81,7 @@ span.openingTimeDay{
 	margin-right: 10px;
 }
 
-#profilePageHeader{
-	margin-top: 10px;
-	width: $profilePageWrapperWidth;
-	ul{
-		display: inline;
-	}
-	li{
-		padding-right:30px;
-		float:left;
-	}
-	li:last-child{
-		float: right;
-	}
-	li:first-child{
-		font-size: 30px;
-		font-weight: bold;
-		padding-bottom: 10px;
-	}
-}
+
 
 /* market stalls styling */
 #profilePagePosMap{
@@ -113,16 +100,22 @@ span.openingTimeDay{
 .helperContainer{
 	display: none;
 }
-
+.accordion-group{
+	border: none;
+}
 .accordion-heading{
-	background: #eee;
+	background: $buttonColor0;/*#eee;*/
 	color: #444;
 	:hover{
 		background: #fff;
 		color: #666;
 	}
 }
+
 .accordion-inner{
+	border-top:0px;
+	border-left: 1px solid #e5e5e5;
+		border-bottom: 1px solid #e5e5e5;
 	label{
 		word-break: break-word;
 	}

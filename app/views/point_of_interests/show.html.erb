@@ -2,15 +2,15 @@
     <%= javascript_include_tag "point_of_interests/show.js" %>
     <%= javascript_include_tag "point_of_interests/map_profile_page.js" %>
 <% end %>
-<div id="profilePageHeader">
+<div id="profilePageHeader" class="infoHeader">
 	<ul>
-	  	<li id="posName"><%= @point_of_interest.name %></li>
-	 	<li id="posType"><%= @point_of_interest.type %></li>
-	 	<li id="posLocationDegree">locality degree
-<!-- 	 		<div class="progress">
+	  	<li id="name"><%= @point_of_interest.name %></li>
+	 	<li id="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
+	 	<!--<li id="posLocationDegree">locality degree
+ 	 		<div class="progress">
  			 	<div class="bar bar-success" style="width: 35%;"></div>
- 			</div> -->
- 		</li>
+ 			</div> 
+ 		</li>-->
 	</ul>
 </div>
 <div class="wrapper profileWrapper" id="profilePageWrapper">

@@ -1,8 +1,10 @@
-$mapFilterWidth: 600px;
-$zIndexMapElements: 1001;
 $buttonAndInputHeight: 35px;
 $buttonColor1: #D5D0A4;
 $corner-radius: 5px;
+$mapFilterWidth: 550px;
+$mapFilterHeight: 470px;
+$zIndexMapElements: 1001;
+$transparentBackground: rgba(255, 255, 255, 0.8);
 
 @mixin roundedCorners($round) {
   -moz-border-radius: $round;
@@ -116,12 +118,13 @@ $corner-radius: 5px;
 	    border: solid 1px #bbb;
 	    border: none;
 	    color: #555;
-	    @include roundedCorners_bottomright(20px);
+	    @include roundedCorners(0px 0px 20px 0px);
 	}
 
 	#addShop {
 		left: 322px;
 		z-index: 11;
+
 		a {
 			width: 250px;
 			@include roundedCorners(0px 0px $corner-radius $corner-radius);
@@ -132,9 +135,15 @@ $corner-radius: 5px;
 		float: right;
 		right: 0px;
 		z-index: $zIndexMapElements;
+
 		#locationInput{
 			width: 150px;
+			height: 30px;
 			@include roundedCorners(0px 0px 0px $corner-radius);
+		}
+
+		#locationSubmit {
+			height: 20px;
 		}
 	}
 
@@ -164,6 +173,29 @@ $corner-radius: 5px;
 	#map {
 		height: 100%;
 	}
+
+	/* map infbox styling */
+
+	#hiddenInfoboxContentContainer{
+		display: none;
+	}
+
+	.leaflet-popup-content-wrapper{
+		width: 350px;
+	}
+	#infoboxContent{
+		width: 320px;
+		font-size:13px;
+		div{
+			padding-bottom: 10px;
+		}
+		.footer a{
+			float: right;
+		}
+
+	} 
+
+	/* map infobox styling end */
 
 	.leaflet-control-container{
 		position: absolute;

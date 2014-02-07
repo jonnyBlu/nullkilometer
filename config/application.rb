@@ -33,8 +33,25 @@ module Nullkilometer
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
 
-    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '**', '*.{rb,yml}').to_s]
-       config.i18n.default_locale = :de
+ #   config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '**', '*.{rb,yml}').to_s]
+ #       config.i18n.default_locale = :de
+
+    # rails will fallback to config.i18n.default_locale translation
+ #   config.i18n.fallbacks = true
+
+    # rails will fallback to en, no matter what is set as config.i18n.default_locale
+#    config.i18n.fallbacks = [:de]
+    
+
+    config.before_configuration do
+     I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+      I18n.locale = :de
+      I18n.default_locale = :de
+    end
+
+    #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '**', '*.{rb,yml}').to_s]
+    #config.i18n.default_locale = :de
+
 
 
     # Configure the default encoding used in templates for Ruby 1.9.

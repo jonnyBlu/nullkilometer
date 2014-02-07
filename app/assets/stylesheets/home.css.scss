@@ -1,3 +1,5 @@
+@import 'application';
+
 ul{
 	list-style: none;
 }
@@ -19,21 +21,3 @@ ul{
 .hidden{ display: none; }
 
 .row{ margin-left: 0px; }
-
-/* map infbox styling */
-
-#hiddenInfoboxContentContainer{
-	display: none;
-}
-
-#infoboxContent{
-	div{
-		padding-bottom: 20px;
-	}
-	.footer a{
-		float: right;
-	}
-
-} 
-
-/* map infobox styling end */
