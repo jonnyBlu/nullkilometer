@@ -15,48 +15,16 @@
  *= require_tree .
  */
 
+
 @import 'bootstrap';
 
+
 /* mixins, variables, etc. */
-$grayMediumLight: #eee;
-$fontFamilyLogo: 'Fenix';
-$backgroundColor: rgba(213, 208, 164, 1);
-$headerColor1: #5b483c;
-$headerColor2: #745948;
-$buttonAndInputHeight: 35px;
-$transparentBackground: rgba(255, 255, 255, 0.8);
-$buttonColor0: rgba(231, 231, 199, 1);
-$buttonColor1: rgba(213, 208, 164, 0.8);  
+@import '_mixins';
+@import '_global-variables';
 
 
-$grayVeryLight: #eee;
-$textFontFamily : "Helvetica Neue",  sans-serif; /*"Ubuntu-R";*/
-
-
-@mixin roundedCorners($round) {
-  -moz-border-radius:$round;
-  -webkit-border-radius:$round;
-  border-radius:$round;
-}
-
-@mixin roundedCorners_bottom($round) {
-   -moz-border-radius-bottomleft:$round;  -webkit-border-bottom-left-radius:$round;  border-bottom-left-radius:$round;
-   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
-}
-
-@mixin roundedCorners_bottomright($round){
-     -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
-}
-
-@mixin boxShadow($expansion,$color){
-    -moz-box-shadow:0px 0px $expansion $color;
-    -webkit-box-shadow:0px 0px $expansion $color;
-    box-shadow:0px 0px $expansion $color;
-}
-
-
-@font-face
-{
+@font-face {
     font-family : "Ubuntu-R";
     src: url('/assets/fonts/Ubuntu-R.ttf');
 }
@@ -283,4 +251,3 @@ footer {
     color: #555;
     @include roundedCorners_bottomright(20px);
 }
-

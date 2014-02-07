@@ -1,13 +1,5 @@
 @import 'application';
 
-$mapHeight: 600px;
-$halfOfmapHeight: 300px;
-$mapFilterWidth: 550px;
-$mapFilterHeight: 470px;
-$zIndexMapElements: 1001;
-$transparentBackground: rgba(255, 255, 255, 0.8);
-
-
 ul{
 	list-style: none;
 }
@@ -26,6 +18,7 @@ ul{
 	margin: 0px 0px 10px 0px;
 }
 
+/*<<<<<<< HEAD*/
 #mapContainer{
 	position:relative;
 }
@@ -103,69 +96,8 @@ ul{
 
 /* map filter styling end */
 
+/*=======
+>>>>>>> 31f27ff8c841d3213739fad67b6717594ce6e881*/
 .hidden{ display: none; }
 
 .row{ margin-left: 0px; }
-
-#addressLookupContainer{
-	position: absolute;
-	top: 0px;
-	float: right;
-	right:0px;
-	z-index: $zIndexMapElements;
-	#locationInput{
-		width: 250px;
-		height: 30px;
-	}
-	#locationSubmit{
-		height: 20px;
-	}
-}
-
-#locationResultPopup{
-	display: none;
-	position: absolute;
-	z-index: 11;
-	top: 0px;
-	width: 100%;
-	padding: 20px 0px 20px 0px;
-	background-color: white;
-	@include roundedCorners_bottom(10px);
-	p{
-		margin-left: 20px;
-	}
-}
-
-.leaflet-control-container{
-	position:relative;
-	top: $halfOfmapHeight;
-	.leaflet-control-attribution{
-		display: none;
-	}
-}
-
-
-
-/* map infbox styling */
-
-
-#hiddenInfoboxContentContainer{
-	display: none;
-}
-
-.leaflet-popup-content-wrapper{
-	width: 350px;
-}
-#infoboxContent{
-	width: 320px;
-	font-size:13px;
-	div{
-		padding-bottom: 10px;
-	}
-	.footer a{
-		float: right;
-	}
-
-} 
-
-/* map infobox styling end */

@@ -18,7 +18,7 @@ for i in (1..10)
 end
 
 for i in (1..5)
-  lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
+	lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
 	lon = rand * 9.0 + 6.0    #between 6,0 and 15,0 with 8 after-comma-digits
 	market = Market.create!( 	:name => "markt#{i}", 
 							 	:address => "test address", 
