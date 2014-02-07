@@ -5,27 +5,44 @@ $(document).ready(function(){
 		resultsSelector = $("#locationResultPopup"),
 		loadFilterListeners = function(){
 			$("#mapFilterButton").click(function(){
-				$("#mapFilter").slideToggle();
+				$("#mapFilter").toggleClass("open");
+				$("#mapFilter").slideToggle(changeText);				
 			});
 
-			var productCategoryFilterInputs = $("#mapFilter").find("input[name='productCategory']");
-			productCategoryFilterInputs.each(function(){
-				var inp = $(this);
-				inp.click(function(){
-					var checkedProductCategories = getCheckedValues("productCategory");
-					//console.log(checkedProductCategories);
-					map.setMarkerOpacity(checkedProductCategories, "productCategory");				
+			filterTagsBy('productCategory');
+			filterTagsBy('shopTypeId');
+			filterTagsBy('openingDay');
+		},
+		changeText = function(){			
+			if($("#mapFilter").hasClass("open")){
+				var text = $("#buttonTextOpen").html();			
+				$("#mapFilterButton").html(text);
+			} 
+			else{
+				var text = $("#buttonTextClosed").html();
+				$("#mapFilterButton").html(text);
+			} 
+		},
+		filterTagsBy = function(inputName){
+			var inputs = $("#mapFilter").find("input[name='"+inputName+"']");
+			inputs.each(function(){
+				$(this).click(function(){
+					console.log($(this).parent().find("img.icon"));
+					$(this).parent().find("img.icon").toggleClass("inactive");
+					var checkedValues = getCheckedValues(inputName);
+					map.setMarkerOpacity(checkedValues, inputName);				
 				});
 			});
 		},
 		getCheckedValues = function(inputName){
 			var array = [];
-			var productCategoryFilterInputs = $("#mapFilter").find("input[name="+inputName+"]");
-			productCategoryFilterInputs.each(function(){ ;
+			var filterInputs = $("#mapFilter").find("input[name="+inputName+"]");
+			filterInputs.each(function(){ ;
 				if(this.checked) {array.push($(this).val());}
 			});
 			return array;
 		};
+
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
 	map.locateUser(6);
 	map.loadMarkers();
@@ -34,41 +51,5 @@ $(document).ready(function(){
 	loadFilterListeners();
 });
 
-
-
-
-/*
-	var shopTypeFilterInputs = $("#mapFilter").find("input[name='shopTypeId']");
-	shopTypeFilterInputs.each(function(){
-		var inp = $(this);
-		inp.click(function(){
-			for (i=0;i<plotlayers.length;i++) {
-				if(plotlayers[i].data.shopTypeId == inp.val()){
-					if(this.checked) plotlayers[i].setOpacity(1);
-					else plotlayers[i].setOpacity(0);	
-				}	
-			}
-		});
-	});
-
-
-	var openingDayFilterInputs = $("#mapFilter").find("input[name='openingDay']");
-	openingDayFilterInputs.each(function(){
-		var inp = $(this);
-		inp.click(function(){
-			var checkedOpeningDays = getCheckedValues("openingDay");
-			for (i=0;i<plotlayers.length;i++) {
-				var openingDays = plotlayers[i].data.openOn;
-				var atLeastOneIsChecked = false;
-				$.each(openingDays, function(key, value){
-					if(jQuery.inArray(value, checkedOpeningDays)>=0)
-						atLeastOneIsChecked = true;					
-				});
-				if(atLeastOneIsChecked) plotlayers[i].setOpacity(1);
-				else  
-					plotlayers[i].setOpacity(0);
-			}
-		});
-	});*/
 
 

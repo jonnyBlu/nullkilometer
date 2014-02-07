@@ -17,11 +17,11 @@
 		      		<ul>
 		      			<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
 		      			<li>
-		      				<label class="checkbox">
+		      				<div class="checkbox">
+		      					<img class = "icon" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>"/>
 		      					<input name ="productCategory" type="checkbox" value="<%= index %>" checked>
 		      					<%= category %>
-		      					<img class = "icon" src="<%= root_url+"images/map_icons/food_categories/"+ index.to_s() +".png" %>"/>
-		      				</label>
+		      				</div>
 		      			</li>
 		      			<% end %>
 		      		</ul>
@@ -32,9 +32,10 @@
 		      			<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
 		      			<li>
 		      				<label class="checkbox">
+		      					<img class = "icon" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>"/>
 		      					<input name="shopTypeId" type="checkbox" value="<%= index %>" checked><%= type %>
 		      				</label>
-		      				<img class = "icon" src="<%= root_url+"images/map_icons/shop_categories/"+ index.to_s() +".png" %>"/>
+
 		      			</li>
 		      			<% end %>
 		      		</ul>
@@ -52,11 +53,15 @@
 		    	</div>
 		  	</div>
 		</div>
-		<button class="btn btn-large btn-block" type="button" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
+		<div id = "buttonTextClosed" class = "hidden"><%= I18n.t("button.search_point_of_sales") %></div>
+		<div id = "buttonTextOpen" class = "hidden"><%= I18n.t("button.search_point_of_sales_open") %></div>
+		<button class="customHomeButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
 	</div>
 
 	<div id="addShop">
-		<a href="/addShop" class="btn btn-default" type="button" id="addAPlaceButton"><%= I18n.t("button.add_new_point_of_sales") %></a>
+		<button class = "customHomeButton" id="addAPlaceButton">
+			<a class= "ordinaryLink" href="/addShop"><%= I18n.t("button.add_new_point_of_sales") %></a>
+		</button>
 		<div class="tooltip" id="tooltipAddAPosButton"></div>
 	</div>
 	<div id="addressLookupContainer">

@@ -108,6 +108,17 @@ $corner-radius: 5px;
 		}
 	}
 
+	.customHomeButton{
+		height: $buttonAndInputHeight;
+		background-color: $transparentBackground;
+	    &:hover { background-color: $buttonColor1; color: #fff }
+	    padding: 0px;
+	    border: solid 1px #bbb;
+	    border: none;
+	    color: #555;
+	    @include roundedCorners_bottomright(20px);
+	}
+
 	#addShop {
 		left: 322px;
 		z-index: 11;

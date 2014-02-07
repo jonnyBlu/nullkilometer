@@ -10,11 +10,11 @@ en:
     - "Shop"
     - "Kiosk"
     - "Farmers shop"
+    marketstalls: "Market stalls"
   product:
     category_names:
-    - "Milkproducts"
-    - "Fruits"
-    - "Veggies"
+    - "Milk products"
+    - "Fruits and Vegetables"
     - "Fish"
     - "Meat"
     - "Eggs"
@@ -24,6 +24,7 @@ en:
   button:
     add_new_point_of_sales: "Add a new selling place"
     search_point_of_sales: "Look for selling places"
+    search_point_of_sales_open: "Close filter"
   filter:
     what: "WHAT?"
     where: "WHERE?"

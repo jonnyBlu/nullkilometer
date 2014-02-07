@@ -52,19 +52,24 @@ de:
     - :day
     - :month
     - :year
+  time:
+    formats:
+        default: '%d.%m.%Y'
+        long: '%e. %B %Y'
+        short: '%e. %b'    
   hello: "Hallo Welt"
   point_of_sale:
     pos_type_names:
     - "Markt"
     - "Supermarkt"
     - "Laden"
-    - "Kiosk"
+    - "Verkaufsstand"
     - "Bauernhofladen"
+    marketstalls: "Marktstände"
   product:
     category_names:
     - "Milchprodukte"
-    - "Obst"
-    - "Gemüse"
+    - "Obst und Gemüse"
     - "Fisch"
     - "Fleisch"
     - "Eier"
@@ -74,6 +79,7 @@ de:
   button:
     add_new_point_of_sales: "Neuen Verkaufsort hinzufügen"
     search_point_of_sales: "Nach Verkaufsort suchen"
+    search_point_of_sales_open: "Filter ausblenden"
   filter:
     what: "WAS?"
     where: "WO?"
@@ -92,4 +98,4 @@ de:
         login: "Sich anmelden"
   title:
     main: "Suche nach lokale Produkte"
-    by: "von Nullkilometer"
+    by: "von Nullkilometer"  

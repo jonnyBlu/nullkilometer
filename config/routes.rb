@@ -1,11 +1,9 @@
 Nullkilometer::Application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+
   ActiveAdmin.routes(self)
-
-  # get "profile_page/new"
-
-  # get "profile_page/create"
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -47,8 +45,6 @@ Nullkilometer::Application.routes.draw do
   root :to => 'home#index'
   match '/map' => 'home#map'
   match '/addShop' => 'add_apos#index'
-  match '/profilePage' => 'profile_page#index'
-  match '/profilePage/edit' => 'profile_page#edit'
   match '/addProductionPlaces' => 'add_production_places#index'
 
   # See how all your routes lay out with "rake routes"

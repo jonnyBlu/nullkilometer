@@ -7,7 +7,7 @@ $fontFamilyLogo: 'Fenix';
 $backgroundColor: #F7F2C6;
 $buttonColor1: #D5D0A4;
 $grayVeryLight: #eee;
-$textFontFamily : "Ubuntu-R";
+$textFontFamily : "Helvetica Neue",  sans-serif; /*"Ubuntu-R";*/
 
 @font-face
 {
@@ -23,6 +23,7 @@ html {
 }
 
 body {
+  color: #aaa;
   padding-top: 50px;
   background-color: $backgroundColor !important;  
   /* http://lea.verou.me/css3patterns/# */
@@ -33,6 +34,16 @@ a, a:link, a:visited {
   text-decoration: none;
 }
 
+/*
+a:hover {
+  background-color: transparent !important;
+  color: #666 !important;
+}*/
+
+a.ordinaryLink:hover{
+  background-color: transparent;
+  color: #666; /*  stays the same */
+}
 
 section {
   overflow: auto;
@@ -76,19 +87,36 @@ p {
   line-height: 1.7em;
 }
 
+button:focus::-moz-focus-inner {
+    padding: 3px;
+    border: none;
+
+}
+button:focus{
+  outline: none;
+}
 
 .contentContainer {
   background-color: $backgroundColor;
-  padding: 10px;
+  padding: 5px 10px 10px 10px;
   -moz-box-shadow: 0 0px 40px 2px #888;
   -webkit-box-shadow: 0 0px 40px 2px#888;
   box-shadow: 0 0px 40px 2px #888;
 }
 
 img.icon{
-  height:auto; width:auto; max-width:35px; max-height:35px
+  height:auto; width:auto; max-width:35px; max-height:35px;
 }
 
+.inactive{
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+
+.hidden{
+  display: none;
+}
 
 /* header */
 
@@ -152,7 +180,7 @@ footer {
   }
 }
 
-/* naviation bar*/
+/* navigation bar*/
 .navbar-inverse .navbar-inner, .navbar{
     background-image: linear-gradient(rgb(80, 60, 30), rgb(70, 50, 20));
     height: 50px;
@@ -168,7 +196,7 @@ footer {
   
   margin: 30px;
   p{
-      font-size: 18px;
+      font-size: 16px;
       line-height: 150%;
       font-family : $textFontFamily;
   }
