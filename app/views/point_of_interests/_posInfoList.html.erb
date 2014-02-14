@@ -1,21 +1,18 @@
-<div class="row address">
-    <address property="address:streetAddress"><%= @point_of_interest.address %></address>
-</div>
 <div class="row productCategories">
     <%= render :partial => "productCategoryImages", :locals => {:seller => @point_of_interest} %>
 </div>
+<div class="row address">
+    <address property="address:streetAddress"><%= @point_of_interest.address %></address>
+</div>
 <div class="row">
-    <div class="span2">Geöffnet am:</div>
-    <div class="span4 openingTimes">
-    	<ul>
-	    	<% @point_of_interest.opening_times.each do |day| %>
-	    		<li>
-	    			<span class="openingTimeDay"><%= I18n.t("date.day_names")[day.dayId] %></span >
-	    			<%= day.from + " - " + day.to %>
-	    		</li>
-	    	<% end %>
-    	</ul>
-    </div>
+	<ul>
+    	<% @point_of_interest.opening_times.each do |day| %>
+    		<li>
+    			<span class="openingTimeDay"><%= I18n.t("date.day_names")[day.dayId] %></span >
+    			<%= day.from + " - " + day.to %>
+    		</li>
+    	<% end %>
+	</ul>
 </div> 
 <div class="row website"><a class="ordinaryLink" href=<%= @point_of_interest.detail_info.website %>><%= @point_of_interest.detail_info.website %></a></div>
 <div class="row">

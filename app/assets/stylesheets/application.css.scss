@@ -57,6 +57,7 @@ a, a:link, a:visited {
 }
 a.ordinaryLink, a.ordinaryLink:visited{
   color: #444;
+  text-decoration: none !important;
 }
 
 a.ordinaryLink:hover, a:hover{
@@ -139,6 +140,7 @@ input:focus, button:focus{
   color: white;
   padding-top:10px;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2px;
   font-weight: bold;
   line-height: 1;
@@ -146,6 +148,7 @@ input:focus, button:focus{
 
 #logo:hover{
   color: white;
+  text-decoration: none;
 }
 
 /* links in the header on the right */
@@ -216,25 +219,6 @@ footer {
 /*universal specific styles*/
 
 /*used in infobox and profile page*/
-.infoHeader{
-  width:100%;
-  height: 30px;
-  ul{
-    display: inline;
-  }
-  li{
-    padding-right:30px;
-    float:left;
-  }
-  li:last-child{
-    float: right;
-  }
-  li:first-child{
-    font-size: 30px;
-    font-weight: bold;
-    padding-bottom: 10px;
-  }
-}
 
 .categoryIcon{
   margin-left: 4px;

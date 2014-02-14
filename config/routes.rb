@@ -8,7 +8,7 @@ Nullkilometer::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  scope "/api", :defaults => {:format => :json} do
+  scope "/", :defaults => {:format => :json} do
 
     resources :point_of_sales, :controller => "point_of_interests", :defaults => { :type => "PointOfSale" } do
       resources :market_stalls, :only => [:index, :create]

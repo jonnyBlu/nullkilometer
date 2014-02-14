@@ -183,3 +183,13 @@ var readAndUpdateMarketStallInformation = function(container){
     return marketStallsOfThisPos[thisMarketId];
 }
 
+//validation methods
+
+var isRequiredListFilled = function(container, propertyname){
+    var filled = true;
+    if(container.find("input[name="+propertyname+"]:checked").length <= 0){
+            container.find("label[for="+propertyname+"]").addClass("invalidLabel");
+            filled = false;
+        } else container.find("label[for="+propertyname+"]").removeClass("invalidLabel");
+    return filled;
+}

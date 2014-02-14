@@ -1,5 +1,3 @@
-@import 'application';
-
 ul{
 	list-style: none;
 }
@@ -18,86 +16,12 @@ ul{
 	margin: 0px 0px 10px 0px;
 }
 
-/*<<<<<<< HEAD*/
-#mapContainer{
-	position:relative;
-}
-#map { height: $mapHeight; }
-
-/* map filter styling */
-
-
-
-
-#addAPlaceButton{
-	padding: 0px 20px 0px 20px;
-	/* &:hover { background-color: #00aa00} */
-}
-#mapFilterButton{
-	width:100%;
-	min-width: 100px;
-	font-weight: bold;
-    font-size: 17px;    
-}
-
-#mapFilterContainer {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: $zIndexMapElements;
-	border-radius: 5px;
-	padding: 0px;
-	width: $mapFilterWidth;
-}
-#mapFilter{
-	height: $mapFilterHeight;
-	border: none;
-	border-bottom: none;
-	padding: 10px;
-	background-color: $transparentBackground;
-	.row{
-		margin-left:0px;
-	}
-	.span2{
-		width: 180px;
-		margin:0px;
-		p{
-			font-size: 20px;
-			font-weight: bold;
-		}
-		ul{
-			font-size: 12px;
-			margin: 10px 20px 0px 0px;
-			width: 100%;
-			li{
-				height: 50px; 
-				&:hover {
-					cursor:pointer;
-				}
-			}
-		}
-	}
-	.span2:last-child{
-		width: 160px;
-		ul > li{
-			height: 40px; 
-			font-size: 13px;
-		}
-	}
-	input.imageInput{
-		height:auto; width:auto; max-width:40px; max-height:40px;
-	}
-}
-
 .inactive{
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-/* map filter styling end */
 
-/*=======
->>>>>>> 31f27ff8c841d3213739fad67b6717594ce6e881*/
 .hidden{ display: none; }
 
 .row{ margin-left: 0px; }

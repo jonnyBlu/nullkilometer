@@ -88,6 +88,7 @@ de:
   input:
     commands:
         add_an_address: "Adresse eingeben"
+        choose_an_address: "Wähle eine Adresse aus der Liste aus:"
   links:
     global:
         about: "Über"
@@ -97,6 +98,7 @@ de:
         map: "Karte"
         register: "Sich registrieren"
         login: "Sich anmelden"
+        more_information: "Mehr Informationen >>"
   title:
     main: "Suche nach lokale Produkte"
     by: "von Nullkilometer"  

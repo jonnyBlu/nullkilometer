@@ -149,3 +149,30 @@ var loadMarketStallStep = function(){
 var hideMarketStallStep = function(){
 	$("#marketStallsStepLink").addClass("invisible");
 }
+//global form reading functions
+
+var readMarketStallInformation = function(container){
+    var newStallInformation = {};
+    var productCategories = [];
+    var stallInformationInputs = container.find(" :input");
+
+	var descriptionVal = container.find("textarea").val()
+    if(descriptionVal!=""){
+		newStallInformation["description"] = descriptionVal;
+    }
+    stallInformationInputs.each(function(){
+        var n = this;
+        if (n.type=="text"){
+            if($(n).val()!= "")
+                newStallInformation[n.name] = $(n).val();                    
+        } else if (n.type == "checkbox"){
+            if(n.checked){
+                if(n.name == "productCategory")
+                    productCategories.push($(n).val());
+            }
+        }
+    });
+    newStallInformation["products"] = productCategories;
+    console.log(newStallInformation);
+    return newStallInformation;
+}

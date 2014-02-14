@@ -33,6 +33,7 @@ en:
   input:
     commands:
         add_an_address: "Enter an address"
+        choose_an_address: "Choose an address from the list:"
   links:
     global:
         about: "About"
@@ -42,6 +43,7 @@ en:
         map: "Map"
         register: "Register"
         login: "Log in"
+        more_information: "More info >>"
   title:
     main: "Search for local products"
     by: "by Nullkilometer"

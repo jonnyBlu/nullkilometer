@@ -17,7 +17,7 @@ $(function() {
 
 function ProfilePage(){
     load = function(id, onSuccessReadPosInformation){
-        callAjax("/api/point_of_sales/"+id, null ,onSuccessReadPosInformation);  
+        callAjax("/point_of_sales/"+id, null ,onSuccessReadPosInformation);  
     };
     return{
         load : load,

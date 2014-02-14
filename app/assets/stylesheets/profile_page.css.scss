@@ -1,4 +1,6 @@
-@import 'application';
+/* mixins, variables, etc. */
+@import '_mixins';
+@import '_global-variables';
 
 $profilePageWrapperWidth: 900px;
 $mapHeight: 400px;
@@ -36,12 +38,15 @@ $mapWidth:	100%;
 		margin-top: 20px;
 		margin-bottom:20px;
 		.row{
-			margin-bottom: 6px;
-			padding-bottom: 4px;
+			padding: 10px 0px 10px 0px;
 			border-bottom: 1px solid #eee;
 		}
 		.row:last-child{
 			border-bottom: none;
+		}
+		ul, address{
+			margin: 0px;
+			padding: 0px;
 		}
 	}
 	button{
@@ -62,6 +67,7 @@ $mapWidth:	100%;
 }
 #profilePageHeader{
 	padding: 20px 0px 10px 10px;
+	margin-top:50px;
 }
 
 #profilePageWrapper{

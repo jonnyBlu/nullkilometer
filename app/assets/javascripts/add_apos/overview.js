@@ -17,7 +17,7 @@ var generateOverview = function(){
 
 
 var postPOSInformation = function(posInformation){
-    $.get( "/api/point_of_sales", function( posInformation ) {
+    $.get( "/point_of_sales", function( posInformation ) {
       //$( ".result" ).html( data );
       console.log("Posted Info"+posInformation);
     });

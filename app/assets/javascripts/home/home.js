@@ -6,7 +6,8 @@ $(document).ready(function(){
 		loadFilterListeners = function(){
 			$("#mapFilterButton").click(function(){
 				$("#mapFilter").toggleClass("open");
-				$("#mapFilter").slideToggle(changeText);				
+				changeText();
+				$("#mapFilter").slideToggle();				
 			});
 
 			filterTagsBy('productCategory');
