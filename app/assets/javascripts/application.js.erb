@@ -21,21 +21,20 @@
 //= require leaflet
 //= tree
 
+ <%# encoding: utf-8 %>
 var INITIALLAT = 52.5233,
 INITIALLON = 13.4127,
 ZOOMONMARKERLEVEL = 17,
-TEXT_ADDRESSSELECTION = "Wähle eine Adresse aus der Liste aus:",
 
-shopTypeNames = ["Markt", "Supermarkt", "Laden", "Kiosk", "Bauernhofladen"],
-productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Brot", "Konserven", "Getrocknete Waren"],
-weekDayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+
+shopTypeNames = <%= I18n.t("point_of_sale.pos_type_names") %>,
+productCategoryNames = <%= I18n.t("product.category_names") %>,
+weekDayNames = <%= I18n.t("date.day_names") %>,
 
 //used in /add_apos/... and /point_of_interests/edit.js
 MARKETINDEX = 1,
 
 iconImageLocation =  "../images/map_icons/",
-//productCategoryIconImageLocation = iconImageLocation + "food_categories/",
-//productTypeIconImageUrls = ["milk.png", "vegetables.png", "fish.png", "meat.png", "eggs.png", "conserves.png", "bread.png", "dried.png"],
 
 shopTypeIconImageLocation = iconImageLocation + "shop_categories/",
 shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"],
@@ -43,8 +42,9 @@ shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"],
 shopTypeIconImageUrlDefault = "default.png",
 userIconImageLocation = iconImageLocation + "user.png";
 
+
 var callAjax = function(url, dataToSend, onSuccess){
-    $.ajax({
+	$.ajax({
         type: "GET",
         url: url,
         data: dataToSend,

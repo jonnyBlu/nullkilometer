@@ -1,4 +1,4 @@
-var posId;
+/*var posId;
 var url;
 var posObject;
 var marketStallsOfThisPos = [];
@@ -193,3 +193,4 @@ var isRequiredListFilled = function(container, propertyname){
         } else container.find("label[for="+propertyname+"]").removeClass("invalidLabel");
     return filled;
 }
+**/

@@ -56,10 +56,9 @@ a, a:link, a:visited {
   text-decoration: none;
 }
 a.ordinaryLink, a.ordinaryLink:visited{
-  color: #444;
+  color: #444 !important;
   text-decoration: none !important;
 }
-
 a.ordinaryLink:hover, a:hover{
   background-color: transparent !important;
   color: #666; /*  stays the same */
@@ -234,4 +233,22 @@ footer {
     border: none;
     color: #555;
     @include roundedCorners_bottomright(20px);
+}
+
+.infoHeader{
+  width:100%;
+  ul{
+    margin: 0px;
+    padding: 0px;
+  }
+  li{
+    height: 25px;
+  }
+  li:last-child{
+    font-size: 25px;
+    font-weight: bold;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+  }
 }

@@ -1,6 +1,7 @@
 var addAPosMap;
 var newPOSMarker;
 var newPosPlotlayers=[];
+var TEXT_ADDRESSSELECTION = "Wähle eine Adresse aus der Liste aus:";
 
 var newPosLat;
 var newPosLon;

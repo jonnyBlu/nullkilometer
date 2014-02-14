@@ -206,25 +206,8 @@ $infoboxWidth: 400px;
 			margin: 0px;
 			padding: 0px;
 		}
-		.infoHeader{
-		  width:100%;
-		  ul{
-		    margin: 0px;
-		    padding: 0px;
-		  }
-		  li{
-		  	height: 25px;
-		  }
-		  li:last-child{
-		    font-size: 25px;
-		    font-weight: bold;
-		    overflow:hidden; 
-		    white-space:nowrap; 
-		  	text-overflow:ellipsis;
-		  }
-		}
+		
 	} 
-
 
 	/* map infobox styling end */
 
@@ -280,3 +263,4 @@ $infoboxWidth: 400px;
 		margin: 0 10px;
 	}
 }
+	

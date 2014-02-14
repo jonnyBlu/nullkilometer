@@ -3,9 +3,9 @@ $(function() {
     $("#marketStallsContainer").css("display", "block");
 
     var parameters = window.location.pathname,
-        posId = parameters.split('/')[parameters.split('/').length-1].split('.')[0],
-        profilePage = new ProfilePage(),
-        map = new ProfileMap();
+    posId = parameters.split('/')[parameters.split('/').length-1].split('.')[0],
+    profilePage = new ProfilePage(),
+    map = new ProfileMap();
     profilePage.load(posId, function(response){
         var posInformation = response.pointOfSale;
         $("#profilePagePosMap").html("");

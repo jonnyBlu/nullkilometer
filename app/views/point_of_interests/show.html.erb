@@ -4,8 +4,8 @@
 <% end %>
 <div id="profilePageHeader" class="infoHeader">
 	<ul>
-	  	<li id="name"><%= @point_of_interest.name %></li>
-	 	<li id="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
+		<li class="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
+	  	<li class="title"><%= @point_of_interest.name %></li>
 	 	<!--<li id="posLocationDegree">locality degree
  	 		<div class="progress">
  			 	<div class="bar bar-success" style="width: 35%;"></div>
