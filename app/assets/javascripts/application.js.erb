@@ -21,28 +21,30 @@
 //= require leaflet
 //= tree
 
-var INITIALLAT = 52.5233;
-var INITIALLON = 13.4127;
-var ZOOMONMARKERLEVEL = 17;
-var TEXT_ADDRESSSELECTION = "Wähle eine Adresse aus der Liste aus:";
+ <%# encoding: utf-8 %>
+var INITIALLAT = 52.5233,
+INITIALLON = 13.4127,
+ZOOMONMARKERLEVEL = 17,
 
-var shopTypeNames = ["Markt", "Supermarkt", "Laden", "Kiosk", "Bauernhofladen"];
-var productCategoryNames = ["Milchprodukte", "Obst und Gemüse", "Fisch", "Fleisch", "Eier", "Brot", "Konserven", "Getrocknete Waren"];
-var weekDayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-var MARKETINDEX = 1;
 
-var iconImageLocation =  "../images/map_icons/";
-var productCategoryIconImageLocation = iconImageLocation + "food_categories/";
-var productTypeIconImageUrls = ["milk.png", "vegetables.png", "fish.png", "meat.png", "eggs.png", "conserves.png", "bread.png", "dried.png"];
+shopTypeNames = <%= I18n.t("point_of_sale.pos_type_names") %>,
+productCategoryNames = <%= I18n.t("product.category_names") %>,
+weekDayNames = <%= I18n.t("date.day_names") %>,
 
-var shopTypeIconImageLocation = iconImageLocation + "shop_categories/";
-var shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"];
+//used in /add_apos/... and /point_of_interests/edit.js
+MARKETINDEX = 1,
 
-var shopTypeIconImageUrlDefault = "default.png";
-var userIconImageLocation = iconImageLocation + "user.png";
+iconImageLocation =  "../images/map_icons/",
+
+shopTypeIconImageLocation = iconImageLocation + "shop_categories/",
+shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"],
+
+shopTypeIconImageUrlDefault = "default.png",
+userIconImageLocation = iconImageLocation + "user.png";
+
 
 var callAjax = function(url, dataToSend, onSuccess){
-    $.ajax({
+	$.ajax({
         type: "GET",
         url: url,
         data: dataToSend,
@@ -98,6 +100,8 @@ var registerLocationSearch = function(buttonSelector, inputSelector, resultsSele
 }
 
 
+
+/* Used by add_apos.js and market_stalls_step.js */
 // read all checked fields 
 var openingTimeListeners = function(){
 
@@ -138,8 +142,6 @@ var openingTimeListeners = function(){
     });
 }
 
-
-
 var requiredFieldsFilled = function(containerName){
 	var filled =  false;
 	if($(containerName).find('.requiredField').length <= 0) filled = true;
@@ -158,45 +160,4 @@ var requiredFieldsFilled = function(containerName){
 		}
 	});
 	return filled;
-}
-
-
-//validation methods
-
-var isRequiredListFilled = function(container, propertyname){
-    var filled = true;
-    if(container.find("input[name="+propertyname+"]:checked").length <= 0){
-            container.find("label[for="+propertyname+"]").addClass("invalidLabel");
-            filled = false;
-        } else container.find("label[for="+propertyname+"]").removeClass("invalidLabel");
-    return filled;
-}
-
-
-//global form reading functions
-
-var readMarketStallInformation = function(container){
-    var newStallInformation = {};
-    var productCategories = [];
-    var stallInformationInputs = container.find(" :input");
-
-	var descriptionVal = container.find("textarea").val()
-    if(descriptionVal!=""){
-		newStallInformation["description"] = descriptionVal;
-    }
-    stallInformationInputs.each(function(){
-        var n = this;
-        if (n.type=="text"){
-            if($(n).val()!= "")
-                newStallInformation[n.name] = $(n).val();                    
-        } else if (n.type == "checkbox"){
-            if(n.checked){
-                if(n.name == "productCategory")
-                    productCategories.push($(n).val());
-            }
-        }
-    });
-    newStallInformation["products"] = productCategories;
-    console.log(newStallInformation);
-    return newStallInformation;
 }
