@@ -17,3 +17,13 @@
     		url('/assets/fonts/vollkorn/vollkorn-regular.otf') format('opentype'),
     		url('/assets/fonts/vollkorn/vollkorn-regular.ttf') format('truetype');
 }
+
+@font-face {
+    font-family : 'Vollkorn Semibold';
+    font-style: normal;
+    src: url('/assets/fonts/vollkorn/vollkorn-semibold.eot');
+    src: local('Vollkorn Semibold')
+    		url('/assets/fonts/vollkorn/vollkorn-semibold.woff') format('woff'),
+    		url('/assets/fonts/vollkorn/vollkorn-semibold.otf') format('opentype'),
+    		url('/assets/fonts/vollkorn/vollkorn-semibold.ttf') format('truetype');
+}

@@ -12,10 +12,9 @@ body {
   font-family: $sans-serif;
 }
 
-/* navigation bar*/
-.navbar-inverse .navbar-inner, .navbar{
-    background-image: linear-gradient($headerColor1, $headerColor2);
-    height: 50px;
+.content-wrapper {
+	min-height: 100%;
+	padding: 50px 0px;
 }
 
 a, a:link, a:visited {
