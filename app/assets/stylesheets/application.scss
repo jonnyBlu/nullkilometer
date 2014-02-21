@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require leaflet.css
+ *= require jquery.timepicker.css
+ *= require jquery.ui.all 
+ */
+
+ /**
+    edited like mentioned here: https://stackoverflow.com/questions/9138946/proper-scss-asset-structure-in-rails
+ */
+
+
+@import 'bootstrap';
+
+
+/* mixins, variables, etc. */
+@import '_mixins';
+@import '_fonts';
+@import '_global-variables';
+
+/* main styling - like body, headlines, etc. */
+@import 'main';
+
+/* basic parts of page */
+@import 'header';
+@import 'footer';
+
+/* modules like Map, Homepage, other specific styles */
+@import 'modules/*';

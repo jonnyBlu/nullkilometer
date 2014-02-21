@@ -1,0 +1,33 @@
+header{
+	#logo {
+		font-family: $serif;
+		float: left;
+		margin-right: 10px;
+		font-size: 30px;
+		color: white;
+		padding-top:10px;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: 2px;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+	#logo:hover{
+  		color: white;
+  		text-decoration: none;
+	}
+
+	/* links in the header on the right */
+	#topMenuLinks > li{
+  		line-height: 30px;
+  		a {
+    		font-size: large;
+    		color: $grayVeryLight;
+  		}
+	}
+  	a:hover {
+    	text-decoration: none;
+    	background: none;
+  	}
+}

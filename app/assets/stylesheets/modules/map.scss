@@ -8,28 +8,6 @@ $transparentBackground: rgba(255, 255, 255, 0.8);
 $infoboxWrapperWidth: 420px;
 $infoboxWidth: 400px;
 
-@mixin roundedCorners($round) {
-  -moz-border-radius: $round;
-  -webkit-border-radius: $round;
-  border-radius: $round;
-}
-
-@mixin roundedCorners_bottom($round) {
-   -moz-border-radius-bottomleft: $round;  
-   -webkit-border-bottom-left-radius: $round;  
-   border-bottom-left-radius: $round;
-
-   -moz-border-radius-bottomright: $round;  
-   -webkit-border-bottom-right-radius: $round;  
-   border-bottom-right-radius: $round;
-}
-
-@mixin boxShadow($expansion,$color){
-    -moz-box-shadow:0px 0px $expansion $color;
-    -webkit-box-shadow:0px 0px $expansion $color;
-    box-shadow:0px 0px $expansion $color;
-}
-
 .map {
 	header {
 		.container {
@@ -250,8 +228,6 @@ $infoboxWidth: 400px;
 	footer {
 		position: absolute;
 		bottom: 0;
-		width: 100%;
-		margin: 0;
 		background: rgba(255,255,255,0.5);
 
 		ul {

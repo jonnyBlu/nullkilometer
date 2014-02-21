@@ -1,4 +1,12 @@
-$fontFamilyLogo: 'Fenix';
+/**
+	typo
+*/
+$serif: 		"Vollkorn", serif;
+$sans-serif: 	"Helvetica Neue", sans-serif; /*"Ubuntu-R";*/
+
+/**
+	colors
+*/
 $backgroundColor: rgba(213, 208, 164, 1);
 $headerColor1: #5b483c;
 $headerColor2: #745948;
@@ -10,4 +18,3 @@ $grayDarker: #bbb;
 $grayLight: #ddd;
 $grayMediumLight: #eee;
 $grayVeryLight: #eee;
-$textFontFamily : "Helvetica Neue",  sans-serif; /*"Ubuntu-R";*/
