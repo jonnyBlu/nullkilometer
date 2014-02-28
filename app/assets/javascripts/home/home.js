@@ -7,7 +7,7 @@ $(document).ready(function(){
 			$("#mapFilterButton").click(function(){
 				$("#mapFilter").toggleClass("open");
 				changeText();
-				$("#mapFilter").slideToggle();				
+				$("#mapFilter").slideToggle("slow");				
 			});
 
 			filterTagsBy('productCategory');
@@ -16,7 +16,7 @@ $(document).ready(function(){
 		},
 		changeText = function(){			
 			if($("#mapFilter").hasClass("open")){
-				var text = $("#buttonTextOpen").html();			
+				var text = $("#buttonTextOpen").html();
 				$("#mapFilterButton").html(text);
 			} 
 			else{

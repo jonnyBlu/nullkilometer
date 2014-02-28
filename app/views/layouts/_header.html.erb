@@ -1,7 +1,9 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header>
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Nullkilometer", :root, id: "logo" %>
+      <%= link_to :root, id: "logo" do %>
+        Nullkilometer <span class="beta">beta</span>
+      <% end %>
       <nav>
         <ul class="nav pull-right" id="topMenuLinks">
               <li><%= link_to I18n.t('links.global.home'),   :root %></li>

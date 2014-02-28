@@ -1,0 +1,49 @@
+header{
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+    height: 50px;
+    background-image: linear-gradient($headerColor1, $headerColor2);
+
+	#logo {
+		font-family: "Vollkorm Semibold", $serif;
+		float: left;
+		margin-right: 10px;
+		font-size: 2.5em;
+		color: white;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: 0.05em;
+		font-weight: 700;
+		line-height: 2.03em;
+
+		.beta {
+			font-size: 0.67em;
+			text-transform: none;
+		}
+	}
+
+	#logo:hover{
+  		color: white;
+  		text-decoration: none;
+	}
+
+	/* links in the header on the right */
+	#topMenuLinks > li{
+  		line-height: 30px;
+  		float: left;
+  		a {
+    		font-size: large;
+    		color: $grayVeryLight;
+  		}
+	}
+  	a:hover {
+    	text-decoration: none;
+    	background: none;
+  	}
+
+  	.container {
+  		height: 100%;
+  	}
+}

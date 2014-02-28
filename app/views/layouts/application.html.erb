@@ -13,15 +13,16 @@
   <%= render 'layouts/shim' %> 
   
   <link rel="icon" href="<%= root_url+"images/favicon.png" %>" type="image/x-icon" />
-  <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css' />
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
 </head>
 <body class="<%= yield :body_classes %>">
-	<%=  render 'layouts/header' %> 
-	<div class="container contentContainer">
-		<%= yield %> 
-	</div>
+  	<%=  render 'layouts/header' %> 
+    
+  <div class="content-wrapper">
+  	<div class="container contentContainer">
+  		<%= yield %> 
+  	</div>
+  </div>
 
-  <%=  render 'layouts/footer' %> 
+  <%=  render 'layouts/footer' %>
 </body>
 </html>

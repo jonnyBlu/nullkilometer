@@ -1,0 +1,35 @@
+footer.page-footer {
+	width: 100%;
+	height: 20px;
+	margin-top: -20px;
+	border-top: 1px solid $grayMediumLight;
+	color: $grayLight;
+	background: rgba(255,255,255,0.5);
+	> div {
+		margin: 0 10px;
+
+		a {
+	    	color: $gray;
+	    	&:hover { 
+	      		color: $grayDarker;
+			    text-decoration: none;
+			    background: none;
+			}
+	  	}
+
+	  	small { 
+	    	float: left; 
+	  	}
+
+	  	ul {
+	    	float: right;
+	    	list-style: none;
+	    	margin: 0px;
+
+	    	li {
+		      	float: left;
+		      	margin-left: 10px;
+	    	}
+	  	}
+	}
+}

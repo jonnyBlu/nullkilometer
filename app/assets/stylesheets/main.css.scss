@@ -1,0 +1,151 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  color: #aaa;
+  padding-top: 50px;
+  background-color: $backgroundColor !important;  
+  /* http://lea.verou.me/css3patterns/# */
+  background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
+  background-size: 5px 5px;
+  font-family: $sans-serif;
+}
+
+.content-wrapper {
+	min-height: 100%;
+	padding: 50px 0px;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+}
+a.ordinaryLink, a.ordinaryLink:visited{
+  color: #444 !important;
+  text-decoration: none !important;
+}
+a.ordinaryLink:hover, a:hover{
+  background-color: transparent !important;
+  color: #666; /*  stays the same */
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1em;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+button:focus::-moz-focus-inner {
+    padding: 3px;
+    border: none;
+
+}
+input:focus, button:focus{
+  outline: none;
+}
+
+.contentContainer {
+  background-color: $backgroundColor;
+  padding: 5px 10px 10px 10px;
+  -moz-box-shadow: 0 0px 40px 2px #888;
+  -webkit-box-shadow: 0 0px 40px 2px#888;
+  box-shadow: 0 0px 40px 2px #888;
+}
+
+.hidden{
+  display: none;
+}
+
+.btn-default{
+     background-image: linear-gradient(to bottom, #fff, $buttonColor1);
+     &:hover { background-color: $buttonColor1 }
+}
+
+
+.infoDiv {
+  
+  margin: 30px;
+  p{
+      font-size: 16px;
+      line-height: 150%;
+      font-family : $sans-serif;
+  }
+  span{
+    font-weight: bold;
+  }
+}
+
+
+/*universal specific styles*/
+
+/*used in infobox and profile page*/
+
+.categoryIcon{
+  margin-left: 4px;
+}
+
+/*used in home page*/
+.customButton{
+  height: $buttonAndInputHeight;
+  background-color: $transparentBackground;
+    &:hover { background-color: $buttonColor1; color: #fff }
+    padding: 0px;
+    border: solid 1px #bbb;
+    border: none;
+    color: #555;
+    @include roundedCorners_bottomright(20px);
+}
+
+.infoHeader{
+  width:100%;
+  ul{
+    margin: 0px;
+    padding: 0px;
+  }
+  li{
+    height: 25px;
+  }
+  li:last-child{
+    font-size: 25px;
+    font-weight: bold;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+  }
+}
