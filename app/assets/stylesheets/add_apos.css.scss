@@ -261,13 +261,12 @@ a#removeMarketStall, a#editMarketStall{
     .row{
         margin-bottom:20px;
     }
-
 }
 .step{
     float:left;
     width:$stepWidth;
     border:none;
-    /*padding: 0px 5px 5px 5px;*/
+    padding:0px;
 }
 #navigation{
     height: $navigationHeight;

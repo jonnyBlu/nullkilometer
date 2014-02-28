@@ -1,0 +1,7 @@
+<ul>
+	<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
+		<li>
+			<label class="checkbox"><input type="checkbox" name="productCategory" value="<%= index %>"><%= category %></label>
+		</li>
+	<% end %>
+</ul>

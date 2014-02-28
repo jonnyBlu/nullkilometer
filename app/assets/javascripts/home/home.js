@@ -45,6 +45,8 @@ $(document).ready(function(){
 			return array;
 		};
 
+	$("#addShop").tooltip();
+
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
 	map.loadMarkers();
 	map.locateUser(6);

@@ -1,3 +1,5 @@
+@import 'application';
+
 ul{
 	list-style: none;
 }
@@ -22,6 +24,31 @@ ul{
 }
 
 
-.hidden{ display: none; }
+/*.hidden{ display: none; }*/
 
 .row{ margin-left: 0px; }
+
+/*styles added by igne on 28.02.2014*/
+
+#homePageText{
+	.panel-default {
+		background-color: rgba(255, 255, 255, 0.3);
+		border: none;
+		.panel-body{
+			border-top: 1px solid #ccc;
+		}
+	}
+	.panel-default > .panel-heading, .panel-default > .panel-collapse{
+		background-color: transparent;
+	}
+	.panel-heading{
+		padding: 10px;
+	}	
+	h1{
+		color: #fff;
+	}
+}
+.punch-viewer-content {
+	border: 0px;
+}
+

@@ -24,6 +24,7 @@
 @import '_global-variables';
 
 
+
 @font-face {
     font-family : "Ubuntu-R";
     src: url('/assets/fonts/Ubuntu-R.ttf');
@@ -50,6 +51,9 @@ body {
 .navbar-inverse .navbar-inner, .navbar{
     background-image: linear-gradient($headerColor1, $headerColor2);
     height: 50px;
+    .container{
+      height: 100%;
+    }
 }
 
 a, a:link, a:visited {
@@ -98,7 +102,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
+  color: $grayMediumLight;
 }
 
 p {
@@ -173,7 +177,7 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  color: $grayMediumLight;
   a {
     color: $gray;
     &:hover { 

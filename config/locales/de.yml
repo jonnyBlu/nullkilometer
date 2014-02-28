@@ -77,10 +77,26 @@ de:
     - "Konserven"
     - "Getrocknete Waren"
     - "Sonstiges"
+  properties:
+    main_information:
+        name: "Name"
+        address: "Adresse"
+        selling_point_type: "Typ des Verkaufsorts"
+        product_categories: "Produktkategorien"
+        opening_times: "Öffnungszeiten"
+    additional_information:
+        description: "Beschreibung"
+        website: "Webseite"
+        email: "E-mail"
+        phone: "Telefonnummer"
   button:
     add_new_point_of_sales: "Neuen Verkaufsort hinzufügen"
     search_point_of_sales: "Nach Verkaufsort suchen"
     search_point_of_sales_open: "Filter ausblenden"
+    back_to_map: "Zu der Karte"
+    connect_production_places: "Herstellungsorte hinzufügen"
+    add_market_stall: "Marktstand Hinzufügen"
+    further: "Weiter"
   filter:
     what: "WAS?"
     where: "WO?"
@@ -89,6 +105,22 @@ de:
     commands:
         add_an_address: "Adresse eingeben"
         choose_an_address: "Wähle eine Adresse aus der Liste aus:"
+        mark_all: "Alle markieren"
+  instructions:
+    add_a_pos: 
+        precise_the_location: "Ort bestimmen"
+        precise_the_location_1: "Gebe eine Adresse ein oder präzisiere die Lokation auf der Karte"
+        precise_the_location_2: "Um die die Lokation auf der Karte zu präzisieren, klicke und schiebe den Marker"
+        main_information: "Hauptinformationen"
+        additional_information: "Zusätzliche Informationen"
+        market_stalls: "Marktstände"
+        confirm: "Bestätigen"
+        overview: "Übersicht"
+        overview_and_confirm_1: "Bitte überprüfe deine Angaben und bestätige wenn sie korrekt sind."
+        overview_and_confirm_2: "Anderenfalls ändere die Angaben in den vorherigen schritten."
+        submit_text: "Danke für die information, die Daten über den Verkaufsort werden bald online veröffentlicht werden."
+        minimum_note_1: "(* min 1)"
+        minimum_note_2: "(* min 1 Tag markieren)"
   links:
     global:
         about: "Über"
@@ -99,6 +131,10 @@ de:
         register: "Sich registrieren"
         login: "Sich anmelden"
         more_information: "Mehr Informationen >>"
+        edit: "bearbeiten"
   title:
     main: "Suche nach lokale Produkte"
     by: "von Nullkilometer"  
+  headers:
+    new_selling_point: "Neuer Verkaufsort"  
+    add_new_market_stalls: "Neue Marktstände hinzufügen"

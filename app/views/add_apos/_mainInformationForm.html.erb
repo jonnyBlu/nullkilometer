@@ -1,40 +1,29 @@
+<%= render 'nameRow' %>
 <div class="row">
-    <div class="span2"> <label for="name">Name*:</label></div>
-    <div class="span2">  <input class="requiredField" id="name" name="name" type="text" AUTOCOMPLETE=OFF /></div>
-</div>
-<div class="row">
-    <div class="span2"> <label for="address">Adresse:</label> </div>
-    <div class="span6"> <label id="loadedAddressLabel"><a href="#" id="goToSetAddressLink">Adresse bestimmen</a></label></div>
+    <div class="span2">
+        <label for="address"><%= I18n.t("properties.main_information.address")%>:</label>
+    </div>
+    <div class="span6">
+        <label id="loadedAddressLabel"><a href="#" id="goToSetAddressLink"><%= I18n.t("instructions.add_a_pos.precise_the_location") %></a></label>
+    </div>
 </div>
  <div class="row">
     <div class="span2"> 
         <ul>
-            <li><label for="shopTypeId">Laden Typ*:</label></li>
+            <li><label for="shopTypeId"><%= I18n.t("properties.main_information.selling_point_type")%>*:</label></li>
         </ul>
     </div>
-    <div class="span2"> 
-        <%=  render 'choosePOSTypeList' %>
-    </div>
+    <div class="span2"><%=  render 'posTypeList' %></div>
 </div>
-<div class="row">
-    <div class="span2"> 
-        <ul>
-            <li><label for="productCategory">Produktkategorien:</label></li>
-            <li>(* mindestens 1)</li>
-        </ul>
-    </div>
-    <div class="span3"> 
-        <%=  render 'chooseProductCategoriesList' %>
-    </div>
-</div>
+<%= render 'productCategoriesRow' %>
 <div class="row">
     <div class="span2">
         <ul>
-            <li><label for="openingDay">Öffnungszeiten:</label></li>
-            <li>(* mindestens einen Tag markieren)</li>
+            <li><label for="openingDay"><%= I18n.t("properties.main_information.opening_times")%>:</label></li>
+            <li><%= I18n.t("instructions.add_a_pos.minimum_note_2")%></li>
         </ul>
     </div>
     <div class="span7" id="openingDaysAndTimesList"> 
         <%=  render 'openingTimesList' %>                           
-     </div>
+    </div>
 </div>  

@@ -45,7 +45,9 @@ Nullkilometer::Application.routes.draw do
   root :to => 'home#index'
   match '/map' => 'home#map'
   match '/addShop' => 'add_apos#index'
-  match '/addProductionPlaces' => 'add_production_places#index'
+  #the following is to be removed in beta version of production 
+  match '/addShopFuture' => 'add_apos#index_future'
+  #match '/addProductionPlaces' => 'add_production_places#index'
 
   # See how all your routes lay out with "rake routes"
 

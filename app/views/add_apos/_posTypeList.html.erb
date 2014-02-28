@@ -1,0 +1,7 @@
+<ul>
+	<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
+	 	<li>
+	 		<label class="radio"><input type="radio" name="shopTypeId" value="<%= index %>"><%= type %></label>
+	 	</li>
+	<% end %>
+</ul>
