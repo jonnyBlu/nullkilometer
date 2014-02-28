@@ -1,4 +1,11 @@
 header{
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+    height: 50px;
+    background-image: linear-gradient($headerColor1, $headerColor2);
+
 	#logo {
 		font-family: "Vollkorm Semibold", $serif;
 		float: left;
@@ -35,10 +42,8 @@ header{
     	text-decoration: none;
     	background: none;
   	}
-}
 
-/* navigation bar*/
-.navbar-inverse .navbar-inner, .navbar{
-    background-image: linear-gradient($headerColor1, $headerColor2);
-    height: 50px;
+  	.container {
+  		height: 100%;
+  	}
 }

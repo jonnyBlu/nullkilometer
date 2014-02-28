@@ -1,7 +1,3 @@
-/* mixins, variables, etc. */
-@import '_mixins';
-@import '_global-variables';
-
 $profilePageWrapperWidth: 900px;
 $mapHeight: 400px;
 $mapWidth:	100%;
@@ -67,7 +63,6 @@ $mapWidth:	100%;
 }
 #profilePageHeader{
 	padding: 20px 0px 10px 10px;
-	margin-top:50px;
 	ul > li:last-child{
 		font-size: 35px;
 		height: 35px;
