@@ -1,3 +1,4 @@
+<%# encoding: utf-8 %>
 var HomeMap = function(){
 	var 
 	ajaxRequest,
@@ -201,41 +202,42 @@ var HomeMap = function(){
 		newIcon.options.iconAnchor[1] = height;
 		marker.setIcon(newIcon);
 	},
-	setMarkerOpacity = function(checkedParameterValues, parameterNamesToCheck){
-
+	setMarkerOpacity = function(checkedParameters, checkedParameterValues, parameterNamesToCheck){
 		for (i=0;i<markersOfTheMap.length;i++) {
-			var makeMarkerVisible = false;
-			if(parameterNamesToCheck == "productCategory"){
-				var parameters = markersOfTheMap[i].data.productCategoryIds;
-				$.each(parameters, function(key, value){
-					if(jQuery.inArray(value.toString(), checkedParameterValues)>=0)
-						makeMarkerVisible = true;		
-				});
-			}
-
-			else if(parameterNamesToCheck == "shopTypeId"){
-				var value = markersOfTheMap[i].data.posTypeId; 
-				if(jQuery.inArray(value.toString(), checkedParameterValues)>=0) 
-					makeMarkerVisible = true; 
-			}
-
-			else if(parameterNamesToCheck == "openingDay"){
-				var openingTimes = markersOfTheMap[i].data.openingTimes;
-				$.each(openingTimes, function(key, value){
-					var openingDay = value.dayId.toString();
-					if(jQuery.inArray(openingDay, checkedParameterValues)>=0)
-						makeMarkerVisible = true;	
-				});
-			}
-			if(makeMarkerVisible) markersOfTheMap[i].setOpacity(1);
-			else{ // reset marker to default size, with infobox closed
-				markersOfTheMap[i].setOpacity(0);
-				resizeMarkerIcon(markersOfTheMap[i], false);
-				markersOfTheMap[i].closePopup();
-			}
+			var makeMarkerVisible1 = false,
+				makeMarkerVisible2 = false,
+				makeMarkerVisible3 = false;
+			$.each(checkedParameters, function(key, values){
+				if(key == "productCategory"){
+					var parameters = markersOfTheMap[i].data.productCategoryIds;
+					$.each(parameters, function(key, value){
+						if(jQuery.inArray(value.toString(), values)>=0)
+							makeMarkerVisible1 = true;		
+					});
+				}
+				else if(key == "shopTypeId"){
+					var value = markersOfTheMap[i].data.posTypeId; 
+					if(jQuery.inArray(value.toString(), values)>=0) 
+						makeMarkerVisible2 = true; 
+				}
+				else if(key == "openingDay"){
+					var openingTimes = markersOfTheMap[i].data.openingTimes;
+					$.each(openingTimes, function(key, value){
+						var openingDay = value.dayId.toString();
+						if(jQuery.inArray(openingDay, values)>=0)
+							makeMarkerVisible3 = true;	
+					});
+				}
+				if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) 
+					markersOfTheMap[i].setOpacity(1);
+				else{ // reset marker to default size, with infobox closed
+					markersOfTheMap[i].setOpacity(0);
+					resizeMarkerIcon(markersOfTheMap[i], false);
+					markersOfTheMap[i].closePopup();
+				}
+			});	
 		}
 	};
-
 	return {
 		initmap: initmap,
 		locateUser: locateUser,

@@ -30,19 +30,23 @@ $(document).ready(function(){
 				$(this).parent().click(function(){
 					$(this).find("input").toggleClass("inactive");
 					$(this).find("span").toggleClass("inactive");
-					var activeValues = getActiveValues(inputName);
-					map.setMarkerOpacity(activeValues, inputName);				
+					var activeValues = getActiveValues();
+					map.setMarkerOpacity(activeValues);				
 				});
 			});
 		},
-		getActiveValues = function(inputName){
-			var array = [];
-			var filterInputs = $("#mapFilter").find("input[name="+inputName+"]");
-			filterInputs.each(function(){ 
-				var active = ($(this).hasClass("inactive")) ? false : true;;
-				if(active) {array.push($(this).val());}
+		getActiveValues = function(){
+			var activeValues = {};
+			$.each(['productCategory', 'shopTypeId', 'openingDay'], function(index, inputName){
+				var array = [];
+				var filterInputs = $("#mapFilter").find("input[name="+inputName+"]");
+				filterInputs.each(function(){ 
+					var active = ($(this).hasClass("inactive")) ? false : true;;
+					if(active) {array.push($(this).val());}
+				});
+				activeValues[inputName] = array;
 			});
-			return array;
+			return activeValues;
 		};
 
 	$("#addShop").tooltip();
