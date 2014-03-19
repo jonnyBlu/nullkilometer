@@ -18,16 +18,25 @@ body {
 }
 
 a, a:link, a:visited {
-  text-decoration: none;
-}
-a.ordinaryLink, a.ordinaryLink:visited{
-  color: #444 !important;
   text-decoration: none !important;
 }
-a.ordinaryLink:hover, a:hover{
-  background-color: transparent !important;
-  color: #666; /*  stays the same */
+
+a.ordinaryLink, a.ordinaryLink:visited{
+  color: #444 !important;
 }
+
+a.lightLink:hover, a.ordinaryLink:hover{
+  background-color: transparent !important;
+  /*color: $ordinaryLinkHover !important;*/ 
+  opacity:0.5;
+  filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+
+
+a:hover{ 
+  background-color:transparent !important;
+}
+
 
 section {
   overflow: auto;
@@ -99,12 +108,11 @@ input:focus, button:focus{
 
 
 .infoDiv {
-  
+  line-height: 20px;
   margin: 30px;
+  font-size: 14px;
   p{
-      font-size: 16px;
-      line-height: 150%;
-      font-family : $sans-serif;
+      margin: 10px;
   }
   span{
     font-weight: bold;
