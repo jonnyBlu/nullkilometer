@@ -7,6 +7,8 @@ var HomeMap = function(){
 	curPosMarkerLayer,
 	zoomLevel,
 	map,
+	//todo: DELETE if not needed
+	popupsTestArray = [],
 	markerIconWidth = 30,
 	markerIconHeight = 43,
 	curPosMarkerIconWidth = 40,
@@ -107,43 +109,34 @@ var HomeMap = function(){
 		}
 	},
 	bindListeners = function(marker){
-		var posId = marker.data.id,
-			posName = marker.data.name,//plot.name;
-			posAddress = marker.data.address,
-			posType = shopTypeNames[marker.data.posTypeId],
-			productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames),	
-			openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames),
-			address =  marker.data.address;
-
-		marker.on('click', function(evt) {
+		marker.on('click', function(evt) {	
 
 			//resize all markers' icons to default size
 			for (i=0;i<markersOfTheMap.length;i++) {
 				resizeMarkerIcon(markersOfTheMap[i], false);
 			}
-			map.closePopup();
+		//	map.closePopup();
 
-			$("#infoboxContent .title").html(posName);
-			$("#infoboxContent .title").attr("title", posName);
-			$("#infoboxContent .type").html(posType);
-			$("#infoboxContent .address").html(posAddress);
-			$("#infoboxContent .productCategories").html(productCategoryIds_readable);
-			$("#infoboxContent .openingTimes").html(openingTimes);
-			
-			$("#infoboxContent #linkToProfilePage").attr("href", "/point_of_sales/"+posId+".html");
-
-			var infoBoxContent = $("#hiddenInfoboxContentContainer").html();
+			var infoBoxContent = buildInfoboxHtml(marker);
 			
 			marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
 			resizeMarkerIcon(marker, true);
 			marker.openPopup();
 
+
+			var popup = marker.getPopup(); // returns marker._popup
+			popup._isOpen = true; 
+	 		console.log("is popup open? " +popup._isOpen); // true
+	 		popupsTestArray.push(popup); 
+			console.log(popupsTestArray); // popup_isOpen is false...
+
+			//TODO: resize Marker icon only on closepopup
 			$("#map, .leaflet-popup-close-button").click(function(){
 				resizeMarkerIcon(marker, false);
 			});
 
-
 		});
+
 
 /*		marker.on('mouseover', function(evt) {
 			//evt.target.closePopup();
@@ -157,6 +150,29 @@ var HomeMap = function(){
 			//}	
 		});*/
 	}, 
+	buildInfoboxHtml= function(marker){
+		var posId = marker.data.id,
+			posName = marker.data.name,//plot.name;
+			posAddress = marker.data.address,
+			posType = shopTypeNames[marker.data.posTypeId],
+			productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames),	
+			openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames),
+			address =  marker.data.address;
+		var htmlContent = '<div id="infoboxContent">' +
+			'<div class="infoHeader">' +
+				'<ul>' +
+					'<li class="type">'+posType+'</li>' +
+				  	'<li class="'+ posName+'" title="shop">'+posName+'</li>' +
+				'</ul>' +
+			'</div>' +
+			'<!--<div class="posLocationDegree">TODO: locality degree</div>-->' +
+			'<div class="productCategories">'+productCategoryIds_readable+'</div>' +
+			'<div class="address">'+posAddress+'</div>' +
+			'<div class="openingTimes">'+openingTimes+'</div>' +
+			'<div class="footer"><a href="/point_of_sales/'+posId+'.html" target="_blank" class="ordinaryLink" id="linkToProfilePage"><%= I18n.t("links.global.more_information") %></a></div>' +
+		'</div>';
+		return htmlContent;
+	},
 	removeMarkers = function() {
 		for (i=0;i<markersOfTheMap.length;i++) {
 			map.removeLayer(markersOfTheMap[i]);

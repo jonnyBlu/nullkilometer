@@ -43,7 +43,7 @@ class Delivery < ActiveRecord::Base
   def set_product
     if self.new_record? && @seller
       self.product = @seller.products.select{|p| p.category == category}.first
-      @category_invalid = "PorductCategory with id=#{category} for #{@seller.class.name} with id=#{@seller.id} is invalid" unless product
+      @category_invalid = "ProductCategory with id=#{category} for #{@seller.class.name} with id=#{@seller.id} is invalid" unless product
     end
   end
 
