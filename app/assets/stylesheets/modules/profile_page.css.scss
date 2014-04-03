@@ -1,4 +1,4 @@
-$profilePageWrapperWidth: 900px;
+$profilePageWrapperWidth: 100%;
 $mapHeight: 400px;
 $mapWidth:	100%;
 
@@ -23,10 +23,10 @@ $mapWidth:	100%;
 	width : $profilePageWrapperWidth;
 	padding-left: 10px;
 	padding-bottom: 30px;
-	.row, .span2, .span3, .span6, .span7{
+	.row {
 		margin-left: 0px;
 	}
-	.span6{
+	.col-md-6{
 		word-break: break-word;
 	}
 	.profileContainer {
@@ -34,12 +34,14 @@ $mapWidth:	100%;
 		margin-top: 20px;
 		margin-bottom:20px;
 		.row{
-			padding: 10px 0px 10px 0px;
-			border-bottom: 1px solid #eee;
-		}
-		.row:last-child{
-			border-bottom: none;
-		}
+			.row{
+				padding: 10px 0px 10px 0px;
+				border-bottom: 1px solid #eee;
+			}
+			.row:last-child{
+				border-bottom: none;
+			}
+		 }
 		ul, address{
 			margin: 0px;
 			padding: 0px;
@@ -106,7 +108,9 @@ span.openingTimeDay{
 .helperContainer{
 	display: none;
 }
+
 .accordion-group{
+	margin-top:2px;
 	border: none;
 }
 .accordion-heading{
@@ -116,12 +120,18 @@ span.openingTimeDay{
 		background: #fff;
 		color: #666;
 	}
+	a, a:visited{
+		color: #444;
+	}
+	line-height: 35px;
+	vertical-align: middle;
+	padding-left: 10px;
 }
-
 .accordion-inner{
+	padding: 15px;
 	border-top:0px;
 	border-left: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
 	label{
 		word-break: break-word;
 	}

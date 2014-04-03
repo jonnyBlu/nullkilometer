@@ -39,6 +39,17 @@ ul{
 	}
 	.panel-heading{
 		padding: 10px;
+		a{
+			font-size: 25px;
+			color: $darkTextColor;
+			text-decoration:none;
+			&:hover{
+				color: #FFB833;
+			}
+		}
+	}
+	.panel-collapse {
+		padding-top: 0px;
 	}	
 	h1{
 		color: #fff;

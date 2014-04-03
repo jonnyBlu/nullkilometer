@@ -11,7 +11,7 @@
 	<div id ="mapFilterContainer">
 		<div id="mapFilter">     
 		 	<div class="row clearfix">
-		    	<div class="span2 what"> 
+		    	<div class="col-md-4 what"> 
 		      		<p><%= I18n.t("filter.what") %></p>
 		      		<ul>
 		      			<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
@@ -22,7 +22,7 @@
 		      			<% end %>
 		      		</ul>
 		    	</div>
-		    	<div class="span2 where"> 
+		    	<div class="col-md-4 where"> 
 		      		<p><%= I18n.t("filter.where") %></p>
 		      		<ul>
 		      			<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
@@ -33,7 +33,7 @@
 		      			<% end %>
 		      		</ul>
 		    	</div>
-		    	<div class="span2 when"> 
+		    	<div class="col-md-4 when"> 
 		      		<p><%= I18n.t("filter.when") %></p>
 		      		<ul>
 			      		<% I18n.t("date.day_names").each_with_index do |day, index| %>
@@ -63,7 +63,7 @@
 		<div class="control-group">
 			<div class="controls">
 		   		<div class="input-prepend">
-		      		<input class="span2" id="locationInput" type="text" placeholder="<%= I18n.t("input.commands.add_an_address") %>">
+		      		<input class="col-md-4" id="locationInput" type="text" placeholder="<%= I18n.t("input.commands.add_an_address") %>">
 		      		<a class="btn" href="#" id="locationSubmit"><i class="icon-search"></i></a>
 		   		 </div>
 		  	</div>

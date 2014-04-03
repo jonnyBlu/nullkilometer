@@ -67,8 +67,7 @@ $infoboxWidth: 400px;
 			.row {
 				margin-left: 0px;
 			}
-			.span2{
-				width: 180px;
+			.col-md-4{
 				margin:0px;
 				float: left;
 				p{
@@ -84,7 +83,10 @@ $infoboxWidth: 400px;
 					li{
 						height: 50px; 
 						line-height: 50px;
-						vertical-align: middle;
+						input{
+							vertical-align: middle;
+							margin-right: 10px;
+						}
 						&:hover {
 							cursor:pointer;
 						}				
@@ -182,6 +184,8 @@ $infoboxWidth: 400px;
 	}
 	.leaflet-container a.leaflet-popup-close-button{
 		font: 30px/28px Tahoma, Verdana, sans-serif;
+		width: 30px;
+		height: 28px;
 	}
 
 
