@@ -3,11 +3,13 @@
 one:
   name: MyString
   address: MyString
-  location: 
+  lat:
+  lon: 
   pos_type: MyString
 
 two:
   name: MyString
   address: MyString
-  location: 
+  lat:
+  lon: 
   pos_type: MyString

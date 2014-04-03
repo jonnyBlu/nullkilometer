@@ -11,33 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108155314) do
-
-  create_table "active_admin_comments", :force => true do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   :null => false
-    t.string   "resource_type", :null => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "admin_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130702174126) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "point_of_production_id"
@@ -77,11 +51,12 @@ ActiveRecord::Schema.define(:version => 20131108155314) do
   create_table "point_of_interests", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.spatial  "location",   :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.float    "lat"
+    t.float    "lon"
     t.integer  "pos_type"
     t.string   "type"
-    t.datetime "created_at",                                                             :null => false
-    t.datetime "updated_at",                                                             :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
