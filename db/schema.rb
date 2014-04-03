@@ -51,11 +51,12 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
   create_table "point_of_interests", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.spatial  "location",   :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.float    "lat"
+    t.float    "lon"
     t.integer  "pos_type"
     t.string   "type"
-    t.datetime "created_at",                                                             :null => false
-    t.datetime "updated_at",                                                             :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
