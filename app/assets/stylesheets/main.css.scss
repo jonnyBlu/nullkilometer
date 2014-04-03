@@ -21,6 +21,15 @@ a, a:link, a:visited {
   text-decoration: none !important;
 }
 
+a:hover{ 
+  background-color:transparent !important;
+}
+
+a.lightLink, a.lightLink:visited{
+  /*color: #fff !important;*/
+  color: $grayVeryLight;
+}
+
 a.ordinaryLink, a.ordinaryLink:visited{
   color: #444 !important;
 }
@@ -30,11 +39,6 @@ a.lightLink:hover, a.ordinaryLink:hover{
   /*color: $ordinaryLinkHover !important;*/ 
   opacity:0.5;
   filter:alpha(opacity=50); /* For IE8 and earlier */
-}
-
-
-a:hover{ 
-  background-color:transparent !important;
 }
 
 

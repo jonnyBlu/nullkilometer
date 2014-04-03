@@ -7,8 +7,6 @@ var HomeMap = function(){
 	curPosMarkerLayer,
 	zoomLevel,
 	map,
-	//todo: DELETE if not needed
-	popupsTestArray = [],
 	markerIconWidth = 30,
 	markerIconHeight = 43,
 	curPosMarkerIconWidth = 40,
@@ -110,34 +108,19 @@ var HomeMap = function(){
 	},
 	bindListeners = function(marker){
 		marker.on('click', function(evt) {	
-
-			//resize all markers' icons to default size
-			for (i=0;i<markersOfTheMap.length;i++) {
-				resizeMarkerIcon(markersOfTheMap[i], false);
-			}
-		//	map.closePopup();
-
-			var infoBoxContent = buildInfoboxHtml(marker);
-			
+			var infoBoxContent = typeof marker.getPopup() == "undefined" ? buildInfoboxHtml(marker) : marker.getPopup().getContent();
+			//a workaround, cuz if a popup is still bound from the previous click (but invisible), 
+			//it opens but remains invisible
+			marker.unbindPopup();
 			marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
-			resizeMarkerIcon(marker, true);
 			marker.openPopup();
-
-
-			var popup = marker.getPopup(); // returns marker._popup
-			popup._isOpen = true; 
-	 		console.log("is popup open? " +popup._isOpen); // true
-	 		popupsTestArray.push(popup); 
-			console.log(popupsTestArray); // popup_isOpen is false...
-
-			//TODO: resize Marker icon only on closepopup
-			$("#map, .leaflet-popup-close-button").click(function(){
-				resizeMarkerIcon(marker, false);
-			});
-
 		});
-
-
+		marker.on('popupopen', function(){
+			resizeMarkerIcon(marker, true);	
+		});
+		marker.on('popupclose', function(){
+			resizeMarkerIcon(marker, false);
+		});
 /*		marker.on('mouseover', function(evt) {
 			//evt.target.closePopup();
 		    marker.bindPopup(productCategoryIds_readable, {className: 'mouseover-popup'});

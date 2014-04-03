@@ -25,35 +25,48 @@ ul{
 .row{ margin-left: 0px; }
 
 /*styles added by igne on 28.02.2014*/
-
 #homePageText{
 	.panel-default {
-		background-color: rgba(255, 255, 255, 0.3);
+		@include boxShadow(0, #fff);
+
+		background-color: rgba(255, 255, 255, 0.7);
 		border: none;
 		.panel-body{
-			border-top: 1px solid #ccc;
+			/*border-top: 1px solid #ccc;*/
+		}
+		.panel-collapse {
+			padding-top: 0px;
+		}	
+		 > a{
+			&:link, &:visited{
+				color: $darkTextColor;
+				text-decoration:none;
+			}
+			&:hover{
+				color: $grayVeryLight;
+			}
+		}	
+		.panel-heading{
+			border-bottom: 1px solid #ccc;
+			padding: 10px;
+			&:hover{
+				background-color: $orangeBackgroundColor;
+			}
+		}
+		.btn-warning{
+			height: 38px;
+			line-height: 1em;
+			vertical-align: middle;
+			color: $grayVeryLight;
+			&:hover{
+				color: $darkTextColor;
+			}
 		}
 	}
 	.panel-default > .panel-heading, .panel-default > .panel-collapse{
 		background-color: transparent;
 	}
-	.panel-heading{
-		padding: 10px;
-		a{
-			font-size: 25px;
-			color: $darkTextColor;
-			text-decoration:none;
-			&:hover{
-				color: #FFB833;
-			}
-		}
-	}
-	.panel-collapse {
-		padding-top: 0px;
-	}	
-	h1{
-		color: #fff;
-	}
+
 }
 .punch-viewer-content {
 	border: 0px;
