@@ -1,0 +1,85 @@
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "add_apos/add_apos.js" %>
+    <%= javascript_include_tag "add_apos/first_step.js" %>
+    <%= javascript_include_tag "add_apos/second_step.js" %>
+    <%= javascript_include_tag "add_apos/market_stalls_step.js" %>
+    <%= javascript_include_tag "add_apos/overview.js" %>
+<% end %>
+<%=  render 'newPosHeader' %>
+<div id='marketStallsMoreInfoDiv'></div>
+<div class="wrapper">
+	    <div id="navigation" style="display:none;">
+        <ul>
+            <li class="selected">
+                <a href="#" class="available"><%= I18n.t("instructions.add_a_pos.precise_the_location")%></a>
+            </li>
+            <li>
+                <a href="#" class="available"><%= I18n.t("instructions.add_a_pos.main_information")%></a>
+            </li>
+            <li class="unactive">
+                <a href="#"><%= I18n.t("instructions.add_a_pos.additional_information")%></a>
+            </li>
+            <li class="unactive">
+                <a href="#" id="marketStallsStepLink" class="invisible"><%= I18n.t("instructions.add_a_pos.market_stalls")%></a>
+            </li>
+			<li>
+                <a href="#" id="overviewTab"><%= I18n.t("instructions.add_a_pos.confirm")%></a>
+            </li>
+        </ul>
+    </div>
+    <div id="steps">
+        <form id="addAPosForm" name="addAPosForm" action="" method="post">
+            <fieldset class="step">
+                <legend><%= I18n.t("instructions.add_a_pos.precise_the_location")%></legend>
+                <div class = "instruction"><p><%= I18n.t("instructions.add_a_pos.precise_the_location_1")%></p></div>
+				<div class="control-group">
+				  <div class="controls">
+				    <div class="input-prepend">
+					    <input class="span2" id="locationInput" type="text" placeholder="Adresse eingeben">
+					    <a class="btn" href="#" id="locationSubmit"><i class="icon-search"></i></a>
+				    </div>
+				  </div>
+				</div>
+				<div id="locationSearchResults"></div>
+				<div id="newPosMap"></div>
+                <div class="tooltip" id="markerTooltip"><%= I18n.t("instructions.add_a_pos.precise_the_location_2")%></div>
+                <%=  render 'buttonToTheNextStep' %>
+            </fieldset>
+            <fieldset class="step" id="mainInformationFieldset">
+                <legend><%= I18n.t("instructions.add_a_pos.main_information")%></legend>
+                <%=  render 'mainInformationForm' %> 
+                <%=  render 'buttonToTheNextStep' %>   
+            </fieldset>
+            <fieldset class="step" id="additionalInformationFieldset">
+                <legend><%= I18n.t("instructions.add_a_pos.additional_information")%></legend>
+                <%=  render 'additionalInformationForm' %>
+                <%=  render 'buttonToTheNextStep' %>
+            </fieldset>
+            <fieldset class="step" >
+                <div id="marketStallsStepContainer">
+                    <legend><%= I18n.t("instructions.add_a_pos.market_stalls")%></legend>
+                    <%=  render 'newMarketStallForm' %>
+                    <%=  render 'buttonToTheNextStep' %>
+                </div>
+            </fieldset>
+			<fieldset class="step" id="overviewContainer">
+                <legend><%= I18n.t("instructions.add_a_pos.overview")%></legend>
+                     <div class="instruction">
+                        <p><%= I18n.t("instructions.add_a_pos.overview_and_confirm_1") %><br />
+                        <%= I18n.t("instructions.add_a_pos.overview_and_confirm_2") %></p>
+                    </div>      
+                <%=  render 'newPosOverview' %>
+                <div id="invisibleOverviewContainer">
+                    <div class="instruction">
+                        <p></p>
+                    </div>
+                    <div class="row">
+                        <div class="span4"> <a href="/addProductionPlaces" class="btn btn-info" type="button"><%= I18n.t("button.connect_production_places")%></a></div>
+                        <div class="span4"> <a href="/" class="btn" type="button"><%= I18n.t("button.back_to_map")%></a></div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+

@@ -44,6 +44,8 @@ Nullkilometer::Application.routes.draw do
 
   root :to => 'home#index'
   match '/map' => 'home#map'
+  match '/contacts' => 'home#contacts'
+  match '/imprint' => 'home#imprint'
   match '/addShop' => 'add_apos#index'
   #the following is to be removed in beta version of production 
   match '/addShopFuture' => 'add_apos#index_future'

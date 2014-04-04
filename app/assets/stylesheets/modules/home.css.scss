@@ -24,16 +24,14 @@ ul{
 
 .row{ margin-left: 0px; }
 
-/*styles added by igne on 28.02.2014*/
 #homePageText{
+	padding: 0px;
 	.panel-default {
 		@include boxShadow(0, #fff);
 
-		background-color: rgba(255, 255, 255, 0.7);
+		margin-top: 0px;
 		border: none;
-		.panel-body{
-			/*border-top: 1px solid #ccc;*/
-		}
+
 		.panel-collapse {
 			padding-top: 0px;
 		}	
@@ -43,17 +41,25 @@ ul{
 				text-decoration:none;
 			}
 			&:hover{
-				color: $grayVeryLight;
+				color: white;/*$grayVeryLight;*/
 			}
 		}	
 		.panel-heading{
-			border-bottom: 1px solid #ccc;
-			padding: 10px;
+			border-top: 1px solid #d5d0a4;
+			padding: 15px;
 			&:hover{
 				background-color: $orangeBackgroundColor;
+				-webkit-transition: background .5s ease-out;
+				-moz-transition:  background .5s ease-out;
+				-o-transition:  background .5s ease-out;
+				transition:  background .5s ease-out;
 			}
 		}
+		.panel-body {
+		 	padding: 40px;
+		}
 		.btn-warning{
+			margin-left: 20px;
 			height: 38px;
 			line-height: 1em;
 			vertical-align: middle;

@@ -20,9 +20,7 @@ $mapWidth:	100%;
 }
 
 .profileWrapper{
-	width : $profilePageWrapperWidth;
-	padding-left: 10px;
-	padding-bottom: 30px;
+
 	.row {
 		margin-left: 0px;
 	}
@@ -64,7 +62,6 @@ $mapWidth:	100%;
 	}
 }
 #profilePageHeader{
-	padding: 20px 0px 10px 10px;
 	ul > li:last-child{
 		font-size: 35px;
 		height: 35px;

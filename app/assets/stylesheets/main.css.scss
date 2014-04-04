@@ -4,7 +4,7 @@ html {
 
 body {
   color: #aaa;
-  padding-top: 50px;
+  padding-top: 0px;
   background-color: $backgroundColor !important;  
   /* http://lea.verou.me/css3patterns/# */
   background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
@@ -41,6 +41,10 @@ a.lightLink:hover, a.ordinaryLink:hover{
   filter:alpha(opacity=50); /* For IE8 and earlier */
 }
 
+.heading{
+    font-size: $headerTextSize;
+    font-weight: bold;
+}
 
 section {
   overflow: auto;
@@ -110,17 +114,21 @@ input:focus, button:focus{
      &:hover { background-color: $buttonColor1 }
 }
 
-
 .infoDiv {
-  line-height: 20px;
-  margin: 30px;
-  font-size: 14px;
-  p{
-      margin: 10px;
-  }
-  span{
-    font-weight: bold;
-  }
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 1);
+    line-height: 20px;
+    margin: 30px;
+    font-size: 14px;
+    p{
+        margin: 10px;
+    }
+    span{
+      font-weight: bold;
+    }
+    span#title{
+      font-size: 25px;
+    }
 }
 
 
