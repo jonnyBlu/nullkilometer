@@ -1,27 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
-  point_of_sale:
-    pos_type_names:
-    - "Market"
-    - "Supermarket"
-    - "Shop"
-    - "Kiosk"
-    - "Farmers shop"
-    marketstalls: "Market stalls"
-  product:
-    category_names:
-    - "Milk products"
-    - "Fruits and Vegetables"
-    - "Fish"
-    - "Meat"
-    - "Eggs"
-    - "Bread"
-    - "Tinned food"
-    - "Dried food"
-    - "Other products"
   properties:
     main_information:
         name: "Name"
