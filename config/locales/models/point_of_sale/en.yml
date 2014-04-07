@@ -1,0 +1,9 @@
+en:
+  point_of_sale:
+    pos_type_names:
+    - "Market"
+    - "Supermarket"
+    - "Shop"
+    - "Kiosk"
+    - "Farmers shop"
+    marketstalls: "Market stalls"
