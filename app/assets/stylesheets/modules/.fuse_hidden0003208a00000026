@@ -128,7 +128,7 @@ $infoboxWidth: 400px;
 
 	#addressLookupContainer {
 		right: 0px;
-		z-index: 10;
+		z-index: $zIndexMapElements;
 
 		#locationInput{
 			width: 150px;
@@ -139,29 +139,27 @@ $infoboxWidth: 400px;
 			right: 42px;
 			border: 0;
 			padding: 0 5px;
-			background: $transparentBackground;
-			@include placeholderColor(rgb(110,110,110));
 		}
 
 		#locationSubmit {
-			width: 43px;
-			height: 31px;
-			background: $transparentBackground;
+			width: 42px;
+			height: 30px;
+			background: white;
 			border: 0 none;
 			top: 0;
-			border-left: 1px solid rgb(204, 204, 204);
-			border-bottom: 1px solid rgb(204, 204, 204);
-			color: black;
 		}
 	}
 
 	.leaflet-control-container{
 		position: absolute;
-		top: 31px;
+		top: 30px;
 		right: 0px;
 		width: 42px;
 		margin: 0;
-		z-index: 10;
+
+		.leaflet-control {
+			margin: 0 !important;
+		}
 
 		.leaflet-control-attribution{
 			display: none;
@@ -170,17 +168,25 @@ $infoboxWidth: 400px;
 		.leaflet-bar {
 			border-right: 0px none;
 			border-top: 0px none;
-			overflow: hidden;
-			margin: 0 !important;
 			@include roundedCorners(0px 0px 0px $corner-radius);
-			@include boxShadowFullControll(none);
+			overflow: hidden;
+		}
 
-			a {
-				@include roundedCorners(0px);
-				width: 42px;
-				height: 28px;
-				background: $transparentBackground;
-			}
+		.leaflet-bar-part-top {
+			@include roundedCorners(0px);
+		}
+
+		.leaflet-bar-part-bottom {
+			@include roundedCorners(0px);
+		}
+	}
+
+	.leaflet-control-zoom {
+		margin: 0;
+
+		a {
+			width: 42px;
+			height: 28px;
 		}
 	}
 

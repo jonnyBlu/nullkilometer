@@ -19,10 +19,6 @@ en:
     connect_production_places: "Add production places"
     add_market_stall: "Add a market stall"
     further: "Next step"
-  filter:
-    what: "WHAT?"
-    where: "WHERE?"
-    when: "WHEN?" 
   input:
     commands:
         add_an_address: "Enter an address"

@@ -1,0 +1,9 @@
+de:
+  point_of_sale:
+    pos_type_names:
+      - "Markt"
+      - "Supermarkt"
+      - "Laden"
+      - "Verkaufsstand"
+      - "Bauernhofladen"
+    marketstalls: "Marktstände"
