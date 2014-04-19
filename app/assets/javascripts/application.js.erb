@@ -21,11 +21,11 @@
 //= require leaflet
 //= tree
 
- <%# encoding: utf-8 %>
+//http://stackoverflow.com/questions/7761540/encoding-issues-in-javascript-files-using-rails-asset-pipeline<%# encoding: utf-8 %>
+<% "日" %> 
 var INITIALLAT = 52.5233,
 INITIALLON = 13.4127,
 ZOOMONMARKERLEVEL = 17,
-
 
 shopTypeNames = <%= I18n.t("point_of_sale.pos_type_names") %>,
 productCategoryNames = <%= I18n.t("product.category_names") %>,

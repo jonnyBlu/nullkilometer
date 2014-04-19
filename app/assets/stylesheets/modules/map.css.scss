@@ -98,29 +98,16 @@ $infoboxWidth: 400px;
 				.when {
 					width: 160px;
 					ul > li{
-							height: 40px; 
+						height: 40px; 
 						font-size: 13px;
 					}
 				}
 			}
 		}
 	}
-
-	.customHomeButton{
-		height: $buttonAndInputHeight;
-		background-color: $transparentBackground;
-	    &:hover { background-color: $buttonColor1; color: #fff }
-	    padding: 0px;
-	    border: solid 1px #bbb;
-	    border: none;
-	    color: #555;
-	    @include roundedCorners(0px 0px 20px 0px);
-	}
-
 	#addShop {
 		left: 620px;
 		z-index: 11;
-
 		a {
 			width: 250px;
 			@include roundedCorners(0px 0px $corner-radius $corner-radius);
@@ -128,18 +115,22 @@ $infoboxWidth: 400px;
 	}
 
 	#addressLookupContainer {
+		z-index: $zIndexMapElements;
+		width: 400px;
 		float: right;
 		right: 0px;
-		z-index: $zIndexMapElements;
-
 		#locationInput{
-			width: 150px;
-			height: 30px;
+			width: 250px;
+			float: right;
+			right: 0px;
+			height: 35px;
 			@include roundedCorners(0px 0px 0px $corner-radius);
 		}
 
 		#locationSubmit {
-			height: 20px;
+			width: 35px;
+			padding: 0px;
+			border: solid 1px rgb(204, 204, 204);
 		}
 	}
 
@@ -214,8 +205,8 @@ $infoboxWidth: 400px;
 
 	.leaflet-control-container{
 		position: absolute;
-		top: 60px;
-		right: 43px;
+		top: 40%;
+		right: 45px;
 		margin: 0;
 
 		.leaflet-control-attribution{
@@ -239,11 +230,18 @@ $infoboxWidth: 400px;
 	}
 
 	.leaflet-control-zoom {
-		margin: 0;
-
+		margin-left: 0px;
 		a {
-			width: 42px;
-			height: 28px;
+			width: 35px;
+			height: 35px;
+			text-align: center;
+			line-height:35px;
+			&:hover{
+				width: 35px;
+				height: 35px;
+				text-align: center;
+				line-height:35px;
+			}
 		}
 	}
 

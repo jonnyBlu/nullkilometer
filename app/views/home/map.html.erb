@@ -48,24 +48,22 @@
 		</div>
 		<div id="buttonTextClosed" class="hidden"><%= I18n.t("button.search_point_of_sales") %></div>
 		<div id="buttonTextOpen" class="hidden"><%= I18n.t("button.search_point_of_sales_open") %></div>
-		<button class="customButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
+		<button class="customButton customHomeButton" id="mapFilterButton"><%= I18n.t("button.search_point_of_sales") %></button>
 	</div>
-
 	<div id="addShop">
-		<button class="customHomeButton" id="addAPlaceButton">
-			<a class= "ordinaryLink" href="/addShop"><%= I18n.t("button.add_new_point_of_sales") %></a>
-		</button>
+		<button class="customButton customHomeButton" id="addAPlaceButton" onclick="window.location.href='/addShop'"><%= I18n.t("button.add_new_point_of_sales") %></button>
 		<div class="tooltip" id="tooltipAddAPosButton"></div>
 	</div>
 	<div id="addressLookupContainer">
-		<div class="control-group">
-			<div class="controls">
-		   		<div class="input-prepend">
-		      		<input class="col-md-4" id="locationInput" type="text" placeholder="<%= I18n.t("input.commands.add_an_address") %>">
-		      		<a class="btn" href="#" id="locationSubmit"><i class="icon-search"></i></a>
-		   		 </div>
-		  	</div>
-		</div>
+	    <div class="input-group">
+		    <input type="text" id="locationInput" class="form-control" type="text" placeholder="<%= I18n.t("input.commands.add_an_address") %>">
+		     	<span class="input-group-btn">
+		        	<button class="btn btn-defaul customButton" id="locationSubmit" type="button">
+		        		<span class="glyphicon glyphicon-search"></span>
+		       	 	</button>
+		      	</span>
+		    
+	    </div><!-- /input-group -->
 	</div>
 	<div id="map"></div>
 </div> 

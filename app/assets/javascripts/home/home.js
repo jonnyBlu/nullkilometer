@@ -48,14 +48,14 @@ $(document).ready(function(){
 			});
 			return activeValues;
 		};
-
+	//not used?
 	$("#addShop").tooltip();
 
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
 	map.loadMarkers();
 	map.locateUser(6);
 
-	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddressHome);
+	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
 	loadFilterListeners();
 });
 

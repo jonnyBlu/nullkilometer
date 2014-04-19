@@ -47,7 +47,7 @@ var HomeMap = function(){
 	loadMarkers = function(){
 		callAjax("/point_of_sales", null, onSuccessLoadMarkers);
 	},
-	getOSMAddressHome = function (data){
+	getOSMAddress = function (data){
 		var resultsSelector = $("#locationResultPopup"),
 			resultAmount = data.length;
 		resultsSelector.html('<p><%= I18n.t("input.commands.choose_an_address") %></p><ul></ul>');
@@ -75,7 +75,6 @@ var HomeMap = function(){
 				$("#mapFilterContainer, #addShop").slideDown();
 			});
 		} else if(resultAmount == 1){
-			//console.log("recieved one Search Result from OSM");
 			// var address = formatAddress(data[0].display_name);
 			var address = data[0].display_name;
 			zoomTo(data[0].lat, data[0].lon, ZOOMONMARKERLEVEL);
@@ -165,12 +164,12 @@ var HomeMap = function(){
 	zoomTo = function(lat, lon, zoomLevel){
 		var coordinates = new L.LatLng(lat, lon, true);
 		map.setZoom(zoomLevel);
+		map.panTo(coordinates);
 		//callback of setZoom only for this particular event
-		map.on('zoomend', function(e) {
-			//curPosMarkerLayer.setLatLng(coordinates);
+		/*map.on('zoomend', function(e) {
 			map.panTo(coordinates);
 			map.off('zoomend');
-    	});
+    	});*/
 	},
 	generateOpeningTimesList = function(ids, arrayWithNames){
 		var list = "<ul>";
@@ -241,7 +240,7 @@ var HomeMap = function(){
 		initmap: initmap,
 		locateUser: locateUser,
 		loadMarkers: loadMarkers,
-		getOSMAddressHome: getOSMAddressHome,
+		getOSMAddress: getOSMAddress,
 		setMarkerOpacity: setMarkerOpacity		
 	}
 }

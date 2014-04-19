@@ -149,7 +149,10 @@ input:focus, button:focus{
     border: solid 1px #bbb;
     border: none;
     color: #555;
-    @include roundedCorners_bottomright(20px);
+
+}
+.customHomeButton{
+    @include roundedCorners(0px 0px 20px 0px);
 }
 
 .infoHeader{
