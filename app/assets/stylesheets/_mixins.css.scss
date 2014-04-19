@@ -13,8 +13,32 @@
      -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
 }
 
-@mixin boxShadow($expansion,$color){
+@mixin boxShadow($expansion, $color){
     -moz-box-shadow:0px 0px $expansion $color;
     -webkit-box-shadow:0px 0px $expansion $color;
     box-shadow:0px 0px $expansion $color;
+}
+
+@mixin boxShadowFullControll($value){
+    -moz-box-shadow: $value;
+    -webkit-box-shadow: $value;
+    box-shadow: $value;
+}
+
+@mixin placeholderColor($color) {
+	&::-webkit-input-placeholder {
+	   color: $color;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+	   color: $color;  
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   color: $color;  
+	}
+
+	&:-ms-input-placeholder {  
+	   color: $color;  
+	}
 }

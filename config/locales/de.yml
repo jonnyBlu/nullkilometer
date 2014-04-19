@@ -19,10 +19,6 @@ de:
     connect_production_places: "Herstellungsorte hinzufügen"
     add_market_stall: "Marktstand Hinzufügen"
     further: "Weiter"
-  filter:
-    what: "WAS?"
-    where: "WO?"
-    when: "WANN?" 
   input:
     commands:
         add_an_address: "Adresse eingeben"
@@ -55,7 +51,7 @@ de:
         more_information: "Mehr Informationen >>"
         edit: "bearbeiten"
   title:
-    main: "Suche nach lokale Produkte"
+    main: "Suche nach lokalen Produkten"
     by: "von Nullkilometer"  
   headers:
     new_selling_point: "Neuer Verkaufsort"  
