@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.string   "website"
     t.string   "mail"
     t.string   "phone"
+    t.string   "cell_phone"
     t.text     "description"
     t.integer  "detailable_id"
     t.string   "detailable_type"

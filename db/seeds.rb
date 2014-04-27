@@ -7,65 +7,44 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-for i in (1..10)
-	lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
-	lon = rand * 9.0 + 6.0    #between 6,0 and 15,0 with 8 after-comma-digits
-	producer = PointOfProduction.create!(
-										:name => "producer#{i}",
-										:address => "bauer test address",
-										:lat => lat,
-										:lon => lon)
+
+#TODO 1: empty tables Market and Shop if exist
+CSV.foreach("lib/data/market.csv", :headers => :first_row) do |row|
+	Market.create!( :name => row[0], 
+				 	:address => row[1], 
+					:posTypeId => row[2],
+			 		:productCategoryIds => row[3].split(",").map { |s| s.to_i },
+ 					:openingTimes => row[4].split(",").map{ |day| {:dayId=>day.split("=")[0].to_i, :from=>day.split("=")[1].split("-")[0], :to=>day.split("=")[1].split("-")[1]}},
+					:description => row[5], 
+					:website => row[6],
+					:mail => row[7],
+					:phone => row[8],
+					:cell_phone => row[9],
+ 					:marketStalls => []
+ 					#[
+ 					#	{:name => "standXaufMarkt#{i}", 
+ 					#	:phone => "12345678", 
+ 					#	:productCategoryIds => [rand(0..7), 3]}, 
+					#	{:name => "standYaufMarkt#{i}",
+					#	 :phone => "12345678",
+					#	 :productCategoryIds => [3]}
+					#]
+				)
 end
 
-for i in (1..5)
-	lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
-	lon = rand * 9.0 + 6.0    #between 6,0 and 15,0 with 8 after-comma-digits
-	market = Market.create!( 	:name => "markt#{i}", 
-							 	:address => "test address", 
-								:lat => lat, 
-								:lon => lon, 
-								:posTypeId => 0,
-						 		:productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
-			 					:openingTimes => [{:dayId => 4, :from => "10:00", :to => "17:00"}, {:dayId => 0, :from => "10:00", :to => "17:00"}],
-								:description => "xxx", 
-								:mail => "mail@markt#{i}.de",
-								:website => "http://www.markt#{i}.de",
-			 					:marketStalls => [
-			 						{:name => "standXaufMarkt#{i}", 
-			 						:phone => "12345678", 
-			 						:productCategoryIds => [rand(0..7), 3]}, 
-									{:name => "standYaufMarkt#{i}",
-									 :phone => "12345678",
-									 :productCategoryIds => [3]}
-								]
-							)
-end
+#CSV.foreach("#{RAILS_ROOT}/lib/data/shops.csv", :headers => :first_row) do |row|
+#	Shop.create!( 	:name => row[0], 
+#					:address => row[0], 
+#					:lat => lat, 
+#					:lon => lon, 
+#					:posTypeId => row[0],
+#		 			:productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
+#					:openingTimes => [{:dayId => 2, :from => "10:00", :to => "17:00"}, {:dayId => 3, :from => "10:00", :to => "17:00"}],
+#					:description => row[0], 
+#					:mail => row[0],
+#					:website => row[0],
+#					:phone => row[0],
+#					:cell_phone => row[0]
+#				)
+#end
 
-for i in (1..10)
-	lat = rand * 7.5 + 47.55  #between 47,5 and 55,0 with 8 after-comma-digits
-	lon = rand * 9.0 + 6.0    #between 6,0 and 15,0 with 8 after-comma-digits
-	shop = Shop.create!( :name => "shop#{i}", 
-							:address => "test address", 
-							:lat => lat, 
-							:lon => lon, 
-							:posTypeId => rand(1..4),
-				 			:productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
-	 						:openingTimes => [{:dayId => 2, :from => "10:00", :to => "17:00"}, {:dayId => 3, :from => "10:00", :to => "17:00"}],
-							:description => "xxx", 
-							:mail => "mail@shop#{i}.de",
-							:website => "http://www.shop#{i}.de",
-							:phone => "12345677890")
-end
-
-for i in (1..20)
-	if rand(1..10)<8
-		delivery = Delivery.create!(:pointOfSaleId => rand(11..25),
-									:category => 3,
-									:pointOfProductionId => rand(1..10)) 
-	else
-		delivery = Delivery.create!(:marketStallId => rand(1..10),
-											 				 	 :category => 3,
-											:pointOfProductionId => rand(1..10)) 
-	end
-	
-end

@@ -1,5 +1,5 @@
 object @point_of_interest # => :pointOfSale
-attributes :name, :address, :lat, :lon, :posTypeId, :description, :website, :mail, :phone
+attributes :name, :address, :lat, :lon, :posTypeId, :description, :website, :mail, :phone, :cell_phone
 
 child :opening_times => :openingTimes do
 	attributes :day => :dayId

@@ -2,10 +2,26 @@ class PointOfInterest < ActiveRecord::Base
 	#GEO_FACTORY = RGeo::Geographic.spherical_factory(:srid => 4326)
 
   attr_accessible :name, :address, :lat, :lon, :type
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
 	#set_rgeo_factory_for_column(:location, GEO_FACTORY)
   #after_initialize :init_location
 
   has_detail_infos
+
+  after_initialize :init_location
+  
+  def init_location 
+  	if self.lat==nil or self.lon==nil
+  		if self.address
+  			latlon= Geocoder.coordinates(self.address)
+        if latlon
+  			  self.lat=latlon[0]
+  			  self.lon=latlon[1]
+        end
+  		end
+	  end  	
+  end
+
   
  	#scope :nearby, lambda{ |lat, lon, radius| where("ST_DWithin(location, ST_GeomFromText('POINT (? ?)', 4326), ?)", lon.to_f, lat.to_f, radius)}
   

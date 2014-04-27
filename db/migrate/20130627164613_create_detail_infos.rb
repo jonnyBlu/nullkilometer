@@ -4,6 +4,7 @@ class CreateDetailInfos < ActiveRecord::Migration
       t.string :website
       t.string :mail
       t.string :phone
+      t.string :cell_phone
       t.text :description
       t.references :detailable, polymorphic: true
 

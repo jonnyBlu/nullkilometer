@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
 	map.loadMarkers();
-	map.locateUser(6);
+	map.locateUser(12);
 
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
 	loadFilterListeners();

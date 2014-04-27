@@ -2,6 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+require 'csv'
+
 require 'active_record/connection_adapters/postgis_adapter/railtie'
 
 if defined?(Bundler)
