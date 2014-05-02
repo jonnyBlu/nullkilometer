@@ -10,7 +10,7 @@
 
 #TODO 1: empty tables Market and Shop if exist
 CSV.foreach("lib/data/market.csv", :headers => :first_row) do |row|
-	Market.create!( :name => row[0], 
+	PointOfSale.create!( :name => row[0], 
 				 	:address => row[1], 
 					:posTypeId => row[2],
 			 		:productCategoryIds => row[3].split(",").map { |s| s.to_i },
@@ -33,7 +33,7 @@ CSV.foreach("lib/data/market.csv", :headers => :first_row) do |row|
 end
 
 #CSV.foreach("#{RAILS_ROOT}/lib/data/shops.csv", :headers => :first_row) do |row|
-#	Shop.create!( 	:name => row[0], 
+#	PointOfSale.create!( 	:name => row[0], 
 #					:address => row[0], 
 #					:lat => lat, 
 #					:lon => lon, 

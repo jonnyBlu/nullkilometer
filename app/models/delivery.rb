@@ -35,7 +35,7 @@ class Delivery < ActiveRecord::Base
   	if product && product.seller_type == "PointOfInterest"
   		product.seller
   	elsif product && product.seller_type == "MarketStall"
-      product.seller.market
+      product.seller.point_of_sale
     end
   end
 

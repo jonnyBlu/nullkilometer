@@ -5,9 +5,6 @@ child :products do
  extends "products/index"
 end
 
-node :market do |stall|
-	point_of_sale_path(stall.market)
+node :point_of_sale do |stall|
+	point_of_sale_path(stall.point_of_sale)
 end
-# node :links do |stall|
-# 	{:isOn => point_of_sale_path(stall.market)}
-# end

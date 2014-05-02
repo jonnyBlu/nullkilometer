@@ -1,6 +1,6 @@
 class PointOfInterestsController < ApplicationController
-  require_dependency 'market'
-  require_dependency 'shop'
+  # require_dependency 'market'
+  # require_dependency 'shop'
 	respond_to :xml, :json, :html
   before_filter :set_poi_type
 
@@ -26,16 +26,25 @@ class PointOfInterestsController < ApplicationController
 		respond_with @point_of_interest
 	end
 
+  def new
+    @point_of_interest= PointOfSale.new
+    #respond_to do |format|
+     # format.html # new.html.erb
+      #format.json { render json: @point_of_interest }
+    #end
+    respond_with @point_of_interest
+  end
+
 	def create
-    if params[:type] == "PointOfSale" && params[:posTypeId] == 0
-      @poi_class = "Market".constantize
-    elsif params[:type] == "PointOfSale" && params[:posTypeId] > 0
-      @poi_class = "Shop".constantize
-    end
+    # if params[:type] == "PointOfSale" && params[:posTypeId] == 0
+    #   @poi_class = "Market".constantize
+    # elsif params[:type] == "PointOfSale" && params[:posTypeId] > 0
+    #   @poi_class = "Shop".constantize
+    # end
 
     @point_of_interest = @poi_class.new(params[:point_of_interest])
     @point_of_interest.save
-    respond_with '{"lalala" : "papa"}'#@point_of_interest
+    respond_with @point_of_interest
   end
 
   def update

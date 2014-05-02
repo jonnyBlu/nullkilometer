@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
 
   create_table "market_stalls", :force => true do |t|
     t.string   "name"
-    t.integer  "market_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "point_of_sale_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "opening_times", :force => true do |t|
