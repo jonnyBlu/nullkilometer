@@ -39,6 +39,7 @@ en:
         submit_text: "Thanks for the information. It will be checked and published online as soon as possible."
         minimum_note_1: "(* min 1)"
         minimum_note_2: "(* min 1 Day should be marked)"
+        select_pos_type: "Select type of selling point"
   links:
     global:
         about: "About"
@@ -55,4 +56,5 @@ en:
     by: "by Nullkilometer"
   headers:
     new_selling_point: "New selling point"
+    new_production_point: "New place of production"
     add_new_market_stalls: "Add market stalls"

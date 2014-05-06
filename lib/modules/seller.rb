@@ -14,13 +14,13 @@ module Seller
     @product_category_ids ||= products.map(&:category)
   end
 
-  # def product_category_ids=(array)
-  #   array.uniq.each do |id|
-  #     if !product_category_ids.include?(id)
-  #       self.products.build(:category => id)
-  #     end
-  #   end
-  # end
+  def product_category_ids=(array)
+    array.uniq.each do |id|
+      if !product_category_ids.include?(id)
+        self.products.build(:category => id)
+      end
+    end
+  end
 
   protected
   def validate_presence_of_product_categories

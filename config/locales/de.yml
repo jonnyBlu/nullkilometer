@@ -3,7 +3,7 @@ de:
     main_information:
         name: "Name"
         address: "Adresse"
-        selling_point_type: "Typ des Verkaufsorts"
+        selling_point_type: "Art des Verkaufsorts"
         product_categories: "Produktkategorien"
         opening_times: "Öffnungszeiten"
     additional_information:
@@ -39,6 +39,7 @@ de:
         submit_text: "Danke für die information, die Daten über den Verkaufsort werden bald online veröffentlicht werden."
         minimum_note_1: "(* min 1)"
         minimum_note_2: "(* min 1 Tag markieren)"
+        select_pos_type: "Bestimme Art des Verkaufsortes"
   links:
     global:
         about: "Über"
@@ -54,5 +55,6 @@ de:
     main: "Suche nach lokalen Produkten"
     by: "von Nullkilometer"  
   headers:
-    new_selling_point: "Neuer Verkaufsort"  
+    new_selling_point: "Neuer Verkaufsort"
+    new_production_point: "Neuer Herrstellungsort"  
     add_new_market_stalls: "Neue Marktstände hinzufügen"

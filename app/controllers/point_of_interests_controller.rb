@@ -1,6 +1,4 @@
 class PointOfInterestsController < ApplicationController
-  # require_dependency 'market'
-  # require_dependency 'shop'
 	respond_to :xml, :json, :html
   before_filter :set_poi_type
 
@@ -27,11 +25,11 @@ class PointOfInterestsController < ApplicationController
 	end
 
   def new
-    @point_of_interest= PointOfSale.new
-    #respond_to do |format|
-     # format.html # new.html.erb
-      #format.json { render json: @point_of_interest }
-    #end
+    @point_of_interest= @poi_class.new
+    if @point_of_interest.type == "PointOfSale"
+      @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
+      @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+    end
     respond_with @point_of_interest
   end
 
@@ -41,8 +39,9 @@ class PointOfInterestsController < ApplicationController
     # elsif params[:type] == "PointOfSale" && params[:posTypeId] > 0
     #   @poi_class = "Shop".constantize
     # end
-
-    @point_of_interest = @poi_class.new(params[:point_of_interest])
+    if params[:type] == "PointOfSale"
+      @point_of_interest = @poi_class.new(params[:point_of_sale])
+    end
     @point_of_interest.save
     respond_with @point_of_interest
   end
