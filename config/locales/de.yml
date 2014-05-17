@@ -57,4 +57,6 @@ de:
   headers:
     new_selling_point: "Neuer Verkaufsort"
     new_production_point: "Neuer Herrstellungsort"  
+    edit_selling_point: "Verkaufsort ändern"
+    edit_production_point: "Herrstellungsort ändern"  
     add_new_market_stalls: "Neue Marktstände hinzufügen"

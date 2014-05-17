@@ -23,4 +23,10 @@ class PointOfInterest < ActiveRecord::Base
   validates :address, presence: true
   validates :lat, presence: true, numericality: {greater_than_or_equal_to: -90, less_than_or_equal_to: 90}
   validates :lon, presence: true, numericality: {greater_than_or_equal_to: -180, less_than_or_equal_to: 180}
+
+  after_validation :log_errors, :if => Proc.new {|m| m.errors}
+  def log_errors
+    logger.error "#{self.name}: "+self.errors.full_messages.join("\n")
+  end
+
 end

@@ -14,4 +14,9 @@ class MarketStall < ActiveRecord::Base
   	point_of_sale.errors.add(:pos_type, "Must be a market to have stalls") unless point_of_sale.pos_type == 0
   end
 
+  after_validation :log_errors, :if => Proc.new {|m| m.errors}
+  def log_errors
+    logger.error "#{self.name}: "+self.errors.full_messages.join("\n")
+  end
+
 end

@@ -57,4 +57,6 @@ en:
   headers:
     new_selling_point: "New selling point"
     new_production_point: "New place of production"
+    edit_selling_point: "Edit selling point"
+    edit_production_point: "Edit place of production"  
     add_new_market_stalls: "Add market stalls"

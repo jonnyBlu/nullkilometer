@@ -1,0 +1,63 @@
+form#new_point_of_sale, form.edit_point_of_sale{
+	.form-inputs{
+
+		select, input.string {
+			height: 25px;
+		}
+
+		label.checkbox{
+			height: 20px;
+			margin-top:10px;	
+		}
+		input.check_boxes{
+			vertical-align: middle;
+			height: 20px;
+			width: 20px;
+			margin-right: 5px;
+		}
+
+
+		.formTextInput, textarea {
+			width: 350px;
+			@include roundedCorners(4px);
+		}
+
+		.timeTextInput {
+			width: 100px;
+		}
+
+		.control-group{
+			margin-bottom: 10px;
+		}
+		.control-group.point_of_sale_productCategoryIds .checkbox{
+			margin-left: 20px;
+		}
+		.control-group.point_of_sale_opening_times_from, .control-group.point_of_sale_opening_times_to{
+			margin-left: 20px;
+		}
+
+		#openingTimesContainer{
+			.openingDayContainer{
+				> .control-group{
+					margin-bottom: 0px;	
+				}
+				ul{
+					/*height: 300px;*/
+					li {
+						
+						/*display: block;
+						height: 100px;
+						width: 150px;*/
+					}
+				}
+
+			}
+		}
+
+
+	}
+	
+}
+
+
+

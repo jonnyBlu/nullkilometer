@@ -10,7 +10,7 @@ module PointOfSalesHelper
 		categories
 	end
 
-	def procuct_category_names pos
+	def product_category_names pos
 		Product::CATEGORY_NAMES.values_at(*pos.product_category_ids)
 	end
 end

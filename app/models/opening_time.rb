@@ -13,6 +13,6 @@ class OpeningTime < ActiveRecord::Base
 
   protected
   def cant_close_before_open
-  	errors.add(:from, "must be bevore closing time") if from.gsub(/:/,'').to_i >= to.gsub(/:/,'').to_i
+  	errors.add(:from, I18n.t("errors.messages.opening_time_before_closing_time")) if from.gsub(/:/,'').to_i >= to.gsub(/:/,'').to_i
   end
 end

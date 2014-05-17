@@ -29,20 +29,35 @@ class PointOfInterestsController < ApplicationController
     if @point_of_interest.type == "PointOfSale"
       @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+      for i in 0..6
+        @point_of_interest.opening_times.build(dayId: i)
+      end
     end
     respond_with @point_of_interest
   end
 
 	def create
-    # if params[:type] == "PointOfSale" && params[:posTypeId] == 0
-    #   @poi_class = "Market".constantize
-    # elsif params[:type] == "PointOfSale" && params[:posTypeId] > 0
-    #   @poi_class = "Shop".constantize
-    # end
     if params[:type] == "PointOfSale"
-      @point_of_interest = @poi_class.new(params[:point_of_sale])
+      pars = params[:point_of_sale]
+      pars["productCategoryIds"].delete("")
+      @point_of_interest = @poi_class.new(pars)
     end
     @point_of_interest.save
+    respond_with @point_of_interest
+  end
+
+  def edit
+    #TODO: return all days, not only the filled in ones
+    begin
+      @point_of_interest = @poi_class.find(params[:id])
+      @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
+      @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+      @opening_times =  @point_of_interest.opening_times
+      puts "LALALALALAL"
+      puts @opening_times
+    rescue ActiveRecord::RecordNotFound
+      raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
+    end
     respond_with @point_of_interest
   end
 
@@ -52,8 +67,19 @@ class PointOfInterestsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
-    @point_of_interest.update_attributes(params[:point_of_interest])
-    respond_with @point_of_interest
+    if params[:type] == "PointOfSale"
+      pars = params[:point_of_sale]
+      pars["productCategoryIds"].delete("")
+      if @point_of_interest.update_attributes(params[:point_of_sale])
+        flash[:success] = "Profil aktualisiert"
+        redirect_to @point_of_interest
+      else
+        #@title = "Edit"
+        #render 'edit'
+        flash[:success] = "Profil nicht aktualisiert"
+        redirect_to @point_of_interest
+      end
+    end
   end
 
   def destroy
@@ -80,4 +106,5 @@ class PointOfInterestsController < ApplicationController
       @json_root = "pointOfInterest"
     end
   end
+
 end

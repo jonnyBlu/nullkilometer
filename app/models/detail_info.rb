@@ -8,11 +8,4 @@ class DetailInfo < ActiveRecord::Base
   validates :phone, :format => { :with => /\A\+?[\d -]+\Z/}, :allow_blank => true
   validates :cell_phone, :format => { :with => /\A\+?[\d -]+\Z/}, :allow_blank => true
   validates :website, :url => true, :allow_blank => true
-
-	  # model
-  after_validation :log_errors, :if => Proc.new {|m| m.errors}
-
-  def log_errors
-	  Rails.logger.debug self.errors.full_messages.join("\n")
-  end
 end

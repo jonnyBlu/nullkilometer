@@ -1,0 +1,7 @@
+<% if @point_of_interest.type == "PointOfSale" %>
+	<h1> <%= I18n.t("headers.edit_selling_point") %> </h1>
+	<%= render 'point_of_sales/form', object: @point_of_interest %>
+<% elsif @point_of_interest.type == "PointOfProduction" %>
+	<h1> <%= I18n.t("headers.edit_production_point") %> </h1>
+	<%= render 'point_of_productions/form', object: @point_of_interest %>
+<% end %>
