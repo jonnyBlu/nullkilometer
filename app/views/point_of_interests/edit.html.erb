@@ -5,3 +5,4 @@
 	<h1> <%= I18n.t("headers.edit_production_point") %> </h1>
 	<%= render 'point_of_productions/form', object: @point_of_interest %>
 <% end %>
+<%= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm") } %></td>

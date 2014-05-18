@@ -21,8 +21,14 @@
 //= require leaflet
 //= tree
 
-//http://stackoverflow.com/questions/7761540/encoding-issues-in-javascript-files-using-rails-asset-pipeline<%# encoding: utf-8 %>
-<% "日" %> 
+
+//because of unsynchronised interpretation of encoding between .js files and ruby, need to read the configuration
+//and (if needed) set the strange symbol as suggested in:
+//http://stackoverflow.com/questions/7761540/encoding-issues-in-javascript-files-using-rails-asset-pipeline
+<% if I18n.locale == :de %>
+	<% "日" %>
+<% end %>
+
 var INITIALLAT = 52.5233,
 INITIALLON = 13.4127,
 ZOOMONMARKERLEVEL = 17,
@@ -30,6 +36,7 @@ ZOOMONMARKERLEVEL = 17,
 shopTypeNames = <%= I18n.t("point_of_sale.pos_type_names") %>,
 productCategoryNames = <%= I18n.t("product.category_names") %>,
 weekDayNames = <%= I18n.t("date.day_names") %>,
+moreInfoLinkName = <%= '"'+I18n.t("links.global.more_information")+'"' %>,
 
 //used in /add_apos/... and /point_of_interests/edit.js
 MARKETINDEX = 0,
@@ -101,63 +108,63 @@ var registerLocationSearch = function(buttonSelector, inputSelector, resultsSele
 
 
 
-/* Used by add_apos.js and market_stalls_step.js */
-// read all checked fields 
-var openingTimeListeners = function(){
+// /* Used by add_apos.js and market_stalls_step.js */
+// // read all checked fields 
+// var openingTimeListeners = function(){
 
-	var timepickerOptions = { 
-		'step': 30, 
-		'timeFormat': 'H:i' , 
-		'minTime': '06:00',
-		'maxTime': '00:00'
-	};
+// 	var timepickerOptions = { 
+// 		'step': 30, 
+// 		'timeFormat': 'H:i' , 
+// 		'minTime': '06:00',
+// 		'maxTime': '00:00'
+// 	};
 
-	$('.timePickerInput').timepicker(timepickerOptions);
+// 	$('.timePickerInput').timepicker(timepickerOptions);
 
-    $('#allDaysCheckbox').change(function (event) {
-		var selected = this.checked;
-       	$('input[name=openingDay]').each(function () { 
-       		if(this.checked != selected)
-       			$(this).click();
-       });
-    });
+//     $('#allDaysCheckbox').change(function (event) {
+// 		var selected = this.checked;
+//        	$('input[name=openingDay]').each(function () { 
+//        		if(this.checked != selected)
+//        			$(this).click();
+//        });
+//     });
 
-	$.each($('input[name=openingDay]'), function(){
-		if($(this).attr("checked")=="checked"){
-			$(this).parent().parent().parent().find("input.timePickerInput").each(function(){
-				$(this).attr("disabled", false);
-			});
-		}
-	});
+// 	$.each($('input[name=openingDay]'), function(){
+// 		if($(this).attr("checked")=="checked"){
+// 			$(this).parent().parent().parent().find("input.timePickerInput").each(function(){
+// 				$(this).attr("disabled", false);
+// 			});
+// 		}
+// 	});
 
 
-    $('input[name=openingDay]').change(function (event) {
-    	var checked = this.checked;
-   		if(!checked) $('#allDaysCheckbox').prop("checked", false);
+//     $('input[name=openingDay]').change(function (event) {
+//     	var checked = this.checked;
+//    		if(!checked) $('#allDaysCheckbox').prop("checked", false);
 
-   		$(this).parent().parent().parent().find("input.timePickerInput").each(function(){
-			$(this).attr("disabled", !checked);
-			if(!checked) $(this).val("");
-		});
-    });
-}
+//    		$(this).parent().parent().parent().find("input.timePickerInput").each(function(){
+// 			$(this).attr("disabled", !checked);
+// 			if(!checked) $(this).val("");
+// 		});
+//     });
+// }
 
-var requiredFieldsFilled = function(containerName){
-	var filled =  false;
-	if($(containerName).find('.requiredField').length <= 0) filled = true;
-	$(containerName).find('.requiredField').each(function(){
-		var $this 		= $(this);
-		var name = $this.attr("name");
-		var valueLength = jQuery.trim($this.val()).length;				
-		if(valueLength == ''){
-			$this.css('background-color','#FFEDEF');
-			$(containerName+" label[for="+name+"]").addClass("invalidLabel");
-		}
-		else{
-			filled = true;
-			$this.css('background-color','#FFFFFF');	
-			$(containerName+" label[for="+name+"]").removeClass("invalidLabel");
-		}
-	});
-	return filled;
-}
+// var requiredFieldsFilled = function(containerName){
+// 	var filled =  false;
+// 	if($(containerName).find('.requiredField').length <= 0) filled = true;
+// 	$(containerName).find('.requiredField').each(function(){
+// 		var $this 		= $(this);
+// 		var name = $this.attr("name");
+// 		var valueLength = jQuery.trim($this.val()).length;				
+// 		if(valueLength == ''){
+// 			$this.css('background-color','#FFEDEF');
+// 			$(containerName+" label[for="+name+"]").addClass("invalidLabel");
+// 		}
+// 		else{
+// 			filled = true;
+// 			$this.css('background-color','#FFFFFF');	
+// 			$(containerName+" label[for="+name+"]").removeClass("invalidLabel");
+// 		}
+// 	});
+// 	return filled;
+// }

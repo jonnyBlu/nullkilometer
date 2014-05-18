@@ -19,6 +19,7 @@ de:
     connect_production_places: "Herstellungsorte hinzufügen"
     add_market_stall: "Marktstand Hinzufügen"
     further: "Weiter"
+    delete: "Löschen"
   input:
     commands:
         add_an_address: "Adresse eingeben"
@@ -40,6 +41,9 @@ de:
         minimum_note_1: "(* min 1)"
         minimum_note_2: "(* min 1 Tag markieren)"
         select_pos_type: "Bestimme Art des Verkaufsortes"
+        from: "von"
+        to: "bis"
+        confirm: "Sind Sie sicher?"
   links:
     global:
         about: "Über"

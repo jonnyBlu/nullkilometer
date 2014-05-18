@@ -1,4 +1,4 @@
-<%# encoding: utf-8 %>
+
 var HomeMap = function(){
 	var 
 	ajaxRequest,
@@ -151,7 +151,7 @@ var HomeMap = function(){
 			'<div class="productCategories">'+productCategoryIds_readable+'</div>' +
 			'<div class="address">'+posAddress+'</div>' +
 			'<div class="openingTimes">'+openingTimes+'</div>' +
-			'<div class="footer"><a href="/point_of_sales/'+posId+'.html" target="_blank" class="ordinaryLink" id="linkToProfilePage"><%= I18n.t("links.global.more_information") %></a></div>' +
+			'<div class="footer"><a href="/point_of_sales/'+posId+'.html" target="_blank" class="ordinaryLink" id="linkToProfilePage">'+moreInfoLinkName+'</a></div>' +
 		'</div>';
 		return htmlContent;
 	},

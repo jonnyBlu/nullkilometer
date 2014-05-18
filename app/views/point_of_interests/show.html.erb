@@ -1,26 +1,5 @@
-<% content_for :javascript_includes do %>
-    <%= javascript_include_tag "point_of_interests/show.js" %>
-    <%= javascript_include_tag "point_of_interests/map_profile_page.js" %>
+<% if @point_of_interest.type == "PointOfSale" %>
+	<%= render 'point_of_sales/show', object: @point_of_interest %>
+<% elsif @point_of_interest.type == "PointOfProduction" %>
+	<%= render 'point_of_productions/show', object: @point_of_interest %>
 <% end %>
-<div class="infoDiv profileWrapper" id="profilePageWrapper">
-	<div id="profilePageHeader" class="infoHeader">
-		<ul>
-			<li class="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
-		  	<li class="title"><%= @point_of_interest.name %></li>
-		</ul>
-	</div>
-	<div id="profilePageContainer" class="profileContainer">
-		<div class="row">
-			<div class="col-md-6">
-				<%=  render 'posInfoList' %>
-			</div>
-			<div class="col-md-6">
-				<!--<div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div>-->
-				<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
-			</div>
-		</div>
-	</div>
-	<% if @point_of_interest.pos_type == 0 %>
-		<%=  render 'marketStalls' %>
-	<% end %>
-</div>

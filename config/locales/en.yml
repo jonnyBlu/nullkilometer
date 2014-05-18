@@ -19,6 +19,7 @@ en:
     connect_production_places: "Add production places"
     add_market_stall: "Add a market stall"
     further: "Next step"
+    delete: "Delete"
   input:
     commands:
         add_an_address: "Enter an address"
@@ -40,6 +41,8 @@ en:
         minimum_note_1: "(* min 1)"
         minimum_note_2: "(* min 1 Day should be marked)"
         select_pos_type: "Select type of selling point"
+        from: "from"
+        to: "to"
   links:
     global:
         about: "About"

@@ -47,14 +47,16 @@ class PointOfInterestsController < ApplicationController
   end
 
   def edit
-    #TODO: return all days, not only the filled in ones
     begin
       @point_of_interest = @poi_class.find(params[:id])
       @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
-      @opening_times =  @point_of_interest.opening_times
-      puts "LALALALALAL"
-      puts @opening_times
+      for i in 0..6
+        if !@point_of_interest.opening_times.where(day: i).exists?
+          @point_of_interest.opening_times.build(dayId: i)
+        end
+      end
+      @point_of_interest.opening_times.sort_by!{ |ot| ot.dayId }
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
@@ -74,8 +76,6 @@ class PointOfInterestsController < ApplicationController
         flash[:success] = "Profil aktualisiert"
         redirect_to @point_of_interest
       else
-        #@title = "Edit"
-        #render 'edit'
         flash[:success] = "Profil nicht aktualisiert"
         redirect_to @point_of_interest
       end

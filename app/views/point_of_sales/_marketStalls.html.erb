@@ -1,0 +1,49 @@
+<div id="marketStallsTitle" class="row">
+	<div class="col-md-6">
+		<h4><%= I18n.t("point_of_sale.marketstalls") %></h4>
+	</div>
+	<!--<div class="col-md-4"><div id="editPosLinkWrapper"><a href="/profilePage/edit">bearbeiten</a></div></div>-->
+</div>	
+    <div id="marketStallsContainer_NOJS">
+		<% @point_of_interest.market_stalls.each do |stall| %>
+			<div class="row name"><%= stall.name %></div>
+			<div class="row productCategories">
+				 <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
+			</div>
+			<div class="row website"><%= stall.detail_info.website %></div>
+			<div class="row">
+			        <label for="mail"><%= stall.detail_info.mail %></label>
+			        <label for="phone"><%= stall.detail_info.phone %></label>
+			        <label for="cellphone"><%= stall.detail_info.cell_phone %></label>
+			</div>
+			<div class="row"><label for="description"><%= stall.detail_info.description %></label></div>
+		<% end %>
+	</div>
+<div id="marketStallsContainer" style="display:none">	
+	<div class="accordion" id="accordion2">
+		<% @point_of_interest.market_stalls.each do |stall| %>
+		  	<div class="accordion-group">
+			    <div class="accordion-heading customButton">
+			      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
+			        <%= stall.name %>
+			      </a>
+			    </div>
+			    <div id="<%= stall.id %>" class="accordion-body collapse">
+				     <div class="accordion-inner">
+						<div class="row productCategories">
+							 <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
+						</div>
+						<div class="row website"><%= stall.detail_info.website %></div>
+						<div class="row">
+						        <label for="mail"><%= stall.detail_info.mail %></label>
+						        <label for="phone"><%= stall.detail_info.phone %></label>
+						        <label for="cellphone"><%= stall.detail_info.phone %></label>
+						</div>
+						<div class="row"><label for="description"><%= stall.detail_info.description %></label></div>
+			     	</div>
+		    	</div>
+		    </div>
+	    <% end %>
+	</div>
+</div>
+
