@@ -73,10 +73,10 @@ class PointOfInterestsController < ApplicationController
       pars = params[:point_of_sale]
       pars["productCategoryIds"].delete("")
       if @point_of_interest.update_attributes(params[:point_of_sale])
-        flash[:success] = "Profil aktualisiert"
+        flash[:success] = "Point of sale updated successfully"
         redirect_to @point_of_interest
       else
-        flash[:success] = "Profil nicht aktualisiert"
+        flash[:success] = "Point of sale not updated"
         redirect_to @point_of_interest
       end
     end
@@ -88,8 +88,13 @@ class PointOfInterestsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
-    @point_of_interest.destroy
-    respond_with @point_of_interest
+    if @point_of_interest.destroy
+      flash[:success] = "Point of interest destroyed"
+      @point_of_interests = @poi_class.all
+      render "index"
+    else
+      respond_with @point_of_interest 
+    end  
   end
 
   def pos_types

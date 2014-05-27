@@ -152,7 +152,7 @@ input:focus, button:focus{
 
 }
 .customHomeButton{
-    @include roundedCorners(0px 0px 20px 0px);
+    @include roundedCorners(0px 0px 20px 20px);
 }
 
 .infoHeader{
