@@ -1,4 +1,6 @@
-
+<% if I18n.locale == :de %>
+	<% "日" %>
+<% end %>
 var HomeMap = function(){
 	var 
 	ajaxRequest,
@@ -183,7 +185,8 @@ var HomeMap = function(){
 	generateReadableList = function(ids, arrayWithNames){
 		var list = "";
 		$.each(ids, function(){
-			list += "<img class='categoryIcon' src='http://localhost:3000/images/map_icons/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
+			list += "<img class='categoryIcon' src='"+iconImageLocation+"/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
+			//list += "<img class='categoryIcon' src='http://localhost:3000/images/map_icons/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
 		});
 		return list;
 	},

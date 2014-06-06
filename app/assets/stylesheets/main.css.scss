@@ -84,8 +84,8 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+  /*font-size: 1.1em;
+  line-height: 1.7em;*/
 }
 
 button:focus::-moz-focus-inner {
@@ -126,11 +126,12 @@ input:focus, button:focus{
     span{
       font-weight: bold;
     }
-    span#title{
-      font-size: 25px;
-    }
 }
 
+abbr[title], abbr[data-original-title] {
+  cursor: auto;
+  border-bottom: 0px dotted #999999;
+}
 
 /*universal specific styles*/
 

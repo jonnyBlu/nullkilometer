@@ -7,7 +7,7 @@ header{
     background-image: linear-gradient($headerColor1, $headerColor2);
 
 	#logo {
-		font-family: "Vollkorm Semibold", $serif;
+		/*font-family: "Vollkorm Semibold", $serif;*/
 		float: left;
 		margin-right: 10px;
 		font-size: 2.5em;
@@ -18,15 +18,11 @@ header{
 		font-weight: 700;
 		line-height: 1.5em;
 		margin-top: 2px;
-		.title {
+		#beta{
 			font-size: 0.5em;
 			text-transform: none;
-			font-family: verdana, arial, helvetica, sans-serif;
-		}
-		#beta{
-			font-size: 0.67em;
-			color: $orangeBackgroundColor;
-			font-family: "Vollkorm Semibold", $serif;
+			color: $orangeTextColor;
+			margin-right: -10px;
 		}
 	}
 

@@ -12,10 +12,6 @@ $infoboxWidth: 400px;
 		.container {
 			width: 100%;
 		}
-
-		#logo {
-			margin-left: 15px;
-		}
 	}
 
 	.content-wrapper {
@@ -104,7 +100,7 @@ $infoboxWidth: 400px;
 		}
 	}
 	#addShop {
-		left: 690px;
+		right: 0px;
 		z-index: 11;
 		a {
 			width: 250px;
@@ -113,9 +109,10 @@ $infoboxWidth: 400px;
 
 	#addressLookupContainer {
 		z-index: $zIndexMapElements;
-		width: 400px;
-		float: right;
-		right: 0px;
+		width: 283px;
+		z-index: 1001;
+		bottom: 20px;
+
 		#locationInput,#locationSubmit{
 			top: 0px;
 		}

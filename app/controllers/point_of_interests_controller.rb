@@ -72,12 +72,21 @@ class PointOfInterestsController < ApplicationController
     if params[:type] == "PointOfSale"
       pars = params[:point_of_sale]
       pars["productCategoryIds"].delete("")
+
+      #TODO: destroy only if update successful aka find a better way to update
+      #otherwise it does not correctly update opening times and category ids
+      #@point_of_interest.products.destroy_all
+      #@point_of_interest.opening_times.destroy_all
+      
+     # ot=pars["opening_times_attributes"]
+
       if @point_of_interest.update_attributes(params[:point_of_sale])
         flash[:success] = "Point of sale updated successfully"
         redirect_to @point_of_interest
       else
         flash[:success] = "Point of sale not updated"
-        redirect_to @point_of_interest
+        render "index"
+        #redirect_to @point_of_interest
       end
     end
   end

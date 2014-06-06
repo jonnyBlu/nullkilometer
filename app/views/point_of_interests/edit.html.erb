@@ -1,8 +1,7 @@
 <% if @point_of_interest.type == "PointOfSale" %>
 	<h1> <%= I18n.t("headers.edit_selling_point") %> </h1>
-	<%= render 'point_of_sales/form', object: @point_of_interest %>
+	<%= render 'point_of_sales/form', object: @point_of_interest, locals: {parent: "edit"} %>
 <% elsif @point_of_interest.type == "PointOfProduction" %>
 	<h1> <%= I18n.t("headers.edit_production_point") %> </h1>
-	<%= render 'point_of_productions/form', object: @point_of_interest %>
+	<%= render 'point_of_productions/form', object: @point_of_interest, locals: {parent: "edit"} %>
 <% end %>
-<%= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm") } %></td>

@@ -1,3 +1,7 @@
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "point_of_interests/form.js" %>
+<% end %>
+
 <%= simple_form_for(@point_of_interest) do |f| %>
 
   <div class="form-inputs">
@@ -13,9 +17,9 @@
 
 	  <ul id = "openingTimesContainer">
 		  <%= f.simple_fields_for :opening_times do |ot| %>
-		  	<li class = "openingDayContainer">
+		  	<li class = "openingDayContainer grayedOut">
 		  		<%= ot.input :dayId, label: false, as: :boolean, inline_label: I18n.t("date.day_names")[ot.object.dayId], checked_value: ot.object.dayId,
-		  		 include_hidden: :false, unchecked_value: nil, input_html: { id: ot.object.dayId, style: "display: none"} %>
+		  		 include_hidden: :false, unchecked_value: nil, input_html: { id: ot.object.dayId, style: "display: none", checked: true } %>
 		  		<%= ot.input :from, label: I18n.t("instructions.add_a_pos.from"), placeholder: "00:00", input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"} %>
 		  		<%= ot.input :to, label: I18n.t("instructions.add_a_pos.to"), placeholder: "00:00", input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"} %>
 	  		</li>
@@ -24,5 +28,8 @@
   </div>
 
   <%= f.button :submit %>
+  <%if locals[:parent]=="edit" %>
+  	<%= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm") } %>
+  <%end %>
 
 <% end %>

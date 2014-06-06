@@ -14,9 +14,10 @@
 	    <div id="collapseOne" class="panel-collapse collapse in">
 	      <div class="panel-body">	
 	      	<div class="row">
-				<div class="col-md-3"><img src ="images/logo.png" alt="local food is good" height="220"\></div>
+				<div class="col-md-3"><%= image_tag "images/logo.png",  alt: "local food is good",  height: '220' %></div>
+				</div>
 				<div class="col-md-8">	
-			       <span id="title">Nullkilometer</span> is an initiative that aims to support sustainable consume in our society. We offer a map-based web tool, which gives people a possibility to easily look for local products around. Our goal is:
+			       Nullkilometer is an initiative that aims to support sustainable consume in our society. We offer a map-based web tool, which gives people a possibility to easily look for local products around. Our goal is:
 			       <br \> 
 			       	<p><span>„a structured, clear website with information about local produce” <span></p> 
 					This website enables an intuitive, informative and easy search for information about local ressources for the everyday life. That regards food products, produced in the vicinity.
@@ -36,12 +37,14 @@
 	    <div id="collapseTwo" class="panel-collapse collapse">
 	      <div class="panel-body">
 			<div class="row">
-				<div class="col-md-3"><img src ="images/pictures/eggs.png" alt="local food is good" height="200"\></div>
 				<div class="col-md-8">	 
 				From <a href="http://www.sustainabletable.org/254/local-regional-food-systems">www.sustainabletable.org</a>:<br \><br \>
 				"Commonly, “local food” refers to food produced <span>near the consumer</span> (i.e., food grown or raised within X miles of a consumer). However, because there is no universally agreed-upon definition for the geographic component of what “local” or “regional” means, consumers are left to decide what local and regional food means to them. A 2008 survey found that half of consumers surveyed described “local” as “made or produced within a hundred miles” (of their homes), while another 37% described “local” as “made or produced in my state.”  
 				<br \> 
 				The ability to eat “locally” also varies depending on the production capacity of the region in question."
+				</div>
+				<div class="col-md-3">
+					<%= image_tag "images/pictures/eggs.png", alt: "local food is good",  height: '220' %>
 				</div>
 			</div>		
 	      </div>
@@ -58,17 +61,20 @@
 	    <div id="collapseThree" class="panel-collapse collapse">
 	      <div class="panel-body">
       		<div class="row">
-				<div class="col-md-3">
-					<img src ="images/pictures/map.png" alt="local food is good" height="200"\>
-					<br \><br \>
-					<a href= "/map" class="btn btn-warning btn-lg" role="button">Go to the map</a>
-				</div>
 				<div class="col-md-8">	 
 			        <span>Shops on a map.</span> The central tool of our system is a map which gives an overview of the places offering local products in one’s vicinity. This regards both commercial selling points (for example supermarkets) as well as less formal places where these products can be acquired directly from the producer (farms, for example). These places are represented on the map in form of tags. The main idea is that the map is centered around one’s current location.
 					<br \>
 					The map is interactive (can be zoomed, moved), and by hovering or clicking the tags, user can easily see more detailed information about the shop: address, opening hours, product categories offered, the distance to the places of production. 
 					<br \><br \>
 					<span>Filter.</span> Places shown on the map can also be filtered according to specific needs and interests. One can choose a shop category (market rather than a supermarket), or see only those places where certain product categories can be found (shops offering milk products).
+				</div>
+				<div class="col-md-3">
+					<a href= "/map" title="Zur Karte">
+						<div id = "linkToMapContainer">
+							<%= image_tag "images/pictures/map.png", id: 'imageToMap', alt: "local food is good",  height: '200' %>
+							<div id = "labelToMap">To the map >></div>
+						</div>
+					</a>
 				</div>
 			</div>
 	      </div>

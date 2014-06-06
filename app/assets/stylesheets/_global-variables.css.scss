@@ -21,7 +21,10 @@ $grayLight: #ddd;
 $grayMediumLight: #eee;
 $grayVeryLight: #eee;
 $ordinaryLinkHover: rgba(116, 89, 72, 1);
-$orangeBackgroundColor: rgba(240, 173, 78, 1);/*#ed9c28;*/
+$orangeBackgroundColor: rgb(240, 173, 78);/*#ed9c28;*/
+$orangeBackgroundColorTransparent: rgba(240, 173, 78, 0.8);/*#ed9c28;*/
+$orangeTextColor: rgb(255, 181, 42);
+$orangeTextColorTransparent: rgba(255, 181, 42, 0.8);
 
 
 /**

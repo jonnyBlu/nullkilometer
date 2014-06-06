@@ -9,6 +9,9 @@ form#new_point_of_sale, form.edit_point_of_sale{
 			height: 20px;
 			margin-top:10px;	
 		}
+		.grayedOut{
+			color: #666;
+		}
 		input.check_boxes{
 			vertical-align: middle;
 			height: 20px;
@@ -40,6 +43,9 @@ form#new_point_of_sale, form.edit_point_of_sale{
 			.openingDayContainer{
 				> .control-group{
 					margin-bottom: 0px;	
+				}
+				abbr[title=required]{
+					display: none;
 				}
 				ul{
 					/*height: 300px;*/
