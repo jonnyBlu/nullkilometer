@@ -8,8 +8,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#TODO 1: empty tables Market and Shop if exist
-CSV.foreach("lib/data/market.csv", :headers => :first_row) do |row|
+#TODO empty tables PointOfSale with dependencies. Is following correct?
+PointOfSale.destroy_all
+CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
 	PointOfSale.create!( :name => row[0], 
 				 	:address => row[1], 
 					:posTypeId => row[2],
@@ -32,19 +33,4 @@ CSV.foreach("lib/data/market.csv", :headers => :first_row) do |row|
 				)
 end
 
-#CSV.foreach("#{RAILS_ROOT}/lib/data/shops.csv", :headers => :first_row) do |row|
-#	PointOfSale.create!( 	:name => row[0], 
-#					:address => row[0], 
-#					:lat => lat, 
-#					:lon => lon, 
-#					:posTypeId => row[0],
-#		 			:productCategoryIds => [rand(0..7), rand(0..7), rand(0..7), 3],
-#					:openingTimes => [{:dayId => 2, :from => "10:00", :to => "17:00"}, {:dayId => 3, :from => "10:00", :to => "17:00"}],
-#					:description => row[0], 
-#					:mail => row[0],
-#					:website => row[0],
-#					:phone => row[0],
-#					:cell_phone => row[0]
-#				)
-#end
 
