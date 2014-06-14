@@ -31,7 +31,7 @@
   <%if locals[:parent]!="edit" %>
     <%= f.button :submit %>
   <%else %>
-    <p style="color: #ff6600">! "Edit" button witll be available as soon as edit problem solved. !</p>
+    <p style="color: #ff6600">! "Edit" button will be available as soon as edit problem solved. !</p>
   	<%= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm") } %>
   <% end %>
 <% end %>

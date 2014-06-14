@@ -1,37 +1,38 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "home/home_map.js" %>
 <% end %>
-<div class="infoDiv " id="homePageText">
+<div class="infoDiv" id="homePageText">
 	<div class="panel-group" id="accordion">
-	  <div class="panel panel-default">
-		 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-		     <div class="panel-heading">
-			    <h4 class="panel-title heading">
-			          Das Ziel    
-			    </h4>
-			</div>
-		</a>
-	    <div id="collapseOne" class="panel-collapse collapse in">
-	      <div class="panel-body">	
-	      	<div class="row">
-				<div class="col-md-3">
-					<%= image_tag "images/logo.png",  alt: "lokales essen ist gut",  height: '220' %></div>
-				<div class="col-md-8">	
-					Nullkilometer ist eine Initiative, die zielt, Nachhaltiges Konsum in unserer Gesselschaft zu unterstützen. Dafür bieten wir ein karten-basiertes Web-Tool, das Leuten einen möglichkeit gibt schnell Lokale Produkte in ihren Näher zu finden. Konkret ausgedrückt ist unser Ziel:<br \>
-					<p>
-					„eine strukturierte, übersichtliche Webseite mit Informationen zu lokalen Produkten”<br \>
-					</p>
-					Diese Webseite ermöglicht eine intuitive, informative und einfache Suche nach Informationen über lokale Ressourcen für das alltägliche Leben. Prinzipiell geht es um Lebensmittel, die in der näheren Umgebung hergestellt werden.
+	  	<div class="panel panel-default">
+		 	<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+		    	<div class="panel-heading">
+			    	<h4 class="panel-title heading">
+			          		Das Ziel    
+			    	</h4>
 				</div>
-			</div>
-	      </div>
-	    </div>
+			</a>
+		    <div id="collapseOne" class="panel-collapse collapse in">
+		      	<div class="panel-body">	
+			      	<div class="row">
+						<div class="col-md-3">
+							<%= image_tag "images/logo.png",  alt: "lokales essen ist gut",  height: '220' %>
+						</div>
+						<div class="col-md-8">	
+							Nullkilometer ist eine Initiative, die zielt, Nachhaltiges Konsum in unserer Gesselschaft zu unterstützen. Dafür bieten wir ein karten-basiertes Web-Tool, das Leuten einen möglichkeit gibt schnell Lokale Produkte in ihren Näher zu finden. Konkret ausgedrückt ist unser Ziel:<br \>
+							<p>
+							„eine strukturierte, übersichtliche Webseite mit Informationen zu lokalen Produkten”<br \>
+							</p>
+							Diese Webseite ermöglicht eine intuitive, informative und einfache Suche nach Informationen über lokale Ressourcen für das alltägliche Leben. Prinzipiell geht es um Lebensmittel, die in der näheren Umgebung hergestellt werden.
+						</div>
+					</div>
+		      	</div>
+		    </div>
 	  </div>
 	  <div class="panel panel-default">
 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 			<div class="panel-heading">
 		      	<h4 class="panel-title heading">
-		          “Lokal” / “Regional”
+		          Lokale Lebensmittel
 		      	</h4>
 			</div>
 		</a>
@@ -105,7 +106,7 @@
 	    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
 		    <div class="panel-heading">
 		       	<h4 class="panel-title heading">
-		         		Presentation
+		         		Die Idee erzählt in 3 Minuten
 		      	</h4>
 		    </div>
 		</a>
