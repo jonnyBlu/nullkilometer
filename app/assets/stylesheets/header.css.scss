@@ -18,11 +18,14 @@ header{
 		font-weight: 700;
 		line-height: 1.5em;
 		margin-top: 2px;
-		#beta{
+		#beta, #headerText{
 			font-size: 0.5em;
 			text-transform: none;
 			color: $orangeTextColor;
 			margin-right: -10px;
+		}
+		#headerText{
+			color: $buttonColor1
 		}
 	}
 
