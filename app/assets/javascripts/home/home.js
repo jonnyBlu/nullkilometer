@@ -51,7 +51,7 @@ $(document).ready(function(){
 	//not used?
 	$("#addShop").tooltip();
 
-	map.initmap(INITIALLAT, INITIALLON, 3); // around Berlin;
+	map.initmap(INITIALLAT, INITIALLON, 9); // around Berlin;
 	map.loadMarkers();
 	map.locateUser(12);
 
