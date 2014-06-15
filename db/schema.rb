@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "updated_at",             :null => false
   end
 
+  add_index "deliveries", ["point_of_production_id"], :name => "index_deliveries_on_point_of_production_id"
+  add_index "deliveries", ["product_id"], :name => "index_deliveries_on_product_id"
+
   create_table "detail_infos", :force => true do |t|
     t.string   "website"
     t.string   "mail"
@@ -40,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "market_stalls", ["point_of_sale_id"], :name => "index_market_stalls_on_point_of_sale_id"
+
   create_table "opening_times", :force => true do |t|
     t.integer  "point_of_sale_id"
     t.integer  "day"
@@ -48,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "opening_times", ["point_of_sale_id"], :name => "index_opening_times_on_point_of_sale_id"
 
   create_table "point_of_interests", :force => true do |t|
     t.string   "name"
