@@ -1,7 +1,7 @@
 class PointOfInterestsController < ApplicationController
 	respond_to :xml, :json, :html
   before_filter :set_poi_type
-
+  
 	def index
 		if params[:lat] && params[:lon] && params[:radius]
 			begin
@@ -70,17 +70,24 @@ class PointOfInterestsController < ApplicationController
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
     if params[:type] == "PointOfSale"
-      pars = params[:point_of_sale]
-      pars["productCategoryIds"].delete("")
-
-      #TODO: destroy only if update successful aka find a better way to update
-      #otherwise it does not correctly update opening times and category ids
-      #@point_of_interest.products.destroy_all
-      #@point_of_interest.opening_times.destroy_all
+      pos_params = params[:point_of_sale]
+      pos_params["productCategoryIds"].delete("")
       
-     # ot=pars["opening_times_attributes"]
+      prodCats = pos_params["productCategoryIds"]
+     #TODO   
+     # @point_of_interest.products.each do |product|
+      #  if product.category not in prodCats
+       #   product['_destroy'] = true
+      #  end
+    #  end
 
-      if @point_of_interest.update_attributes(params[:point_of_sale])
+      pos_params["opening_times_attributes"].each do |ot|
+        if ot[1][:from].empty? && ot[1][:to].empty?
+          ot[1]['_destroy'] = true
+        end
+      end
+
+      if @point_of_interest.update_attributes!(params[:point_of_sale])
         flash[:success] = "Point of sale updated successfully"
         redirect_to @point_of_interest
       else
@@ -121,4 +128,5 @@ class PointOfInterestsController < ApplicationController
     end
   end
 
+  
 end

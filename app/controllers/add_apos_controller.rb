@@ -1,2 +1,0 @@
-class AddAposController < ApplicationController
-end
