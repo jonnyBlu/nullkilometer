@@ -43,6 +43,7 @@ en:
         select_pos_type: "Select type of selling point"
         from: "from"
         to: "to"
+        confirm_delete: "Are you sure you want to delete this shop?"
   links:
     global:
         about: "About"

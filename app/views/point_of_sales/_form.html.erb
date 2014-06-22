@@ -3,7 +3,6 @@
 <% end %>
 
 <%= simple_form_for(@point_of_interest) do |f| %>
-
   <div class="form-inputs">
 	  <%= f.input :name, input_html: { class: "formTextInput" } %>
 	  <%= f.input :address, input_html: { class: "formTextInput" } %>
@@ -26,10 +25,9 @@
 	  	  <% end %>
   	  </ul>
   </div>
-
-
   <%= f.button :submit %>
-  <% if locals[:parent]== "edit" %>
-    <%#= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm") } %>
-  <% end %>
+<% end %>
+
+<% if locals[:parent]== "edit" %>
+  <%= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
 <% end %>

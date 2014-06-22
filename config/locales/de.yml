@@ -38,12 +38,12 @@ de:
         overview_and_confirm_1: "Bitte überprüfe deine Angaben und bestätige wenn sie korrekt sind."
         overview_and_confirm_2: "Anderenfalls ändere die Angaben in den vorherigen schritten."
         submit_text: "Danke für die information, die Daten über den Verkaufsort werden bald online veröffentlicht werden."
-        minimum_note_1: "(* min 1)"
+        minimum_note_1: "(* min 1)" 
         minimum_note_2: "(* min 1 Tag markieren)"
         select_pos_type: "Bestimme Art des Verkaufsortes"
         from: "von"
         to: "bis"
-        confirm: "Sind Sie sicher?"
+        confirm_delete: "Sind Sie sicher, das sie diesen Laden löschen wollen?"
   links:
     global:
         about: "Über"

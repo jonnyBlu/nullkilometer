@@ -74,18 +74,22 @@ class PointOfInterestsController < ApplicationController
       pos_params["productCategoryIds"].delete("")
       
       prodCats = pos_params["productCategoryIds"]
-     #TODO   
-     # @point_of_interest.products.each do |product|
-      #  if product.category not in prodCats
-       #   product['_destroy'] = true
-      #  end
-    #  end
 
-      pos_params["opening_times_attributes"].each do |ot|
-        if ot[1][:from].empty? && ot[1][:to].empty?
-          ot[1]['_destroy'] = true
+      @point_of_interest.products.each do |product|
+      #  if product.category not in prodCats
+        unless prodCats.include?(product.category.to_s)
+          #TODO: change product's attributes in a more "direct" way
+          @point_of_interest.products_attributes = { id: product.id, _destroy: true }
         end
       end
+
+      pos_params["opening_times_attributes"].each do |ot_array|
+        ot = ot_array[1]
+        if ot[:from].empty? && ot[:to].empty?
+          ot['_destroy'] = true
+        end
+      end
+
 
       if @point_of_interest.update_attributes!(params[:point_of_sale])
         flash[:success] = "Point of sale updated successfully"
