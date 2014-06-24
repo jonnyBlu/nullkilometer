@@ -24,7 +24,15 @@ ul{
 
 .row{ margin-left: 0px; }
 
+.up{
+	top: 100px !important;
+	transition: 1s;
+}
+
 #homePageText{
+	transition: 1s;
+	position:relative;
+	top: 100%;
 	padding: 0px;
 	.panel-default {
 		@include boxShadow(0, #fff);

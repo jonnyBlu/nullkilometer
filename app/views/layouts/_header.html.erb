@@ -8,10 +8,10 @@
       <% end %>
       <nav>
         <ul class="nav pull-right" id="topMenuLinks">
-              <li><%= link_to I18n.t('links.global.home'), :root, class: "lightLink"  %></li>
-              <li><%= link_to I18n.t('links.global.map'),   '/map', class: "lightLink"  %></li>
-            <!--     <li><%= link_to I18n.t('links.global.register' ),   '#' %></li>
-              <li><%= link_to I18n.t('links.global.login'),   '#' %></li>-->      
+          <% if current_page?(root_path) %>
+            <li><%= link_to I18n.t('links.global.about' ), "#", class: "lightLink", id: "linkToHomepageText" %></li> 
+          <% end %>
+          <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), "/addShop", class: "lightLink"%></li>
         </ul>
       </nav>
     </div>

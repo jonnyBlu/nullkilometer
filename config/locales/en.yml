@@ -12,7 +12,6 @@ en:
         email: "E-mail"
         phone: "Phone number"
   button:
-    add_new_point_of_sales: "Add a new selling place"
     search_point_of_sales: "Look for selling places"
     search_point_of_sales_open: "Close filter"
     back_to_map: "To the map"
@@ -55,8 +54,9 @@ en:
         login: "Log in"
         more_information: "More info >>"
         edit: "edit"
+        add_new_point_of_sales: "Add a selling place"
   title:
-    main: "local food products next door"
+    main: "local foods next door"
     by: "by Nullkilometer"
   headers:
     new_selling_point: "New selling point"

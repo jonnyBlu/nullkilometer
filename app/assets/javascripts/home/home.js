@@ -14,6 +14,21 @@ $(document).ready(function(){
 			filterTagsBy('shopTypeId');
 			filterTagsBy('openingDay');
 		},
+		loadHomeTextBoxListeners = function(){
+			//TODO: remove previous listeners
+			$("#linkToHomepageText").click(function(){
+				$("#homePageText").toggleClass("up");
+				
+				$('#mapContainer').click(function() {
+					$("#homePageText").removeClass("up");
+					$("#mapContainer").unbind("click");
+				});
+				$('#homePageText').click(function(){
+					$("#homePageText").addClass("up");
+					$("#homePageText").unbind("click");
+				});
+			});
+		},
 		changeText = function(){			
 			if($("#mapFilter").hasClass("open")){
 				var text = $("#buttonTextOpen").html();
@@ -57,6 +72,8 @@ $(document).ready(function(){
 
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
 	loadFilterListeners();
+
+	loadHomeTextBoxListeners();
 });
 
 

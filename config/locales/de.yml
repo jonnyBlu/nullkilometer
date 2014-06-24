@@ -12,7 +12,6 @@ de:
         email: "E-mail"
         phone: "Telefonnummer"
   button:
-    add_new_point_of_sales: "Neuen Verkaufsort hinzufügen"
     search_point_of_sales: "Nach Verkaufsort suchen"
     search_point_of_sales_open: "Filter ausblenden"
     back_to_map: "Zu der Karte"
@@ -55,6 +54,7 @@ de:
         login: "Sich anmelden"
         more_information: "Mehr Informationen >>"
         edit: "bearbeiten"
+        add_new_point_of_sales: "Verkaufsort hinzufügen"
   title:
     main: "lokale Lebensmittel in der Nähe"
     by: "von Nullkilometer"  
