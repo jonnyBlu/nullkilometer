@@ -25,14 +25,14 @@ ul{
 .row{ margin-left: 0px; }
 
 .up{
-	top: 100px !important;
+	top: -95% !important;
 	transition: 1s;
 }
 
 #homePageText{
+	z-index: 2;
 	transition: 1s;
 	position:relative;
-	top: 100%;
 	padding: 0px;
 	.panel-default {
 		@include boxShadow(0, #fff);
@@ -69,28 +69,6 @@ ul{
 				margin-left: 15px;
 			}
 		 	padding: 20px 40px;
-
-		 	#linkToMapContainer {
-				transition: 0.5s ease;
-	    		-webkit-transition: 0.5s ease;
-	    		-moz-transition: 0.5s ease;
-			}
-			#linkToMapContainer:hover {
-				-moz-transform:scale(1.2); 
-				-webkit-transform:scale(1.2);
-				-o-transform:scale(1.2);
-			}
-			#labelToMap {
-				position: absolute;
-				top: 90px;
-				left: 130px;
-				background-color: $orangeBackgroundColor;
-				padding: 10px;
-				min-width: 120px;
-				height: 40px;
-				color: white;
-				font-weight:bold;
-			}
 		}
 	}
 	.panel-default > .panel-heading, .panel-default > .panel-collapse{

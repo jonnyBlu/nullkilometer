@@ -4,7 +4,7 @@ $(document).ready(function(){
 		inputSelector = $("#addressLookupContainer #locationInput"),
 		resultsSelector = $("#locationResultPopup"),
 		loadFilterListeners = function(){
-			$("#mapFilterButton").click(function(){
+			$("#mapFilterButton, #closeButtonFilter").click(function(){
 				$("#mapFilter").toggleClass("open");
 				changeText();
 				$("#mapFilter").slideToggle("slow");				
@@ -15,7 +15,6 @@ $(document).ready(function(){
 			filterTagsBy('openingDay');
 		},
 		loadHomeTextBoxListeners = function(){
-			//TODO: remove previous listeners
 			$("#linkToHomepageText").click(function(){
 				$("#homePageText").toggleClass("up");
 				

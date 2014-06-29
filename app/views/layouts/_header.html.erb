@@ -1,19 +1,31 @@
-<header>
-  <div class="navbar-inner">
+  <header class="navbar navbar-static-top header">
     <div class="container">
-      <%= link_to :root, id: "logo" do %>
-        <span id="beta">beta</span>
-        <%= image_tag "images/logo_letters_horizontal.png",  alt: "local food is good",  height: '28' %>
-        <span id="headerText"><%= I18n.t('title.main') %></span>
-      <% end %>
-      <nav>
-        <ul class="nav pull-right" id="topMenuLinks">
+      <div>
+        <%= link_to :root, id: "logo" do %>
+          <ul>
+            <li><span id="beta">beta</span></li>
+            <li><%= image_tag "images/logo_letters_horizontal.png",  alt: "local food is good" %></li>
+            <!--<li><span id="headerText"><%#= I18n.t('title.main') %></span></li>-->
+          </ul>        
+        <% end %>
+      </div>
+
+      <button class="navbar-toggle btn-navbar" data-toggle="collapse" data-target=".navHeaderCollapse">
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
           <% if current_page?(root_path) %>
             <li><%= link_to I18n.t('links.global.about' ), "#", class: "lightLink", id: "linkToHomepageText" %></li> 
+          <% else %>
+             <li><%= link_to I18n.t('links.global.home' ), "/", class: "lightLink" %></li> 
           <% end %>
-          <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), "/addShop", class: "lightLink"%></li>
+          <% if current_page?('/addShop')== false %>
+            <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), "/addShop", class: "lightLink"%></li>
+          <% end %>
         </ul>
-      </nav>
+      </div>  
     </div>
-  </div>
-</header>
+  </header>
