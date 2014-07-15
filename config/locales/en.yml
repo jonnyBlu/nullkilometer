@@ -32,6 +32,7 @@ en:
         main_information: "Main information"
         additional_information: "Additional Informationen"
         market_stalls: "Market stalls"
+        parent_market_name: "Parent market name"
         confirm: "Confirm"
         overview: "Overview"
         overview_and_confirm_1: "Check the information and confirm if it is correct."
@@ -42,6 +43,7 @@ en:
         select_pos_type: "Select type of selling point"
         from: "from"
         to: "to"
+        for: "for"
         confirm_delete: "Are you sure you want to delete this shop?"
   links:
     global:

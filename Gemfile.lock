@@ -64,6 +64,9 @@ GEM
     mime-types (1.25.1)
     multi_json (1.9.2)
     oj (2.8.1)
+    paper_trail (3.0.3)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     pg (0.17.1)
     polyglot (0.3.4)
     rabl (0.9.3)
@@ -135,6 +138,7 @@ DEPENDENCIES
   jquery-ui-rails
   leaflet-rails
   oj
+  paper_trail (~> 3.0.3)
   pg
   rabl
   rails (= 3.2.16)

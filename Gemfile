@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'rabl'
 gem 'oj'
 
+gem 'paper_trail', '~> 3.0.3'
+
 #gem "active_model_serializers"
   # Gemfile in Rails >= 3.1
   # gem 'activeadmin', github: 'gregbell/active_admin'

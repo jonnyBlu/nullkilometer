@@ -1,13 +1,26 @@
 Geocoder.configure(
 
+ 
+
   # geocoding service (see below for supported options):
-  :lookup => :nominatim,
+
+  #NOMINATIUM
+  #:lookup => :nominatim,
+  #:http_headers => { "User-Agent" => "nullkilometer@gmail.com" },
+
+  #MAPQUEST
+  #:lookup => :mapquest,
+  #:mapquest => {:licensed => true, :api_key => "Fmjtd%7Cluur206820%2Cr0%3Do5-9atw96"},
+  #:http_headers => { "Referer" => "http://beta.nullkilometer.org" },
+
+  #YANDEX
+  :lookup => :yandex,
 
   # IP address geocoding service (see below for supported options):
   #:ip_lookup => :maxmind,
 
 
-  :http_headers => { "User-Agent" => "nullkilometer@gmail.com" },
+ 
 
   # to use an API key:
   #:api_key => "...",

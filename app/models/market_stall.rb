@@ -1,5 +1,8 @@
 class MarketStall < ActiveRecord::Base
-  attr_accessible :name
+
+  has_paper_trail
+
+  attr_accessible :name, :point_of_sale_id
   
   belongs_to :point_of_sale, :inverse_of => :market_stalls
   

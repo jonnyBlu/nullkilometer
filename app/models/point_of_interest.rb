@@ -1,4 +1,7 @@
 class PointOfInterest < ActiveRecord::Base
+  
+  #http://www.sitepoint.com/versioning-papertrail/
+  has_paper_trail
 	
   attr_accessible :name, :address, :lat, :lon, :type
   geocoded_by :address, :latitude  => :lat, :longitude => :lon	
@@ -11,6 +14,9 @@ class PointOfInterest < ActiveRecord::Base
   	if self.lat==nil or self.lon==nil
   		if self.address
   			latlon= Geocoder.coordinates(self.address)
+        puts "LAT LON of"
+        puts name
+        puts latlon
         if latlon
   			  self.lat=latlon[0]
   			  self.lon=latlon[1]

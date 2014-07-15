@@ -62,12 +62,10 @@ $(document).ready(function(){
 			});
 			return activeValues;
 		};
-	//not used?
-	$("#addShop").tooltip();
 
-	map.initmap(INITIALLAT, INITIALLON, 9); // around Berlin;
+	map.initmap(INITIALLAT, INITIALLON, 12); // around Berlin;
 	map.loadMarkers();
-	map.locateUser(12);
+	//map.locateUser(12); //re-activate when there are more tags everywhere
 
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
 	loadFilterListeners();

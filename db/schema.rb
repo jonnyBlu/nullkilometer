@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702174126) do
+ActiveRecord::Schema.define(:version => 20140705210818) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "point_of_production_id"
@@ -20,9 +20,6 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
   end
-
-  add_index "deliveries", ["point_of_production_id"], :name => "index_deliveries_on_point_of_production_id"
-  add_index "deliveries", ["product_id"], :name => "index_deliveries_on_product_id"
 
   create_table "detail_infos", :force => true do |t|
     t.string   "website"
@@ -43,8 +40,6 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "updated_at",       :null => false
   end
 
-  add_index "market_stalls", ["point_of_sale_id"], :name => "index_market_stalls_on_point_of_sale_id"
-
   create_table "opening_times", :force => true do |t|
     t.integer  "point_of_sale_id"
     t.integer  "day"
@@ -54,8 +49,6 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.datetime "updated_at",       :null => false
   end
 
-  add_index "opening_times", ["point_of_sale_id"], :name => "index_opening_times_on_point_of_sale_id"
-
   create_table "point_of_interests", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -63,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.float    "lon"
     t.integer  "pos_type"
     t.string   "type"
+    t.integer  "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -73,6 +67,16 @@ ActiveRecord::Schema.define(:version => 20130702174126) do
     t.string   "seller_type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",      :null => false
+    t.integer  "item_id",        :null => false
+    t.string   "event",          :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.text     "object_changes"
+    t.datetime "created_at"
   end
 
 end

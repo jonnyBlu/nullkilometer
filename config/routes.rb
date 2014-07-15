@@ -11,7 +11,7 @@ Nullkilometer::Application.routes.draw do
   scope "/", :defaults => {:format => :json} do
 
     resources :point_of_sales, :controller => "point_of_interests", :defaults => { :type => "PointOfSale" } do
-      resources :market_stalls, :only => [:index, :create]
+      resources :market_stalls#, :only => [:index, :create]
       resources :products, :only => :index do
         collection do
           match "category/:category", :to => "products#show", :via => :get
@@ -19,6 +19,9 @@ Nullkilometer::Application.routes.draw do
         end
       end
       resources :deliveries, :only => :index
+      member do 
+        get "history"
+      end
     end
 
     resources :market_stalls do

@@ -32,6 +32,7 @@ de:
         main_information: "Hauptinformationen"
         additional_information: "Zusätzliche Informationen"
         market_stalls: "Marktstände"
+        parent_market_name: "Name des Markts"
         confirm: "Bestätigen"
         overview: "Übersicht"
         overview_and_confirm_1: "Bitte überprüfe deine Angaben und bestätige wenn sie korrekt sind."
@@ -42,6 +43,7 @@ de:
         select_pos_type: "Bestimme Art des Verkaufsortes"
         from: "von"
         to: "bis"
+        for: "für"
         confirm_delete: "Sind Sie sicher, das sie diesen Laden löschen wollen?"
   links:
     global:

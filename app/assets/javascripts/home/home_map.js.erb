@@ -50,6 +50,7 @@ var HomeMap = function(){
 		callAjax("/point_of_sales", null, onSuccessLoadMarkers);
 	},
 	getOSMAddress = function (data){
+		alert("???");
 		var resultsSelector = $("#locationResultPopup"),
 			resultAmount = data.length;
 		resultsSelector.html('<p><%= I18n.t("input.commands.choose_an_address") %></p><ul></ul>');
@@ -109,12 +110,16 @@ var HomeMap = function(){
 	},
 	bindListeners = function(marker){
 		marker.on('click', function(evt) {	
-			var infoBoxContent = typeof marker.getPopup() == "undefined" ? buildInfoboxHtml(marker) : marker.getPopup().getContent();
-			//a workaround, cuz if a popup is still bound from the previous click (but invisible), 
-			//it opens but remains invisible
-			marker.unbindPopup();
-			marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
-			marker.openPopup();
+			console.log(marker);
+			//for markers which are invisible (but for some reason still clickable, even if "clickable" is disactivated)
+			if(marker.options.opacity == 1){
+				var infoBoxContent = typeof marker.getPopup() == "undefined" ? buildInfoboxHtml(marker) : marker.getPopup().getContent();
+				//a workaround, cuz if a popup is still bound from the previous click (but invisible), 
+				//it opens but remains invisible
+				marker.unbindPopup();
+				marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
+				marker.openPopup();
+			}
 		});
 		marker.on('popupopen', function(){
 			resizeMarkerIcon(marker, true);	
@@ -167,11 +172,6 @@ var HomeMap = function(){
 		var coordinates = new L.LatLng(lat, lon, true);
 		map.setZoom(zoomLevel);
 		map.panTo(coordinates);
-		//callback of setZoom only for this particular event
-		/*map.on('zoomend', function(e) {
-			map.panTo(coordinates);
-			map.off('zoomend');
-    	});*/
 	},
 	generateOpeningTimesList = function(ids, arrayWithNames){
 		var list = "<ul>";
@@ -229,12 +229,18 @@ var HomeMap = function(){
 							makeMarkerVisible3 = true;	
 					});
 				}
-				if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) 
-					markersOfTheMap[i].setOpacity(1);
-				else{ // reset marker to default size, with infobox closed
+				if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) {
+					var thisSmth=markersOfTheMap[i].setOpacity(1);
+					markersOfTheMap[i].options.clickable = true;
+					markersOfTheMap[i].options.zIndexOffset = 0;
+				}
+				else{ 
 					markersOfTheMap[i].setOpacity(0);
+					// reset marker to default size, with infobox closed
 					resizeMarkerIcon(markersOfTheMap[i], false);
 					markersOfTheMap[i].closePopup();
+					markersOfTheMap[i].options.clickable = false;
+					markersOfTheMap[i].options.zIndexOffset = -1000;
 				}
 			});	
 		}

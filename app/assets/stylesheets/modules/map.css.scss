@@ -8,12 +8,6 @@ $infoboxWrapperWidth: 420px;
 $infoboxWidth: 400px;
 
 .map {
-	header {
-		.container {
-			width: 100%;
-		}
-	}
-
 	.content-wrapper {
 		padding: 0px;
 	}
@@ -32,138 +26,137 @@ $infoboxWidth: 400px;
 		position: absolute;
 	}
 
-	#mapFilterButton{
-		float: right;
-		min-width: 320px;
-		font-weight: bold;
-	    font-size: 17px;    
-	}
+	#mapContainer {
+		/*margin-top:50px;*/
+		z-index: 1;
+		position: relative;
+		top: 0px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding:  0px;
 
-	#mapFilterContainer {
-		left: 0px;
-		z-index: $zIndexMapElements;
-		padding: 0px;
-		#mapFilter {
-			display: none;
-			border: none;
-			border-bottom: none;
-			background-color:rgba(255,255,255,0.8);
-			> div {
-				margin-left: 0px;
-			}
-			#closeButtonFilter{
-				position: absolute;
-				right:0px;
-				top:0px;
-				float:right;
-				padding-right: 5px;
-				font-weight: bold;
-				cursor:pointer;
-				font-size:20px;
-				color: $orangeTextColor;
-				&:hover{
-					color: $backgroundColor;
+		#map {
+			height: 100%;
+		}
+
+		#mapFilterContainer {
+			left: 0px;
+			z-index: $zIndexMapElements;
+			padding: 0px;
+			#mapFilter {
+				display: none;
+				border: none;
+				border-bottom: none;
+				background-color:rgba(255,255,255,0.8);
+				> div {
+					margin-left: 0px;
 				}
-			}
-			.what, .where{
-				float: left;
-				margin: 0px;
-			}
-			.what, .where, .when{
-			
-				p{
-					font-size: 20px;
+				#closeButtonFilter{
+					position: absolute;
+					right:0px;
+					top:0px;
+					float:right;
+					padding-right: 5px;
 					font-weight: bold;
-					margin: 10px 0px 0px 10px;
+					cursor:pointer;
+					font-size:20px;
+					color: $orangeTextColor;
+					&:hover{
+						color: $backgroundColor;
+					}
 				}
-				ul{
-					font-size: 12px;
-					margin: 10px 20px 0px 10px;
-					width: 100%;
-					padding: 0px;
-					li{
-						height: 50px; 
-						line-height: 50px;
-						input{
-							vertical-align: middle;
-							margin-right: 10px;
+				.what, .where{
+					float: left;
+					margin: 0px;
+				}
+				.what, .where, .when{			
+					p{
+						font-size: 20px;
+						font-weight: bold;
+						margin: 10px 0px 0px 10px;
+					}
+					ul{
+						font-size: 12px;
+						margin: 10px 20px 0px 10px;
+						width: 100%;
+						padding: 0px;
+						li{
+							height: 50px; 
+							line-height: 50px;
+							input{
+								vertical-align: middle;
+								margin-right: 10px;
+							}
+							&:hover {
+								cursor:pointer;
+							}
 						}
-						&:hover {
-							cursor:pointer;
+					}
+					.when {
+						width: 204px;
+						ul > li{
+							height: 40px; 
+							font-size: 13px;
 						}
 					}
 				}
-				.when {
-					width: 204px;
-					ul > li{
-						height: 40px; 
-						font-size: 13px;
-					}
-				}
+			}
+			#mapFilterButton{
+				float: right;
+				min-width: 320px;
+				font-weight: bold;
+			    font-size: 17px;    
 			}
 		}
-	}
-	@media only screen and (min-width: 500px) { 
-		.when{
-			margin-left: 466px; /*2 x where/when width*/
-		}
-		.what, .where, .when{
-			li{
-				min-width: 204px;
-			}
-		}
-	}
-	@media only screen and (max-width: 500px) { 
-
-		span.toHideIfScreenSmall { 
-			width: 2px; 
-			display: none;
-		}
-		#mapFilter{
-			padding: 0px;
-			.what, .where, .when{
-				padding-right: 0px;
-			}
-			.when {
-				margin-left: 193px;
-			}
-		}
-		
-	}
-
-
-	#addShop {
-		right: 0px;
-		z-index: 11;
-		a {
-			width: 250px;
-		}
-	}
-
-	#addressLookupContainer {
-		width: 283px;
-		bottom: 20px;
-
-		#locationInput,#locationSubmit{
-			top: 0px;
-		}
-		#locationInput{
-			background: $transparentBackground;
-			border: 1px solid rgb(204, 204, 204);
-			width: 250px;
-			right: $buttonAndInputHeight;			
-			@include roundedCorners(0px 0px 0px $corner-radius);
+		#sideBarForDragging {
 			position: absolute;
-			padding: 0 5px;
-			background: $transparentBackground;
-			@include placeholderColor(rgb(110,110,110));
+			right: 0px;
+			width: 35px;
+			height: 100%;
+			background-color: $backgroundColor;
+			z-index: 2;
 		}
-		#locationSubmit {
-			width: $buttonAndInputHeight;
-			padding: 0px;
-			/*border-left: 1px solid rgb(204, 204, 204);*/
-			border-bottom: 1px solid rgb(204, 204, 204);
-			color: black;
+
+		#addressLookupContainer {
+			width: 283px;
+			bottom: 20px;
+
+			#locationInput,#locationSubmit{
+				top: 0px;
+			}
+			#locationInput{
+				background: $transparentBackground;
+				border: 1px solid rgb(204, 204, 204);
+				width: 250px;
+				right: $buttonAndInputHeight;			
+				@include roundedCorners(0px 0px 0px $corner-radius);
+				position: absolute;
+				padding: 0 5px;
+				background: $transparentBackground;
+				@include placeholderColor(rgb(110,110,110));
+			}
+			#locationSubmit {
+				width: $buttonAndInputHeight;
+				padding: 0px;
+				/*border-left: 1px solid rgb(204, 204, 204);*/
+				border-bottom: 1px solid rgb(204, 204, 204);
+				color: black;
+			}
+		}
+
+		#locationResultPopup {
+			display: none;
+			z-index: 11;
+			width: 100%;
+			padding: 20px 0px 20px 0px;
+			background-color: white;
+			@include boxShadow(10px, #aaa);
+			@include roundedCorners_bottom(10px);
+
+			p {
+				margin-left: 20px;
+			}
 		}
 	}
 
@@ -211,34 +204,6 @@ $infoboxWidth: 400px;
 		}
 	}
 
-	#locationResultPopup {
-		display: none;
-		z-index: 11;
-		width: 100%;
-		padding: 20px 0px 20px 0px;
-		background-color: white;
-		@include boxShadow(10px, #aaa);
-		@include roundedCorners_bottom(10px);
-
-		p {
-			margin-left: 20px;
-		}
-	}
-
-	#mapContainer {
-		z-index: 1;
-		position: relative;
-		top: 0px;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		padding:  0px;
-	}
-
-	#map {
-		height: 100%;
-	}
-
 	/* map infbox styling */
 
 	#hiddenInfoboxContentContainer{
@@ -248,15 +213,16 @@ $infoboxWidth: 400px;
 	.leaflet-popup-content-wrapper{
 		width: $infoboxWrapperWidth;
 	}
+
 	.leaflet-popup-content{
 	  margin: 4px 14px 14px 14px !important;
 	}
+
 	.leaflet-container a.leaflet-popup-close-button{
 		font: 30px/28px Tahoma, Verdana, sans-serif;
 		width: 30px;
 		height: 28px;
 	}
-
 
 	#infoboxContent{
 		width: $infoboxWidth;
@@ -276,7 +242,6 @@ $infoboxWidth: 400px;
 			margin: 0px;
 			padding: 0px;
 		}
-		
 	} 
 
 	/* map infobox styling end */
@@ -285,5 +250,44 @@ $infoboxWidth: 400px;
 		position: fixed;
 		bottom: 0px;
 	}
+
+	@media only screen and (min-width: 500px) { 
+		#mapContainer {
+			margin-top:50px;
+		}
+		#sideBarForDragging{
+			display: none;
+		}
+		.when{
+			margin-left: 466px; /*2 x where/when width*/
+		}
+		.what, .where, .when{
+			li{
+				min-width: 204px;
+			}
+		}
+	}
+	@media only screen and (max-width: 500px) { 
+		#mapContainer {
+			margin-top:45px;
+		}
+		#sideBarForDragging{
+			display: block;
+		}
+		span.toHideIfScreenSmall { 
+			width: 2px; 
+			display: none;
+		}
+		#mapFilter{
+			padding: 0px;
+			.what, .where, .when{
+				padding-right: 0px;
+			}
+			.when {
+				margin-left: 193px;
+			}
+		}		
+	}
+
 }	
 

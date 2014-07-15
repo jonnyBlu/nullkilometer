@@ -1,4 +1,4 @@
-form#new_point_of_sale, form.edit_point_of_sale{
+form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall{
 	.form-inputs{
 
 		select, input.string {
@@ -32,7 +32,8 @@ form#new_point_of_sale, form.edit_point_of_sale{
 		.control-group{
 			margin-bottom: 10px;
 		}
-		.control-group.point_of_sale_productCategoryIds .checkbox{
+		.control-group.point_of_sale_productCategoryIds .checkbox,
+		.control-group.market_stall_productCategoryIds .checkbox{
 			margin-left: 20px;
 		}
 		.control-group.point_of_sale_opening_times_from, .control-group.point_of_sale_opening_times_to{

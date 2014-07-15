@@ -1,0 +1,12 @@
+ <br />
+ <div class="heading">Versions of <%= @poi.name %></div>
+ <br />
+  <h3> Main infos </h3>
+ <% @poi_versions.each_with_index do |v, i| %>
+  	<p><b><%=v.created_at %><%="   #{v.event} "%></b><%=v.changeset %></p>
+ <% end %>
+ <h3> Detailed infos </h3>
+ <% @detail_info_versions.each_with_index do |v, i| %>
+  	<p><b><%=v.created_at %><%="   #{v.event} "%></b><%=v.changeset %></p>
+ <% end %>
+

@@ -1,4 +1,7 @@
 class DetailInfo < ActiveRecord::Base
+
+	has_paper_trail
+
   attr_accessible :description, :mail, :phone, :cell_phone, :website
   alias_attribute :cellPhone, :cell_phone
 

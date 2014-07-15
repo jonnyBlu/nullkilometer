@@ -7,6 +7,7 @@ class CreatePointOfInterests < ActiveRecord::Migration
       t.float :lon
       t.integer :pos_type
       t.string :type
+      t.integer :status
 
       t.timestamps
     end

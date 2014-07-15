@@ -1,0 +1,6 @@
+<h1> <%= I18n.t("headers.add_new_market_stalls") %>
+	  <% if !@parent_market.nil? %> 
+	  	<%= I18n.t("instructions.add_a_pos.for") %> <%= @parent_market.name %>
+	  <% end %>
+</h1>
+<%= render 'form', object: @market_stall, locals: {parent: "new"}  %>

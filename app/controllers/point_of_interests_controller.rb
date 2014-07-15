@@ -32,6 +32,7 @@ class PointOfInterestsController < ApplicationController
       for i in 0..6
         @point_of_interest.opening_times.build(dayId: i)
       end
+      @point_of_interest.market_stalls.build
     end
     respond_with @point_of_interest
   end
@@ -119,6 +120,13 @@ class PointOfInterestsController < ApplicationController
 
   def pos_types
     respond_with object_representation_for_constant(PointOfSale::POS_TYPE_NAMES, "pos_types")
+  end
+
+  def history
+    @poi =  @poi_class.find(params[:id])
+    @poi_versions = @poi.versions
+    @detail_info_versions = @poi.detail_info.versions
+    respond_with @poi
   end
 
   private

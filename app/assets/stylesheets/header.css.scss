@@ -3,19 +3,34 @@
     background-image: linear-gradient($headerColor1, $headerColor2);
     margin-bottom:0px;
 
+    min-height: 45px !important;
+    /*height: 50px;*/
+
+    .container {
+		width: 100%;
+	}
 
 	@media only screen and (max-width: 520px) {
-		min-height: 45px !important;
-		#logo img{
-			width: 290px;
-		}
+		/*height: 45px; */
+		#logo {
+			img{
+				width: 260px;
+			}
+			> ul {
+				margin-top: 14px;
+			}
+		} 
 		.container {
 			padding-left: 5px;
 			padding-right: 5px !important;
 		}
 	}
 	@media only screen and (max-width: 500px) { 
-
+		#logo {
+			> ul {
+				margin-top: 10px;
+			}
+		} 
 		button{
 			margin-right: 0px;
 		}
@@ -29,7 +44,6 @@
 		text-decoration: none;
 		letter-spacing: 0.05em;
 		font-weight: 700;
-		margin-top: 10px;
 		display: inline-table;
 		> li{
 			display: inline;
