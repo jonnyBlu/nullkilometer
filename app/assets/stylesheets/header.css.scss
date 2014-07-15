@@ -4,20 +4,20 @@
     margin-bottom:0px;
 
     min-height: 45px !important;
-    /*height: 50px;*/
 
     .container {
 		width: 100%;
 	}
 
+	@media only screen and (min-width: 500px) {
+		#logo ul {
+			margin-top: 14px;
+		} 
+	}
 	@media only screen and (max-width: 520px) {
-		/*height: 45px; */
 		#logo {
 			img{
-				width: 260px;
-			}
-			> ul {
-				margin-top: 14px;
+				width: 230px;
 			}
 		} 
 		.container {
@@ -26,10 +26,8 @@
 		}
 	}
 	@media only screen and (max-width: 500px) { 
-		#logo {
-			> ul {
-				margin-top: 10px;
-			}
+		#logo ul {
+			margin-top: 14px;
 		} 
 		button{
 			margin-right: 0px;
