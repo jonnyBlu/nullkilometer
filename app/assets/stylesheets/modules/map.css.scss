@@ -153,9 +153,12 @@ $infoboxWidth: 400px;
 			background-color: white;
 			@include boxShadow(10px, #aaa);
 			@include roundedCorners_bottom(10px);
-
-			p {
+			p, ul {
 				margin-left: 20px;
+			}
+			a:hover{
+				background: none;
+				color: $backgroundColor;
 			}
 		}
 	}

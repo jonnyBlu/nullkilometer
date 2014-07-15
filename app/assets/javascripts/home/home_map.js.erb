@@ -50,7 +50,7 @@ var HomeMap = function(){
 		callAjax("/point_of_sales", null, onSuccessLoadMarkers);
 	},
 	getOSMAddress = function (data){
-		alert("???");
+		$(document).scrollTop(0);
 		var resultsSelector = $("#locationResultPopup"),
 			resultAmount = data.length;
 		resultsSelector.html('<p><%= I18n.t("input.commands.choose_an_address") %></p><ul></ul>');
