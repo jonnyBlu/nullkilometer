@@ -87,6 +87,8 @@ $infoboxWidth: 400px;
 							input{
 								vertical-align: middle;
 								margin-right: 10px;
+								height: 35px;
+								width: 35px;
 							}
 							&:hover {
 								cursor:pointer;
@@ -112,7 +114,7 @@ $infoboxWidth: 400px;
 		#sideBarForDragging {
 			position: absolute;
 			right: 0px;
-			width: 35px;
+			width: 34px;
 			height: 100%;
 			background-color: $backgroundColor;
 			z-index: 2;

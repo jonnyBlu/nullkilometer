@@ -47,6 +47,7 @@ var HomeMap = function(){
 		map.locate({setView : true, maxZoom:  zoomLevel});
 	},
 	loadMarkers = function(){
+		//map.spin(true); 
 		callAjax("/point_of_sales", null, onSuccessLoadMarkers);
 	},
 	getOSMAddress = function (data){

@@ -1,4 +1,5 @@
-form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall{
+form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edit_market_stall {
+	margin-bottom: 10px;
 	.form-inputs{
 
 		select, input.string {
@@ -19,6 +20,9 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall{
 			margin-right: 5px;
 		}
 
+		input.string{
+			padding-left: 5px;
+		}
 
 		.formTextInput, textarea {
 			width: 350px;
@@ -58,6 +62,12 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall{
 					}
 				}
 
+			}
+		}
+		.marketStalls ul{
+			margin: 10px 10px 0px 10px;
+			li {
+				margin-bottom: 5px;
 			}
 		}
 

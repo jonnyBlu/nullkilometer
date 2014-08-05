@@ -1,0 +1,16 @@
+<div class="row bordered productCategories">
+	 <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
+</div>
+<div class="row bordered website">
+	<%= if stall.detail_info.website.empty? 
+			"Website: not yetprovided" 
+		else 
+			stall.detail_info.website 
+		end %>
+</div>
+<div class="row bordered">
+        <label for="mail"><%= stall.detail_info.mail %></label>
+        <label for="phone"><%= stall.detail_info.phone %></label>
+        <label for="cellphone"><%= stall.detail_info.cell_phone %></label>
+</div>
+<div class="row bordered"><label for="description"><%= stall.detail_info.description %></label></div>

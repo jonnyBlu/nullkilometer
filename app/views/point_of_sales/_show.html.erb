@@ -2,12 +2,18 @@
     <%= javascript_include_tag "point_of_interests/show.js" %>
     <%= javascript_include_tag "point_of_interests/map_profile_page.js" %>
 <% end %>
+
 <div class="infoDiv profileWrapper" id="profilePageWrapper">
-	<div id="profilePageHeader" class="infoHeader">
-		<ul>
-			<li class="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
-		  	<li class="title"><%= @point_of_interest.name %></li>
-		</ul>
+	<div class="row">
+		<div id="profilePageHeader" class="infoHeader col-md-10">
+			<ul>
+				<li class="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
+			  	<li class="title"><%= @point_of_interest.name %></li>
+			</ul>
+		</div>
+		<div class="col-md-2">
+			<div id="editPosLinkWrapper"><%= link_to I18n.t("links.global.edit"), "/point_of_sales/#{@point_of_interest.id}/edit.html", class: 'ordinaryLink' %></div>
+		</div>
 	</div>
 	<div id="profilePageContainer" class="profileContainer">
 		<div class="row">
@@ -20,6 +26,6 @@
 		</div>
 	</div>
 	<% if @point_of_interest.pos_type == 0 %>
-		<%=  render 'market_stalls/show' %>
+		<%=  render 'market_stalls/index' %>
 	<% end %>
 </div>

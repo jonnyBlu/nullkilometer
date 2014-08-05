@@ -7,6 +7,7 @@ class OpeningTime < ActiveRecord::Base
   alias_attribute :dayId, :day
 
   validates :day, :to, :from, :presence => true
+  validates :to, :presence => true 
   validates :day, :numericality => { :only_integer => true, :less_than => 7}
   validates :from, :to, :format => { :with => /([0-1]\d|2[0-3]):[0-5]\d/ }
   validate :cant_close_before_open

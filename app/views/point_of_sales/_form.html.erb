@@ -15,7 +15,8 @@
 	  <%= f.input :description, :as => :text,  :input_html => { :rows => "10" } %>
 
 	  <ul id = "openingTimesContainer">
-		  <%= f.simple_fields_for :opening_times do |ot| %>
+	  	<label><%= I18n.t("properties.main_information.opening_times") %></label>
+		<%= f.simple_fields_for :opening_times do |ot| %>
 		  	<li class = "openingDayContainer grayedOut">
 		  		<%= ot.input :dayId, label: false, as: :boolean, inline_label: I18n.t("date.day_names")[ot.object.dayId], checked_value: ot.object.dayId,
 		  		 include_hidden: :false, unchecked_value: nil, input_html: { id: ot.object.dayId, style: "display: none", checked: true } %>
@@ -24,14 +25,29 @@
 	  		</li>
 	  	  <% end %>
   	  </ul>
+  	  <!-- add JS: show the whole block only if user clicks on market as pos type (adding a new pos) or if market is beign edited -->  	 
+  	<% if locals[:parent]== "edit" %>
   	  <div class="marketStalls">
-  	  		<%= button_tag I18n.t("button.add_market_stall"), class: 'btn' %>
+  	  	<label><%= I18n.t("properties.additional_information.market_stalls") %></label>
+		  <% if @point_of_interest.posTypeId == 0 %>
+		  	<ul>
+		  	 	<% @point_of_interest.market_stalls.each do |ms| %>	
+	  	 			<li>
+	  	 				<label class="string"><%= ms.name %></label>
+	  	 				<%= link_to "Edit", "market_stalls/#{ms.id}/edit.html", class: "ordinaryLink" %>
+	  	 			</li>
+		  	 	<% end %>
+	  	 		<li><%= link_to I18n.t("button.add_market_stall"), "market_stalls/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
+	  	 	</ul>
+		  <% end %>
   	  </div>
   	  <br />
+  	<% end %>
+  	 <!-- end block -->
   </div>
-  <%= f.button :submit %>
+  <%= f.button :submit, value: I18n.t("button.save_changes") %>
 <% end %>
 
 <% if locals[:parent]== "edit" %>
-  <%= button_to I18n.t("button.delete"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
+  <%= button_to I18n.t("button.delete_selling_place"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
 <% end %>

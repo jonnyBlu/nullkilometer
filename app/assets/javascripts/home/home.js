@@ -26,6 +26,8 @@ $(document).ready(function(){
 					$("#homePageText").addClass("up");
 					$("#homePageText").unbind("click");
 				});
+				//collapsing the button back 
+				$(".navbar-toggle" ).trigger( "click" );
 			});
 		},
 		changeText = function(){			

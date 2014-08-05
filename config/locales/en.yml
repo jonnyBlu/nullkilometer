@@ -11,6 +11,7 @@ en:
         website: "Website"
         email: "E-mail"
         phone: "Phone number"
+        market_stalls: "Market stalls"
   button:
     search_point_of_sales: "Look for selling places"
     search_point_of_sales_open: "Close filter"
@@ -19,6 +20,9 @@ en:
     add_market_stall: "Add a market stall"
     further: "Next step"
     delete: "Delete"
+    delete_selling_place: "Delete selling place"
+    delete_market_stall: "Delete market stall"
+    save_changes: "Save changes"
   input:
     commands:
         add_an_address: "Enter an address"
@@ -30,7 +34,7 @@ en:
         precise_the_location_1: "Enter an Address or precise the location on the map"
         precise_the_location_2: "To precise the location click and drag the marker"
         main_information: "Main information"
-        additional_information: "Additional Informationen"
+        additional_information: "Additional information"
         market_stalls: "Market stalls"
         parent_market_name: "Parent market name"
         confirm: "Confirm"
@@ -45,6 +49,7 @@ en:
         to: "to"
         for: "for"
         confirm_delete: "Are you sure you want to delete this shop?"
+        confirm_delete_market_stall: "Are you sure you want to delete this market stall?"
   links:
     global:
         about: "About"
@@ -63,6 +68,9 @@ en:
   headers:
     new_selling_point: "New selling point"
     new_production_point: "New place of production"
-    edit_selling_point: "Edit selling point"
-    edit_production_point: "Edit place of production"  
+    edit_selling_point: "Edit this selling place"
+    edit_production_point: "Edit this place of production"  
     add_new_market_stalls: "Add market stalls"
+    edit_market_stall: "Edit market stall"
+    market_stall: "Market stall"
+    belongs_to_market: "Is in the market"

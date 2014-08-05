@@ -43,8 +43,16 @@ class PointOfInterestsController < ApplicationController
       pars["productCategoryIds"].delete("")
       @point_of_interest = @poi_class.new(pars)
     end
-    @point_of_interest.save
-    respond_with @point_of_interest
+    if @point_of_interest.save
+      if params[:type] == "PointOfSale" && @point_of_interest.posTypeId == 0
+        #redirect to new market stall for that market
+        redirect_to controller: 'market_stalls', action: 'new',  point_of_sale_id: @point_of_interest.id, format: 'html', notice: 'addLater'
+      else
+        redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
+      end 
+    else
+      respond_with @point_of_interest
+    end
   end
 
   def edit
@@ -111,10 +119,9 @@ class PointOfInterestsController < ApplicationController
     end
     if @point_of_interest.destroy
       flash[:success] = "Point of interest destroyed"
-      @point_of_interests = @poi_class.all
-      render "index"
+      redirect_to root_path
     else
-      respond_with @point_of_interest 
+      redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
     end  
   end
 

@@ -5,8 +5,8 @@ Geocoder.configure(
   # geocoding service (see below for supported options):
 
   #NOMINATIUM
-  #:lookup => :nominatim,
-  #:http_headers => { "User-Agent" => "nullkilometer@gmail.com" },
+  :lookup => :nominatim,
+  :http_headers => { "User-Agent" => "nullkilometer@gmail.com" },
 
   #MAPQUEST
   #:lookup => :mapquest,
@@ -14,7 +14,7 @@ Geocoder.configure(
   #:http_headers => { "Referer" => "http://beta.nullkilometer.org" },
 
   #YANDEX
-  :lookup => :yandex,
+  #:lookup => :yandex,
 
   # IP address geocoding service (see below for supported options):
   #:ip_lookup => :maxmind,
