@@ -6,7 +6,7 @@
  			<li>
  				<ul class="horizontalList">
  					<li><%= pos.id %></li>
- 					<li><label class="string"><%= pos.name %></label></li>
+ 					<li><label class="string"><%= link_to pos.name ,"/point_of_sales/#{pos.id}.html", class: "ordinaryLink" %></label></li>
  					<li>
  						<label class="string">(<%= PointOfSale::POS_TYPE_NAMES[pos.posTypeId] %>)</label>
  					</li>
