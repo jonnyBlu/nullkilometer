@@ -5,7 +5,7 @@ if @json_root == "pointOfSale"
 elsif @json_root == "pointOfProduction"
 	extends "point_of_productions/index"
 else
-	attributes :id, :name, :lat, :lon, :type
+	#attributes :id, :name, :lat, :lon, :type
 	node :self do |poi|
 		polymorphic_path(poi)
 	end

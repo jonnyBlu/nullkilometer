@@ -1,2 +1,7 @@
-<h1> <%= I18n.t("headers.edit_market_stall") %> </h1>
-<%= render 'market_stalls/form', object: @market_stall, locals: {parent: "edit"} %>
+<div class="infoDiv profileWrapper">
+	<h1>
+		<%= "#{I18n.t('headers.edit_market_stall')} "%>
+		<%= link_to "\"#{@market_stall.name}\"", "/market_stalls/#{@market_stall.id}.html", class: "ordinaryLink" %>
+	</h1>
+	<%= render 'market_stalls/form', object: @market_stall, locals: {parent: "edit"} %>
+</div>

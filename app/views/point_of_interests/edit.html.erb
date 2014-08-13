@@ -1,7 +1,12 @@
-<% if @point_of_interest.type == "PointOfSale" %>
-	<h1> <%= I18n.t("headers.edit_selling_point") %> </h1>
-	<%= render 'point_of_sales/form', object: @point_of_interest, locals: {parent: "edit"} %>
-<% elsif @point_of_interest.type == "PointOfProduction" %>
-	<h1> <%= I18n.t("headers.edit_production_point") %> </h1>
-	<%= render 'point_of_productions/form', object: @point_of_interest, locals: {parent: "edit"} %>
-<% end %>
+<div class="infoDiv profileWrapper">
+	<% if @point_of_interest.type == "PointOfSale" %>
+		<h1>
+			<%= "#{I18n.t("headers.edit_selling_point")} " %>
+			<%= link_to "\"#{@point_of_interest.name}\"", "/point_of_sales/#{@point_of_interest.id}.html", class: "ordinaryLink" %>
+		</h1>
+		<%= render 'point_of_sales/form', object: @point_of_interest, locals: {parent: "edit"} %>
+	<% elsif @point_of_interest.type == "PointOfProduction" %>
+		<h1> <%= I18n.t("headers.edit_production_point") %> </h1>
+		<%= render 'point_of_productions/form', object: @point_of_interest, locals: {parent: "edit"} %>
+	<% end %>
+</div>

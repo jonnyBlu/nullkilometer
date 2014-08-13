@@ -14,6 +14,10 @@
 		    	<div class="what"> 
 		      		<p><%= I18n.t("filter.what") %></p>
 		      		<ul>
+		      			<li>
+		      				<input name ="productCategory" type="image" value="all" class="imageInput" title="all" src="<%= root_url+"assets/images/map_icons/food_categories/all.png" %>">
+	      					<span class="toHideIfScreenSmall"><%= I18n.t("input.commands.all") %></span>
+	      				</li>
 		      			<% Product::CATEGORY_NAMES.each_with_index do |category, index| %>
 		      			<li>
 	      					<input name ="productCategory" type="image" value="<%= index %>" class="imageInput" title="<%= category %>" src="<%= root_url+"assets/images/map_icons/food_categories/"+ index.to_s() +".png" %>">
@@ -25,6 +29,10 @@
 		    	<div class="where"> 
 		      		<p><%= I18n.t("filter.where") %></p>
 		      		<ul>
+		      			<li>
+		      				<input name="shopTypeId" type="image" value="all" class="imageInput" title="select all" src="<%= root_url+"assets/images/map_icons/shop_categories/all.png" %>">
+		      				<span class="toHideIfScreenSmall"><%= I18n.t("input.commands.all") %></span>
+		      			</li>
 		      			<% PointOfSale::POS_TYPE_NAMES.each_with_index do |type, index| %>
 		      			<li>
 		      				<input name="shopTypeId" type="image" value="<%= index %>" class="imageInput" title="<%= type %>" src="<%= root_url+"assets/images/map_icons/shop_categories/"+ index.to_s() +".png" %>">
@@ -36,6 +44,10 @@
 		    	<div class="when"> 
 		      		<p><%= I18n.t("filter.when") %></p>
 		      		<ul>
+		      			<li>
+		      				<input name="openingDay" type="image" value="all" class="imageInput" title="Select all" src="<%= root_url+"assets/images/map_icons/round_button.png" %>">
+		      				<span><%= I18n.t("input.commands.all") %></span>
+		      			</li>
 			      		<% I18n.t("date.day_names").each_with_index do |day, index| %>
 		      			<li>
 		      				<input name="openingDay" type="image" value="<%= index %>" class="imageInput" title="<%= day %>" src="<%= root_url+"assets/images/map_icons/round_button.png" %>">

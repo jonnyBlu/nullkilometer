@@ -18,14 +18,14 @@
 	<div id="profilePageContainer" class="profileContainer">
 		<div class="row">
 			<div class="col-md-6">
-				<%=  render 'point_of_sales/posInfoList' %>
+				<%= render 'point_of_sales/posInfoList' %>
 			</div>
 			<div class="col-md-6">
 				<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
 			</div>
 		</div>
 	</div>
-	<% if @point_of_interest.pos_type == 0 %>
-		<%=  render 'market_stalls/index' %>
+	<% if @point_of_interest.pos_type == 0 && @point_of_interest.market_stalls.size > 0 %>
+		<%= render partial: 'market_stalls/index', locals: { market_stalls: @point_of_interest.market_stalls } %>
 	<% end %>
 </div>

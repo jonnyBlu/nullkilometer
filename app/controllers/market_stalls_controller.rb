@@ -41,15 +41,18 @@ class MarketStallsController < ApplicationController
 	 	@market_stall.save
 
 	 	parent_market = PointOfSale.find(pars[:point_of_sale_id])
+	 	#TODO: why does this not work?
 	 	parent_market.product_category_ids = updated_product_category_ids(parent_market)
 	 	parent_market.save
 
-	 	puts "product cat ids:"
-	 	puts parent_market.product_category_ids 
+	 	if @market_stall.save	      
+	 		redirect_to action: 'show', id: @market_stall.id, format: 'html' 
+	    else
+	    	#@parent_market = @market_stall.point_of_sale
+			#redirect_to @parent_market
+	        respond_with @market_stall 
+	    end
 
-	 	#TODO redirect to parent market edit.html
-	 	@parent_market = @market_stall.point_of_sale
-		redirect_to @parent_market 
 	end
 
 	def edit
@@ -75,17 +78,15 @@ class MarketStallsController < ApplicationController
       	@market_stall.products.each do |product|
 	     	#if product.category not in prodCats
 	        unless prodCats.include?(product.category.to_s)
-	          #TODO: change product's attributes in a more "direct" way
+	          #TODO: change product's attributes in a more "direct" ways
 	          @market_stall.products_attributes = { id: product.id, _destroy: true }
 	        end
 	    end
 
 	    if @market_stall.update_attributes!(params[:market_stall])
 	        flash[:success] = "Market stall updated successfully"
-	        #TODO redirect to parent market html
-	        parent_market = @market_stall.point_of_sale
-	        #redirect_to controller: 'point_of_sales', action: 'edit',  id: parent_market.id, format: 'html'
-	    	redirect_to action: 'show', id: @market_stall.id, format: 'html' 
+	        #parent_market = @market_stall.point_of_sale
+			redirect_to action: 'show', id: @market_stall.id, format: 'html' 
 	    else
 	        #flash[:error] = "Market stall not updated"
 	        redirect_to @market_stall 

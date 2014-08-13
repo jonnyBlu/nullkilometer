@@ -1,0 +1,25 @@
+<!-- IF -->
+<h1> <%= I18n.t("headers.all_selling_points") %> </h1>
+<div>
+	<ul>
+	 	<% @point_of_interests.each do |pos| %>	
+ 			<li>
+ 				<ul class="horizontalList">
+ 					<li><%= pos.id %></li>
+ 					<li><label class="string"><%= pos.name %></label></li>
+ 					<li>
+ 						<label class="string">(<%= PointOfSale::POS_TYPE_NAMES[pos.posTypeId] %>)</label>
+ 					</li>
+ 					<li><%= link_to I18n.t("links.global.edit"), "point_of_sales/#{pos.id}/edit.html", class: "ordinaryLink" %>
+ 					</li>
+ 					<li> 
+ 						<%= link_to I18n.t("links.global.delete"), pos, class: 'ordinaryLink', method: :delete, data: { confirm: "#{I18n.t("instructions.add_a_pos.confirm_delete")}: #{pos.name}" } %>
+ 					</li>
+ 				</ul>
+ 				<!-- IF --> 				
+ 			</li>
+	 	<% end %>
+	 	<!-- IF -->
+ 		<li><%= link_to I18n.t("button.add_selling_point"), "point_of_sales/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
+ 	</ul>
+</div>

@@ -92,11 +92,20 @@ class PointOfInterestsController < ApplicationController
         end
       end
 
+      counter = 0
       pos_params["opening_times_attributes"].each do |ot_array|
         ot = ot_array[1]
         if ot[:from].empty? && ot[:to].empty?
           ot['_destroy'] = true
+          counter = counter+1
         end
+      end
+      #validate if at least one opening time is here!!!
+      if counter > 6
+        puts "ERROR: all values deleted"
+      else
+        puts "OK: at least one opening time"
+        #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
       end
 
 

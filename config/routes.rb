@@ -49,9 +49,9 @@ Nullkilometer::Application.routes.draw do
   match '/map' => 'home#map'
   match '/contacts' => 'home#contacts'
   match '/imprint' => 'home#imprint'
-  match '/addShop' => 'point_of_interests#index'
-  #the following is to be removed in beta version of production 
-  #match '/addShopFuture' => 'add_apos#index_future'
+  #WHY IT DOES NOT Work?
+  match '/addShop' => 'point_of_interests#new {:format=>:html, :type=>"PointOfSale"}'
+
   #match '/addProductionPlaces' => 'add_production_places#index'
 
   # See how all your routes lay out with "rake routes"

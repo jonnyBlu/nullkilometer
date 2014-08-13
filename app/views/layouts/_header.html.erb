@@ -22,8 +22,10 @@
           <% else %>
              <li><%= link_to I18n.t('links.global.home' ), "/", class: "lightLink" %></li> 
           <% end %>
+          <%# if current_page?('/addShop')== false %>
+            <!--<li><%#= link_to I18n.t('links.global.add_new_point_of_sales'), "/addShop", class: "lightLink"%></li>-->
           <% if current_page?('/addShop')== false %>
-            <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), "/addShop", class: "lightLink"%></li>
+            <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), "/point_of_sales/new.html", class: "lightLink"%></li>
           <% end %>
         </ul>
       </div>  

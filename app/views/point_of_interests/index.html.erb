@@ -1,12 +1,5 @@
-<div class = "infoDiv">
-    <div class="heading"><%=I18n.t('headers.new_selling_point')%></div>
-    <p> Wenn du einen Ort kennst, wo lokale Produkte verkauft werden, nimm 3 minnuten Zeit um die folgende Form auszufüllen:</p>
-    <iframe src="https://docs.google.com/forms/d/1zDmLQZttwGKrkHy_5PDw7EXFSBgKPPATbxx0CED3jxs/viewform?embedded=true" width="900" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-    <p>
-        Wir werden dafür sorgen, dass die Informationen so schnell wie möglich online gestellt werden.
-        <br />
-        DANKE!
-        <br />
-        Wegen folgende Fragen: <span>nullkilometer@gmail.com</span>
-    </p>
-</div>
+<% if @json_root == "pointOfSale" %>
+	<%= render 'point_of_sales/index', object: @point_of_interest %>
+<% elsif @json_root == "pointOfProduction" %>
+	<%= render 'point_of_productions/index', object: @point_of_interest %>
+<% end %>

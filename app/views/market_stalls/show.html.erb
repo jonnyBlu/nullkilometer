@@ -12,10 +12,8 @@
 	</div>
 	<div class="profileContainer">
 		<div class="row bordered">
-			<%= "#{I18n.t("headers.belongs_to_market")}: " %><%= link_to @market_stall.point_of_sale.name, "/point_of_sales/#{@market_stall.point_of_sale.id}.html", class: 'ordinaryLink'%>
+			<%= "#{I18n.t("headers.belongs_to_market")}: "%><%= link_to "\"#{@market_stall.point_of_sale.name}\"", "/point_of_sales/#{@market_stall.point_of_sale.id}.html", class: 'ordinaryLink'%>
 		</div>
-		<div class="row">
-			<%= render :partial =>'infoList', :locals => {:stall => @market_stall} %>
-		</div>
+		<%= render :partial =>'infoList', :locals => {:stall => @market_stall} %>
 	</div>	
 </div>

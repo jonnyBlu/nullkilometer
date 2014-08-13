@@ -4,18 +4,18 @@
 
 <%= simple_form_for(@point_of_interest) do |f| %>
   <div class="form-inputs">
-	  <%= f.input :name, input_html: { class: "formTextInput" } %>
-	  <%= f.input :address, input_html: { class: "formTextInput" } %>
-	  <%= f.input :posTypeId, collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type") %>
-	  <%= f.input :productCategoryIds, collection: @product_categories_collection, as: :check_boxes %>
-	  <%= f.input :phone, input_html: { class: "formTextInput" } %>
-	  <%= f.input :cell_phone, input_html: { class: "formTextInput" } %>
-	  <%= f.input :mail, input_html: { class: "formTextInput" } %>
-	  <%= f.input :website, input_html: { class: "formTextInput" } %>
-	  <%= f.input :description, :as => :text,  :input_html => { :rows => "10" } %>
+	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :address, label: "#{I18n.t("properties.main_information.address")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type") %>
+	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes %>
+	  <%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :cell_phone, label: "#{I18n.t("properties.additional_information.cell_phone")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :mail, label: "#{I18n.t("properties.additional_information.email")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :website, label: "#{I18n.t("properties.additional_information.website")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", :as => :text,  :input_html => { :rows => "10" } %>
 
 	  <ul id = "openingTimesContainer">
-	  	<label><%= I18n.t("properties.main_information.opening_times") %></label>
+	  	<label><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
 		<%= f.simple_fields_for :opening_times do |ot| %>
 		  	<li class = "openingDayContainer grayedOut">
 		  		<%= ot.input :dayId, label: false, as: :boolean, inline_label: I18n.t("date.day_names")[ot.object.dayId], checked_value: ot.object.dayId,
@@ -25,11 +25,11 @@
 	  		</li>
 	  	  <% end %>
   	  </ul>
-  	  <!-- add JS: show the whole block only if user clicks on market as pos type (adding a new pos) or if market is beign edited -->  	 
-  	<% if locals[:parent]== "edit" %>
-  	  <div class="marketStalls">
-  	  	<label><%= I18n.t("properties.additional_information.market_stalls") %></label>
-		  <% if @point_of_interest.posTypeId == 0 %>
+  	<!-- add JS: show the following block only if user clicks on market as pos type (adding a new pos) -->  	 
+  	<!-- if it s a market and it is being edited -->   	  
+  	<% if locals[:parent]== "edit" && @point_of_interest.posTypeId == 0 %> 
+	  	<div class="marketStalls">
+  	  		<label><%= I18n.t("properties.additional_information.market_stalls") %></label>
 		  	<ul>
 		  	 	<% @point_of_interest.market_stalls.each do |ms| %>	
 	  	 			<li>
@@ -39,11 +39,9 @@
 		  	 	<% end %>
 	  	 		<li><%= link_to I18n.t("button.add_market_stall"), "market_stalls/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
 	  	 	</ul>
-		  <% end %>
-  	  </div>
-  	  <br />
-  	<% end %>
-  	 <!-- end block -->
+  	 	</div>
+  	  	<br />
+  	<% end %><!-- end block -->
   </div>
   <%= f.button :submit, value: I18n.t("button.save_changes") %>
 <% end %>

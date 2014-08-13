@@ -1,0 +1,16 @@
+<h1> <%= I18n.t("headers.all_production_points") %> </h1>
+<div>
+	<ul>
+	 	<% @point_of_interests.each do |pop| %>	
+ 			<li>
+ 				<ul class="horizontalList">
+ 					<li><%= pop.id %></li>
+ 					<li><label class="string"><%= pop.name %></label></li>
+ 					<li><%= link_to I18n.t("links.global.edit"), "point_of_productions/#{pop.id}/edit.html", class: "ordinaryLink" %>
+ 					</li>
+ 				</ul>			
+ 			</li>
+	 	<% end %>
+ 		<li><%= link_to I18n.t("button.add_place_of_production"), "point_of_productions/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
+ 	</ul>
+</div>

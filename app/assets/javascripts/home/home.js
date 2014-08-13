@@ -15,9 +15,10 @@ $(document).ready(function(){
 			filterTagsBy('openingDay');
 		},
 		loadHomeTextBoxListeners = function(){
+			var i=0;
 			$("#linkToHomepageText").click(function(){
-				$("#homePageText").toggleClass("up");
-				
+
+				$("#homePageText").toggleClass("up");				
 				$('#mapContainer').click(function() {
 					$("#homePageText").removeClass("up");
 					$("#mapContainer").unbind("click");
@@ -26,8 +27,11 @@ $(document).ready(function(){
 					$("#homePageText").addClass("up");
 					$("#homePageText").unbind("click");
 				});
-				//collapsing the button back 
-				$(".navbar-toggle" ).trigger( "click" );
+				//collapsing the button back (only if visible otherwise has the animation has problems)
+				if($('.navbar-toggle').is(':visible')) {
+    				$('.navbar-toggle').trigger( "click" );
+				}	
+				
 			});
 		},
 		changeText = function(){			
@@ -44,11 +48,35 @@ $(document).ready(function(){
 			var inputs = $("#mapFilter").find("input[name='"+inputName+"']");
 			inputs.each(function(){
 				$(this).parent().click(function(){
-					$(this).find("input").toggleClass("inactive");
-					$(this).find("span").toggleClass("inactive");
+					if($(this).find("input").attr("value")=="all"){
+						$(this).find("input").toggleClass("inactive");
+						toggleActiveInput(inputName);
+					} else{
+						$(this).find("input").toggleClass("inactive");
+						$(this).find("span").toggleClass("inactive");
+					}
 					var activeValues = getActiveValues();
 					map.setMarkerOpacity(activeValues);				
 				});
+			});
+		},
+		toggleActiveInput = function(inputName){
+			var inputs = $("#mapFilter").find("input[name='"+inputName+"']");
+			var selectAllInput = $("#mapFilter").find("input[name='"+inputName+"'][value='all']");
+			var setAllActive = selectAllInput.hasClass("inactive") ? false : true; // select or deselect
+			inputs.each(function(){
+				//see if setAllActive is true or false
+				//set/remove the "inactive" class to all inputs, except the "select all" button
+				if($(this).attr("value")!="all"){;
+					if (setAllActive) {
+						$(this).removeClass("inactive");
+						$(this).parent().find("span").removeClass("inactive");
+					} else {
+						$(this).addClass("inactive");
+						$(this).parent().find("span").addClass("inactive");
+					}
+					
+				};				
 			});
 		},
 		getActiveValues = function(){

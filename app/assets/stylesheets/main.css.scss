@@ -68,10 +68,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
+  //font-size: 3em;
+  letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
+  font-weight: bold;
 }
 
 h2 {
@@ -154,6 +155,7 @@ abbr[title], abbr[data-original-title] {
 }
 .customHomeButton{
     @include roundedCorners(0px 0px 20px 20px);
+    height: 40px;
 }
 
 .infoHeader{
@@ -174,4 +176,13 @@ abbr[title], abbr[data-original-title] {
     white-space:nowrap; 
     text-overflow:ellipsis;
   }
+}
+
+ul.horizontalList{    
+  
+  list-style-type: none;
+  li{
+    display: inline;
+  }
+  
 }

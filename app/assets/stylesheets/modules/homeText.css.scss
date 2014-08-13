@@ -25,13 +25,21 @@ ul{
 .row{ margin-left: 0px; }
 
 .up{
-	top: -95% !important;
-	transition: 1s;
+	top: -90% !important;
 }
 
 #homePageText{
+	-webkit-transition:top 2s;
+  	-moz-transition:top 2s;
+  	-o-transition:top 2s;
+  	transition:top 2s;
+	transition: top 2s;
+
+	/*initial value - must be set, otherwise the animation for it will not work!*/
+	top: 0px;
+
 	z-index: 2;
-	transition: 1s;
+
 	position:relative;
 	padding: 0px;
 	.panel-default {
@@ -53,7 +61,8 @@ ul{
 			}
 		}	
 		.panel-heading{
-			border-top: 1px solid #d5d0a4;
+			border-bottom: 1px solid white;
+			background-color: $buttonColor1;
 			padding: 15px;
 			&:hover{
 				background-color: $orangeBackgroundColor;
