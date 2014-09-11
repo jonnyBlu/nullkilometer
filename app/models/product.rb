@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 	CATEGORY_NAMES = I18n.t("product.category_names")
   
-  attr_accessible :category, :point_of_productions
+  attr_accessible :category, :point_of_productions, :seller_type
 
   belongs_to :seller, :polymorphic => true
   has_many :deliveries, :dependent => :destroy

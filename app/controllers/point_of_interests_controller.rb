@@ -18,6 +18,7 @@ class PointOfInterestsController < ApplicationController
 	def show
 		begin
 			@point_of_interest = @poi_class.find(params[:id])
+      @merged_product_category_ids = updated_product_category_ids @point_of_interest
 		rescue ActiveRecord::RecordNotFound
 			raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
 		end
@@ -28,6 +29,7 @@ class PointOfInterestsController < ApplicationController
     @point_of_interest= @poi_class.new
     if @point_of_interest.type == "PointOfSale"
       @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
+    #  @pos_types_collection =I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
       for i in 0..6
         @point_of_interest.opening_times.build(dayId: i)
@@ -51,8 +53,8 @@ class PointOfInterestsController < ApplicationController
         redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
       end 
     else
-      respond_with @point_of_interest
-    end
+      redirect_to new_point_of_sale_path, format: 'html'
+    end   
   end
 
   def edit
@@ -95,7 +97,8 @@ class PointOfInterestsController < ApplicationController
       counter = 0
       pos_params["opening_times_attributes"].each do |ot_array|
         ot = ot_array[1]
-        if ot[:from].empty? && ot[:to].empty?
+        if ot[:dayId].empty? #|| ( ot[:from].empty? && ot[:to].empty? ) || ot[:from] == ""
+          puts ot[:from]
           ot['_destroy'] = true
           counter = counter+1
         end
@@ -103,11 +106,10 @@ class PointOfInterestsController < ApplicationController
       #validate if at least one opening time is here!!!
       if counter > 6
         puts "ERROR: all values deleted"
+        #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
       else
         puts "OK: at least one opening time"
-        #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
       end
-
 
       if @point_of_interest.update_attributes!(params[:point_of_sale])
         flash[:success] = "Point of sale updated successfully"

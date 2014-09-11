@@ -26,6 +26,8 @@ en:
     delete_selling_place: "Delete selling place"
     delete_market_stall: "Delete market stall"
     save_changes: "Save changes"
+    cancel_changes: "Cancel changes"
+    back: "Back"
   input:
     commands:
         add_an_address: "Enter an address"
@@ -67,7 +69,9 @@ en:
         more_information: "More info >>"
         edit: "edit"
         delete: "delete"
-        add_new_point_of_sales: "Add a selling place"
+        add_new_point_of_sales: "Add a place"
+        news: "News"
+        find_a_selling_place: "Find a place"
   title:
     main: "local foods next door"
     by: "by Nullkilometer"

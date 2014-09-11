@@ -7,12 +7,14 @@
 			</ul>
 		</div>
 		<div class="col-md-4">
-			<div id="editPosLinkWrapper"><%= link_to I18n.t("links.global.edit"), "/market_stalls/#{@market_stall.id}/edit.html", class: 'ordinaryLink' %></div>
+			<div id="editPosLinkWrapper"><%= link_to I18n.t("links.global.edit"), "/market_stalls/#{@market_stall.id}/edit.html", class: 'ordinaryLink', data: { :no_turbolink => true } %>
+			</div>
 		</div>
 	</div>
 	<div class="profileContainer">
 		<div class="row bordered">
-			<%= "#{I18n.t("headers.belongs_to_market")}: "%><%= link_to "\"#{@market_stall.point_of_sale.name}\"", "/point_of_sales/#{@market_stall.point_of_sale.id}.html", class: 'ordinaryLink'%>
+			<%= "#{I18n.t("headers.belongs_to_market")}: "%>
+			<%= link_to "\"#{@market_stall.point_of_sale.name}\"", "/point_of_sales/#{@market_stall.point_of_sale.id}.html", class: 'ordinaryLink', data: { :no_turbolink => true } %>
 		</div>
 		<%= render :partial =>'infoList', :locals => {:stall => @market_stall} %>
 	</div>	

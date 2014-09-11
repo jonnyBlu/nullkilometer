@@ -1,0 +1,7 @@
+en:
+  validate:
+    messages:
+        required: "This field can't be blank"
+        select_required: "You should select an option"
+        check_required: "You should check at least one element"
+

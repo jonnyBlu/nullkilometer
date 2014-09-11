@@ -1,3 +1,9 @@
+<% if seller.is_a?(PointOfSale)  %>
+<% @merged_product_category_ids.each do |category_id|  %>
+	<%= image_tag "images/map_icons/food_categories/"+category_id.to_s+".png", class: "categoryIcon", alt: Product::CATEGORY_NAMES[category_id],  title: Product::CATEGORY_NAMES[category_id] %>
+<% end %>
+<% else %>
 <% seller.product_category_ids.each do |category_id|  %>
 	<%= image_tag "images/map_icons/food_categories/"+category_id.to_s+".png", class: "categoryIcon", alt: Product::CATEGORY_NAMES[category_id],  title: Product::CATEGORY_NAMES[category_id] %>
+<% end %>
 <% end %>

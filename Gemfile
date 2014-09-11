@@ -30,11 +30,20 @@ gem 'bootstrap-timepicker-rails-addon'
 gem 'jquery-timepicker-rails'
 
 gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 gem 'rabl'
 gem 'oj'
 
 gem 'paper_trail', '~> 3.0.3'
+gem  'i18n-js'
+
+#http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application
+gem 'jquery-turbolinks'
+gem 'turbolinks'
+
+gem 'font-awesome-sass'
 
 #gem "active_model_serializers"
   # Gemfile in Rails >= 3.1

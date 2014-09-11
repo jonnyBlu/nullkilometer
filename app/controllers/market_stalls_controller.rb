@@ -37,19 +37,12 @@ class MarketStallsController < ApplicationController
 	def create
 		pars = params[:market_stall]
         pars["productCategoryIds"].delete("")
+        stall_products = pars["productCategoryIds"]
 		@market_stall = MarketStall.new(pars)
-	 	@market_stall.save
 
-	 	parent_market = PointOfSale.find(pars[:point_of_sale_id])
-	 	#TODO: why does this not work?
-	 	parent_market.product_category_ids = updated_product_category_ids(parent_market)
-	 	parent_market.save
-
-	 	if @market_stall.save	      
-	 		redirect_to action: 'show', id: @market_stall.id, format: 'html' 
+	 	if @market_stall.save	
+	 		redirect_to action: 'show', id: @market_stall.id, format: 'html'  
 	    else
-	    	#@parent_market = @market_stall.point_of_sale
-			#redirect_to @parent_market
 	        respond_with @market_stall 
 	    end
 

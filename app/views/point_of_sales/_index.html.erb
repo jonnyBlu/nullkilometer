@@ -6,14 +6,18 @@
  			<li>
  				<ul class="horizontalList">
  					<li><%= pos.id %></li>
- 					<li><label class="string"><%= link_to pos.name ,"/point_of_sales/#{pos.id}.html", class: "ordinaryLink" %></label></li>
+ 					<li><label class="string"><%= link_to pos.name ,"/point_of_sales/#{pos.id}.html", class: "ordinaryLink", data: { :no_turbolink => true } %>
+ 						</label>
+ 					</li>
  					<li>
  						<label class="string">(<%= PointOfSale::POS_TYPE_NAMES[pos.posTypeId] %>)</label>
  					</li>
- 					<li><%= link_to I18n.t("links.global.edit"), "point_of_sales/#{pos.id}/edit.html", class: "ordinaryLink" %>
+ 					<li><%= link_to I18n.t("links.global.edit"), "point_of_sales/#{pos.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
  					</li>
  					<li> 
- 						<%= link_to I18n.t("links.global.delete"), pos, class: 'ordinaryLink', method: :delete, data: { confirm: "#{I18n.t("instructions.add_a_pos.confirm_delete")}: #{pos.name}" } %>
+ 						<%= link_to I18n.t("links.global.delete"), pos, class: 'ordinaryLink', method: :delete, 
+ 						data: { confirm: "#{I18n.t("instructions.add_a_pos.confirm_delete") }: #{pos.name}", :no_turbolink => true  } 
+ 						%>
  					</li>
  				</ul>
  				<!-- IF --> 				

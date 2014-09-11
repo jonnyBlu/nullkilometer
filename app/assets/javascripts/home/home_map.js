@@ -1,6 +1,3 @@
-<% if I18n.locale == :de %>
-	<% "日" %>
-<% end %>
 var HomeMap = function(){
 	var 
 	ajaxRequest,
@@ -54,7 +51,7 @@ var HomeMap = function(){
 		$(document).scrollTop(0);
 		var resultsSelector = $("#locationResultPopup"),
 			resultAmount = data.length;
-		resultsSelector.html('<p><%= I18n.t("input.commands.choose_an_address") %></p><ul></ul>');
+		resultsSelector.html('<p>'+enterAnAddressText+'</ul>');
 		if(resultAmount > 1){
 			//console.log("received "+resultAmount+" Search Results from OSM");
 			var resultArr = new Array(),
@@ -111,7 +108,7 @@ var HomeMap = function(){
 	},
 	bindListeners = function(marker){
 		marker.on('click', function(evt) {	
-			console.log(marker);
+		//	console.log(marker);
 			//for markers which are invisible (but for some reason still clickable, even if "clickable" is disactivated)
 			if(marker.options.opacity == 1){
 				var infoBoxContent = typeof marker.getPopup() == "undefined" ? buildInfoboxHtml(marker) : marker.getPopup().getContent();
@@ -148,6 +145,7 @@ var HomeMap = function(){
 			productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames),	
 			openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames),
 			address =  marker.data.address;
+
 		var htmlContent = '<div id="infoboxContent">' +
 			'<div class="infoHeader">' +
 				'<ul>' +
@@ -212,7 +210,9 @@ var HomeMap = function(){
 			$.each(checkedParameters, function(key, values){
 				if(key == "productCategory"){
 					var parameters = markersOfTheMap[i].data.productCategoryIds;
+					//OR FILTER
 					$.each(parameters, function(key, value){
+						// will return -1 if not found
 						if(jQuery.inArray(value.toString(), values)>=0)
 							makeMarkerVisible1 = true;		
 					});
@@ -221,6 +221,7 @@ var HomeMap = function(){
 					var value = markersOfTheMap[i].data.posTypeId; 
 					if(jQuery.inArray(value.toString(), values)>=0) 
 						makeMarkerVisible2 = true; 
+
 				}
 				else if(key == "openingDay"){
 					var openingTimes = markersOfTheMap[i].data.openingTimes;
@@ -231,7 +232,8 @@ var HomeMap = function(){
 					});
 				}
 				if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) {
-					var thisSmth=markersOfTheMap[i].setOpacity(1);
+					var ativeMarker=markersOfTheMap[i].setOpacity(1);
+					console.log(ativeMarker.data);
 					markersOfTheMap[i].options.clickable = true;
 					markersOfTheMap[i].options.zIndexOffset = 0;
 				}

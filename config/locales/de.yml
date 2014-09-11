@@ -26,6 +26,8 @@ de:
     delete_selling_place: "Verkaufsort löschen"
     delete_market_stall: "Marktstand löschen"
     save_changes: "Änderungen speichern"
+    cancel_changes: "Änderungen verwerfen"
+    back: "Zurück"
   input:
     commands:
         add_an_address: "Adresse eingeben"
@@ -68,6 +70,8 @@ de:
         edit: "bearbeiten"
         delete: "löschen"
         add_new_point_of_sales: "Verkaufsort hinzufügen"
+        news: "Neuigkeiten"
+        find_a_selling_place: "Verkaufsort finden"
   title:
     main: "lokale Lebensmittel in der Nähe"
     by: "von Nullkilometer"  

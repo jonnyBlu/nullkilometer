@@ -12,7 +12,10 @@
 			</ul>
 		</div>
 		<div class="col-md-2">
-			<div id="editPosLinkWrapper"><%= link_to I18n.t("links.global.edit"), "/point_of_sales/#{@point_of_interest.id}/edit.html", class: 'ordinaryLink' %></div>
+			<div id="editPosLinkWrapper">
+				<%= link_to I18n.t("links.global.edit"), :edit_point_of_sale, class: 'ordinaryLink', 
+				 	data: { :no_turbolink => true }  %>
+			</div>
 		</div>
 	</div>
 	<div id="profilePageContainer" class="profileContainer">

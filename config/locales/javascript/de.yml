@@ -1,0 +1,7 @@
+de:
+  validate:
+    messages:
+        required: "Dieses Feld muss ausgefüllt werden"
+        select_required: "Eine option muss ausgewählt werden"
+        check_required: "Mindestens ein Element muss markiert werden"
+

@@ -42,11 +42,28 @@ ul{
 
 	position:relative;
 	padding: 0px;
+	h1{
+		padding: 15px;
+		margin: 0px;
+		background-color: $buttonColor1;
+		&:hover{
+			background-color: $orangeBackgroundColor;
+			-webkit-transition: background .5s ease-out;
+			-moz-transition:  background .5s ease-out;
+			-o-transition:  background .5s ease-out;
+			transition:  background .5s ease-out;
+		}
+	}
+	img {
+		margin: 0px 10px 10px 10px;
+	}
 	.panel-default {
 		@include boxShadow(0, #fff);
 
-		margin-top: 0px;
+		margin: 0px;
 		border: none;
+		border-bottom: 1px $buttonColor1 solid;
+		padding-bottom: 20px;
 
 		.panel-collapse {
 			padding-top: 0px;
@@ -61,16 +78,9 @@ ul{
 			}
 		}	
 		.panel-heading{
-			border-bottom: 1px solid white;
-			background-color: $buttonColor1;
+			//border-bottom: 1px solid white;
 			padding: 15px;
-			&:hover{
-				background-color: $orangeBackgroundColor;
-				-webkit-transition: background .5s ease-out;
-				-moz-transition:  background .5s ease-out;
-				-o-transition:  background .5s ease-out;
-				transition:  background .5s ease-out;
-			}
+			border: none;
 		}
 		.panel-body {
 			.col-md-3 {

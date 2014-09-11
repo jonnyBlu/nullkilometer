@@ -3,16 +3,21 @@
     xmlns:address="http://schemas.talis.com/2005/address/schema#">
 <html>
 <head>
-
   <title>Nullkilometer</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
 	<%= yield :javascript_includes %>
+
+  <%= javascript_tag do %>
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+  <% end %>
+
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= render 'layouts/shim' %> 
-  
-  <link rel="icon" href="<%= root_url+"assets/images/favicon.png" %>" type="image/x-icon" />
+
+  <link rel="icon" href="<%= "/assets/images/favicon.png" %>" type="image/x-icon" />
 </head>
 <body class="<%= yield :body_classes %>">
   <%=  render 'layouts/header' %> 

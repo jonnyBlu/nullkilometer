@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 
+//= require jquery.turbolinks
+
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require jquery.timepicker.js
@@ -22,36 +24,47 @@
 //= tree
 
 //= require spin
+//http://dhampik.com/blog/javascript-i18n-rails
+//= require i18n
+//= require i18n/translations
 
+//= require rails.validations
+//= require rails.validations.simple_form
 
-//because of unsynchronised interpretation of encoding between .js files and ruby, need to read the configuration
-//and (if needed) set the strange symbol as suggested in:
-//http://stackoverflow.com/questions/7761540/encoding-issues-in-javascript-files-using-rails-asset-pipeline
-<% if I18n.locale == :de %>
-	<% "日" %>
-<% end %>
+//= require turbolinks
+
 
 var INITIALLAT = 52.5233,
 INITIALLON = 13.4127,
 ZOOMONMARKERLEVEL = 17,
 
-shopTypeNames = <%= I18n.t("point_of_sale.pos_type_names") %>,
-productCategoryNames = <%= I18n.t("product.category_names") %>,
-weekDayNames = <%= I18n.t("date.day_names") %>,
-moreInfoLinkName = <%= '"'+I18n.t("links.global.more_information")+'"' %>,
-
 //used in /add_apos/... and /point_of_interests/edit.js
 MARKETINDEX = 0,
 
 iconImageLocation =  "../assets/images/map_icons/",
-
 shopTypeIconImageLocation = iconImageLocation + "shop_categories/",
 shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"],
-
 shopTypeIconImageUrlDefault = "default.png",
 userIconImageLocation = iconImageLocation + "user.png";
 
 
+var shopTypeNames, productCategoryNames, weekDayNames, moreInfoLinkName, enterAnAddressText;
+
+/**
+* Is called in home.js file, which is the first js file to load
+* and it is loaded after the locale (I18n.locale) has been set
+*/
+var translateContent = function(){
+	shopTypeNames =  I18n.t("point_of_sale.pos_type_names"),
+	productCategoryNames = I18n.t("product.category_names"),
+	weekDayNames =  I18n.t("date.day_names"),
+	moreInfoLinkName = I18n.t("links.global.more_information");
+	enterAnAddressText = I18n.t("input.commands.choose_an_address");
+	translateFormValidationText();
+};
+var translateFormValidationText = function(){
+	
+};
 var callAjax = function(url, dataToSend, onSuccess){
 	$.ajax({
         type: "GET",
@@ -81,9 +94,7 @@ var ajaxCallOSM = function(url, dataToSend, onSuccessFunction){
 }
 
 
-
 var registerLocationSearch = function(buttonSelector, inputSelector, resultsSelector, onSuccessFunction){
-
 	buttonSelector.click(function(event){
 		event.preventDefault();
 		resultsSelector.html('');
@@ -108,65 +119,3 @@ var registerLocationSearch = function(buttonSelector, inputSelector, resultsSele
 
 }
 
-
-
-// /* Used by add_apos.js and market_stalls_step.js */
-// // read all checked fields 
-// var openingTimeListeners = function(){
-
-// 	var timepickerOptions = { 
-// 		'step': 30, 
-// 		'timeFormat': 'H:i' , 
-// 		'minTime': '06:00',
-// 		'maxTime': '00:00'
-// 	};
-
-// 	$('.timePickerInput').timepicker(timepickerOptions);
-
-//     $('#allDaysCheckbox').change(function (event) {
-// 		var selected = this.checked;
-//        	$('input[name=openingDay]').each(function () { 
-//        		if(this.checked != selected)
-//        			$(this).click();
-//        });
-//     });
-
-// 	$.each($('input[name=openingDay]'), function(){
-// 		if($(this).attr("checked")=="checked"){
-// 			$(this).parent().parent().parent().find("input.timePickerInput").each(function(){
-// 				$(this).attr("disabled", false);
-// 			});
-// 		}
-// 	});
-
-
-//     $('input[name=openingDay]').change(function (event) {
-//     	var checked = this.checked;
-//    		if(!checked) $('#allDaysCheckbox').prop("checked", false);
-
-//    		$(this).parent().parent().parent().find("input.timePickerInput").each(function(){
-// 			$(this).attr("disabled", !checked);
-// 			if(!checked) $(this).val("");
-// 		});
-//     });
-// }
-
-// var requiredFieldsFilled = function(containerName){
-// 	var filled =  false;
-// 	if($(containerName).find('.requiredField').length <= 0) filled = true;
-// 	$(containerName).find('.requiredField').each(function(){
-// 		var $this 		= $(this);
-// 		var name = $this.attr("name");
-// 		var valueLength = jQuery.trim($this.val()).length;				
-// 		if(valueLength == ''){
-// 			$this.css('background-color','#FFEDEF');
-// 			$(containerName+" label[for="+name+"]").addClass("invalidLabel");
-// 		}
-// 		else{
-// 			filled = true;
-// 			$this.css('background-color','#FFFFFF');	
-// 			$(containerName+" label[for="+name+"]").removeClass("invalidLabel");
-// 		}
-// 	});
-// 	return filled;
-// }

@@ -7,8 +7,18 @@
 	<% market_stalls.each do |stall| %>
 		<div class = "profileContainer">
 			<label><%= stall.name %></label>	
-			<div><%= I18n.t("headers.belongs_to_market") %> <%= link_to "\"#{stall.point_of_sale.name}\"", "/point_of_sales/#{stall.point_of_sale.id}.html", class: "ordinaryLink" %></div>	
+			<div><%= I18n.t("headers.belongs_to_market") %> <%= link_to "\"#{stall.point_of_sale.name}\"", "/point_of_sales/#{stall.point_of_sale.id}.html", class: "ordinaryLink", data: { :no_turbolink => true } %></div>	
 			<%= render :partial => "market_stalls/infoList", :locals => {:stall => stall} %>
+			<ul>
+				<li><%= link_to I18n.t("links.global.edit"), "market_stalls/#{stall.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
+				</li>
+				<li> 
+					<%= link_to I18n.t("links.global.delete"), stall, class: 'ordinaryLink', method: :delete, 
+					data: { confirm: "#{I18n.t("instructions.add_a_pos.confirm_delete") }: #{stall.name}", :no_turbolink => true  } 
+					%>
+				</li>
+ 			<ul>
+
 		</div>
 	<% end %>
 </div>
@@ -17,7 +27,7 @@
 		<% market_stalls.each do |stall| %>
 		  	<div class="accordion-group">
 			    <div class="accordion-heading customButton">
-			      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
+			      <a class="accordion-toggle ordinaryLink" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
 			        <%= stall.name %>
 			      </a>
 			    </div>
@@ -26,7 +36,7 @@
 				     	<!--<div><%= stall.point_of_sale.name %></div>-->
 						<%= render :partial => "market_stalls/infoList", :locals => {:stall => stall}  %>
 						<div id="editPosLinkWrapper">
-							<%= link_to I18n.t("links.global.edit"), "/market_stalls/#{stall.id}/edit.html", class: "ordinaryLink" %>
+							<%= link_to I18n.t("links.global.edit"), "/market_stalls/#{stall.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
 						</div>
 			     	</div> 
 		    	</div>

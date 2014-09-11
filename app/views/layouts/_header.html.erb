@@ -1,7 +1,7 @@
   <header class="navbar navbar-fixed-top header">
     <div class="container">
       <div>
-        <%= link_to :root, id: "logo" do %>
+        <%= link_to :root, id: "logo",  data: { :no_turbolink => true } do %>
           <ul>
             <li><span id="beta">beta</span></li>
             <li><%= image_tag "images/logo_letters_horizontal.png",  alt: "local food is good" %></li>
@@ -17,16 +17,19 @@
       </button>
       <div class="collapse navbar-collapse navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right">
-          <% if current_page?(root_path) %>
-            <li><%= link_to I18n.t('links.global.about' ), "#", class: "lightLink", id: "linkToHomepageText" %></li> 
-          <% else %>
-             <li><%= link_to I18n.t('links.global.home' ), "/", class: "lightLink" %></li> 
-          <% end %>
-          <%# if current_page?('/addShop')== false %>
-            <!--<li><%#= link_to I18n.t('links.global.add_new_point_of_sales'), "/addShop", class: "lightLink"%></li>-->
-          <% if current_page?('/addShop')== false %>
-            <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), "/point_of_sales/new.html", class: "lightLink"%></li>
-          <% end %>
+          <li><%= link_to I18n.t('links.global.find_a_selling_place' ), "#", class: "lightLink", id: "find_a_selling_place" %></li> 
+          <li><%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org", class: "lightLink" %></li> 
+          <li><%= link_to I18n.t('links.global.about' ), "#about_main", class: "lightLink", id: "linkToHomepageText" %></li> 
+          <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), :new_point_of_sale, class: "lightLink"%>
+          </li> 
+           <!-- http://stackoverflow.com/questions/8390394/switch-language-with-url-rails-3 -->
+          <li>
+            <% if I18n.locale == I18n.default_locale %>
+              <%= link_to "EN", {:locale=> 'en'},  :class=> "lightLink" %>
+            <% else %>
+              <%= link_to "DE", {:locale => 'de'}, :class=> "lightLink" %>
+            <% end%>
+          </li>
         </ul>
       </div>  
     </div>

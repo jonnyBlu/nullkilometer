@@ -3,35 +3,24 @@ $(document).ready(function(){
 		buttonSelector = $("#addressLookupContainer #locationSubmit"),
 		inputSelector = $("#addressLookupContainer #locationInput"),
 		resultsSelector = $("#locationResultPopup"),
+		filterTags = function(){
+			var activeValues = getActiveValues();
+			map.setMarkerOpacity(activeValues);	
+		},
 		loadFilterListeners = function(){
-			$("#mapFilterButton, #closeButtonFilter").click(function(){
+			$("#mapFilterButton, #closeButtonFilter, #find_a_selling_place").click(function(){
 				$("#mapFilter").toggleClass("open");
-				changeText();
-				$("#mapFilter").slideToggle("slow");				
+				$("#mapFilter").slideToggle("slow", changeText);								
 			});
 
 			filterTagsBy('productCategory');
 			filterTagsBy('shopTypeId');
 			filterTagsBy('openingDay');
+		
 		},
 		loadHomeTextBoxListeners = function(){
 			var i=0;
-			$("#linkToHomepageText").click(function(){
-
-				$("#homePageText").toggleClass("up");				
-				$('#mapContainer').click(function() {
-					$("#homePageText").removeClass("up");
-					$("#mapContainer").unbind("click");
-				});
-				$('#homePageText').click(function(){
-					$("#homePageText").addClass("up");
-					$("#homePageText").unbind("click");
-				});
-				//collapsing the button back (only if visible otherwise has the animation has problems)
-				if($('.navbar-toggle').is(':visible')) {
-    				$('.navbar-toggle').trigger( "click" );
-				}	
-				
+			$("#linkToHomepageText").click(function(){			
 			});
 		},
 		changeText = function(){			
@@ -56,6 +45,7 @@ $(document).ready(function(){
 						$(this).find("span").toggleClass("inactive");
 					}
 					var activeValues = getActiveValues();
+					console.log(activeValues);
 					map.setMarkerOpacity(activeValues);				
 				});
 			});
@@ -85,7 +75,7 @@ $(document).ready(function(){
 				var array = [];
 				var filterInputs = $("#mapFilter").find("input[name="+inputName+"]");
 				filterInputs.each(function(){ 
-					var active = ($(this).hasClass("inactive")) ? false : true;;
+					var active = ($(this).hasClass("inactive")) ? false : true;
 					if(active) {array.push($(this).val());}
 				});
 				activeValues[inputName] = array;
@@ -93,11 +83,14 @@ $(document).ready(function(){
 			return activeValues;
 		};
 
+	translateContent();
+
 	map.initmap(INITIALLAT, INITIALLON, 12); // around Berlin;
 	map.loadMarkers();
 	//map.locateUser(12); //re-activate when there are more tags everywhere
 
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
+	//filterTags();
 	loadFilterListeners();
 
 	loadHomeTextBoxListeners();

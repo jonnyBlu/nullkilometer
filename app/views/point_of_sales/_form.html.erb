@@ -1,28 +1,43 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "point_of_interests/form.js" %>
+    <%= javascript_include_tag "jquery.validate.js" %>
 <% end %>
 
-<%= simple_form_for(@point_of_interest) do |f| %>
+<%= simple_form_for @point_of_interest do |f| %>
   <div class="form-inputs">
 	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "formTextInput" } %>
 	  <%= f.input :address, label: "#{I18n.t("properties.main_information.address")}:", input_html: { class: "formTextInput" } %>
-	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type") %>
-	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes %>
+	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true %>
+	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true %>
 	  <%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "formTextInput" } %>
 	  <%= f.input :cell_phone, label: "#{I18n.t("properties.additional_information.cell_phone")}:", input_html: { class: "formTextInput" } %>
 	  <%= f.input :mail, label: "#{I18n.t("properties.additional_information.email")}:", input_html: { class: "formTextInput" } %>
 	  <%= f.input :website, label: "#{I18n.t("properties.additional_information.website")}:", input_html: { class: "formTextInput" } %>
-	  <%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", :as => :text,  :input_html => { :rows => "10" } %>
+	  <%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", as: :text,  input_html: { rows: "10" } %>
 
 	  <ul id = "openingTimesContainer">
 	  	<label><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
-		<%= f.simple_fields_for :opening_times do |ot| %>
+		<%= f.simple_fields_for :opening_times, :validate => :false do |ot| %>
 		  	<li class = "openingDayContainer grayedOut">
-		  		<%= ot.input :dayId, label: false, as: :boolean, inline_label: I18n.t("date.day_names")[ot.object.dayId], checked_value: ot.object.dayId,
-		  		 include_hidden: :false, unchecked_value: nil, input_html: { id: ot.object.dayId, style: "display: none", checked: true } %>
-		  		<%= ot.input :from, label: I18n.t("instructions.add_a_pos.from"), placeholder: "00:00", input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"} %>
-		  		<%= ot.input :to, label: I18n.t("instructions.add_a_pos.to"), placeholder: "00:00", input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"} %>
-	  		</li>
+		  		<%= ot.input :dayId, label: false, as: :boolean, 
+		  			inline_label: I18n.t("date.day_names")[ot.object.dayId], 
+		  			checked_value: ot.object.dayId,
+		  		 	include_hidden: :false, 
+		  		 	unchecked_value: nil, 
+		  		 	input_html: { id: ot.object.dayId, checked: false } %>
+		  		<%= ot.input :from, label: I18n.t("instructions.add_a_pos.from"), 
+		  			collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
+		  			as: :select, 
+		  			wrapper_html: { class: 'hidden' },
+		  			input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"}, 
+		  			:required => false  %>
+		  		<%= ot.input :to, label: I18n.t("instructions.add_a_pos.to"), 
+			  		collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
+			  		as: :select,  
+			  		wrapper_html: { class: 'hidden' },
+			  		input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"}, 
+			  		:required => false  %>
+	  		</li> 
 	  	  <% end %>
   	  </ul>
   	<!-- add JS: show the following block only if user clicks on market as pos type (adding a new pos) -->  	 
@@ -37,15 +52,22 @@
 	  	 				<%= link_to "Edit", "market_stalls/#{ms.id}/edit.html", class: "ordinaryLink" %>
 	  	 			</li>
 		  	 	<% end %>
-	  	 		<li><%= link_to I18n.t("button.add_market_stall"), "market_stalls/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
+	  	 		<li>
+	  	 			<i class="fa fa-plus"></i>
+	  	 			<%= link_to I18n.t("button.add_market_stall"), "market_stalls/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
 	  	 	</ul>
   	 	</div>
   	  	<br />
-  	<% end %><!-- end block -->
+  	<% end %>
+  	<!-- end block -->
   </div>
   <%= f.button :submit, value: I18n.t("button.save_changes") %>
+  <%#= button_tag I18n.t("button.cancel"), type: :reset, class: 'btn' %>
 <% end %>
-
+<% if locals[:parent]== "new" %>
+<%= button_to I18n.t("button.back"), :root ,  class: 'btn' %>
+<% end %>
 <% if locals[:parent]== "edit" %>
-  <%= button_to I18n.t("button.delete_selling_place"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
+	<%= button_to I18n.t("button.cancel_changes"), point_of_sale_path(@point_of_interest), method: :get, class: 'btn' %>
+  	<%#= button_to I18n.t("button.delete_selling_place"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
 <% end %>
