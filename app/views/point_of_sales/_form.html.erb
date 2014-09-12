@@ -2,7 +2,6 @@
     <%= javascript_include_tag "point_of_interests/form.js" %>
     <%= javascript_include_tag "jquery.validate.js" %>
 <% end %>
-
 <%= simple_form_for @point_of_interest do |f| %>
   <div class="form-inputs">
 	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "formTextInput" } %>
@@ -61,7 +60,7 @@
   	<% end %>
   	<!-- end block -->
   </div>
-  <%= f.button :submit, value: I18n.t("button.save_changes") %>
+  <%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
   <%#= button_tag I18n.t("button.cancel"), type: :reset, class: 'btn' %>
 <% end %>
 <% if locals[:parent]== "new" %>

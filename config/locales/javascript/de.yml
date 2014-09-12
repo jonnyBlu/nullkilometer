@@ -4,4 +4,5 @@ de:
         required: "Dieses Feld muss ausgefüllt werden"
         select_required: "Eine option muss ausgewählt werden"
         check_required: "Mindestens ein Element muss markiert werden"
-
+        opening_day_required: "Mindestens ein Öffnungstag muss markiert werden"
+        opening_times_required: "Bitte Öffnungszeit(en) auswählen oder den Öffnungstag deselektieren"

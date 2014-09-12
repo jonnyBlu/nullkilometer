@@ -56,6 +56,7 @@ en:
         add_to: "to"
         for: "for"
         confirm_delete: "Are you sure you want to delete this shop?"
+        confirm_edit: "Are you sure you want to edit this place?"
         confirm_delete_market_stall: "Are you sure you want to delete this market stall?"
   links:
     global:

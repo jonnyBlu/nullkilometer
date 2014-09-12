@@ -56,6 +56,7 @@ de:
         add_to: "zu dem"
         for: "für"
         confirm_delete: "Sind Sie sicher, das sie diesen Laden löschen wollen?"
+        confirm_edit: "Sind Sie sicher, das sie diesen Ort editieren wollen?"
         confirm_delete_market_stall: "Sind Sie sicher, das sie diesen Marktstand löschen wollen?"
   links:
     global:

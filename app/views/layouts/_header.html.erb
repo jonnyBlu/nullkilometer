@@ -17,10 +17,23 @@
       </button>
       <div class="collapse navbar-collapse navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to I18n.t('links.global.find_a_selling_place' ), "#", class: "lightLink", id: "find_a_selling_place" %></li> 
+          <li>
+            <% if current_page?(root_path) %>
+              <%= link_to  I18n.t('links.global.find_a_selling_place'), "#", class: "lightLink", id: "find_a_selling_place",  data: { :no_turbolink => true} %>
+            <% else %>
+              <%= link_to I18n.t('links.global.find_a_selling_place' ), :root, class: "lightLink", id: "find_a_selling_place", data: { :no_turbolink => true} %>
+            <% end %>
+          </li> 
           <li><%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org", class: "lightLink" %></li> 
-          <li><%= link_to I18n.t('links.global.about' ), "#about_main", class: "lightLink", id: "linkToHomepageText" %></li> 
-          <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), :new_point_of_sale, class: "lightLink"%>
+          <li>
+            <% if current_page?(root_path) %>
+              <%= link_to I18n.t('links.global.about' ), "#about_main", class: "lightLink", id: "linkToHomepageText" %>
+            <% else %>
+               <%= link_to I18n.t('links.global.about' ), { action: "index", controller: "home", anchor: "about_main"} , class: "lightLink", id: "linkToHomepageText", data: { :no_turbolink => true} %>
+            <% end %>
+
+          </li> 
+          <li><%= link_to I18n.t('links.global.add_new_point_of_sales'), :new_point_of_sale, class: "lightLink", data: { :no_turbolink => true} %>
           </li> 
            <!-- http://stackoverflow.com/questions/8390394/switch-language-with-url-rails-3 -->
           <li>

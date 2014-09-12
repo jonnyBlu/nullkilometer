@@ -49,7 +49,6 @@ userIconImageLocation = iconImageLocation + "user.png";
 
 
 var shopTypeNames, productCategoryNames, weekDayNames, moreInfoLinkName, enterAnAddressText;
-
 /**
 * Is called in home.js file, which is the first js file to load
 * and it is loaded after the locale (I18n.locale) has been set
@@ -60,11 +59,8 @@ var translateContent = function(){
 	weekDayNames =  I18n.t("date.day_names"),
 	moreInfoLinkName = I18n.t("links.global.more_information");
 	enterAnAddressText = I18n.t("input.commands.choose_an_address");
-	translateFormValidationText();
 };
-var translateFormValidationText = function(){
-	
-};
+
 var callAjax = function(url, dataToSend, onSuccess){
 	$.ajax({
         type: "GET",
