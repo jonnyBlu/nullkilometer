@@ -10,9 +10,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			height: 20px;
 			margin-top:10px;	
 		}
-		.grayedOut{
-			color: #666;
-		}
+
 		input.check_boxes, input.boolean{
 			vertical-align: middle;
 			height: 20px;
@@ -30,8 +28,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			}*/
 			@media only screen and (max-width: 500px) { 
 				width: 250px;
-			}
-			
+			}			
 			@include roundedCorners(4px);
 		}
 
@@ -54,7 +51,12 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 		#openingTimesContainer{
 			.openingDayContainer{
 				width: 100%;
-				height: 40px;
+				@media only screen and (min-width: 500px) { 
+					height: 40px;
+				}
+				@media only screen and (max-width: 500px) { 
+					height: 120px;
+				}
 				> .control-group{
 					margin-bottom: 0px;
 					float: left;	
@@ -87,7 +89,10 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 						width: 150px;*/
 					}
 				}
-
+			}
+			.grayedOut{
+				color: #666;
+				height: 40px,
 			}
 		}
 		.marketStalls ul{
@@ -96,10 +101,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 				margin-bottom: 5px;
 			}
 		}
-
-
-	}
-	
+	}	
 }
 
 

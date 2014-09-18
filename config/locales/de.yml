@@ -26,6 +26,7 @@ de:
     delete_selling_place: "Verkaufsort löschen"
     delete_market_stall: "Marktstand löschen"
     save_changes: "Änderungen speichern"
+    save_place: "Neuen Ort speichern"
     cancel_changes: "Änderungen verwerfen"
     back: "Zurück"
   input:

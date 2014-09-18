@@ -45,22 +45,37 @@ gem 'turbolinks'
 
 gem 'font-awesome-sass'
 
-#gem "active_model_serializers"
-  # Gemfile in Rails >= 3.1
-  # gem 'activeadmin', github: 'gregbell/active_admin'
-  #gem "meta_search",    '>= 1.1.0.pre'
+gem 'devise'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+#devise intructions
+#Some setup you must do manually if you haven't yet:
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+  #1. Ensure you have defined default url options in your environments files. Here
+   #  is an example of default_url_options appropriate for a development environment
+    # in config/environments/development.rb:
+#
+ #      config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+#
+ #    In production, :host should be set to the actual host of your application.
+#
+ # 2. Ensure you have defined root_url to *something* in your config/routes.rb.
+  #   For example:
+#
+ #      root :to => "home#index"
+#
+ # 3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+  #   For example:
+#
+ #      <p class="notice"><%= notice %></p>
+  #     <p class="alert"><%= alert %></p>
 
-# Use unicorn as the app server
-# gem 'unicorn'
+#  4. If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+#
+ #      config.assets.initialize_on_precompile = false
+#
+ #    On config/application.rb forcing your application to not access the DB
+  #   or load models when precompiling your assets.
 
-# Deploy with Capistrano
-# gem 'capistrano'
+ # 5. You can copy Devise views (for customization) to your app by running:
 
-# To use debugger
-# gem 'debugger'
+  #     rails g devise:views

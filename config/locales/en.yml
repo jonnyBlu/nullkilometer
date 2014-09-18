@@ -26,6 +26,7 @@ en:
     delete_selling_place: "Delete selling place"
     delete_market_stall: "Delete market stall"
     save_changes: "Save changes"
+    save_place: "Save the new place"
     cancel_changes: "Cancel changes"
     back: "Back"
   input:

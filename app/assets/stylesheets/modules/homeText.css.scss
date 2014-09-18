@@ -93,7 +93,16 @@ ul{
 	.panel-default > .panel-heading, .panel-default > .panel-collapse{
 		background-color: transparent;
 	}
-
+	iframe{
+		@media only screen and (min-width: 500px) { 
+			width: 100%;
+			height: 569px; 
+		}
+		@media only screen and (max-width: 500px) { 
+			width: 280px;
+			height: 220px;
+		}
+	}
 }
 .punch-viewer-content {
 	border: 0px;

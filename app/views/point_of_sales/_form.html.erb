@@ -60,13 +60,15 @@
   	<% end %>
   	<!-- end block -->
   </div>
-  <%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
-  <%#= button_tag I18n.t("button.cancel"), type: :reset, class: 'btn' %>
+  <% if locals[:parent]== "new" %>
+ 	 <%= f.button :submit, value: I18n.t("button.save_place"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
+  <% elsif locals[:parent]== "edit" %>
+  	<%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
+  <% end %>
 <% end %>
 <% if locals[:parent]== "new" %>
-<%= button_to I18n.t("button.back"), :root ,  class: 'btn' %>
-<% end %>
-<% if locals[:parent]== "edit" %>
+	<%= button_to I18n.t("button.back"), :root ,  class: 'btn' %>
+<% elsif locals[:parent]== "edit" %>
 	<%= button_to I18n.t("button.cancel_changes"), point_of_sale_path(@point_of_interest), method: :get, class: 'btn' %>
   	<%#= button_to I18n.t("button.delete_selling_place"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
 <% end %>
