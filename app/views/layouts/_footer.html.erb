@@ -8,6 +8,8 @@
       <ul>
         <li><%= link_to I18n.t('links.global.contacts'), :contacts %></li>
         <li><%= link_to I18n.t('links.global.imprint'), :imprint %></li>
+        <%= render 'devise/menu/registration_items' %>
+        <%= render 'devise/menu/login_items' %>
       </ul>
     </nav>
   </div>

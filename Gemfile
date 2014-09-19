@@ -45,7 +45,7 @@ gem 'turbolinks'
 
 gem 'font-awesome-sass'
 
-gem 'devise'
+gem 'devise', '3.2.3'
 
 #devise intructions
 #Some setup you must do manually if you haven't yet:

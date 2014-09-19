@@ -160,7 +160,7 @@ DEPENDENCIES
   client_side_validations
   client_side_validations-simple_form
   coffee-rails
-  devise
+  devise (= 3.2.3)
   font-awesome-sass
   geocoder
   i18n-js

@@ -1,6 +1,5 @@
 Nullkilometer::Application.routes.draw do
 
-
  # ActiveAdmin.routes(self) if ( File.basename($0) == "rake" and not ARGV.nil? and not ARGV.index{ |a| a =~ /^db:\w/i }.nil? )
   
  # devise_for :admin_users, ActiveAdmin::Devise.config
@@ -49,6 +48,8 @@ Nullkilometer::Application.routes.draw do
 
       get "product_categories", :to => "products#categories"
       get "pos_types", :to => "point_of_interests#pos_types"
+
+      devise_for :admins
   end
 
   match '/:locale' => "home#index"
