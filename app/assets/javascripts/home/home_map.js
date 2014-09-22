@@ -45,7 +45,7 @@ var HomeMap = function(){
 	},
 	loadMarkers = function(){
 		//map.spin(true); 
-		callAjax("/point_of_sales", null, onSuccessLoadMarkers);
+		callAjax("/"+I18n.currentLocale()+"/point_of_sales", null, onSuccessLoadMarkers);
 	},
 	getOSMAddress = function (data){
 		$(document).scrollTop(0);
@@ -144,7 +144,8 @@ var HomeMap = function(){
 			posType = shopTypeNames[marker.data.posTypeId],
 			productCategoryIds_readable = generateReadableList(marker.data.productCategoryIds, productCategoryNames),	
 			openingTimes = generateOpeningTimesList(marker.data.openingTimes, weekDayNames),
-			address =  marker.data.address;
+			address =  marker.data.address,
+			selfUrl = marker.data.self;
 
 		var htmlContent = '<div id="infoboxContent">' +
 			'<div class="infoHeader">' +
@@ -157,7 +158,7 @@ var HomeMap = function(){
 			'<div class="productCategories">'+productCategoryIds_readable+'</div>' +
 			'<div class="address">'+posAddress+'</div>' +
 			'<div class="openingTimes">'+openingTimes+'</div>' +
-			'<div class="footer"><a href="/point_of_sales/'+posId+'.html" target="_blank" class="ordinaryLink" id="linkToProfilePage">'+moreInfoLinkName+'</a></div>' +
+			'<div class="footer"><a href="'+selfUrl+'" target="_blank" class="ordinaryLink" id="linkToProfilePage">'+moreInfoLinkName+'</a></div>' +
 		'</div>';
 		return htmlContent;
 	},
