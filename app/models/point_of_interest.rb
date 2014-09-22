@@ -2,8 +2,10 @@ class PointOfInterest < ActiveRecord::Base
   
   #http://www.sitepoint.com/versioning-papertrail/
   has_paper_trail
+
+  belongs_to :status
 	
-  attr_accessible :name, :address, :lat, :lon, :type
+  attr_accessible :name, :address, :lat, :lon, :type, :status_id
   geocoded_by :address, :latitude  => :lat, :longitude => :lon	
 
   has_detail_infos
