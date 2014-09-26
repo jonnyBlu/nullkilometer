@@ -10,7 +10,7 @@ Nullkilometer::Application.routes.draw do
   # See how all your routes lay out with "rake routes"
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  # get ':controller(/:action(/:id))(.:format)'
 
 
   scope "(:locale)", :locale => /en|de/ do
@@ -19,8 +19,8 @@ Nullkilometer::Application.routes.draw do
         resources :market_stalls#, :only => [:index, :create]
         resources :products, :only => :index do
           collection do
-            match "category/:category", :to => "products#show", :via => :get
-            match "category/:category/point_of_production/:point_of_production_id", :to => "deliveries#create", :via => :post
+            get "category/:category", :to => "products#show"
+            post "category/:category/point_of_production/:point_of_production_id", :to => "deliveries#create"
           end
         end
         resources :deliveries, :only => :index
@@ -32,8 +32,8 @@ Nullkilometer::Application.routes.draw do
       resources :market_stalls do
         resources :products, :only => :index do
           collection do
-            match "category/:category", :to => "products#show", :via => :get
-            match "category/:category/point_of_production/:point_of_production_id", :to => "deliveries#create", :via => :post
+            get "category/:category", :to => "products#show"
+            post "category/:category/point_of_production/:point_of_production_id", :to => "deliveries#create"
           end
         end
       end
@@ -52,17 +52,16 @@ Nullkilometer::Application.routes.draw do
       devise_for :admins
   end
 
-  match '/:locale' => "home#index"
+  get '/:locale' => "home#index"
 
   #http://stackoverflow.com/questions/8390394/switch-language-with-url-rails-3
   scope "(:locale)", :locale => /en|de/ do
     root :to => 'home#index'
 
-    match '/contacts' => 'home#contacts'
-    match '/imprint' => 'home#imprint'    
-    #match '/addShop' => 'point_of_interests#new {:format=>:html, :type=>"PointOfSale"}'#DOESN'T WORK?
-
-    match "*stuff", :to => "home#routing_error"
+    get '/contacts' => 'home#contacts'
+    get '/imprint' => 'home#imprint'    
+    
+    get "*stuff", :to => "home#routing_error"
   end
 
 end

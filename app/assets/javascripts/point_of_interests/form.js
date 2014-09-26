@@ -1,7 +1,5 @@
-// workaround for turbolink
-var ready = function(){
-// wth turbolink the followig wouldn't work
-//$(document).ready(function () {
+
+$(document).ready(function () {
 
 	var setFormListeners = function(){
 		//(Only for edit page) If one of the time values (we take "from") is not empty, the checkbox for the openingDay is selected
@@ -149,12 +147,8 @@ var ready = function(){
 	addCustomValidateMethods();
     $('#new_point_of_sale').validate(validateOptions);
     $('.edit_point_of_sale').validate(validateOptions);
-}
+});
 
-/**load even if turbolinks enabled**/
-$(document).bind('page:change', ready);
-$(document).bind('page:load', ready);
-//$(document).ready(ready);
 
 
 

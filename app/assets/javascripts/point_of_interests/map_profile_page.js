@@ -51,8 +51,7 @@ function ProfileMap(){
         },
         loadMarker = function(data){
             var posTypeId = data.posTypeId;
-            //TODO: fix urls
-            markerIcon.options.iconUrl = "../"+shopTypeIconImageLocation+shopTypeIconImageUrls[posTypeId];
+            markerIcon.options.iconUrl = shopTypeIconImageUrls[posTypeId];
             var latlon = new L.LatLng(data.lat,data.lon, true),
                 marker = new L.Marker(latlon, {icon: markerIcon});
             marker.data=data;

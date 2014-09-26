@@ -20,12 +20,13 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 
 		input.string{
 			padding-left: 5px;
+			width: 400px;
 		}
 
 		.formTextInput, textarea {
-			/*@media only screen and (min-width: 500px) { 
-				width: 350px;
-			}*/
+			@media only screen and (min-width: 500px) { 
+				width: 400px;
+			}
 			@media only screen and (max-width: 500px) { 
 				width: 250px;
 			}			
@@ -92,7 +93,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			}
 			.grayedOut{
 				color: #666;
-				height: 40px,
+				height: 40px;
 			}
 		}
 		.marketStalls ul{

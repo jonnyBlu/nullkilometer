@@ -67,7 +67,13 @@ class PointOfInterestsController < ApplicationController
           @point_of_interest.opening_times.build(dayId: i)
         end
       end
-      @point_of_interest.opening_times.sort_by!{ |ot| ot.dayId }
+      puts @point_of_interest.opening_times.inspect
+
+      #works
+      #ar =  @point_of_interest.opening_times.sort_by!{ |ot| ot[:day] }
+      #does not work. - returned not sorted
+      @point_of_interest.opening_times.sort_by!{ |ot| ot[:dayId] }
+
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end

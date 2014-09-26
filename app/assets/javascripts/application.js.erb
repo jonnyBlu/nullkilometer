@@ -12,10 +12,8 @@
 
 
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
-
-//= require jquery.turbolinks
 
 // Loads all Bootstrap javascripts
 //= require bootstrap
@@ -29,9 +27,6 @@
 //= require i18n/translations
 
 //= require rails.validations
-//= require rails.validations.simple_form
-
-//= require turbolinks
 
 
 var INITIALLAT = 52.5233,
@@ -41,11 +36,36 @@ ZOOMONMARKERLEVEL = 17,
 //used in /add_apos/... and /point_of_interests/edit.js
 MARKETINDEX = 0,
 
-iconImageLocation =  "../assets/images/map_icons/",
+iconImageLocation =  "map_icons/",
 shopTypeIconImageLocation = iconImageLocation + "shop_categories/",
-shopTypeIconImageUrls = ["0.png", "1.png", "2.png", "3.png", "4.png"],
-shopTypeIconImageUrlDefault = "default.png",
-userIconImageLocation = iconImageLocation + "user.png";
+shopTypeIconImageUrls = {
+	"0" : "<%= asset_path('map_icons/shop_categories/0.png') %>",
+	"1" : "<%= asset_path('map_icons/shop_categories/1.png') %>",
+	"2" : "<%= asset_path('map_icons/shop_categories/2.png') %>",
+	"3" : "<%= asset_path('map_icons/shop_categories/3.png') %>",
+	"4" : "<%= asset_path('map_icons/shop_categories/4.png') %>"
+},
+shopTypeIconImageUrls_big = {
+	"0" : "<%= asset_path('map_icons/shop_categories/0_big.png') %>",
+	"1" : "<%= asset_path('map_icons/shop_categories/1_big.png') %>",
+	"2" : "<%= asset_path('map_icons/shop_categories/2_big.png') %>",
+	"3" : "<%= asset_path('map_icons/shop_categories/3_big.png') %>",
+	"4" : "<%= asset_path('map_icons/shop_categories/4_big.png') %>"
+},
+shopTypeIconImageUrlDefault = "<%= asset_path('map_icons/shop_categories/default.png') %>",
+categoryIconImageUrls = {
+	"0" : "<%= asset_path('map_icons/food_categories/0.png') %>",
+	"1" : "<%= asset_path('map_icons/food_categories/1.png') %>",
+	"2" : "<%= asset_path('map_icons/food_categories/2.png') %>",
+	"3" : "<%= asset_path('map_icons/food_categories/3.png') %>",
+	"4" : "<%= asset_path('map_icons/food_categories/4.png') %>",
+	"5" : "<%= asset_path('map_icons/food_categories/5.png') %>",
+	"6" : "<%= asset_path('map_icons/food_categories/6.png') %>",
+	"7" : "<%= asset_path('map_icons/food_categories/7.png') %>",
+	"8" : "<%= asset_path('map_icons/food_categories/8.png') %>",
+	"9" : "<%= asset_path('map_icons/food_categories/9.png') %>"
+},
+userIconImageLocation = "<%= asset_path('map_icons/user.png') %>";
 
 
 var shopTypeNames, productCategoryNames, weekDayNames, moreInfoLinkName, enterAnAddressText;

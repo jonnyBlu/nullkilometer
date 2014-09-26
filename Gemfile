@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '4.0.10'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -12,17 +12,17 @@ gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'bootstrap-sass'
-  gem "leaflet-rails"
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'bootstrap-sass'
+gem "leaflet-rails"
 
-  gem 'uglifier'
-end
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
+
+gem 'uglifier'
+
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -30,8 +30,9 @@ gem 'bootstrap-timepicker-rails-addon'
 gem 'jquery-timepicker-rails'
 
 gem 'simple_form'
-gem 'client_side_validations'
-gem 'client_side_validations-simple_form'
+#workaround for rails 4 
+#http://stackoverflow.com/questions/18966746/wrong-number-of-arguments-3-for-2-in-rails-4
+gem 'client_side_validations', github: "bcardarella/client_side_validations", :branch => "4-0-beta"
 
 gem 'rabl'
 gem 'oj'
@@ -45,7 +46,10 @@ gem 'turbolinks'
 
 gem 'font-awesome-sass'
 
-gem 'devise', '3.2.3'
+gem 'devise'
+
+#for rails4  
+gem 'protected_attributes'
 
 #devise intructions
 #Some setup you must do manually if you haven't yet:

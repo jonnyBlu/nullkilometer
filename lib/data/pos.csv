@@ -1,7 +1,7 @@
 name,address,posTypeId,productCategoryIds,openingTimes,description,website,mail,phone,cellPhone
 Ökomarkt Leopoldplatz,"Leopoldplatz, 13353 Berlin",0,"0,1,2,3,4,5,6","1=10:00-17:00, 4=10:00-17:00",,,,,01723154124
 Wochenmarkt Hausvogteiplatz,"Hausvogteiplatz, 10117 Berlin",0,"0,1,2,4,6","2=09:00-16:00, 4=09:00-16:00",,http://www.wochenmarkt-deutschland.de/maerkte/berlin/hausvogteiplatz,info@bbm-maerkte.de,030 23636360,01721883157
-Ökomarkt Lausitzerplatz,"Lausitzer Platz, 10997 Berlin",0,"0,1,3,4,5,7,8",4=11:00-18:00,im Sommer bis 18:30 Uhr geöffnet,http://www.wochenmarkt-deutschland.de/lausitzer-platz,,030 3944073,01636418192
+Ökomarkt Lausitzerplatz,"Lausitzer Platz, 10997 Berlin",0,"0,1,3,4,5,7,9",4=11:00-18:00,im Sommer bis 18:30 Uhr geöffnet,http://www.wochenmarkt-deutschland.de/lausitzer-platz,,030 3944073,01636418192
 Chamissoplatz,"Arndtstraße, 10965 Berlin",0,"0,1,2,3,4,5",5=09:00-15:00,"Die Marktprodukte sind aus kontrolliert ökologischem Anbau und durch das EU-Biosiegel ausgewiesen. Der überwiegende Teil der Waren und Produkte wird von Direktanbieter/innen angeboten. Viele Produkte sind überdies durch Öko-Anbauverbände zertifiziert (Bioland, Demeter, Naturland etc.). Der Wochenmarkt Chamissoplatz startete sein Markttreiben bereits 1994 und ist somit einer der ältesten Berliner Ökomärkte.
 Im Angebot sind verschiedene Gemüse, frisches Obst und Säfte, Kräuter, Wein, Öle, Honig, Backwaren, Eier, Milch und Milchprodukte, Käse, Fleisch- und Wurstwaren, sowie Blumen. Im Non-Food-Segment bietet der Markt zum Beispiel schöne Holzspielzeuge, Filzprodukte und allerlei Kunsthandwerk.
 Für den kleinen oder größeren Hunger ist vor Ort selbstverständlich auch bestens gesorgt: Es gibt einen Bio-Imbiss mit Kaffee und Tee, sowie leckere Waffeln und andere Imbisse. Dieser tolle Markt ist immer einen Besuch wert. Viel Freude dabei wünscht Ihnen die Redaktion von Wochenmarkt-Deutschland!",http://www.wochenmarkt-deutschland.de/maerkte/berlin/chamissoplatz,info@oekomarkt-chamissoplatz.de,030 8430043,
@@ -11,7 +11,7 @@ Für den kleinen oder größeren Hunger ist vor Ort selbstverständlich auch bes
 Ökomarkt Hansaviertel,"Altonaer Straße, 10557 Berlin",0,"0,1,3,5",4=12:00-18:00,"Sie finden hier Lebensmittel aus kontrolliert biologischem Anbau, mit dem EU-Siegel zertifiziert. Zumeist stammen die Produkte von Direktanbietern, die zusätzlich zertifiziert sind durch Bio-Anbauverbände wie Demeter, Bioland, Verbund Ökohöfe Nordost, Naturland und Ecovin.
 Neben den Lebensmitteln finden Sie sicher auch manches Anderes, seien es Schmuck oder  Bücher, altes Leinen oder peruanische Textilien oder vielleicht eine wunderbare Hose fürs Baby! ",http://www.xn--komarkt-im-hansaviertel-6kc.de/okomarkt-im-hansaviertel/home.html,,,
 Thusneldaallee (Heilandskirche),"Thusnelda-Allee 1,
-10555 Berlin",0,"0,1,2,3,4,5,6,7,8",2=12:00-18:00,"Sie kaufen dort nicht ""nur"" ein, sondern vergessen auch für einen Augenblick den Stress und die Hektik der Großstadt. Bei einem Plausch mit der Verkäuferin am Brot- oder am Obst- und Gemüsestand oder nach dem Einkauf, am Crêpesstand trifft man Freunde und Bekannte.
+10555 Berlin",0,"0,1,2,3,4,5,6,7,9",2=12:00-18:00,"Sie kaufen dort nicht ""nur"" ein, sondern vergessen auch für einen Augenblick den Stress und die Hektik der Großstadt. Bei einem Plausch mit der Verkäuferin am Brot- oder am Obst- und Gemüsestand oder nach dem Einkauf, am Crêpesstand trifft man Freunde und Bekannte.
 Auf dem Ökomarkt Thusneldaallee finden Sie Qualität aus der Region ""Berlin – Brandenburg"". Sie können sich über ökologische Produkte und nachhaltige Wirtschafts- und Anbauweisen informieren.",http://www.burdack-maerkte.de/ord/oko/index.php,,,
 Boxhagenerplatz,"Boxhagenerplatz, Berlin",0,0,5=08:00-14:30,"Der Wochenmarkt am Boxhagener Platz ist sicherlich einer der bekanntesten Wochenmärkte in Berlin. Auf dem lebendigen Platz, mitten im „neuen“ Szenebezirk Friedrichshain und unweit des Touristenboulevards Simon-Dach-Straße warten dutzende von schönen und interessanten Marktständen und Köstlichkeiten darauf entdeckt und probiert zu werden. Naturkost, Bio-Produkte, Reformhaus-Ware, Käsehandel, Obst, Gemüse, Falafel, Fleisch, Fisch, Kräuter und und und... 
 The market (farmer´s market) at Boxhagener Platz in Berlin is probably one of the most favourite marketplaces in Berlin. At this lively place, located in the center of trendy Friedrichshain and not far from Simon-Dach-Straße, dozens of nice and interesting market stands and delicious foods are just waiting for you to discover. Natural and organic food, health food shop products, german, italien, spanish, swiss and dutch cheese, fruits, vegetables, falafel, meat, fish, herbs and many more....",http://www.wochenmarkt-deutschland.de/maerkte/berlin/boxhagener-platz,,,01784762242
@@ -33,7 +33,7 @@ Wochenmarkt am Rathaus Wedding,"Genter Straße
 ","Der Ökomarkt am Kollwitzplatz grenzt an den nördlichen Rand des Kollwitzplatzes. Die Besucher können ihre Kinder auf dem neben dem Markt befindlichen Spielplatz toben lassen oder  selbst auf der längsten Bank Berlins ausruhen. Im Sommer ist dort auch ein kleiner Trinkbrunnen in Betrieb. Natürlich können sie während oder zwischen dem Einkauf bei uns auf dem Markt sich ausruhen, essen und trinken oder einfach nur plaudern. Das Essen wird frisch vor Ort zubereitet und ist von vegan bis fleischlich, von süß bis herzhaft - für jeden Geschmack das richtige, so hoffen wir. Die Erzeuger sind selbst vor Ort, d. h. Sie können die Landwirte kennenlernen, meist auch die Kunsthandwerker. Es gibt viele regionale und saisonale Lebensmittel - alle biozertifiziert, aber auch einen kleinen Teil an zugekauften, ökologischen Lebensmitteln, damit der Kunde nicht noch in einen Bioladen gehen muss, damit er alle Zutaten hat. Es gibt auch Rohköstlichkeiten, die es sonst in keinem Supermarkt gibt. Auch bieten Kunsthandwerker Schmuck, Textilien, Filzprodukte und vieles mehr an. Regionale Blumen können in der Saison erworben werden. Eier, Geflügel, Fleisch und Fisch aus der Löcknitz erwarten ebeneso die Esser wie frisches Brot und Kuchen von 2 Berliner Bäckereien.
 Januar bis Ende März bis 18.00 geöffnet. Wir haben so geöffnet, damit Obst und Gemüse von den Erzeugern noch am Morgen geerntet werden und nicht am Tag vorher - also Frische ist ein ganz wichtiges  Kriterium.",http://www.grueneliga-berlin.de,oekomarkt.kollwitzplatz@grueneliga.de,030 4433910,
 Q-Regio-h.o.f.laden Berlin-Prenzlauer Berg,"Kollwitzstr. 102,
-10435 Berlin",2,"0,1,2,3,4,5,6,7,8","0=09:00-20:00,
+10435 Berlin",2,"0,1,2,3,4,5,6,7,9","0=09:00-20:00,
 1=09:00-20:00,
 2=09:00-20:00,
 3=09:00-20:00,
@@ -45,8 +45,8 @@ Bioregional Naturkost,"Kirchstraße 3, 10557 Berlin",2,"0,1,4,5,6","0=08:30-19:0
 3=08:30-19:00,
 4=08:30-19:00,
 5=08:30-13:00","Wir führen das gesamte Naturkost- Sortiment und bemühen uns, je nach Saison und Verfügbarkeit, regionale Erzeugnisse bevorzugt anzubieten.",http://www.bioregional-naturkost.de/,info@bioregional-berlin.de,030 39744396,
-Schillermarkt,"Herrfurthplatz, 12049 Berlin",0,"0,1,3,4,5,6,7,8",5=10:00-16:00,"Der Schillermarkt ist ein Wochenmarkt, auf dem qualitativ hochwertige Waren und Dienstleistungen angeboten werden. Der Marktbesucher findet z.B. frische Lebensmittel vom Bauernhof, Bio- und Vollwertprodukte, von Hand hergestellte oder exotische Produkte.",http://www.schillerkiez.de/schillermarkt/wochenmarkt.html,info@schillerkiez.de,030 4316070,
-Brandenburger Landwaren,"Oranienstraße 47a, Kreuzberg, 10969 Berlin",2,"0,1,4,5,6,7,8","0=08:00-20:00,
+Schillermarkt,"Herrfurthplatz, 12049 Berlin",0,"0,1,3,4,5,6,7,9",5=10:00-16:00,"Der Schillermarkt ist ein Wochenmarkt, auf dem qualitativ hochwertige Waren und Dienstleistungen angeboten werden. Der Marktbesucher findet z.B. frische Lebensmittel vom Bauernhof, Bio- und Vollwertprodukte, von Hand hergestellte oder exotische Produkte.",http://www.schillerkiez.de/schillermarkt/wochenmarkt.html,info@schillerkiez.de,030 4316070,
+Brandenburger Landwaren,"Oranienstraße 47a, Kreuzberg, 10969 Berlin",2,"0,1,4,5,6,7,9","0=08:00-20:00,
 1=08:00-20:00,
 2=08:00-20:00,
 3=08:00-20:00,
@@ -69,3 +69,89 @@ Sūrininkų Namai Dargužiuose,"Dargužiai, Valkininkų seniūnija, Varėnos raj
 BiOriental - Türkischer Markt am Maybachufer,"Maybachufer 1, Berlin, 12047, Germany",0,"5,6","1=11:00-18:30,
 4=11:00-18:30","Auf dem “Türkenmarkt” (Freitags-Markt) am Maybachufer in Berlin Neukölln geht es bunt zu: Gemüse, türkische Spezialitäten und jede Menge Stoffe. 
 At the “Turk's market” in the Maybachufer in Berlin Neukölln it is brightly: Vegetables, Turkish specialities and a lot of materials.",http://www.tuerkenmarkt.de/,,,
+Gemüse und Naturkost Schramm Berlin,"Hufelandstr 3, 10407, Berlin",2,"0,1,2,3,5,6,7,8","1=10:00-19:00,
+2=10:00-19:00,
+3=10:00-19:00,
+4=10:00-19:00,
+5=08:00-15:00","Freuen Sie sich auf Obst und Gemüse aus biologischem sowie aus regionalem Anbau – immer frisch, in bester Qualität und mit fachkundiger Beratung.
+Außerdem finden Sie bei uns Brot, Milch- und Molkereiprodukte, Öle, Getreide und Hülsenfrüchte, ein kleines Wild- und Geflügelfleisch-Sortiment und Säfte, Wein, Kaffee- und Schokoladenprodukte – ebenfalls alles in Bio-Qualität, vorrangig aus regionaler Herkunft.
+
+Saisonales
+Im Frühling und Sommer ergänzen wir das Bio-Angebot um die folgenden konventionellen, aber regionalen Erzeugnisse:
+Spargel aus Brandenburg
+Erdbeeren und anderes Beerenobst, vorrangig aus Werder
+Tomaten aus dem Oderbruch
+Diese Waren kaufen wir täglich frisch vom Berliner Großmarkt in der Beusselstraße ein.",http://www.gemuese-schramm.de/,schramm@startplus.de,030 4258965,
+Wochenmarkt Arnswalder Platz,"Pasteurstraße 30,
+ 10407 Berlin",0,"1,3,5,6",5=09:00-15:00,"Hochqualitative und ökologisch einwandfreie Lebensmittel in einem herzlichen und sonnigen Umfeld.
+
+Unsere Händler bieten Ihnen, neben Obst und Gemüse aus eigenem Anbau und Fleisch von Neuland-Höfen, Fisch, Käse, Pasta fresca, Espresso und viele weitere hochwertige und frische Lebensmittel und Kunsthandwerk.",http://www.boetzowmarkt.de/index.html,info@boetzowmarkt.de,030 2859785,
+Bäckerei Beumer & Lutum. Hufeland,"Hufelandstr. 9
+10407 Berlin",2,5,"0=07:00-19:00,
+1=07:00-19:00,
+2=07:00-19:00,
+3=07:00-19:00,
+4=07:00-19:00,
+5=07:00-15:00,
+6=08:00-13:00",Unserer Filiale mit Café in der Hufelandstraße hat täglich geöffnet.  Auch unseren täglich wechselnden Mittagstisch bieten wir hier an. Natürlich in Bio Qualität! ,http://www.beumer-lutum.de/baeckerei/laden_hufeland/,,030 4254525,
+Bäckerei Beumer & Lutum. Curvy Zentrale,"Cuvrystr. 22, 10997 Berlin",2,5,"0=07:00-18:30,
+1=07:00-18:30,
+2=07:00-18:30,
+3=07:00-18:30,
+4=07:00-18:30,
+5=07:00-15:00,
+6=08:00-13:00","Neben unseren Backwaren können Sie bei uns auch Lebensmittel für den Frühstücks- und Abendbrottisch erwerben. Wir führen außerdem gekühlte Waren wie Milch, Joghurt etc. 
+
+Der Laden liegt am Rande des Wrangelkiezes in Berlin, Kreuzberg, ca. 10 Gehminuten vom U-Bahnhof Schlesisches Tor entfernt. Er ist unser Stammgeschäft und besteht seit der Gründung der Bäckerei 1993. Bereits davor wurde der Laden als Verkaufsfläche für Bäckereiwaren genutzt. Im Laufe der Jahre haben wir durch Umbauarbeiten die Einkaufslogistik für unsere Kunden optimiert.
+
+Auch haben wir zusätzlichen Raum geschaffen für die Genießer unserer Produkte aus Backstube und Küche . Seit dem letzten Umbau im Sommer 2006 können unsere Gäste ihr Frühstück, Mittagessen oder ihren Kuchen an gemütlichen Tischen in einer angenehmen Atmosphäre zu sich nehmen. Was Sie aktuell mittags bei uns erwartet, können Sie auf unserer Speisekarte Speisekarte nachlesen. ",http://www.beumer-lutum.de/baeckerei/laden_cuvry/,,030 6123119,
+Bäckerei Beumer & Lutum. Zossener,"Zossener Str. 34, 10961 Berlin",2,5,"0=07:00-19:00,
+1=07:00-19:00,
+2=07:00-19:00,
+3=07:00-19:00,
+4=07:00-19:00,
+5=07:00-15:00,
+6=09:00-16:00","Seit 2003 betreiben wir unsere Filiale in der Kreuzberger Zossener Straße 34, zwischen Gneisenaustraße und Bergmannstraße, ca. 1 Gehminute vom U-Bahnhof Gneisenaustraße entfernt.
+
+Wir führen hier unser gesamtes Sortiment an Brot, Brötchen, Feingebäck und Kuchenspezialitäten, zusätzlich zu einem Angebot an ausgesuchten Marmeladen, Honig, Kaffeesorten uvm. Ab ca. 11.30 Uhr können wir Ihnen täglich Gutes aus unserer Küche anbieten.
+
+Besuchen Sie uns und lernen Sie unser abwechslungsreiches Angebot kennen.
+
+""Probieren Sie unsere Kuchen oder unser Feingebäck einmal gleich vor Ort, vielleicht mit einer guten Tasse Kaffee oder Cappuccino. Genießen Sie eines unserer leckeren Mittagsgerichte. Nähere Angaben zu unserem aktuellen Speisenangebot entnehmen Sie bitte unserer Speisekarte. 
+
+Probieren Sie unsere Kuchen oder unser Feingebäck einmal gleich vor Ort, vielleicht mit einer guten Tasse Kaffee oder Cappuccino. Genießen Sie eines unserer leckeren Mittagsgerichte. Nähere Angaben zu unserem aktuellen Speisenangebot entnehmen Sie bitte unserer Speisekarte. """,http://www.beumer-lutum.de/baeckerei/laden_zossener/,,030 61 20 94 72,
+Bäckerei Beumer & Lutum am Südstern,"Körtestr. 36, 10967 Berlin",2,5,"0=07:00-19:00,
+1=07:00-19:00,
+2=07:00-19:00,
+3=07:00-19:00,
+4=07:00-19:00,
+5=07:00-17:00,
+6=08:00-18:00","Wir laden Sie herzlich in unsere Filiale direkt am U-Bahnhof Südstern ein. Bis in die 1990er Jahre wurden in der Körtestr. 36 Backwaren hergestellt und verkauft. Dann fand die Produktion ein Ende, doch der Verkauf ging weiter mit der Übernahme des Geschäfts durch die Vollkornbäckerei »Kreuzberger Brotgarten«, die gut 20 Jahre hier ihre hochwertigen Produkte anbot. 
+
+Im Juni 2009 haben wir den Verkauf neu eröffnet und in den Folgemonaten vorsichtig Umbaumaßnahmen durchgeführt, die den Blick in die ehemalige Backstube frei geben. Dort wird heute nicht nur gebacken, sondern auch Frühstück und Mittagessen zubereitet.
+
+Lassen Sie sich im Café von unseren Spezialitäten verwöhnen. Genießen Sie unseren leckeren Mittagstisch, gönnen Sie sich ein gutes Stück Kuchen mit frisch gebrühtem Kaffee oder lassen Sie sich einen herzhaften Imbiss schmecken.
+
+Unsere Spezialitäten sind neben unseren Suppen und Salaten unsere Dinkelmaultaschen am Donnerstag und Knödelvariationen am Mittwoch.
+
+Unser Gesamtsortiment an Brot, Brötchen und Backwaren steht Ihnen zur Verfügung und wird abgerundet durch den täglichen Bedarf an Lebensmitteln für den Frühstücks- oder Abendbrottisch. ",http://www.beumer-lutum.de/baeckerei/suedstern/,,030 69 17 264,
+Bäckerei Beumer & Lutum. Wins,"Winsstraße 34,
+10405 Berlin",2,5,"0=07:00-19:00,
+1=07:00-19:00,
+2=07:00-19:00,
+3=07:00-19:00,
+4=07:00-19:00,
+5=07:00-15:00","Seit April 2014 gibt es unsere Filiale in der Winsstraße. Hier finden Sie montags bis samstags eine große Auswahl an gutem Brot & feinen Backwaren. Zudem bieten wir frischen Kaffee, verschiedene Snacks und eine Tagessuppe an. Natürlich in Bio Qualität.",http://www.beumer-lutum.de/baeckerei/laden_wins/,,030 4412054,
+Wochenmarkt am Mexicoplatz,"Mexikoplatz,
+14163 Berlin",0,"0,1,5",5=09:00-15:00,"Der Wochenmarkt am Mexikoplatz verführt mit vielen leckeren und kulinarischen Produkten. Berühmt für seine Frische und Qualität ist der Markt in den vergangenen Jahren zu einem beliebten Wochenmarkt in Berlin geworden. Ein Besuch lohnt sich in jedem Fall, wenn man samstags in Zehlendorf unterwegs sein sollte. Der Mexiko-Markt: lecker und frisch!!!",http://www.wochenmarkt-deutschland.de/maerkte/berlin/mexikoplatz,,030 20450056,
+Neumann's Erntegarten & Hofladen,"Am Heineberg, Marquardter Chaussee, 14469 Potsdam ",4,"0,1,3,4,6,7,8","2=09:00-18:00,
+3=09:00-18:00,
+4=09:00-18:00,
+5=09:00-18:00,
+6=09:00-18:00","Neben unserem eigenen Obst, hausgemachten Konfitüren und Eiern bieten wir auch Produkte aus unserer Region sowie Spezialitäten aus ganz Deutschland an. Wir haben Spreewaldprodukte, Obstsäfte aus Berlin – Buchholz, Sanddornprodukte und Obstweine aus Werder, Obstbrände aus Reppinichen, Bio-Bier aus der Braumanufaktur Potsdam, Milch aus der Uckermark, Käsespezialitäten von der Nordsee und aus Bayern, gesunde Leckereien, Vollkornprodukte und Nudeln. 
+Das saisonale Gemüse bringen uns zum Teil unsere Nachbarn, zum Teil kaufen wir es im Großmarkt. Wir sind immer bemüht unseren Kunden frisches, einheimisches Gemüse anzubieten.
+
+Für hungrige Gäste bieten wir ein kleines Imbissangebot und für die Schlemmer hausgebackenen Kuchen und Kaffee an. Das kann man im gemütlichen Hofladen oder bei schönem Wetter auf dem Hof genießen.
+Von Juni bis September wird Sonntags auf dem Hof gegrillt. 
+
+Die Selbstpflücke ist in der Saison (Juni bis September/Oktober) täglich von 9 bis 18 Uhr geöffnet. Einlass-Schluss ist 17 Uhr!",http://www.neumanns-erntegarten.de/,,,0178 136 59 08

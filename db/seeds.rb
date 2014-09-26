@@ -8,11 +8,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 PointOfSale.destroy_all
-Status.delete_all
+#Status.delete_all
 
-approved = Status.create!(
-	:name => "approved"
-)
+#approved = Status.create!(
+#	:name => "approved"
+#)
 Status.create!([{ name: 'pending' }, { name: 'not approved' }])
 
 CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
@@ -27,7 +27,8 @@ CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
 					:phone => row[8],
 					:cell_phone => row[9],
  					:marketStalls => [],
- 					:status_id => approved.id
+ 					#:status_id => approved
+ 					:status_id => 103 # check if currently that's the case
  					#[
  					#	{:name => "standXaufMarkt#{i}", 
  					#	:phone => "12345678", 

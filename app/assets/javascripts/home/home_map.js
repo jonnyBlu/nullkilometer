@@ -96,7 +96,7 @@ var HomeMap = function(){
 		removeMarkers();
 		for (i=0;i<pos.length;i++) {
 			var shopTypeId = pos[i].posTypeId;
-			markerIcon.options.iconUrl = shopTypeIconImageLocation+shopTypeIconImageUrls[shopTypeId];
+			markerIcon.options.iconUrl = shopTypeIconImageUrls[shopTypeId];
 
 			var latlon = new L.LatLng(pos[i].lat,pos[i].lon, true);
 			var marker = new L.Marker(latlon, {icon: markerIcon});
@@ -185,7 +185,7 @@ var HomeMap = function(){
 	generateReadableList = function(ids, arrayWithNames){
 		var list = "";
 		$.each(ids, function(){
-			list += "<img class='categoryIcon' src='"+iconImageLocation+"/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
+			list += "<img class='categoryIcon' src='"+categoryIconImageUrls[this]+"' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
 			//list += "<img class='categoryIcon' src='http://localhost:3000/images/map_icons/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
 		});
 		return list;
@@ -193,10 +193,9 @@ var HomeMap = function(){
 	resizeMarkerIcon = function(marker, enlarge){
 		var width = enlarge ? (markerIconWidth + 20) : markerIconWidth; 
 		var height = enlarge ? (markerIconHeight + 20) : markerIconHeight;
-		var urlEnd = enlarge ? "_big.png" :".png";
 		var newIcon = marker.options.icon;
 		var posTypeId = marker.data.posTypeId;
-		newIcon.options.iconUrl = shopTypeIconImageLocation+posTypeId+urlEnd;
+		newIcon.options.iconUrl = enlarge ? shopTypeIconImageUrls_big[posTypeId] : shopTypeIconImageUrls[posTypeId];
 		newIcon.options.iconSize[0] = width;
 		newIcon.options.iconAnchor[0] = width/2;
 		newIcon.options.iconSize[1] = height;
