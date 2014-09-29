@@ -52,6 +52,9 @@ $(document).ready(function () {
 	    	'point_of_sale[posTypeId]': {
 	        	required: true
 	        },
+	        'point_of_sale[status_id]': {
+	        	required: true
+	        }	        ,
 	        'point_of_sale[productCategoryIds][]': {
 	            required: true
 	//	            maxlength: 2
@@ -90,6 +93,9 @@ $(document).ready(function () {
 	    	'point_of_sale[address]' : {
 	    		required: I18n.t("validate.messages.required")
 	    	},
+	    	'point_of_sale[status_id]': {
+	        	required: I18n.t("validate.messages.select_required")
+	        },
 	    	'point_of_sale[posTypeId]': {
 	        	required: I18n.t("validate.messages.select_required")
 	        },

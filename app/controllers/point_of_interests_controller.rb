@@ -1,8 +1,9 @@
 class PointOfInterestsController < ApplicationController
 	respond_to :xml, :json, :html
-  before_filter :set_poi_type
+  before_filter :set_poi_type 
   
 	def index
+    approved_status_id = Status.find_by_name('approved').id
 		if params[:lat] && params[:lon] && params[:radius]
 			begin
 	      @point_of_interests = @poi_class.nearby(params[:lat], params[:lon], params[:radius]).all
@@ -10,7 +11,9 @@ class PointOfInterestsController < ApplicationController
 	    	raise Errors::InvalidParameters, "Coordinate values are out of range [-180 -90, 180 90]"
 	    end
     else
-			@point_of_interests = @poi_class.all
+      @point_of_interests = @poi_class.where(:status_id => approved_status_id).all # only approved - for the map
+			@point_of_interests_all = @poi_class.all #for global overview
+      @point_of_interests_all = @point_of_interests_all.order(params[:sort])
 		end
     respond_with @point_of_interests
 	end
@@ -29,8 +32,8 @@ class PointOfInterestsController < ApplicationController
     @point_of_interest= @poi_class.new
     if @point_of_interest.type == "PointOfSale"
       @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
-    #  @pos_types_collection =I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+      @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
       for i in 0..6
         @point_of_interest.opening_times.build(dayId: i)
       end
@@ -43,7 +46,14 @@ class PointOfInterestsController < ApplicationController
     if params[:type] == "PointOfSale"
       pars = params[:point_of_sale]
       pars["productCategoryIds"].delete("")
+
       @point_of_interest = @poi_class.new(pars)
+
+      #assign pending status only if admin not signed in
+      if admin_signed_in? == false
+        pending_status_id = Status.find_by_name('pending').id
+        @point_of_interest.status_id = pending_status_id    
+      end    
     end
     if @point_of_interest.save
       if params[:type] == "PointOfSale" && @point_of_interest.posTypeId == 0
@@ -67,7 +77,9 @@ class PointOfInterestsController < ApplicationController
           @point_of_interest.opening_times.build(dayId: i)
         end
       end
-      puts @point_of_interest.opening_times.inspect
+
+      @status_name = Status.find(@point_of_interest.status_id).name
+      @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
 
       #works
       #ar =  @point_of_interest.opening_times.sort_by!{ |ot| ot[:day] }
@@ -116,6 +128,11 @@ class PointOfInterestsController < ApplicationController
       else
         puts "OK: at least one opening time"
       end
+
+      #todo: create a separate method for that
+      #assign pending status only if it was not changed before by admin aka if normal user changed something
+      pending_status_id = Status.find_by_name('pending').id
+      @point_of_interest.status_id = pending_status_id    
 
       if @point_of_interest.update_attributes!(params[:point_of_sale])
         flash[:success] = "Point of sale updated successfully"

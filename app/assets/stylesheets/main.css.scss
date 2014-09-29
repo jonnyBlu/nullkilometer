@@ -179,12 +179,10 @@ abbr[title], abbr[data-original-title] {
 }
 
 ul.horizontalList{    
-  
   list-style-type: none;
   li{
-    display: inline;
-  }
-  
+    display: inline-table;
+  }  
 }
 
 /* jquery validate styles */

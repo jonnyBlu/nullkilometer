@@ -102,8 +102,37 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 				margin-bottom: 5px;
 			}
 		}
-	}	
+	}
 }
+
+#point_of_sales_overview{
+	ul.horizontalList{
+		li{
+			width: 100px;
+		}
+		li:first-child{
+			width: 50px;
+		}
+		li:nth-child(2){
+			width: 200px;
+		}
+		li:nth-child(3){
+			width: 200px;
+		}
+		li:nth-child(4){
+			label{
+				//color: #ff0000; //red
+			}
+			label.approved{
+				color: #00aaaa; //green
+			}
+			label.pending{
+				color: #eeaa00; //yellow
+			}
+		}
+
+	}
+}	
 
 
 

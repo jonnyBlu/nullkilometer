@@ -6,6 +6,7 @@ de:
         selling_point_type: "Art des Verkaufsorts"
         product_categories: "Produktkategorien"
         opening_times: "Öffnungszeiten"
+        status: "Status"
     additional_information:
         description: "Beschreibung"
         website: "Webseite"
@@ -52,6 +53,7 @@ de:
         minimum_note_1: "(* min 1)" 
         minimum_note_2: "(* min 1 Tag markieren)"
         select_pos_type: "Bestimme Art des Verkaufsortes"
+        select_status: "Bestimme Status des Verkaufsortes"
         from: "von"
         to: "bis"
         add_to: "zu dem"

@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/bcardarella/client_side_validations.git
-  revision: 9461cb92e1dfb64895d590c6d435cdf48fcede45
-  branch: 4-0-beta
-  specs:
-    client_side_validations (3.2.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -149,7 +142,6 @@ DEPENDENCIES
   activerecord-postgis-adapter
   bootstrap-sass
   bootstrap-timepicker-rails-addon
-  client_side_validations!
   coffee-rails
   devise
   font-awesome-sass

@@ -5,6 +5,12 @@
 <%= simple_form_for @point_of_interest do |f| %>
   <div class="form-inputs">
 	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "formTextInput" } %>
+
+	  <!-- Show status change only if admin logged in-->
+	  <% if admin_signed_in? %>
+		  <%= f.input :status_id, label: "#{I18n.t("properties.main_information.status")}:", collection: @status_names_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_status"), required: :true %>
+		<% end %>
+
 	  <%= f.input :address, label: "#{I18n.t("properties.main_information.address")}:", input_html: { class: "formTextInput" } %>
 	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true %>
 	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true %>
