@@ -11,32 +11,30 @@ var HomeMap = function(){
 	curPosMarkerIconWidth = 40,
 	curPosMarkerIconHeight = 40,	
 	curPosMarkerIcon = L.icon({
-	    iconUrl: userIconImageLocation,
-	    iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
-	    shadowSize:   [50, 64], // size of the shadow
-	    iconAnchor:   [curPosMarkerIconWidth/2, curPosMarkerIconHeight], // point of the icon which will correspond to marker's location
-	    shadowAnchor: [4, 62],  
-	    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+    iconUrl: userIconImageLocation,
+    iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [curPosMarkerIconWidth/2, curPosMarkerIconHeight], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  
+    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	markerIcon = L.icon({
-	    iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
-	    iconSize:     [markerIconWidth, markerIconHeight], // size of the icon
-	    shadowSize:   [50, 64], // size of the shadow
-	    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
-	    shadowAnchor: [4, 62],  
-	    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+    iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
+    iconSize:     [markerIconWidth, markerIconHeight], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  
+    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	initmap = function(lat, lon, zoomLevel){
-	    var options = {
-	    		center : new L.LatLng(lat, lon), 
-	    		zoom : zoomLevel
-	    	},     
-	    	osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-	      	osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors',
-	        osm = new L.TileLayer(osmUrl, {maxZoom: 18, minZoom:2, attribution: osmAttribution}),    
-	    	mapLayer = new L.TileLayer(osmUrl);    
-	    map = new L.Map('map', options).addLayer(mapLayer);
-	    map.on('locationfound', onLocationFound);
+    var 
+    options = {
+    		center : new L.LatLng(lat, lon), 
+    		zoom : zoomLevel
+    	},     
+    mapLayer = new L.TileLayer(osmTilesUrl);    
+    map = new L.Map('map', options).addLayer(mapLayer);
+    map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
 	},
 	locateUser = function(zoomLevel){

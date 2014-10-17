@@ -8,7 +8,7 @@
 	<ul>
     	<% @point_of_interest.opening_times.each do |day| %>
     		<li>
-    			<span class="openingTimeDay"><%= I18n.t("date.day_names")[day.dayId] %></span >
+    			<span class="openingTimeDay"><%= I18n.t("date.day_names")[day.day] %></span >
     			<%= day.from + " - " + day.to %>
     		</li>
     	<% end %>

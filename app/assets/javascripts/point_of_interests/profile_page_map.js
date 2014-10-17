@@ -17,11 +17,9 @@ function ProfileMap(){
         }),
 
         initMap = function(lat, lon, zoomLevel, placeHolderName){
-            var options = {center : new L.LatLng(lat, lon), zoom : zoomLevel };    
-            var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                osmAttribution = 'Map data &copy; 2012 OpenStreetMap contributors',
-                osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttribution});    
-            var mapLayer = new L.TileLayer(osmUrl);    
+            var 
+            options = {center : new L.LatLng(lat, lon), zoom : zoomLevel },    
+            mapLayer = new L.TileLayer(osmTilesUrl);    
             this.map = new L.Map(placeHolderName, options).addLayer(mapLayer);
             this.map.on('locationfound', onLocationFound);
             this.map.on('locationerror', onLocationError);
@@ -52,8 +50,9 @@ function ProfileMap(){
         loadMarker = function(data){
             var posTypeId = data.posTypeId;
             markerIcon.options.iconUrl = shopTypeIconImageUrls[posTypeId];
-            var latlon = new L.LatLng(data.lat,data.lon, true),
-                marker = new L.Marker(latlon, {icon: markerIcon});
+            var 
+            latlon = new L.LatLng(data.lat,data.lon, true),
+            marker = new L.Marker(latlon, {icon: markerIcon});
             marker.data=data;
             this.map.addLayer(marker);
             // bindListeners(marker);

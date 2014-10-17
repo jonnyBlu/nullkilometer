@@ -1,5 +1,6 @@
 <%= simple_form_for(@point_of_interest) do |f| %>
 
+	<%= render :partial => "layouts/backend_errors", :locals => {:place => @point_of_interest} %>
   <div class="form-inputs">
 	  <%= f.input :name %>
 	  <%= f.input :address %>

@@ -88,8 +88,8 @@ $(document).ready(function(){
 	map.initmap(INITIALLAT, INITIALLON, 12); // around Berlin;
 	map.loadMarkers();
 	//map.locateUser(12); //re-activate when there are more tags everywhere
-
 	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
+	
 	//filterTags();
 	loadFilterListeners();
 

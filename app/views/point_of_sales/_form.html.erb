@@ -1,17 +1,39 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "point_of_interests/form.js" %>
     <%= javascript_include_tag "jquery.validate.js" %>
+    <%= javascript_include_tag "point_of_interests/form_map.js" %>
 <% end %>
+
+<%= render :partial => "layouts/backend_errors", :locals => {:place => @point_of_interest} %>
+
 <%= simple_form_for @point_of_interest do |f| %>
+
   <div class="form-inputs">
 	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "formTextInput" } %>
 
-	  <!-- Show status change only if admin logged in-->
-	  <% if admin_signed_in? %>
+	  <% if admin_signed_in? %>	  <!-- Show status change only if admin logged in-->
 		  <%= f.input :status_id, label: "#{I18n.t("properties.main_information.status")}:", collection: @status_names_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_status"), required: :true %>
 		<% end %>
 
 	  <%= f.input :address, label: "#{I18n.t("properties.main_information.address")}:", input_html: { class: "formTextInput" } %>
+
+	  <!--TODO: only if js enabled-->
+	  <div id="formPosMapContainer">
+		  <div id="locationSearchResults"></div>
+		  <div id="addressLookupContainer">
+		    <div class="input-group">
+			    <input type="text" id="locationInput" class="form-control" type="text" placeholder="<%= I18n.t("input.commands.add_an_address") %>">
+			     	<span class="input-group-btn">
+			        	<button class="btn btn-defaul customButton" id="locationSubmit" type="button">
+			        		<span class="glyphicon glyphicon-search"></span>
+			       	 	</button>
+			      	</span>    
+		    </div>
+			</div>
+			<div id="newPosMap"></div>
+		</div>	
+		<!--end-->
+
 	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true %>
 	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true %>
 	  <%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "formTextInput" } %>
@@ -22,29 +44,31 @@
 
 	  <ul id = "openingTimesContainer">
 	  	<label><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
-		<%= f.simple_fields_for :opening_times, :validate => :false do |ot| %>
-		  	<li class = "openingDayContainer grayedOut">
-		  		<%= ot.input :dayId, label: false, as: :boolean, 
-		  			inline_label: I18n.t("date.day_names")[ot.object.dayId], 
-		  			checked_value: ot.object.dayId,
-		  		 	include_hidden: :false, 
-		  		 	unchecked_value: nil, 
-		  		 	input_html: { id: ot.object.dayId, checked: false } %>
-		  		<%= ot.input :from, label: I18n.t("instructions.add_a_pos.from"), 
-		  			collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
-		  			as: :select, 
-		  			wrapper_html: { class: 'hidden' },
-		  			input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"}, 
-		  			:required => false %>
-		  		<%= ot.input :to, label: I18n.t("instructions.add_a_pos.to"), 
-			  		collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
-			  		as: :select,  
-			  		wrapper_html: { class: 'hidden' },
-			  		input_html: { id: ot.object.dayId, class: "formTextInput timeTextInput"}, 
-			  		:required => false %>
-	  		</li> 
+	  	<!-- record name, record_object, options, &block-->
+			<%= f.simple_fields_for :opening_times, @sorted_opening_times , :validate => :false do |ot| %>
+			  	<li class = "openingDayContainer grayedOut">
+			  		<%= ot.input :day, label: false, as: :boolean, 
+			  			inline_label: I18n.t("date.day_names")[ot.object.day], 
+			  			checked_value: ot.object.day,
+			  		 	include_hidden: :false, 
+			  		 	unchecked_value: nil, 
+			  		 	input_html: { id: ot.object.day, checked: false },
+			  		 	:required => false %>
+			  		<%= ot.input :from, label: I18n.t("instructions.add_a_pos.from"), 
+			  			collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
+			  			as: :select, 
+			  			wrapper_html: { class: 'hidden' },
+			  			input_html: { id: ot.object.day, class: "formTextInput timeTextInput"}, 
+			  			:required => false %>
+			  		<%= ot.input :to, label: I18n.t("instructions.add_a_pos.to"), 
+				  		collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
+				  		as: :select,  
+				  		wrapper_html: { class: 'hidden' },
+				  		input_html: { id: ot.object.day, class: "formTextInput timeTextInput"}, 
+				  		:required => false %>
+		  		</li> 
 	  	  <% end %>
-  	  </ul>
+  	 </ul>
   	<!-- add JS: show the following block only if user clicks on market as pos type (adding a new pos) -->  	 
   	<!-- if it s a market and it is being edited -->   	  
   	<% if locals[:parent]== "edit" && @point_of_interest.posTypeId == 0 %> 

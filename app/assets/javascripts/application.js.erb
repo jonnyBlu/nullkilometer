@@ -17,6 +17,7 @@
 
 // Loads all Bootstrap javascripts
 //= require bootstrap
+
 //= require jquery.timepicker.js
 //= require leaflet
 //= tree
@@ -67,7 +68,10 @@ categoryIconImageUrls = {
 },
 userIconImageLocation = "<%= asset_path('map_icons/user.png') %>";
 
-
+//osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', // openstreetmaps - free, standard
+//osmUrl = 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.png', //mapquest - free
+//mapbox - free up to 3000 views/month
+var osmTilesUrl = 'http://api.tiles.mapbox.com/v4/mapinas.jniiobb3/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwaW5hcyIsImEiOiJkQ1h3X2VzIn0.cYOpZsGKxmb_QCJ0nQfqsQ';         
 var shopTypeNames, productCategoryNames, weekDayNames, moreInfoLinkName, enterAnAddressText;
 /**
 * Is called in home.js file, which is the first js file to load
@@ -100,7 +104,7 @@ var ajaxCallOSM = function(url, dataToSend, onSuccessFunction){
 		type: 'GET',
 		url: url,
 		data: dataToSend,
-		dataType: 'json',
+	//	dataType: 'xml',
 		success: onSuccessFunction,
 		error: function(jqXHR, textStatus, errorThrown){
 			$('#locationSearchResults').html('<div>Something went wrong while communicating with nomination.openstreetmaps.org</div>');
@@ -115,13 +119,14 @@ var registerLocationSearch = function(buttonSelector, inputSelector, resultsSele
 		event.preventDefault();
 		resultsSelector.html('');
 		var input = inputSelector.val();
+		// looks if empty
 		if(input.trim() != ""){
 			// $('#newPosMap').append('<img alt="Loading" id="loading-animation" src="//'+window.location.host+'/assets/ajax-loader.gif" />');
 			var dataToSend = {
 				format: 'json',
 				q: input,
 				polygon: 0,
-				addressdetails: 0
+				addressdetails: 1
 			};
 			ajaxCallOSM('http://nominatim.openstreetmap.org/search', dataToSend, onSuccessFunction);
 		}

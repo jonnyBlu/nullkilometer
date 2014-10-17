@@ -135,6 +135,7 @@ $infoboxWidth: 400px;
 		#addressLookupContainer {
 			width: 283px;
 			bottom: 20px;
+			z-index: 1;
 
 			#locationInput,#locationSubmit{
 				top: 0px;

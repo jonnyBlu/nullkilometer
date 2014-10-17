@@ -20,7 +20,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 
 		input.string{
 			padding-left: 5px;
-			width: 400px;
+			width: $textInputWidth;
 		}
 
 		.formTextInput, textarea {
@@ -42,7 +42,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 		}
 		.control-group.point_of_sale_productCategoryIds .checkbox,
 		.control-group.market_stall_productCategoryIds .checkbox,
-		.control-group.point_of_sale_opening_times_dayId .checkbox{
+		.control-group.point_of_sale_opening_times_day .checkbox{
 			margin-left: 20px;
 		}
 		.control-group.point_of_sale_opening_times_from, .control-group.point_of_sale_opening_times_to{
@@ -62,7 +62,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 					margin-bottom: 0px;
 					float: left;	
 				}
-				.point_of_sale_opening_times_dayId{
+				.point_of_sale_opening_times_day{
 					width: 120px;
 				}
 				.point_of_sale_opening_times_from, .point_of_sale_opening_times_to{
@@ -103,7 +103,59 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			}
 		}
 	}
+	#formPosMap{
+		height: $textInputWidth;
+		width: $textInputWidth;
+	}
+
+
+	#addressLookupContainer {
+		width: 283px;
+		bottom: 20px;
+
+		#locationInput,#locationSubmit{
+			top: 0px;
+		}
+		#locationInput{
+			background: $transparentBackground;
+			border: 1px solid rgb(204, 204, 204);
+			width: 250px;
+			right: $buttonAndInputHeight;			
+			@include roundedCorners(0px 0px 0px $corner-radius);
+			position: absolute;
+			padding: 0 5px;
+			@include placeholderColor(rgb(110,110,110));
+		}
+		#locationSubmit {
+			width: $buttonAndInputHeight;
+			padding: 0px;
+			/*border-left: 1px solid rgb(204, 204, 204);*/
+			border-bottom: 1px solid rgb(204, 204, 204);
+			color: black;
+		}
+	}
+
+	#locationResultPopup {
+		//top: 50px;
+		display: none;
+		z-index: 11;
+		width: 100%;
+		padding: 20px 0px 20px 0px;
+		background-color: white;
+		@include boxShadow(10px, #aaa);
+		@include roundedCorners_bottom(10px);
+		p, ul {
+			margin-left: 20px;
+		}
+		a:hover{
+			background: none;
+			color: $backgroundColor;
+		}
+	}
 }
+
+
+
 
 #point_of_sales_overview{
 	ul.horizontalList{

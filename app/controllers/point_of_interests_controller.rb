@@ -29,16 +29,8 @@ class PointOfInterestsController < ApplicationController
 	end
 
   def new
-    @point_of_interest= @poi_class.new
-    if @point_of_interest.type == "PointOfSale"
-      @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
-      @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
-      @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
-      for i in 0..6
-        @point_of_interest.opening_times.build(dayId: i)
-      end
-      @point_of_interest.market_stalls.build
-    end
+    @point_of_interest= @poi_class.new()
+    generate_form_extras
     respond_with @point_of_interest
   end
 
@@ -51,8 +43,7 @@ class PointOfInterestsController < ApplicationController
 
       #assign pending status only if admin not signed in
       if admin_signed_in? == false
-        pending_status_id = Status.find_by_name('pending').id
-        @point_of_interest.status_id = pending_status_id    
+        set_pending_status(@point_of_interest)   
       end    
     end
     if @point_of_interest.save
@@ -63,7 +54,8 @@ class PointOfInterestsController < ApplicationController
         redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
       end 
     else
-      redirect_to new_point_of_sale_path, format: 'html'
+      generate_form_extras
+      render :new
     end   
   end
 
@@ -74,17 +66,17 @@ class PointOfInterestsController < ApplicationController
       @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
       for i in 0..6
         if !@point_of_interest.opening_times.where(day: i).exists?
-          @point_of_interest.opening_times.build(dayId: i)
+          @point_of_interest.opening_times.build(day: i)
         end
       end
 
       @status_name = Status.find(@point_of_interest.status_id).name
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
 
-      #works
-      #ar =  @point_of_interest.opening_times.sort_by!{ |ot| ot[:day] }
-      #does not work. - returned not sorted
-      @point_of_interest.opening_times.sort_by!{ |ot| ot[:dayId] }
+      @sorted_opening_times =  @point_of_interest.opening_times.sort_by { |ot| ot[:day] }
+     # require 'pp'
+     # pp @sorted_opening_times
+
 
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
@@ -100,8 +92,7 @@ class PointOfInterestsController < ApplicationController
     end
     if params[:type] == "PointOfSale"
       pos_params = params[:point_of_sale]
-      pos_params["productCategoryIds"].delete("")
-      
+      pos_params["productCategoryIds"].delete("")      
       prodCats = pos_params["productCategoryIds"]
 
       @point_of_interest.products.each do |product|
@@ -115,7 +106,7 @@ class PointOfInterestsController < ApplicationController
       counter = 0
       pos_params["opening_times_attributes"].each do |ot_array|
         ot = ot_array[1]
-        if ot[:dayId].empty? #|| ( ot[:from].empty? && ot[:to].empty? ) || ot[:from] == ""
+        if ot[:day].empty? #|| ( ot[:from].empty? && ot[:to].empty? ) || ot[:from] == ""
           puts ot[:from]
           ot['_destroy'] = true
           counter = counter+1
@@ -131,8 +122,8 @@ class PointOfInterestsController < ApplicationController
 
       #todo: create a separate method for that
       #assign pending status only if it was not changed before by admin aka if normal user changed something
-      pending_status_id = Status.find_by_name('pending').id
-      @point_of_interest.status_id = pending_status_id    
+
+      set_pending_status(@point_of_interest)
 
       if @point_of_interest.update_attributes!(params[:point_of_sale])
         flash[:success] = "Point of sale updated successfully"
@@ -143,6 +134,11 @@ class PointOfInterestsController < ApplicationController
         #redirect_to @point_of_interest
       end
     end
+  end
+
+  def set_pending_status(pos)
+      pending_status_id = Status.find_by_name('pending').id
+      pos.status_id = pending_status_id
   end
 
   def destroy
@@ -180,6 +176,18 @@ class PointOfInterestsController < ApplicationController
       @json_root = "pointOfInterest"
     end
   end
+
+  def generate_form_extras
+    if @point_of_interest.type == "PointOfSale"
+      @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
+      @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+      @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
+      for i in 0..6
+        @point_of_interest.opening_times.build(day: i)
+      end
+      @point_of_interest.market_stalls.build
+    end
+  end 
 
   
 end

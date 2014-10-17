@@ -1,0 +1,10 @@
+<% if place.errors.any? %>
+	<div class="errorDiv">
+		<h3><%= I18n.t("headers.errors") %></h3>
+		<ul>
+			<% place.errors.full_messages.each do |error_message| %>
+				<li><%= error_message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

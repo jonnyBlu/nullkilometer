@@ -23,7 +23,6 @@ gem "leaflet-rails"
 
 gem 'uglifier'
 
-
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-timepicker-rails-addon'

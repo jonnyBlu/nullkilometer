@@ -90,3 +90,4 @@ en:
     edit_market_stall: "Edit market stall"
     market_stall: "Market stall"
     belongs_to_market: "Is in the market"
+    errors: "Errors"
