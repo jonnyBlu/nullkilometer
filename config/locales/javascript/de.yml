@@ -6,3 +6,6 @@ de:
         check_required: "Mindestens ein Element muss markiert werden"
         opening_day_required: "Mindestens ein Öffnungstag muss markiert werden"
         opening_times_required: "Bitte Öffnungszeit(en) auswählen oder den Öffnungstag deselektieren"
+  map:
+    messages:
+      select_one_address: "Wähle eine Adresse aus der Liste aus:"

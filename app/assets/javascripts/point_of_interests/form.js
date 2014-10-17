@@ -2,13 +2,13 @@ $(function(){
 	//TODO: only if point of sales/interests and not market stall
 	var parameters = window.location.pathname;
 	if (parameters.toLowerCase().indexOf("point_of_sales") >= 0 || parameters.toLowerCase().indexOf("point_of_production") ){
-		$("#newPosMap").show();
+		//$("#formPosMap").show();
 		var 
 		map = new FormMap(),
 		isEditMode = (parameters.toLowerCase().indexOf("edit") >= 0) ? true : false,
+		mapPlaceholderId = 'formPosMap',
 		buttonSelector = $('#addressLookupContainer #locationSubmit'),
     inputSelector = $('#addressLookupContainer #locationInput'),
-    resultsSelector = $('#locationSearchResults'),
     addressPlaceholderInTheForm = $('#point_of_sale_address'), 
     addressResultsPlaceholder =  $('#locationSearchResults'); 
 
@@ -17,14 +17,14 @@ $(function(){
 			posId = parameters.split('/')[parameters.split('/').length-2].split('.')[0],
 			onSuccessReadPosInformation = function(response){
 	        var posInformation = response.pointOfSale;
-	        map.initMap(posInformation.lat, posInformation.lon, posInformation.address, ZOOMONMARKERLEVEL-3, 'newPosMap');
+	        map.initMap(posInformation.lat, posInformation.lon, posInformation.address, ZOOMONMARKERLEVEL-3, mapPlaceholderId);
 	    };
 			callAjax("/point_of_sales/"+posId, null, onSuccessReadPosInformation); 
 		} else {//IF NEW - centralize the map around a default position
-		  map.initMap(INITIALLAT, INITIALLON, '', 9, 'newPosMap'); // around Berlin
+		  map.initMap(INITIALLAT, INITIALLON, '', 9, mapPlaceholderId); // around Berlin
 		}
 		map.setLocationSearchPlaceholders(addressPlaceholderInTheForm, addressResultsPlaceholder);
-	  registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
+	  registerLocationSearch(buttonSelector, inputSelector, addressResultsPlaceholder, map.getOSMAddress);
 	}
 
 	var setFormListeners = function(){

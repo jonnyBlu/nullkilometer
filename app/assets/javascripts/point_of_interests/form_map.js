@@ -4,14 +4,13 @@ var FormMap = function(){
   posMarker,
   newPosPlotlayers=[],
   //TODO
-  TEXT_ADDRESSSELECTION = "Wähle eine Adresse aus der Liste aus:",
+  TEXT_ADDRESSSELECTION = I18n.t("map.messages.select_one_address"),/*"Wähle eine Adresse aus der Liste aus:",*/
 
   posLat,
   posLon,
   newPosAddress,
-  //TODO
-  addressPlaceholderInTheForm,// = $('#point_of_sale_address'),
-  addressResultsPlaceholder, // = $('#locationSearchResults'),
+  addressPlaceholderInTheForm,
+  addressResultsPlaceholder,
 
   //PUBLIC METHODS
   initMap = function(lat, lon, address, zoomLevel, mapPlaceholderId) {
@@ -25,6 +24,10 @@ var FormMap = function(){
         placeMarker(lat, lon, address, 12, false);
       }.bind(this), 200);
     }, this);
+  },
+  setLocationSearchPlaceholders = function(formPlaceholder, resultsPlaceholder){
+    addressPlaceholderInTheForm = formPlaceholder;
+    addressResultsPlaceholder = resultsPlaceholder;
   },
   getOSMAddress = function(data, textStatus, jqXHR){
     // $('#loading-animation').remove();    
@@ -64,10 +67,6 @@ var FormMap = function(){
       console.warn("recieved no Search Results from OSM or something went wrong");
     }
   },
-  setLocationSearchPlaceholders = function(formPlaceholder, resultsPlaceholder){
-    addressPlaceholderInTheForm = formPlaceholder;
-    addressResultsPlaceholder = resultsPlaceholder;
-  },
   //PRIVATE METHODS
   placeMarker = function(lat, lon, address, zoomLevel, defaultLocation){
     var coordinates = new L.LatLng(lat, lon, true);
@@ -104,7 +103,6 @@ var FormMap = function(){
       short_address = road+" "+house_number+" "+postcode+" "+city+" "+state+" "+country; 
     } else { //building, shop
       short_address = "can not parse the address, insert it manually";
-    // console.log(address_data);
     }  
     addressPlaceholderInTheForm.val(short_address);
     var longAddressName = locationData.display_name;
@@ -135,7 +133,7 @@ var FormMap = function(){
     });
   },
   displayAddress = function(address){
-    $("#locationSearchResults").html(address);
+    addressResultsPlaceholder.html(address);
     newPosAddress = address;
   };
   return{
