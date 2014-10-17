@@ -3,9 +3,7 @@ var FormMap = function(){
   map,
   posMarker,
   newPosPlotlayers=[],
-  //TODO
-  TEXT_ADDRESSSELECTION = I18n.t("map.messages.select_one_address"),/*"Wähle eine Adresse aus der Liste aus:",*/
-
+  TEXT_ADDRESS_SELECTION = I18n.t("map.messages.select_one_address"),
   posLat,
   posLon,
   newPosAddress,
@@ -21,18 +19,20 @@ var FormMap = function(){
     map.addLayer(mapLayer);
     map.whenReady(function () {
       window.setTimeout(function () {
-        placeMarker(lat, lon, address, 12, false);
-      }.bind(this), 200);
+        placeMarker(lat, lon, address, 12, true);
+      }.bind(this), 2000);
     }, this);
+    locationSearchResults
   },
   setLocationSearchPlaceholders = function(formPlaceholder, resultsPlaceholder){
     addressPlaceholderInTheForm = formPlaceholder;
     addressResultsPlaceholder = resultsPlaceholder;
+    addressResultsPlaceholder.append(I18n.t("map.messages.use_map"));
   },
   getOSMAddress = function(data, textStatus, jqXHR){
     // $('#loading-animation').remove();    
     if(data.length > 1){
-      addressResultsPlaceholder.html(TEXT_ADDRESSSELECTION+'<ul></ul>');
+      addressResultsPlaceholder.html(TEXT_ADDRESS_SELECTION+'<ul></ul>');
       console.log("received "+data.length+" Search Results from OSM");
       var validAddressResultArray = new Array();
 
@@ -40,14 +40,15 @@ var FormMap = function(){
       for(var i = 0; i < data.length; i++){
         //if place's class is NOT in one of the listed
         if($.inArray(data[i].class, [ "highway", "place", "shop", "building"]) == -1 
-            //or if it's type is one of the listed, skip the rest of the block and go to the next address
-            || $.inArray(data[i].type, [ "bus_stop", "platform", "tertiary", "city", "county"]) > -1) continue; 
+          //or if it's type is one of the listed, skip the rest of the block and go to the next address
+          || $.inArray(data[i].type, [ "bus_stop", "platform", "tertiary", "city", "county"]) > -1) continue; 
 
         validAddressResultArray.push(data[i]);
-        var currentArrayIndex = validAddressResultArray.length -1,
-            detailed_address = data[i].display_name;
+        var 
+        currentArrayIndex = validAddressResultArray.length -1,
+        detailed_address = data[i].display_name;
         if(detailed_address != previousAddress){
-          addressResultsPlaceholder.find("ul").append("<li title='"+currentArrayIndex+"'><a href='#'>"+detailed_address+"</a></li>"); 
+          addressResultsPlaceholder.find("ul").append("<li title='"+currentArrayIndex+"'><a href='#' class='ordinaryLink'>"+detailed_address+"</a></li>"); 
         }           
         previousAddress = detailed_address;
       }
@@ -59,26 +60,24 @@ var FormMap = function(){
     }
     else if(data.length == 1){
       console.log("recieved one Search Result from OSM");
-      handleLocation(data[0], false); //ifPlaceMarker set to false
-      placeMarker(data[0].lat, data[0].lon, data[0].display_address, ZOOMONMARKERLEVEL, false); 
+      handleLocation(data[0], true); 
     }
     else {
-      addressResultsPlaceholder.html('<div>No Search Results</div>');
+      addressResultsPlaceholder.html('<div>'+I18n.t("map.messages.no_results")+'</div>');
       console.warn("recieved no Search Results from OSM or something went wrong");
     }
   },
   //PRIVATE METHODS
   placeMarker = function(lat, lon, address, zoomLevel, defaultLocation){
     var coordinates = new L.LatLng(lat, lon, true);
-    //TODO: refactor/explain if and else, cuz only if works 
     if(typeof(posMarker)=="undefined"){ // if no marker is on the map
         posMarker = new L.Marker(coordinates, {draggable:true});
         posMarker.data="";
         posMarker.addTo(map);        //OR:  map.addLayer(posMarker);
         newPosPlotlayers.push(posMarker);
+        setMarkerListener(); 
     } else { // if a marker is already on the map
         posMarker.setLatLng(coordinates);
-        console.log("marker was there already");
     }
     map.panTo(coordinates);
     map.setZoom(zoomLevel);
@@ -87,7 +86,6 @@ var FormMap = function(){
         posLon = lon;    
         displayAddress(address);
     }   
-    setMarkerListener(); 
   },
   handleLocation = function(locationData, ifPlaceMarker){
     var 
@@ -102,17 +100,15 @@ var FormMap = function(){
     if($.inArray(locationData.class, [ "highway", "place"]) > -1){
       short_address = road+" "+house_number+" "+postcode+" "+city+" "+state+" "+country; 
     } else { //building, shop
-      short_address = "can not parse the address, insert it manually";
+      short_address = I18n.t("map.messages.cannot_parse");//"can not parse the address, insert it manually";
     }  
     addressPlaceholderInTheForm.val(short_address);
-    var longAddressName = locationData.display_name;
     if (ifPlaceMarker) {
       var lon = locationData.lon,
           lat = locationData.lat;
-      placeMarker(lat, lon, longAddressName, ZOOMONMARKERLEVEL-3, false);
+      placeMarker(lat, lon, locationData.display_name, ZOOMONMARKERLEVEL, false);
     }
   },
-  //TODO: gets executed multiple times, so remove previous listener
   setMarkerListener = function(){
     posMarker.on('dragend', function (e) {
       var 
@@ -125,15 +121,16 @@ var FormMap = function(){
         polygon: 0,
         addressdetails: 1
       };
-      ajaxCallOSM('http://nominatim.openstreetmap.org/search', dataToSend, function(response){
+      ajaxCallOSM(geocodingUrl, dataToSend, function(response){
         handleLocation(response[0], false);
-        var address = response[0].display_name;
-        displayAddress(address);
+        displayAddress(response[0].display_name);
       });
     });
   },
   displayAddress = function(address){
-    addressResultsPlaceholder.html(address);
+    addressResultsPlaceholder.html("<div>"+I18n.t("map.messages.drag_marker")+"</div>"+
+                                    "<div style='color: #999'>"+address+"</div>");
+    //TODO: add info about dragging
     newPosAddress = address;
   };
   return{

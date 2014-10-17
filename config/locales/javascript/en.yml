@@ -1,3 +1,4 @@
+#run "rake i18n:js:export" after adding anything new
 en:
   validate:
     messages:
@@ -9,3 +10,8 @@ en:
   map:
     messages:
       select_one_address: "Choose an address from the list:"
+      no_results: "No Search Results"
+      cannot_parse: "can not parse the address, insert it manually"
+      error_osm: "Something went wrong while communicating with nomination.openstreetmaps.org"
+      drag_marker: "Drag the marker to precise the location"
+      use_map: "Use the map to find the address"

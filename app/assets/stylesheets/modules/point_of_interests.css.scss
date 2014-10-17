@@ -107,59 +107,55 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 
 	/*map styling*/
 	#formPosMapContainer{
-		position: relative;
-	}
-	#formPosMap{
-		position: relative;
-		height: $textInputWidth;
-		width: $textInputWidth;
 
-		.leaflet-control-container{
+		position: relative;
+		padding: 10px;
+		background-color: #eee;		
+
+
+		#formPosMap{
 			position: relative;
-			top: 20%;
-		}
-	}
+			height: $textInputWidth;
+			width: $textInputWidth;
 
-	#addressLookupContainer {
-		position: absolute;
-		width: 283px;
-		z-index: 1;
-
-		#locationInput, #locationSubmit{
-			top: 0px;
+			.leaflet-control-container{
+				position: relative;
+				top: 20%;
+			}
 		}
-		#locationInput{
-			background: $transparentBackground;
-			border: 1px solid rgb(204, 204, 204);
-			width: 250px;
-			right: $buttonAndInputHeight;			
-			@include roundedCorners(0px 0px 0px $corner-radius);
+
+		#locationSearchResults {
+/*			width: 100%; */
+			padding-bottom: 10px;
+			p, ul {
+				margin-left: 20px;
+			}
+		}
+
+		#addressLookupContainer {
 			position: absolute;
-			padding: 0 5px;
-			@include placeholderColor(rgb(110,110,110));
-		}
-		#locationSubmit {
-			width: $buttonAndInputHeight;
-			padding: 0px;
-			border-bottom: 1px solid rgb(204, 204, 204);
-			color: black;
-		}
-	}
+			width: 283px;
+			z-index: 1;
 
-	#locationResultPopup {
-		display: none;
-		z-index: 11;
-		width: 100%;
-		padding: 20px 0px 20px 0px;
-		background-color: white;
-		@include boxShadow(10px, #aaa);
-		@include roundedCorners_bottom(10px);
-		p, ul {
-			margin-left: 20px;
-		}
-		a:hover{
-			background: none;
-			color: $backgroundColor;
+			#locationInput, #locationSubmit{
+				top: 0px;
+			}
+			#locationInput{
+				background: $transparentBackground;
+				border: 1px solid rgb(204, 204, 204);
+				width: 250px;
+				right: $buttonAndInputHeight;			
+				@include roundedCorners(0px 0px 0px $corner-radius);
+				position: absolute;
+				padding: 0 5px;
+				@include placeholderColor(rgb(110,110,110));
+			}
+			#locationSubmit {
+				width: $buttonAndInputHeight;
+				padding: 0px;
+				border-bottom: 1px solid rgb(204, 204, 204);
+				color: black;
+			}
 		}
 	}
 }
