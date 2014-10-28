@@ -10,22 +10,27 @@ class PointOfInterest < ActiveRecord::Base
 
   has_detail_infos
 
-  after_initialize :init_location
+  after_initialize :init_location #everytime is saved
+  before_update :check_address #only when updated
   
   def init_location 
-    puts "INIT LOCATION"
-  	#if self.lat==nil or self.lon==nil
-  		if self.address
-  			latlon= Geocoder.coordinates(self.address)
-        puts "LAT LON of #{name}: #{latlon}"
-        if latlon
-  			  self.lat=latlon[0]
-  			  self.lon=latlon[1]
-        end
-  		end
-	  #end  	
+  	if self.lat==nil or self.lon==nil
+      check_address
+	  end  	
   end
    
+  def check_address 
+    puts "INIT LOCATION"
+    if self.address
+      latlon = Geocoder.coordinates(self.address)
+      puts "LAT LON of #{name}: #{latlon}"
+      if latlon
+        self.lat=latlon[0]
+        self.lon=latlon[1]
+      end
+    end
+  end 
+
   validates_presence_of :name, :address
   validate :validate_location
  

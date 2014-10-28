@@ -1,0 +1,12 @@
+<ul>
+	<li>
+		<input name="shopTypeId" type="image" value="all" class="imageInput" title="select all" src="<%= asset_path("map_icons/shop_categories/all.png") %>">
+		<span><%= I18n.t("input.commands.all") %></span>
+	</li>
+	<% I18n.t("point_of_sale.pos_type_names").each_with_index do |type, index| %>
+	<li>
+		<input name="shopTypeId" type="image" value="<%= index %>" class="imageInput" title="<%= type %>" src="<%= asset_path("map_icons/shop_categories/#{index}.png") %>">
+		<span><%= type %></span>
+	</li>
+	<% end %>
+</ul>

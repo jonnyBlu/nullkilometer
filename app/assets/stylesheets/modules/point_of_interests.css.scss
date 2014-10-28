@@ -1,9 +1,12 @@
 form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edit_market_stall {
 	margin-bottom: 10px;
 	.form-inputs{
-
 		select, input.string {
 			height: 25px;
+		}
+
+		.control-label {
+			font-style: italic;
 		}
 
 		label.checkbox{
@@ -50,7 +53,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 		}
 
 		#openingTimesContainer{ 
-			'                                                                                                                       '
+			padding-left: 0px;
 			.openingDayContainer{
 				width: 100%;
 				@media only screen and (min-width: 500px) { 

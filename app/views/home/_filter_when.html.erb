@@ -1,0 +1,12 @@
+<ul>
+	<li>
+		<input name="openingDay" type="image" value="all" class="imageInput" title="Select all" src="<%= asset_path("map_icons/food_categories/all.png") %>">
+		<span><%= I18n.t("input.commands.all") %></span>
+	</li>
+	<% I18n.t("date.day_names").each_with_index do |day, index| %>
+	<li>
+		<input name="openingDay" type="image" value="<%= index %>" class="imageInput" title="<%= day %>" src="<%= asset_path("map_icons/food_categories/all.png") %>">
+		<span><%= day %></span>
+	</li>
+	<% end %>
+</ul>

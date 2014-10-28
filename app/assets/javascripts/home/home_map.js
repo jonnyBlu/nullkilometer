@@ -231,7 +231,7 @@ var HomeMap = function(){
 				}
 				if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) {
 					var ativeMarker=markersOfTheMap[i].setOpacity(1);
-					console.log(ativeMarker.data);
+					//console.log(ativeMarker.data);
 					markersOfTheMap[i].options.clickable = true;
 					markersOfTheMap[i].options.zIndexOffset = 0;
 				}

@@ -1,0 +1,7 @@
+en:
+  headers:
+    goal: "The goal"
+    localFood: "Local Food"
+    map: "Map" 
+    addAPlace: "Adding places"
+    team: "Team"

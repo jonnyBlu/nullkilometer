@@ -76,8 +76,6 @@ class PointOfInterestsController < ApplicationController
       @sorted_opening_times =  @point_of_interest.opening_times.sort_by { |ot| ot[:day] }
      # require 'pp'
      # pp @sorted_opening_times
-
-
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
@@ -96,7 +94,7 @@ class PointOfInterestsController < ApplicationController
       prodCats = pos_params["productCategoryIds"]
 
       @point_of_interest.products.each do |product|
-      #  if product.category not in prodCats
+      # if product.category not in prodCats
         unless prodCats.include?(product.category.to_s)
           #TODO: change product's attributes in a more "direct" way
           @point_of_interest.products_attributes = { id: product.id, _destroy: true }
@@ -119,9 +117,6 @@ class PointOfInterestsController < ApplicationController
       else
         puts "OK: at least one opening time"
       end
-
-      #todo: create a separate method for that
-      #assign pending status only if it was not changed before by admin aka if normal user changed something
 
       set_pending_status(@point_of_interest)
 

@@ -1,0 +1,14 @@
+<ul>
+	<li>
+		<input name ="productCategory" type="image" value="all" class="imageInput" title="all" src="<%= asset_path("map_icons/food_categories/all.png") %>">
+		<span><%= I18n.t("input.commands.all") %></span>
+	</li>
+	<% 	I18n.t("product.category_names").each_with_index do |category, index| %>
+		<%# if index <= 6 %>
+		<li>
+				<input name ="productCategory" type="image" value="<%= index %>" class="imageInput" title="<%= category %>" src="<%= asset_path("map_icons/food_categories/#{index}.png") %>">
+				<span><%= category %></span>
+		</li>
+		<% end %>
+	<%# end %>
+</ul>

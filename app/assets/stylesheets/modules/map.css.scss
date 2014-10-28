@@ -7,122 +7,123 @@ $transparentBackground: rgba(255, 255, 255, 0.8);
 $infoboxWrapperWidth: 420px;
 $infoboxWidth: 400px;
 
+$minHeightMap: 600px;
+
 .map {
-	.content-wrapper {
-		padding: 0px;
-	}
 
-	.contentContainer {
-		width: 100%;
+	#mapContainerParent{
 		height: 100%;
-		margin: 0;
-		padding: 0;
+		min-height: $minHeightMap;
 	}
-
-	#mapFilterContainer,
-	#addShop,
-	#locationResultPopup,
-	#addressLookupContainer {
+	#locationResultPopup {
 		position: absolute;
 	}
 
-	#mapContainer {
-		/*margin-top:50px;*/
-		z-index: 1;
-		position: relative;
-		top: 0px;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		padding:  0px;
+	#mapFilterContainer {
+		margin-top:65px;
+		z-index: 2;
 
+		#mapFilterMobile, #mapFilter{
+			background-color: #fff;
+		}
+
+		#mapFilterMobile{
+			z-index: 1;
+			ul {
+				padding-left: 10px;
+			}
+			#mapFilterButton{
+				border: none;
+				background-color: transparent;
+				width: 80%;
+			}
+		}
+		#mapFilterControls{
+			#addressLookupContainer, #mapFilterButton {
+				width: 220px;
+				z-index: 1;
+			}
+			#mapFilterButton {
+				text-align: left;
+			}
+			#addressLookupContainer {
+				float:right;
+				right: 0px;
+				#locationSubmit {
+					width: $buttonAndInputHeight;
+					color: black;
+				}
+			}
+			> div {
+				padding: 0px;
+				//TODO: shit
+				z-index: 2;
+			}
+		}
+		#mapFilter {
+			margin-top: 15px;
+			display: none;
+			border: none;
+			border-bottom: none;
+			> div {
+				margin-left: 0px;
+				//TODO: shit
+				z-index: 2;
+			}
+		}
+		.what, .where, .when { 
+			p{
+				height: 45px;
+				line-height: 45px;
+				font-style: italic;
+				margin: 0px;
+			}
+			ul {
+				padding: 0px;
+				width: 200px;
+				li {
+					width: 200px;
+					input{
+						vertical-align: middle;
+						margin-right: 10px;
+					}
+					&:hover {
+						cursor:pointer;
+					}
+					@media only screen and (min-width: 500px) { 
+						height: 45px; 
+						line-height: 45px;
+						font-size: 13px;
+						input[name="productCategory"], input[name="shopTypeId"], input[name="openingDay"] {
+							height: 35px;
+						}	
+					}
+					@media only screen and (max-width: 500px) { 
+						height: 35px; 
+						line-height: 35px;
+						font-size: 12px;
+						input[name="productCategory"], input[name="shopTypeId"], input[name="openingDay"] {
+							height: 30px;
+						}
+					}
+				}	
+			}
+		}
+	}
+
+	#mapContainer {
+		z-index: 0;
+		position: absolute;
+		top:0px;
+		margin-top: 50px;
+		height: 100%;
+		min-height: $minHeightMap; //not less than an open filter
+		
+		width: 100%;
 		#map {
 			height: 100%;
 		}
 
-		#mapFilterContainer {
-			left: 0px;
-			z-index: $zIndexMapElements;
-			padding: 0px;
-			margin-top: 50px;
-			#mapFilter {
-				display: none;
-				border: none;
-				border-bottom: none;
-				background-color:rgba(255,255,255,0.8);
-				> div {
-					margin-left: 0px;
-				}
-				#closeButtonFilter{
-					position: absolute;
-					right:0px;
-					top:0px;
-					float:right;
-					padding-right: 5px;
-					font-weight: bold;
-					cursor:pointer;
-					font-size:20px;
-					color: $orangeTextColor;
-					&:hover{
-						color: $backgroundColor;
-					}
-				}
-				.what, .where{
-					float: left;
-					margin: 0px;
-				}
-				.what, .where, .when { 
-					p{
-						@media only screen and (min-width: 500px) { font-size: 20px; }
-						@media only screen and (max-width: 500px) { font-size: 16px; }
-						
-						font-weight: bold;
-						margin: 10px 0px 0px 10px;
-					}
-					ul {
-						font-size: 12px;
-						margin: 10px 20px 0px 10px;
-						width: 100%;
-						padding: 0px 0px 5px 0px;
-						li {
-							input{
-								vertical-align: middle;
-								margin-right: 10px;
-							}
-							&:hover {
-								cursor:pointer;
-							}
-							@media only screen and (min-width: 500px) { 
-								height: 45px; 
-								line-height: 45px;
-								font-size: 13px;
-								input[name="productCategory"], input[name="shopTypeId"] {
-									height: 35px;
-								}	
-							}
-							@media only screen and (max-width: 500px) { 
-								height: 35px; 
-								line-height: 35px;
-								font-size: 12px;
-								input[name="productCategory"], input[name="shopTypeId"] {
-									height: 30px;
-								}
-							}
-						}	
-					}
-				}
-				.when {
-					ul > li{
-						height: 40px; 
-					}
-				}
-			}
-			#mapFilterButton{
-				min-width: 320px;
-				font-weight: bold;
-			    font-size: 17px;    
-			}
-		}
 		#sideBarForDragging {
 			position: absolute;
 			right: 0px;
@@ -130,34 +131,6 @@ $infoboxWidth: 400px;
 			height: 100%;
 			background-color: $backgroundColor;
 			z-index: 2;
-		}
-
-		#addressLookupContainer {
-			width: 283px;
-			bottom: 20px;
-			z-index: 1;
-
-			#locationInput,#locationSubmit{
-				top: 0px;
-			}
-			#locationInput{
-				background: $transparentBackground;
-				border: 1px solid rgb(204, 204, 204);
-				width: 250px;
-				right: $buttonAndInputHeight;			
-				@include roundedCorners(0px 0px 0px $corner-radius);
-				position: absolute;
-				padding: 0 5px;
-				background: $transparentBackground;
-				@include placeholderColor(rgb(110,110,110));
-			}
-			#locationSubmit {
-				width: $buttonAndInputHeight;
-				padding: 0px;
-				/*border-left: 1px solid rgb(204, 204, 204);*/
-				border-bottom: 1px solid rgb(204, 204, 204);
-				color: black;
-			}
 		}
 
 		#locationResultPopup {
@@ -179,6 +152,7 @@ $infoboxWidth: 400px;
 		}
 	}
 
+	/*infobox?*/
 	.leaflet-control-container{
 		position: absolute;
 		top: 40%;
@@ -265,52 +239,17 @@ $infoboxWidth: 400px;
 
 	/* map infobox styling end */
 
-	footer {
-		position: fixed;
-		bottom: 0px;
-	}
+
 
 	@media only screen and (min-width: 500px) { 
-		#mapContainer {
-			//margin-top:50px;
-		}
 		#sideBarForDragging{
 			display: none;
-		}
-		#mapFilter{
-			.when{
-				margin-left: 466px; /*2 x where/when width*/
-			}
-			.what, .where, .when{
-				li{
-					width: 204px;
-				}
-			}
 		}
 	}
 	@media only screen and (max-width: 500px) { 
-		#mapContainer {
-			//margin-top:50px;
-		}
 		#sideBarForDragging{
 			display: block;
 		}
-		span.toHideIfScreenSmall { 
-			width: 2px; 
-			display: none;
-		}
-		#mapFilter{
-			padding: 0px;
-			.what, .where, .when{
-				padding-right: 0px;
-			}
-			.when {
-				margin-left: 180px;
-				li {
-					width: 120px;
-				}
-			}
-		}		
 	}
 
 }	

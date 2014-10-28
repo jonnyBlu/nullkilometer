@@ -1,0 +1,7 @@
+de:
+  headers:
+    goal: "Das Ziel"
+    localFood: "Lokale Lebensmittel"
+    map: "Karte" 
+    addAPlace: "Orte hinzufügen"
+    team: "Das Team"

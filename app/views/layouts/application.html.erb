@@ -17,13 +17,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= render 'layouts/shim' %> 
 
-  <link rel="icon" href="<%= "/assets/images/favicon.png" %>" type="image/x-icon" />
+  <link rel="icon" href="<%= asset_path("favicon.png") %>" type="image/x-icon" />
 </head>
 <body class="<%= yield :body_classes %>">
   <%=  render 'layouts/header' %> 
-    
-  <div class="content-wrapper">
-  	<div class="container contentContainer">
+  <!--TODO: does not recognise home when the locale is not set :/) -->
+  <% if current_page?(controller: '/home') %>
+    <%=  render 'map' %>
+  <% end %>
+	<div class="container">
 
     <%# if notice %>
       <!--p class="alert alert-success"><%= notice %></p-->
@@ -32,9 +34,8 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-  		<%= yield %> 
-  	</div>
-  </div>
+  	<%= yield %> 
+	</div>
 
   <%=  render 'layouts/footer' %>
 </body>

@@ -3,12 +3,8 @@ html {
 }
 
 body {
-  color: #aaa;
   padding-top: 0px;
-  background-color: $backgroundColor !important;  
-  /* http://lea.verou.me/css3patterns/# */
-  background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
-  background-size: 5px 5px;
+  background-color: $backgroundColor;  
   font-family: $sans-serif;
 }
 
@@ -23,6 +19,8 @@ a, a:link, a:visited {
 
 a:hover{ 
   background-color: transparent;
+  text-decoration: none;
+  background: none;   
 }
 
 a.lightLink, a.lightLink:visited{
@@ -44,6 +42,7 @@ a.lightLink:hover, a.ordinaryLink:hover{
 .heading{
     font-size: $headerTextSize;
     font-weight: bold;
+    text-align: left;
 }
 
 section {
@@ -98,35 +97,22 @@ input:focus, button:focus{
   outline: none;
 }
 
-.contentContainer {
-  background-color: $backgroundColor;
-  padding: 5px 10px 10px 10px;
-  -moz-box-shadow: 0 0px 40px 2px #888;
-  -webkit-box-shadow: 0 0px 40px 2px#888;
-  box-shadow: 0 0px 40px 2px #888;
-}
 
 .hidden{
   display: none;
 }
 
-.btn-default{
-     background-image: linear-gradient(to bottom, #fff, $buttonColor1);
-     &:hover { background-color: $buttonColor1 }
-}
 
 .infoDiv {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 1);
+    padding-top: 50px;
     line-height: 20px;
-    margin: 30px;
     font-size: 14px;
-    p{
+   /* p{
         margin: 10px;
     }
     span{
       font-weight: bold;
-    }
+    }*/
 }
 
 abbr[title], abbr[data-original-title] {
@@ -146,16 +132,8 @@ abbr[title], abbr[data-original-title] {
 .customButton{
   height: $buttonAndInputHeight;
   background-color: $transparentBackground;
-    &:hover { background-color: $buttonColor1; color: #fff }
     padding: 0px;
-    border: solid 1px #bbb;
-    border: none;
     color: #555;
-
-}
-.customHomeButton{
-    @include roundedCorners(0px 0px 20px 20px);
-    height: 40px;
 }
 
 .infoHeader{

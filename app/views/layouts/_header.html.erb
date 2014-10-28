@@ -1,53 +1,60 @@
-  <header class="navbar navbar-fixed-top header">
-    <div class="container">
-      <div>
-        <%= link_to :root, id: "logo",  data: { :no_turbolink => true } do %>
-          <ul>
-            <li><span id="beta">beta</span></li>
-            <li><%= image_tag "logo_letters_horizontal.png",  alt: "local food is good" %></li>
-            <!--<li><span id="headerText"><%#= I18n.t('title.main') %></span></li>-->
-          </ul>        
-        <% end %>
-      </div>
-
-      <button class="navbar-toggle btn-navbar" data-toggle="collapse" data-target=".navHeaderCollapse">
-          <span class = "icon-bar"></span>
-          <span class = "icon-bar"></span>
-          <span class = "icon-bar"></span>
+<nav id="myNavbar" class="navbar navbar-default navbar-fixed-top header" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navHeaderCollapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-      <div class="collapse navbar-collapse navHeaderCollapse">
-        <ul class="nav navbar-nav navbar-right">
-          <%#= request.original_fullpath %>
-          <% if current_page?(controller: '/home') %>
-            <li>
-              <%= link_to  I18n.t('links.global.find_a_selling_place'), "#", class: "lightLink", id: "find_a_selling_place", data: { :no_turbolink => true} %>
-            </li> 
-            <li>
-              <%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org", class: "lightLink" %></li> 
-            <li>
-              <%= link_to I18n.t('links.global.about' ), "#about_main", class: "lightLink", id: "linkToHomepageText" %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to I18n.t('links.global.find_a_selling_place' ), :root, class: "lightLink", id: "find_a_selling_place", data: { :no_turbolink => true} %></li>
-            <li>
-              <%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org", class: "lightLink" %></li>
-            <li>
-              <%= link_to I18n.t('links.global.about' ), { action: "index", controller: "/home", anchor: "about_main"} , class: "lightLink", id: "linkToHomepageText", data: { :no_turbolink => true} %></li>
-          <% end %>
-
-          <li>
-            <%= link_to I18n.t('links.global.add_new_point_of_sales'), :new_point_of_sale, class: "lightLink", data: { :no_turbolink => true} %>
-          </li> 
-           <!-- http://stackoverflow.com/questions/8390394/switch-language-with-url-rails-3 -->
-          <li>
-            <% if I18n.locale == I18n.default_locale %>
-              <%= link_to "EN", {:locale=> 'en'},  :class=> "lightLink" %>
-            <% else %>
-              <%= link_to "DE", {:locale => 'de'}, :class=> "lightLink" %>
-            <% end%>
-          </li>
-        </ul>
-      </div>  
+      <!--<a class="navbar-brand" href="#">Tutorial Republic</a>-->
+      <%= link_to :root, id: "logo", class: "navbar-brand" do %>
+        <%= image_tag "logo_letters_horizontal.png",  alt: "local food is good" %>       
+      <% end %>
     </div>
-  </header>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navHeaderCollapse">
+      <ul class="nav navbar-nav navbar-right">
+      <% if current_page?(controller: '/home') %>
+        <li>
+          <%= link_to  I18n.t('links.global.find_a_selling_place'), "#", id: "find_a_selling_place", data: { :no_turbolink => true} %>
+        </li> 
+        <li>
+          <%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org" %></li> 
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" id="linkToHomepageText" data-toggle="dropdown"><%= I18n.t('links.global.about') %><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#about_goal"><%= I18n.t("headers.goal")%></a></li>
+            <li><a href="#about_localFood"><%= I18n.t("headers.localFood")%></a></li>
+            <li><a href="#about_map"><%= I18n.t("headers.map")%></a></li>
+            <li><a href="#about_addAPlace"><%= I18n.t("headers.addAPlace")%></a></li>
+            <li class="divider"></li>
+            <li><a href="#about_team"><%= I18n.t("headers.team")%></a></li>
+          </ul>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to I18n.t('links.global.find_a_selling_place' ), :root, id: "find_a_selling_place", data: { :no_turbolink => true} %></li>
+        <li>
+          <%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org" %></li>
+        <li>
+          <%= link_to I18n.t('links.global.about' ), { action: "index", controller: "/home", anchor: "about_main"} , class: "lightLink", id: "linkToHomepageText", data: { :no_turbolink => true} %></li>
+      <% end %>
+      <li>
+        <%= link_to I18n.t('links.global.add_new_point_of_sales'), :new_point_of_sale, data: { :no_turbolink => true} %>
+      </li> 
+      <li>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><%= I18n.locale.upcase %> <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><%= link_to "EN", {:locale=> 'en'} %></li>
+            <li><%= link_to "DE", {:locale => 'de'} %></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    </div>
+  </div>
+</nav>

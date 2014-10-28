@@ -35,6 +35,7 @@
 		<!--end-->
 
 	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true %>
+	  <!--TODO: category ids do not get translated-->
 	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true %>
 	  <%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "formTextInput" } %>
 	  <%= f.input :cell_phone, label: "#{I18n.t("properties.additional_information.cell_phone")}:", input_html: { class: "formTextInput" } %>
@@ -43,7 +44,7 @@
 	  <%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", as: :text,  input_html: { rows: "10" } %>
 
 	  <ul id = "openingTimesContainer">
-	  	<label><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
+	  	<label class="control-label"><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
 	  	<!-- record name, record_object, options, &block-->
 			<%= f.simple_fields_for :opening_times, @sorted_opening_times , :validate => :false do |ot| %>
 			  	<li class = "openingDayContainer grayedOut">
@@ -92,13 +93,16 @@
   </div>
   <% if locals[:parent]== "new" %>
  	 <%= f.button :submit, value: I18n.t("button.save_place"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
+
   <% elsif locals[:parent]== "edit" %>
   	<%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
+
   <% end %>
 <% end %>
 <% if locals[:parent]== "new" %>
-	<%= button_to I18n.t("button.back"), :root ,  class: 'btn' %>
+
+	 <%= button_to I18n.t("button.back"), :root , method: :get, class: 'btn' %>
 <% elsif locals[:parent]== "edit" %>
+
 	<%= button_to I18n.t("button.cancel_changes"), point_of_sale_path(@point_of_interest), method: :get, class: 'btn' %>
-  	<%#= button_to I18n.t("button.delete_selling_place"), @point_of_interest, class: 'btn', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } %>
 <% end %>
