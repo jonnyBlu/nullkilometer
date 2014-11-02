@@ -5,7 +5,7 @@
 	</li>
 	<% I18n.t("date.day_names").each_with_index do |day, index| %>
 	<li>
-		<input name="openingDay" type="image" value="<%= index %>" class="imageInput" title="<%= day %>" src="<%= asset_path("map_icons/food_categories/all.png") %>">
+		<input name="openingDay" type="image" value="<%= index %>" class="imageInput" title="<%= day %>" src="<%= asset_path("map_icons/opening_days//#{index}.png") %>">
 		<span><%= day %></span>
 	</li>
 	<% end %>

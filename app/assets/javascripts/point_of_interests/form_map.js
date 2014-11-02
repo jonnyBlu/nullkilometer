@@ -29,11 +29,10 @@ var FormMap = function(){
     addressResultsPlaceholder = resultsPlaceholder;
     addressResultsPlaceholder.append(I18n.t("map.messages.use_map"));
   },
-  getOSMAddress = function(data, textStatus, jqXHR){
-    // $('#loading-animation').remove();    
+ /* getOSMAddress = function(data, textStatus, jqXHR){ 
     if(data.length > 1){
       addressResultsPlaceholder.html(TEXT_ADDRESS_SELECTION+'<ul></ul>');
-      console.log("received "+data.length+" Search Results from OSM");
+    //  console.log("received "+data.length+" Search Results from OSM");
       var validAddressResultArray = new Array();
 
       var previousAddress = "";
@@ -42,7 +41,6 @@ var FormMap = function(){
         if($.inArray(data[i].class, [ "highway", "place", "shop", "building"]) == -1 
           //or if it's type is one of the listed, skip the rest of the block and go to the next address
           || $.inArray(data[i].type, [ "bus_stop", "platform", "tertiary", "city", "county"]) > -1) continue; 
-
         validAddressResultArray.push(data[i]);
         var 
         currentArrayIndex = validAddressResultArray.length -1,
@@ -66,7 +64,7 @@ var FormMap = function(){
       addressResultsPlaceholder.html('<div>'+I18n.t("map.messages.no_results")+'</div>');
       console.warn("recieved no Search Results from OSM or something went wrong");
     }
-  },
+  },*/
   //PRIVATE METHODS
   placeMarker = function(lat, lon, address, zoomLevel, defaultLocation){
     var coordinates = new L.LatLng(lat, lon, true);
@@ -135,8 +133,9 @@ var FormMap = function(){
   };
   return{
     initMap: initMap,
-    getOSMAddress: getOSMAddress,
-    setLocationSearchPlaceholders: setLocationSearchPlaceholders
+    //getOSMAddress: getOSMAddress,
+    setLocationSearchPlaceholders: setLocationSearchPlaceholders,
+    handleLocation: handleLocation
   }  
 }
 

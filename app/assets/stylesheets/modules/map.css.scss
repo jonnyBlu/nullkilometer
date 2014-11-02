@@ -15,11 +15,9 @@ $minHeightMap: 600px;
 		height: 100%;
 		min-height: $minHeightMap;
 	}
-	#locationResultPopup {
-		position: absolute;
-	}
 
 	#mapFilterContainer {
+		position: absolute;
 		margin-top:65px;
 		z-index: 2;
 
@@ -131,24 +129,6 @@ $minHeightMap: 600px;
 			height: 100%;
 			background-color: $backgroundColor;
 			z-index: 2;
-		}
-
-		#locationResultPopup {
-			top: 50px;
-			display: none;
-			z-index: 11;
-			width: 100%;
-			padding: 20px 0px 20px 0px;
-			background-color: white;
-			@include boxShadow(10px, #aaa);
-			@include roundedCorners_bottom(10px);
-			p, ul {
-				margin-left: 20px;
-			}
-			a:hover{
-				background: none;
-				color: $backgroundColor;
-			}
 		}
 	}
 

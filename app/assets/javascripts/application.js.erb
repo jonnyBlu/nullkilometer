@@ -70,6 +70,15 @@ categoryIconImageUrls = {
 	"8" : "<%= asset_path('map_icons/food_categories/8.png') %>",
 	"9" : "<%= asset_path('map_icons/food_categories/9.png') %>"
 },
+openingDaysIconImageUrls = {
+	"0" : "<%= asset_path('map_icons/opening_days/0.png') %>",
+	"1" : "<%= asset_path('map_icons/opening_days/1.png') %>",
+	"2" : "<%= asset_path('map_icons/opening_days/2.png') %>",
+	"3" : "<%= asset_path('map_icons/opening_days/3.png') %>",
+	"4" : "<%= asset_path('map_icons/opening_days/4.png') %>",
+	"5" : "<%= asset_path('map_icons/opening_days/5.png') %>",
+	"6" : "<%= asset_path('map_icons/opening_days/6.png') %>"
+},
 userIconImageLocation = "<%= asset_path('map_icons/user.png') %>";
 
 //global variables
@@ -83,7 +92,7 @@ var translateContent = function(){
 	productCategoryNames = I18n.t("product.category_names"),
 	weekDayNames =  I18n.t("date.day_names"),
 	moreInfoLinkName = I18n.t("links.global.more_information");
-	enterAnAddressText = I18n.t("input.commands.choose_an_address");
+	chooseAnAddressText = I18n.t("input.commands.choose_an_address");
 };
 
 var callAjax = function(url, dataToSend, onSuccess){
@@ -116,14 +125,21 @@ var ajaxCallOSM = function(url, dataToSend, onSuccessFunction){
 	});
 }
 
-var registerLocationSearch = function(buttonSelector, inputSelector, resultsSelector, onSuccessFunction){
+var setLocationSearchListners = function(buttonSelector, inputSelector, resultsSelector, onSuccessFunction){
 	buttonSelector.click(function(event){
+		registerLocationSearch(event, inputSelector, onSuccessFunction);
+	});
+	inputSelector.keyup(function(event){
+		if(event.keyCode == 13){
+			buttonSelector.click();
+		}
+	});
+}
+
+var registerLocationSearch = function(event, inputSelector, onSuccessFunction){
 		event.preventDefault();
-		resultsSelector.html('');
 		var input = inputSelector.val();
-		// looks if empty
-		if(input.trim() != ""){
-			// $('#newPosMap').append('<img alt="Loading" id="loading-animation" src="//'+window.location.host+'/assets/ajax-loader.gif" />');
+		if(input.trim() != ""){ // looks if empty
 			var dataToSend = {
 				format: 'json',
 				q: input,
@@ -133,12 +149,4 @@ var registerLocationSearch = function(buttonSelector, inputSelector, resultsSele
 			ajaxCallOSM(geocodingUrl, dataToSend, onSuccessFunction);
 		}
 		inputSelector.val("");
-	});
-	inputSelector.keyup(function(event){
-		if(event.keyCode == 13){
-			buttonSelector.click();
-		}
-	});
-
 }
-

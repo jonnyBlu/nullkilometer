@@ -2,42 +2,48 @@ $(document).ready(function(){
 	var 
 	map = new HomeMap(),
 	filterInputsStatesArray = [],
-	buttonSelector = $("#addressLookupContainer #locationSubmit"),
-	inputSelector = $("#addressLookupContainer #locationInput"),
-	resultsSelector = $("#locationResultPopup"),
+	globalMapFilterContainer = $("#mapFilterContainer"),
+	desktopMapFilterPlaceholder = $("#mapFilter"),
+	globalLocationSearchButtonPlaceholder = $("#mapFilterContainer #locationSubmit"),
+	globalLocationSearchInputPlaceholder = $("#mapFilterContainer #locationInput"),
+	locationSearchResultsList = $("#locationResultList"),
 	mapFilterPlaceholder, //initializing the variable
+	addressLookupContainer,
 
-	filterTags = function(){
-		var activeValues = getActiveValues();
-		map.setMarkerOpacity(activeValues);	
+	loadAddressSearchListeners = function(){
+		globalLocationSearchButtonPlaceholder.click(function(e){
+			addressLookupContainer = getAddressLookupContainer();
+			registerLocationSearch(e, addressLookupContainer.find("#locationInput"), findAddressOnTheMap);
+		});
+		globalLocationSearchInputPlaceholder.keyup(function(event){
+			if(event.keyCode == 13){
+				addressLookupContainer = getAddressLookupContainer();
+				addressLookupContainer.find("#locationSubmit").click();
+			}
+		});
 	},
 	loadFilterListeners = function(){
 		$("#mapFilterButton, #find_a_selling_place").click(function(){
-			$("#mapFilter").toggleClass("open");
-			$("#mapFilter").slideToggle("slow");								
+			desktopMapFilterPlaceholder.toggleClass("open");
+			desktopMapFilterPlaceholder.slideToggle("slow");								
 		});
-
-		$("#mapFilterContainer").find("input").parent().click(function(e){
-			//relates to "dropdown-menu" element which by default would fire an event which closes the tab
+		globalMapFilterContainer.find("input[type='image']").parent().click(function(e){
+			//relates to "dropdown-menu" element visible on mobile devise which by default would fire an event which closes the tab
 			//http://stackoverflow.com/questions/25089297/twitter-bootstrap-avoid-dropdown-menu-close-on-click-inside
 			e.stopPropagation();
-			//reading the variable's value every time the user uses the filter
-			mapFilterPlaceholder = getMapFilterPlaceholder(); // see which filter (mobile or normal) is currently visible
-			var 
-			clickedInputElement = $(this).find("input"),
-			inputName = $(this).find("input").first().prop("name");
-
-			filterTagsBy(inputName, clickedInputElement);
+			filterTagsBy($(this).find("input").first().prop("name"), $(this).find("input"));
 		});
 	},
 	filterTagsBy = function(inputName, clickedInputElement){
-		//console.log("filteringTagsBy: " + inputName);
+		//reading the variable's value every time the user uses the filter
+		mapFilterPlaceholder = getMapFilterPlaceholder(); // see which filter (mobile or normal) is currently visible
+			
 		clickedInputElement.toggleClass("inactive");
 		clickedInputElement.parent().find("span").toggleClass("inactive");
 		if(clickedInputElement.attr("value")=="all")
-			toggleActiveInput(inputName);
+			toggleActiveFilterInput(inputName);
 		
-		var activeValues = getActiveValues();
+		var activeValues = getActiveFilterValues();
 		map.setMarkerOpacity(activeValues);
 
 		var hiddenMapFilterPlaceholder = getHiddenMapFilterPlaceholder();	
@@ -51,7 +57,7 @@ $(document).ready(function(){
 			}
 		});
 	},
-	toggleActiveInput = function(inputName){
+	toggleActiveFilterInput = function(inputName){
 		var 
 		inputs = mapFilterPlaceholder.find("input[name='"+inputName+"']"),
 		selectAllInput = mapFilterPlaceholder.find("input[name='"+inputName+"'][value='all']"),
@@ -70,7 +76,7 @@ $(document).ready(function(){
 			};				
 		});
 	},
-	getActiveValues = function(){
+	getActiveFilterValues = function(){
 		var 
 		activeValues = {};
 		filterInputsStatesArray = [];
@@ -93,6 +99,40 @@ $(document).ready(function(){
 	},
 	getHiddenMapFilterPlaceholder = function(){
 		return $("#mapFilterControls").is(":visible") ?  $("#mapFilterMobile") : $("#mapFilter");
+	},
+	getAddressLookupContainer = function(){
+		return $("#mapFilterControls").is(":visible") ? $("#mapFilterControls #addressLookupContainer") : $("#mapFilterMobile #addressLookupContainer");
+	},
+	findAddressOnTheMap = function(data){
+
+		locationSearchResultsList.html('');
+		locationSearchResultsList.html('<p>'+chooseAnAddressText+'</p><ul></ul>');
+
+		if(data.length > 1){
+			$("#modalLauncher").click(); //trigger click event on the button opening modal
+			var previousAddress = "";
+			for(var i = 0; i < data.length; i++){
+				var address = data[i].display_name;
+				if(address != previousAddress)
+					locationSearchResultsList.find("ul").append("<li title='"+data[i].lon+","+data[i].lat+"'><a class='ordinaryLink' href='#'>"+address+"</a></li>"); 
+				previousAddress = address;
+			}
+			locationSearchResultsList.find("li").click(function(){
+				var 
+					lon = this.title.split(",")[0],
+					lat = this.title.split(",")[1],
+					chosenAddress = $(this).find("a").html();
+				map.zoomTo(lat, lon, ZOOMONMARKERLEVEL);
+			});
+
+		} else if(data.length == 1){
+			var address = data[0].display_name;
+			map.zoomTo(data[0].lat, data[0].lon, ZOOMONMARKERLEVEL);
+		} else {
+			$("#modalLauncher").click(); //trigger click event on the button opening modal
+			locationSearchResultsList.html('<div>No Search Results</div>');
+			console.warn("No Search Results received from OSM or something went wrong");
+		}
 	};
 
 	translateContent();
@@ -100,10 +140,9 @@ $(document).ready(function(){
 	map.initmap(INITIALLAT, INITIALLON, 12); // around Berlin;
 	map.loadMarkers();
 	//map.locateUser(12); //re-activate when there are more tags everywhere
-	registerLocationSearch(buttonSelector, inputSelector, resultsSelector, map.getOSMAddress);
-	
+
 	mapFilterPlaceholder = getMapFilterPlaceholder();
-	//filterTags();
+	loadAddressSearchListeners();
 	loadFilterListeners();
 
 });

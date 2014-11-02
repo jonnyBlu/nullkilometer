@@ -45,43 +45,6 @@ var HomeMap = function(){
 		//map.spin(true); 
 		callAjax("/"+I18n.currentLocale()+"/point_of_sales", null, onSuccessLoadMarkers);
 	},
-	getOSMAddress = function (data){
-		$(document).scrollTop(0);
-		var resultsSelector = $("#locationResultPopup"),
-			resultAmount = data.length;
-		resultsSelector.html('<p>'+enterAnAddressText+'</ul>');
-		if(resultAmount > 1){
-			//console.log("received "+resultAmount+" Search Results from OSM");
-			var resultArr = new Array(),
-				previousAddress = "";
-			for(var i = 0; i < resultAmount; i++){
-				// var address = formatAddress(data[i].display_name);
-				var address = data[i].display_name;
-				if(address != previousAddress){
-					resultsSelector.find("ul").append("<li title='"+data[i].lon+","+data[i].lat+"'><a href='#'>"+address+"</a></li>"); 
-				}			
-				previousAddress = address;
-			}
-			resultsSelector.slideDown();
-			$("#mapFilterContainer, #addShop").slideUp();
-
-			resultsSelector.find("li").click(function(){
-				var lon = this.title.split(",")[0],
-					lat = this.title.split(",")[1],
-					chosenAddress = $(this).find("a").html();
-				zoomTo(lat, lon, ZOOMONMARKERLEVEL);
-				resultsSelector.slideUp();
-				$("#mapFilterContainer, #addShop").slideDown();
-			});
-		} else if(resultAmount == 1){
-			// var address = formatAddress(data[0].display_name);
-			var address = data[0].display_name;
-			zoomTo(data[0].lat, data[0].lon, ZOOMONMARKERLEVEL);
-		} else {
-			resultsSelector.html('<div>No Search Results</div>');
-			console.warn("No Search Results received from OSM or something went wrong");
-		}
-	},
 	onLocationFound = function(e) {
 		curPosMarkerLayer = new L.Marker(e.latlng, {icon: curPosMarkerIcon});
 		map.addLayer(curPosMarkerLayer);
@@ -250,7 +213,7 @@ var HomeMap = function(){
 		initmap: initmap,
 		locateUser: locateUser,
 		loadMarkers: loadMarkers,
-		getOSMAddress: getOSMAddress,
+		zoomTo: zoomTo,
 		setMarkerOpacity: setMarkerOpacity		
 	}
 }

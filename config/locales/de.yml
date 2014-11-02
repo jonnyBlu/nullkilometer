@@ -30,6 +30,7 @@ de:
     save_place: "Neuen Ort speichern"
     cancel_changes: "Änderungen verwerfen"
     back: "Zurück"
+    close: "Schließen"
   input:
     commands:
         add_an_address: "Adresse eingeben"
@@ -91,3 +92,4 @@ de:
     market_stall: "Marktstand"
     belongs_to_market: "Ist im Markt"
     errors: "Fehĺer"
+    address_search_results: "Ergebnisse der Adresssuche"

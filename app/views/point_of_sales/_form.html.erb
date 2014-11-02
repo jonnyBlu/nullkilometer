@@ -1,6 +1,7 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "point_of_interests/form.js" %>
     <%= javascript_include_tag "jquery.validate.js" %>
+    <%= javascript_include_tag "point_of_interests/validator.js" %>
     <%= javascript_include_tag "point_of_interests/form_map.js" %>
 <% end %>
 
@@ -92,17 +93,16 @@
   	<!-- end block -->
   </div>
   <% if locals[:parent]== "new" %>
+ 	 <%#= f.button :submit, value: I18n.t("button.save_place") %>
  	 <%= f.button :submit, value: I18n.t("button.save_place"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
-
   <% elsif locals[:parent]== "edit" %>
+   	<%#= f.button :submit, value: I18n.t("button.save_changes") %>
   	<%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
-
+  	<button  value="save changes" class="btn btn-success" type="submit">
   <% end %>
 <% end %>
 <% if locals[:parent]== "new" %>
-
 	 <%= button_to I18n.t("button.back"), :root , method: :get, class: 'btn' %>
 <% elsif locals[:parent]== "edit" %>
-
 	<%= button_to I18n.t("button.cancel_changes"), point_of_sale_path(@point_of_interest), method: :get, class: 'btn' %>
 <% end %>

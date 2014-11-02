@@ -21,8 +21,8 @@
 </head>
 <body class="<%= yield :body_classes %>">
   <%=  render 'layouts/header' %> 
-  <!--TODO: does not recognise home when the locale is not set :/) -->
-  <% if current_page?(controller: '/home') %>
+  <!--both checks needed: when locale is set and when locale is not set :/) -->
+  <% if current_page?(root_url) || current_page?('/')  %>
     <%=  render 'map' %>
   <% end %>
 	<div class="container">
