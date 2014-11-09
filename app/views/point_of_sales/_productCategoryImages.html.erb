@@ -1,9 +1,9 @@
 <% if seller.is_a?(PointOfSale)  %>
-<% @merged_product_category_ids.each do |category_id|  %>
-	<%= image_tag "map_icons/food_categories/"+category_id.to_s+".png", class: "categoryIcon", alt: Product::CATEGORY_NAMES[category_id],  title: Product::CATEGORY_NAMES[category_id] %>
-<% end %>
+	<% @merged_product_category_ids.each do |category_id|  %>
+		<%= image_tag "map_icons/food_categories/"+category_id.to_s+".png", class: "categoryIcon", alt: I18n.t("product.category_names")[category_id],  title: I18n.t("product.category_names")[category_id] %>
+	<% end %>
 <% else %>
-<% seller.product_category_ids.each do |category_id|  %>
-	<%= image_tag "map_icons/food_categories/"+category_id.to_s+".png", class: "categoryIcon", alt: Product::CATEGORY_NAMES[category_id],  title: Product::CATEGORY_NAMES[category_id] %>
-<% end %>
+	<% seller.product_category_ids.each do |category_id|  %>
+		<%= image_tag "map_icons/food_categories/"+category_id.to_s+".png", class: "categoryIcon", alt: I18n.t("product.category_names")[category_id],  title: I18n.t("product.category_names")[category_id] %>
+	<% end %>
 <% end %>

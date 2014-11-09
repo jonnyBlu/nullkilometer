@@ -9,9 +9,6 @@
    -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
 }
 
-@mixin roundedCorners_bottomright($round){
-     -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
-}
 
 @mixin boxShadow($expansion, $color){
     -moz-box-shadow:0px 0px $expansion $color;

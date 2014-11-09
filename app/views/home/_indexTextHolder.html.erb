@@ -30,10 +30,18 @@
 		 <div class="row" id="about_map" >
 	    	<div class="col-sm-12 col-md-12 col-lg-12"><h1 class="heading"><%= I18n.t("headers.map")%></h1></div>
 	    </div>			   	
-      	<div class="row">
-			<div class="col-sm-6 col-md-4 col-lg-4"><%=  render 'texts/map1' %></div>
-			<div class="col-sm-6 col-md-4 col-lg-4"><%=  render 'texts/map2' %></div>
-			<div class="col-sm-6 col-md-4 col-lg-4"><%=  render 'texts/map3' %></div>
+      	<div class="row">      		
+			<div class="col-sm-6 col-md-4 col-lg-4">
+				<%= image_tag "pictures/map.png",  alt: "food on the map",  height: '220' %>
+				<%=  render 'texts/map1' %>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-4">
+				<%= image_tag "pictures/infobox.png",  alt: "infobox on the map",  height: '220' %>
+				<%=  render 'texts/map2' %></div>
+			<div class="col-sm-6 col-md-4 col-lg-4">
+				<%= image_tag "pictures/filter2.png",  alt: "filter on the map",  height: '220' %>
+				<%=  render 'texts/map3' %>
+			</div>
 		</div>					
 	</div>
 
@@ -60,14 +68,7 @@
 	</div>-->
 
 	<div class="hopePageText_section">	
-	    <div class="row" id="about_team" >
-	    	<div class="col-sm-12 col-md-12 col-lg-12"><h1 class="heading"><%= I18n.t("headers.team")%></h1></div>
-	    </div>		   	
-      	<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-			TODO:
-			</div>
-		</div>					
+		<%=  render 'team' %>				
 	</div>
 
 </div>

@@ -2,61 +2,38 @@ $profilePageWrapperWidth: 100%;
 $mapHeight: 400px;
 $mapWidth:	100%;
 
-@mixin roundedCorners($round) {
-  -moz-border-radius:$round;
-  -webkit-border-radius:$round;
-  border-radius:$round;
-}
-
-/*@mixin roundedCorners_bottom($round) {
-   -moz-border-radius-bottomleft:$round;  -webkit-border-bottom-left-radius:$round;  border-bottom-left-radius:$round;
-   -moz-border-radius-bottomright:$round;  -webkit-border-bottom-right-radius:$round;  border-bottom-right-radius:$round;
-}*/
-
-@mixin boxShadow($expansion,$color){
-    -moz-box-shadow:0px 0px $expansion $color;
-    -webkit-box-shadow:0px 0px $expansion $color;
-    box-shadow:0px 0px $expansion $color;
-}
-
 .profileWrapper{
-
-	.row {
-		margin-left: 0px;
+	h1{
+		text-align: left;
 	}
-	.col-md-6{
-		word-break: break-word;
+	#editPosLinkWrapper{
+		text-align: right;
 	}
-
-	button{
-	/*	float: right;*/
+	ul{
+		padding-left: 0px;
 	}
 }
 
-.profileContainer, #marketStallsContainer{
+#marketStallsContainer{
 	ul{
 		margin-left: 0px;
 	}
 }
 
-.profileContainer {
+/*.profileContainer {
 	margin: 0px;
 	margin-top: 20px;
 	margin-bottom:20px;
-	.row{
-		.row{
-			padding: 10px 0px 10px 0px;
-		}
-	 }
 	ul, address{
 		margin: 0px;
 		padding: 0px;
 	}
 }
-	.bordered{
-		padding: 10px 0px 10px 0px;
-		border-bottom: 1px solid #eee;
-	}
+*/
+.bordered{
+	padding: 10px 0px 10px 0px;
+	border-bottom: 1px solid #eee;
+}
 
 #editProfilePageContainer{
 	label[for=name]{
@@ -64,19 +41,7 @@ $mapWidth:	100%;
 		font-weight: bold;
 	}
 }
-#profilePageHeader{
-	ul > li:last-child{
-		font-size: 35px;
-		height: 45px;
-		line-height: 35px;
-	}
-}
 
-.profileWrapper{
-	#editPosLinkWrapper{
-		text-align:right;
-	}
-}
 #openingDaysAndTimesList{
 	.row{
 		border: none;
@@ -87,8 +52,8 @@ span.openingTimeDay{
 	display: inline-block;
 	width: 100px;
 	margin-right: 10px;
+	font-weight: normal;
 }
-
 
 
 /* market stalls styling */

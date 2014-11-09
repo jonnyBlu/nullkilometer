@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
 	end
 
   	def product_category_names pos
-		Product::CATEGORY_NAMES.values_at(*pos.product_category_ids)
+		I18n.t("product.category_names").values_at(*pos.product_category_ids)
 	end	
 
 end

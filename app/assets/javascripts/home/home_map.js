@@ -6,8 +6,8 @@ var HomeMap = function(){
 	curPosMarkerLayer,
 	zoomLevel,
 	map,
-	markerIconWidth = 30,
-	markerIconHeight = 43,
+	markerIconWidth = 40,
+	markerIconHeight = 56,
 	curPosMarkerIconWidth = 40,
 	curPosMarkerIconHeight = 40,	
 	curPosMarkerIcon = L.icon({
@@ -27,14 +27,13 @@ var HomeMap = function(){
     popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
 	initmap = function(lat, lon, zoomLevel){
-    var 
-    options = {
+	    var options = {
     		center : new L.LatLng(lat, lon), 
     		zoom : zoomLevel
-    	},     
-    mapLayer = new L.TileLayer(osmTilesUrl);    
-    map = new L.Map('map', options).addLayer(mapLayer);
-    map.on('locationfound', onLocationFound);
+	    },     
+	    mapLayer = new L.TileLayer(osmTilesUrl);    
+	    map = new L.Map('map', options).addLayer(mapLayer);
+	    map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
 	},
 	locateUser = function(zoomLevel){
@@ -57,10 +56,10 @@ var HomeMap = function(){
 		removeMarkers();
 		for (i=0;i<pos.length;i++) {
 			var shopTypeId = pos[i].posTypeId;
-			markerIcon.options.iconUrl = shopTypeIconImageUrls[shopTypeId];
-
-			var latlon = new L.LatLng(pos[i].lat,pos[i].lon, true);
-			var marker = new L.Marker(latlon, {icon: markerIcon});
+			markerIcon.options.iconUrl = shopTypeMapMarkerImageUrls[shopTypeId];
+			var 
+			latlon = new L.LatLng(pos[i].lat,pos[i].lon, true),
+			marker = new L.Marker(latlon, {icon: markerIcon});
 			marker.data=pos[i];
 			map.addLayer(marker);
 			bindListeners(marker);
@@ -69,16 +68,12 @@ var HomeMap = function(){
 	},
 	bindListeners = function(marker){
 		marker.on('click', function(evt) {	
-		//	console.log(marker);
-			//for markers which are invisible (but for some reason still clickable, even if "clickable" is disactivated)
-			if(marker.options.opacity == 1){
-				var infoBoxContent = typeof marker.getPopup() == "undefined" ? buildInfoboxHtml(marker) : marker.getPopup().getContent();
-				//a workaround, cuz if a popup is still bound from the previous click (but invisible), 
-				//it opens but remains invisible
-				marker.unbindPopup();
-				marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
-				marker.openPopup();
-			}
+			var infoBoxContent = typeof marker.getPopup() == "undefined" ? buildInfoboxHtml(marker) : marker.getPopup().getContent();
+			//a workaround, cuz if a popup is still bound from the previous click (but invisible), 
+			//it opens but remains invisible
+			marker.unbindPopup();
+			marker.bindPopup(infoBoxContent, {className: 'click-popup'}, {closeOnClick: false});
+			marker.openPopup();
 		});
 		marker.on('popupopen', function(){
 			resizeMarkerIcon(marker, true);	
@@ -147,32 +142,34 @@ var HomeMap = function(){
 		var list = "";
 		$.each(ids, function(){
 			list += "<img class='categoryIcon' src='"+categoryIconImageUrls[this]+"' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
-			//list += "<img class='categoryIcon' src='http://localhost:3000/images/map_icons/food_categories/"+this+".png' title='"+arrayWithNames[this]+"' alt='"+arrayWithNames[this]+"'>";
 		});
 		return list;
 	},
 	resizeMarkerIcon = function(marker, enlarge){
-		var width = enlarge ? (markerIconWidth + 20) : markerIconWidth; 
-		var height = enlarge ? (markerIconHeight + 20) : markerIconHeight;
-		var newIcon = marker.options.icon;
-		var posTypeId = marker.data.posTypeId;
-		newIcon.options.iconUrl = enlarge ? shopTypeIconImageUrls_big[posTypeId] : shopTypeIconImageUrls[posTypeId];
+		var 
+		width = enlarge ? (markerIconWidth + 20) : markerIconWidth,
+		height = enlarge ? (markerIconHeight + 20) : markerIconHeight,
+		newIcon = marker.options.icon,
+		posTypeId = marker.data.posTypeId;
+		newIcon.options.iconUrl = shopTypeMapMarkerImageUrls[posTypeId];
 		newIcon.options.iconSize[0] = width;
 		newIcon.options.iconAnchor[0] = width/2;
 		newIcon.options.iconSize[1] = height;
 		newIcon.options.iconAnchor[1] = height;
 		marker.setIcon(newIcon);
 	},
-	setMarkerOpacity = function(checkedParameters, checkedParameterValues, parameterNamesToCheck){
+	setMarkerOpacity = function(checkedParameters){//, checkedParameterValues, parameterNamesToCheck){
 		for (i=0;i<markersOfTheMap.length;i++) {
-			var makeMarkerVisible1 = false,
-				makeMarkerVisible2 = false,
-				makeMarkerVisible3 = false;
-			$.each(checkedParameters, function(key, values){
+			var 
+			makeMarkerVisible1 = false,
+			makeMarkerVisible2 = false,
+			makeMarkerVisible3 = false;
+			$.each(checkedParameters, function(key, values){ // loops 3 times
 				if(key == "productCategory"){
 					var parameters = markersOfTheMap[i].data.productCategoryIds;
 					//OR FILTER
 					$.each(parameters, function(key, value){
+						//looks if places product categories are within the requested product categories
 						// will return -1 if not found
 						if(jQuery.inArray(value.toString(), values)>=0)
 							makeMarkerVisible1 = true;		
@@ -192,21 +189,17 @@ var HomeMap = function(){
 							makeMarkerVisible3 = true;	
 					});
 				}
-				if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) {
-					var ativeMarker=markersOfTheMap[i].setOpacity(1);
-					//console.log(ativeMarker.data);
-					markersOfTheMap[i].options.clickable = true;
-					markersOfTheMap[i].options.zIndexOffset = 0;
-				}
-				else{ 
-					markersOfTheMap[i].setOpacity(0);
-					// reset marker to default size, with infobox closed
-					resizeMarkerIcon(markersOfTheMap[i], false);
-					markersOfTheMap[i].closePopup();
-					markersOfTheMap[i].options.clickable = false;
-					markersOfTheMap[i].options.zIndexOffset = -1000;
-				}
-			});	
+			});
+			if(makeMarkerVisible1 && makeMarkerVisible2 && makeMarkerVisible3) {
+				map.addLayer(markersOfTheMap[i]);
+			}
+			else{ 
+				// reset marker to default size, with infobox closed
+				resizeMarkerIcon(markersOfTheMap[i], false);
+				markersOfTheMap[i].closePopup();
+				//https://github.com/Leaflet/Leaflet/issues/4
+				map.removeLayer(markersOfTheMap[i]);
+			}
 		}
 	};
 	return {

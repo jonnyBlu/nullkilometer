@@ -62,8 +62,8 @@ class PointOfInterestsController < ApplicationController
   def edit
     begin
       @point_of_interest = @poi_class.find(params[:id])
-      @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
-      @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+      @pos_types_collection = I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
+      @product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
       for i in 0..6
         if !@point_of_interest.opening_times.where(day: i).exists?
           @point_of_interest.opening_times.build(day: i)
@@ -151,7 +151,7 @@ class PointOfInterestsController < ApplicationController
   end
 
   def pos_types
-    respond_with object_representation_for_constant(PointOfSale::POS_TYPE_NAMES, "pos_types")
+    respond_with object_representation_for_constant(I18n.t("point_of_sale.pos_type_names"), "pos_types")
   end
 
   def history
@@ -174,8 +174,8 @@ class PointOfInterestsController < ApplicationController
 
   def generate_form_extras
     if @point_of_interest.type == "PointOfSale"
-      @pos_types_collection = PointOfSale::POS_TYPE_NAMES.each_with_index.map{|name, index| [name, index]}
-      @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+      @pos_types_collection = I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
+      @product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
       for i in 0..6
         @point_of_interest.opening_times.build(day: i)

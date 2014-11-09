@@ -23,18 +23,12 @@ a:hover{
   background: none;   
 }
 
-a.lightLink, a.lightLink:visited{
-  /*color: #fff !important;*/
-  color: $grayVeryLight;
-}
-
 a.ordinaryLink, a.ordinaryLink:visited{
   color: #444 !important;
 }
 
-a.lightLink:hover, a.ordinaryLink:hover{
+a.ordinaryLink:hover{
   background-color: transparent !important;
-  /*color: $ordinaryLinkHover !important;*/ 
   opacity:0.5;
   filter:alpha(opacity=50); /* For IE8 and earlier */
 }
@@ -67,7 +61,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  //font-size: 3em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -83,16 +76,12 @@ h2 {
   color: $grayLight;
 }
 
-p {
-  /*font-size: 1.1em;
-  line-height: 1.7em;*/
-}
-
 button:focus::-moz-focus-inner {
     padding: 3px;
     border: none;
 
 }
+
 input:focus, button:focus{
   outline: none;
 }
@@ -102,17 +91,18 @@ input:focus, button:focus{
   display: none;
 }
 
+ul{
+  list-style-type: none;
+}
 
 .infoDiv {
-    padding-top: 50px;
+    padding-top: 50px !important;
     line-height: 20px;
     font-size: 14px;
-   /* p{
-        margin: 10px;
-    }
     span{
       font-weight: bold;
-    }*/
+    }
+    min-height: 100%;
 }
 
 abbr[title], abbr[data-original-title] {
@@ -145,7 +135,7 @@ abbr[title], abbr[data-original-title] {
     height: 25px;
   }
   li:last-child{
-    font-size: 25px;
+    font-size: 15px;
     height: 30px;
     line-height: 30px;
     vertical-align: middle;
@@ -163,27 +153,3 @@ ul.horizontalList{
   }  
 }
 
-/* jquery validate styles */
-label.valid {
-  width: 24px;
-  height: 24px;
-  background: url(assets/img/valid.png) center center no-repeat;
-  display: inline-block;
-  text-indent: -9999px;
-}
-label.error {
-  font-weight: bold;
-  color: red;
-  padding: 2px 8px;
-  margin-top: 2px;
-}
-
-/* devise styling */
-.alert{
-  position:fixed;
-  z-index:1031;
-}
-
-.errorDiv{
-  color: #ff0000;
-}

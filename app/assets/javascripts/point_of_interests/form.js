@@ -72,7 +72,6 @@ var Form = function(){
 	},
 	//PRIVATE METHODS
 	getOSMAddress = function(data, textStatus, jqXHR){ 
-		alert("doin");
 	  if(data.length > 1){
 	    addressResultsPlaceholder.html(TEXT_ADDRESS_SELECTION+'<ul></ul>');
 	    var 

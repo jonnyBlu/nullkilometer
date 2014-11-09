@@ -50,6 +50,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     font-awesome-sass (4.2.0)
       sass (~> 3.2)
     geocoder (1.2.5)
@@ -111,7 +113,7 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    simple_form (3.0.2)
+    simple_form (3.1.0.rc2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     sprockets (2.11.0)
@@ -144,6 +146,7 @@ DEPENDENCIES
   bootstrap-timepicker-rails-addon
   coffee-rails
   devise
+  font-awesome-rails
   font-awesome-sass
   geocoder
   i18n-js
@@ -160,6 +163,6 @@ DEPENDENCIES
   rails (= 4.0.10)
   rgeo
   sass-rails
-  simple_form
+  simple_form (~> 3.1.0.rc1)
   turbolinks
   uglifier

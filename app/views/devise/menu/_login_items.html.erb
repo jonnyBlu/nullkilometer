@@ -1,9 +1,9 @@
 <% if admin_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>        
-  </li>
+  <div class= "col-md-6 col-sm-6 col-xs-6" >
+  	<%= link_to(I18n.t("devise.commands.logout"), destroy_admin_session_path, :method => :delete, class: "ordinaryLink") %>
+  </div>
 <% else %>
-  <li>
-  <%= link_to('Login', new_admin_session_path)  %>  
-  </li>
+  <div class= "col-md-6 col-sm-6 col-xs-6" >
+  <%= link_to(I18n.t("devise.commands.login"), new_admin_session_path, class: "ordinaryLink")  %>  
+  </div>
 <% end %>

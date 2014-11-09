@@ -1,5 +1,5 @@
 class OpeningTime < ActiveRecord::Base
-	WEEK_DAY_NAMES = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
+	#WEEK_DAY_NAMES = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
 
   belongs_to :point_of_sale
   

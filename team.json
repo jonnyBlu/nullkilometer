@@ -1,0 +1,36 @@
+{
+	"Team" : [
+		{
+			"name" : "Frederik",
+			"description" : "accepts bitcoins",
+			"fb" : "",
+			"linkedin" :"http://de.linkedin.com/pub/frederik-nnaji/71/48/42a",
+			"gplus" :"https://plus.google.com/u/1/116221883363307387531/posts",
+			"email" : ""
+		},
+		{
+			"name" : "Igne",
+			"description" : "likes local cheese",
+			"fb" : "",
+			"linkedin" :"",
+			"gplus" :"",
+			"email" : ""
+		},
+		{
+			"name" : "Micha",
+			"description" : "does sick powermoves",
+			"fb" : "",
+			"linkedin" :"",
+			"gplus" :"",
+			"email" : ""
+		},
+		{
+			"name" : "Ayse",
+			"description" : "loves mojito",
+			"fb" : "",
+			"linkedin" :"",
+			"gplus" :"",
+			"email" : ""
+		}
+	]
+}

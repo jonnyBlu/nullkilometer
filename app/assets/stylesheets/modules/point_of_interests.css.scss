@@ -1,81 +1,55 @@
+.formWrapper{
+	max-width: 450px;
+	margin: auto;
+}
+
 form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edit_market_stall {
 	margin-bottom: 10px;
 	.form-inputs{
-		select, input.string {
-			height: 25px;
-		}
 
 		.control-label {
 			font-style: italic;
 		}
 
-		label.checkbox{
-			height: 20px;
-			margin-top:10px;	
-		}
-
-		input.check_boxes, input.boolean{
+		input[type="checkbox"], input[type="boolean"]{
 			vertical-align: middle;
 			height: 20px;
 			width: 20px;
 			margin-right: 5px;
+			margin-left: -23px;
 		}
 
-		input.string{
-			padding-left: 5px;
-			width: $textInputWidth;
-		}
-
-		.formTextInput, textarea {
+		input[type="text"], textarea {
 			@media only screen and (min-width: 500px) { 
 				width: 400px;
 			}
 			@media only screen and (max-width: 500px) { 
 				width: 250px;
 			}			
-			@include roundedCorners(4px);
 		}
 
 		.timeTextInput {
 			width: 100px;
 		}
 
-		.control-group{
-			margin-bottom: 10px;
-		}
-		.control-group.point_of_sale_productCategoryIds .checkbox,
-		.control-group.market_stall_productCategoryIds .checkbox,
-		.control-group.point_of_sale_opening_times_day .checkbox{
-			margin-left: 20px;
-		}
-		.control-group.point_of_sale_opening_times_from, .control-group.point_of_sale_opening_times_to{
-			margin-left: 20px;
-		}
-
 		#openingTimesContainer{ 
 			padding-left: 0px;
 			.openingDayContainer{
-				width: 100%;
-				@media only screen and (min-width: 500px) { 
-					height: 40px;
-				}
-				@media only screen and (max-width: 500px) { 
-					height: 120px;
-				}
-				> .control-group{
-					margin-bottom: 0px;
-					float: left;	
+				padding-left: 20px;
+				height: 70px;
+				label {
+					font-weight: normal;
 				}
 				.point_of_sale_opening_times_day{
 					width: 120px;
+					height: 25px;
 				}
 				.point_of_sale_opening_times_from, .point_of_sale_opening_times_to{
-					margin-top: 10px;
 					label{
-						margin-right: 10px;
+						margin: 0px 10px;
 						float: left;
 					}
-					div.controls{
+					.controls{
 						float:left;
 					}
 				}
@@ -85,19 +59,10 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 				abbr[title=required]{
 					display: none;
 				}
-				ul{
-					/*height: 300px;*/
-					li {
-						
-						/*display: block;
-						height: 100px;
-						width: 150px;*/
-					}
-				}
 			}
 			.grayedOut{
 				color: #666;
-				height: 40px;
+				height: 25px;
 			}
 		}
 		.marketStalls ul{
@@ -128,7 +93,6 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 		}
 
 		#locationSearchResults {
-/*			width: 100%; */
 			padding-bottom: 10px;
 			p, ul {
 				margin-left: 20px;

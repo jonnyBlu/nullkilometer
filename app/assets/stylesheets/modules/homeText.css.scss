@@ -1,22 +1,3 @@
-
-ul{
-	list-style: none;
-}
-
-/* Galleria styling*/
- .galleria{ 
- 	width: 700px;
- 	height: 400px; 
-
-  }
-
-#activityPannel{
-	position:relative;
-	width: 100%;
-	height: 30px;
-	margin: 0px 0px 10px 0px;
-}
-
 .inactive{
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
@@ -48,7 +29,9 @@ ul{
 	}
 
 	img {
-		margin: 0px 10px 10px 10px;
+    margin: auto;
+    display: table-row;
+    margin-bottom: 20px;
 	}
 
 	span{
@@ -70,3 +53,49 @@ ul{
 	border: 0px;
 }
 
+
+/* foto overlay, team section */
+
+$thumbnailSize: 220px;
+
+#about_team_pics .box {
+  cursor: pointer;
+  height: $thumbnailSize;
+  width: $thumbnailSize;
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+#about_team_pics .box img {
+  opacity: 0.8;
+  position: absolute;
+  margin:0;
+  left: 0;
+  right:0;
+}
+
+/* Caption Common Style */
+#about_team_pics .box .caption {
+  opacity: 0;
+  background-color: rgba(0,0,0,0.8);
+  position: absolute;
+  color: #fff;
+  z-index: 100;
+  left: 0;
+  right:0;
+  width: $thumbnailSize;
+  height: $thumbnailSize;
+  text-align: center;
+  padding: 15px;
+  font-style: normal;
+  a{
+    color: white;
+    &:hover {
+      color: #aaa;
+    }
+  }
+  &:hover{
+    opacity: 1;
+  }
+}

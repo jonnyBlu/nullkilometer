@@ -1,52 +1,54 @@
-<div class="row bordered productCategories">
-    <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => @point_of_interest} %>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered productCategories">
+  <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => @point_of_interest} %>
 </div>
-<div class="row bordered">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
     <address property="address:streetAddress"><%= @point_of_interest.address %></address>
 </div>
-<div class="row bordered">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
 	<ul>
-    	<% @point_of_interest.opening_times.each do |day| %>
-    		<li>
-    			<span class="openingTimeDay"><%= I18n.t("date.day_names")[day.day] %></span >
-    			<%= day.from + " - " + day.to %>
-    		</li>
-    	<% end %>
+  	<% @point_of_interest.opening_times.each do |day| %>
+  		<li>
+  			<span class="openingTimeDay">
+          <%#= image_tag(asset_path("map_icons/opening_days/#{day.day}.png"), title: "#{I18n.t('date.day_names')[day.day]}",  alt: "#{I18n.t('date.day_names')[day.day]}") %>
+          <%= I18n.t("date.day_names")[day.day] %>
+        </span >
+  			<%= day.from + " - " + day.to %>
+  		</li>
+  	<% end %>
 	</ul>
 </div> 
-<div class="row bordered">
-    <% if @point_of_interest.detail_info.website.nil? || @point_of_interest.detail_info.website.empty? %>
-        <%= "#{I18n.t("properties.additional_information.website")}: -" %>
-    <%  else %>
-         <%= link_to @point_of_interest.detail_info.website, "#{@point_of_interest.detail_info.website}", target: "_blank",  class: "ordinaryLink" %>
-    <% end %>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
+  <% if @point_of_interest.detail_info.website.nil? || @point_of_interest.detail_info.website.empty? %>
+    <%= "#{I18n.t("properties.additional_information.website")}: -" %>
+  <%  else %>
+    <%= link_to @point_of_interest.detail_info.website, "#{@point_of_interest.detail_info.website}", target: "_blank",  class: "ordinaryLink" %>
+  <% end %>
 </div>
-<div class="row bordered">
-    <div>
-        <%= if @point_of_interest.detail_info.mail.nil? || @point_of_interest.detail_info.mail.empty? 
-            "#{I18n.t("properties.additional_information.email")}: -"  
-            else @point_of_interest.detail_info.mail 
-        end %>
-    </div>
-    <div>
-        <%= if @point_of_interest.detail_info.phone.nil? || @point_of_interest.detail_info.phone.empty? 
-            "#{I18n.t("properties.additional_information.phone")}: -"  
-            else @point_of_interest.detail_info.phone 
-        end %>
-    </div>
-    <div>
-        <%= if @point_of_interest.detail_info.cell_phone.nil? || @point_of_interest.detail_info.cell_phone.empty?
-            "#{I18n.t("properties.additional_information.cell_phone")}: -" 
-            else @point_of_interest.detail_info.cell_phone 
-        end %>
-    </div>
-
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
+  <div>
+    <%= if @point_of_interest.detail_info.mail.nil? || @point_of_interest.detail_info.mail.empty? 
+        "#{I18n.t("properties.additional_information.email")}: -"  
+        else @point_of_interest.detail_info.mail 
+    end %>
+  </div>
+  <div>
+    <%= if @point_of_interest.detail_info.phone.nil? || @point_of_interest.detail_info.phone.empty? 
+        "#{I18n.t("properties.additional_information.phone")}: -"  
+        else @point_of_interest.detail_info.phone 
+    end %>
+  </div>
+  <div>
+    <%= if @point_of_interest.detail_info.cell_phone.nil? || @point_of_interest.detail_info.cell_phone.empty?
+      "#{I18n.t("properties.additional_information.cell_phone")}: -" 
+      else @point_of_interest.detail_info.cell_phone 
+    end %>
+  </div>
 </div>
-<div class="row bordered">
-    <div>
-        <%= if  @point_of_interest.detail_info.description.nil? || @point_of_interest.detail_info.description.empty? 
-                "#{I18n.t("properties.additional_information.description")}: -" 
-                else @point_of_interest.detail_info.description 
-            end %>
-    </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
+  <div>
+    <%= if  @point_of_interest.detail_info.description.nil? || @point_of_interest.detail_info.description.empty? 
+            "#{I18n.t("properties.additional_information.description")}: -" 
+      else @point_of_interest.detail_info.description 
+      end %>
+  </div>
 </div>

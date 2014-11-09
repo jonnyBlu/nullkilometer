@@ -28,7 +28,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-timepicker-rails-addon'
 gem 'jquery-timepicker-rails'
 
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1' 
 #workaround for rails 4 
 #http://stackoverflow.com/questions/18966746/wrong-number-of-arguments-3-for-2-in-rails-4
 #gem 'client_side_validations', github: "bcardarella/client_side_validations", :branch => "4-0-beta"
@@ -49,6 +49,8 @@ gem 'devise'
 
 #for rails4  
 gem 'protected_attributes'
+
+gem "font-awesome-rails"
 
 #devise intructions
 #Some setup you must do manually if you haven't yet:

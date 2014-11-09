@@ -3,29 +3,24 @@
     <%= javascript_include_tag "point_of_interests/profile_page_map.js" %>
 <% end %>
 
-<div class="infoDiv profileWrapper" id="profilePageWrapper">
+<div class="infoDiv profileWrapper"><!-- id="profilePageWrapper">-->
 	<div class="row">
-		<div id="profilePageHeader" class="infoHeader col-md-10">
-			<ul>
-				<li class="type"><%= PointOfSale::POS_TYPE_NAMES[@point_of_interest.posTypeId] %></li>
-			  	<li class="title"><%= @point_of_interest.name %></li>
-			</ul>
+		<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
+			<%= I18n.t("point_of_sale.pos_type_names")[@point_of_interest.posTypeId] %>
+			<h1><%= @point_of_interest.name %></h1>
 		</div>
-		<div class="col-md-2">
-			<div id="editPosLinkWrapper">
-				<%= link_to I18n.t("links.global.edit"), :edit_point_of_sale, class: 'ordinaryLink', 
-				 	data: { :no_turbolink => true }  %>
-			</div>
+		<div class="col-xs-2 col-sm-4 col-md-2 col-lg-2"  id="editPosLinkWrapper">
+			<%= link_to I18n.t("links.global.edit"), :edit_point_of_sale, class: 'ordinaryLink', 
+			 	data: { :no_turbolink => true }  %>
 		</div>
 	</div>
-	<div id="profilePageContainer" class="profileContainer">
-		<div class="row">
-			<div class="col-md-6">
-				<%= render 'point_of_sales/posInfoList' %>
-			</div>
-			<div class="col-md-6">
-				<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
-			</div>
+	<!--TODO: remove? <div class="profileContainer row" id="profilePageContainer">-->
+	<div class="row" >
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<%= render 'point_of_sales/posInfoList' %>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
 		</div>
 	</div>
 	<% if @point_of_interest.pos_type == 0 && @point_of_interest.market_stalls.size > 0 %>

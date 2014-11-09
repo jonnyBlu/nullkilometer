@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def categories
-    respond_with object_representation_for_constant(Product::CATEGORY_NAMES, "productCategories")
+    respond_with object_representation_for_constant(I18n.t("product.category_names"), "productCategories")
   end
 
   private

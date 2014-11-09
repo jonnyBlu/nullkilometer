@@ -26,19 +26,16 @@ function ProfileMap(){
         },
         markerIcon = L.icon({
             iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
-            iconSize:     [30, 43], // size of the icon
-            shadowSize:   [50, 64], // size of the shadow
-            iconAnchor:   [15, 43], // point of the icon which will correspond to marker's location
+          //  iconSize:     [45, 45], // size of the icon
+            shadowSize:   [50, 50], // size of the shadow
+            iconAnchor:   [20, 40], // point of the icon which will correspond to marker's location
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         }),
         onLocationFound = function (e) {
-
-//TODO fix
-            curPosMarkerLayer = new L.Marker(e.latlng, {icon: curPosMarkerIcon});
-            //console.log(this.map);
-            //this.map.addLayer(curPosMarkerLayer);
-
+          //TODO add/remove completely
+          curPosMarkerLayer = new L.Marker(e.latlng, {icon: curPosMarkerIcon});
+          //this.map.addLayer(curPosMarkerLayer);
         },
         onLocationError = function(e) {
             console.log(e.message);
@@ -49,7 +46,7 @@ function ProfileMap(){
         },
         loadMarker = function(data){
             var posTypeId = data.posTypeId;
-            markerIcon.options.iconUrl = shopTypeIconImageUrls[posTypeId];
+            markerIcon.options.iconUrl = shopTypeMapMarkerImageUrls[posTypeId];
             var 
             latlon = new L.LatLng(data.lat,data.lon, true),
             marker = new L.Marker(latlon, {icon: markerIcon});

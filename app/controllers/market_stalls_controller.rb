@@ -30,7 +30,7 @@ class MarketStallsController < ApplicationController
 			@parent_market = PointOfSale.find(pos_id)
 		end	
 		@market_stall = MarketStall.new
-		@product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+		@product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
 		respond_with @market_stall 
 	end
 
@@ -54,7 +54,7 @@ class MarketStallsController < ApplicationController
 		rescue ActiveRecord::RecordNotFound
 	      raise Errors::InvalidPointOfInterest, "Couldn't find market stall with id=#{params[:id]}"
 	    end
-	    @product_categories_collection = Product::CATEGORY_NAMES.each_with_index.map{|name, index| [name, index]}
+	    @product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
 		@parent_market = @market_stall.point_of_sale
 	    respond_with @market_stall
 	end

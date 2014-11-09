@@ -7,16 +7,16 @@
 
 <%= render :partial => "layouts/backend_errors", :locals => {:place => @point_of_interest} %>
 
-<%= simple_form_for @point_of_interest do |f| %>
+<%= simple_form_for @point_of_interest  do |f| %>
 
   <div class="form-inputs">
-	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
 
 	  <% if admin_signed_in? %>	  <!-- Show status change only if admin logged in-->
-		  <%= f.input :status_id, label: "#{I18n.t("properties.main_information.status")}:", collection: @status_names_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_status"), required: :true %>
+		  <%= f.input :status_id, label: "#{I18n.t("properties.main_information.status")}:", collection: @status_names_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_status"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
 		<% end %>
 
-	  <%= f.input :address, label: "#{I18n.t("properties.main_information.address")}:", input_html: { class: "formTextInput" } %>
+	  <%= f.input :address, label: "#{I18n.t("properties.main_information.address")}:", input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
 
 	  <!--TODO: only if js enabled maybe? -->
 	  <div id="formPosMapContainer">
@@ -35,14 +35,14 @@
 		</div>	
 		<!--end-->
 
-	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true %>
+	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
 	  <!--TODO: category ids do not get translated-->
-	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true %>
-	  <%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "formTextInput" } %>
-	  <%= f.input :cell_phone, label: "#{I18n.t("properties.additional_information.cell_phone")}:", input_html: { class: "formTextInput" } %>
-	  <%= f.input :mail, label: "#{I18n.t("properties.additional_information.email")}:", input_html: { class: "formTextInput" } %>
-	  <%= f.input :website, label: "#{I18n.t("properties.additional_information.website")}:", input_html: { class: "formTextInput" } %>
-	  <%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", as: :text,  input_html: { rows: "10" } %>
+	  <%= f.input :productCategoryIds, label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true, input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
+	  <%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
+	  <%= f.input :cell_phone, label: "#{I18n.t("properties.additional_information.cell_phone")}:", input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
+	  <%= f.input :mail, label: "#{I18n.t("properties.additional_information.email")}:", input_html: { class: "form-control", type: "email" }, wrapper_html: { class: "form-group" } %>
+	  <%= f.input :website, label: "#{I18n.t("properties.additional_information.website")}:", input_html: { class: "form-control", type: "url" }, wrapper_html: { class: "form-group" } %>
+	  <%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", as: :text,  input_html: { rows: "10", class: "form-control" }, wrapper_html: { class: "form-group" } %>
 
 	  <ul id = "openingTimesContainer">
 	  	<label class="control-label"><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
@@ -54,19 +54,22 @@
 			  			checked_value: ot.object.day,
 			  		 	include_hidden: :false, 
 			  		 	unchecked_value: nil, 
-			  		 	input_html: { id: ot.object.day, checked: false },
+
+			  		 	input_html: { id: ot.object.day, checked: false, class: "form-control" },
+			  		 	wrapper_html: { class: "form-group" },
 			  		 	:required => false %>
+			  		 	<%#= image_tag(asset_path("map_icons/opening_days/#{ot.object.day}.png"), size: "36") %>
 			  		<%= ot.input :from, label: I18n.t("instructions.add_a_pos.from"), 
 			  			collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
 			  			as: :select, 
 			  			wrapper_html: { class: 'hidden' },
-			  			input_html: { id: ot.object.day, class: "formTextInput timeTextInput"}, 
+			  			input_html: { id: ot.object.day, class: "timeTextInput form-control"}, 
 			  			:required => false %>
 			  		<%= ot.input :to, label: I18n.t("instructions.add_a_pos.to"), 
 				  		collection: ["00:00", "00:30", "01:00", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"], 
 				  		as: :select,  
 				  		wrapper_html: { class: 'hidden' },
-				  		input_html: { id: ot.object.day, class: "formTextInput timeTextInput"}, 
+				  		input_html: { id: ot.object.day, class: "timeTextInput form-control"}, 
 				  		:required => false %>
 		  		</li> 
 	  	  <% end %>
@@ -94,15 +97,17 @@
   </div>
   <% if locals[:parent]== "new" %>
  	 <%#= f.button :submit, value: I18n.t("button.save_place") %>
- 	 <%= f.button :submit, value: I18n.t("button.save_place"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
+ 	 <%= f.button :submit, value: I18n.t("button.save_place"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") }, class: "btn-success"  %>
   <% elsif locals[:parent]== "edit" %>
    	<%#= f.button :submit, value: I18n.t("button.save_changes") %>
-  	<%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") } %>
-  	<button  value="save changes" class="btn btn-success" type="submit">
+  	<%= f.button :submit, value: I18n.t("button.save_changes"), data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit") }, class: "btn-success"  %>
   <% end %>
 <% end %>
 <% if locals[:parent]== "new" %>
-	 <%= button_to I18n.t("button.back"), :root , method: :get, class: 'btn' %>
-<% elsif locals[:parent]== "edit" %>
-	<%= button_to I18n.t("button.cancel_changes"), point_of_sale_path(@point_of_interest), method: :get, class: 'btn' %>
+	<%= button_to I18n.t("button.back"), :root , method: :get, class: 'btn btn-default' %>
+<% elsif locals[:parent] == "edit" %>
+	<%= button_to I18n.t("button.cancel_changes"), point_of_sale_path(@point_of_interest), method: :get, class: 'btn', class: "btn btn-warning" %>
 <% end %>
+
+
+

@@ -29,42 +29,6 @@ var FormMap = function(){
     addressResultsPlaceholder = resultsPlaceholder;
     addressResultsPlaceholder.append(I18n.t("map.messages.use_map"));
   },
- /* getOSMAddress = function(data, textStatus, jqXHR){ 
-    if(data.length > 1){
-      addressResultsPlaceholder.html(TEXT_ADDRESS_SELECTION+'<ul></ul>');
-    //  console.log("received "+data.length+" Search Results from OSM");
-      var validAddressResultArray = new Array();
-
-      var previousAddress = "";
-      for(var i = 0; i < data.length; i++){
-        //if place's class is NOT in one of the listed
-        if($.inArray(data[i].class, [ "highway", "place", "shop", "building"]) == -1 
-          //or if it's type is one of the listed, skip the rest of the block and go to the next address
-          || $.inArray(data[i].type, [ "bus_stop", "platform", "tertiary", "city", "county"]) > -1) continue; 
-        validAddressResultArray.push(data[i]);
-        var 
-        currentArrayIndex = validAddressResultArray.length -1,
-        detailed_address = data[i].display_name;
-        if(detailed_address != previousAddress){
-          addressResultsPlaceholder.find("ul").append("<li title='"+currentArrayIndex+"'><a href='#' class='ordinaryLink'>"+detailed_address+"</a></li>"); 
-        }           
-        previousAddress = detailed_address;
-      }
-      addressResultsPlaceholder.show();
-      addressResultsPlaceholder.find("li").click(function(){
-        var index = this.title;
-        handleLocation(validAddressResultArray[index], true); //ifPlaceMarker set to true
-      });
-    }
-    else if(data.length == 1){
-      console.log("recieved one Search Result from OSM");
-      handleLocation(data[0], true); 
-    }
-    else {
-      addressResultsPlaceholder.html('<div>'+I18n.t("map.messages.no_results")+'</div>');
-      console.warn("recieved no Search Results from OSM or something went wrong");
-    }
-  },*/
   //PRIVATE METHODS
   placeMarker = function(lat, lon, address, zoomLevel, defaultLocation){
     var coordinates = new L.LatLng(lat, lon, true);

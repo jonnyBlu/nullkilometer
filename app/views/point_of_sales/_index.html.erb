@@ -21,7 +21,7 @@
 	 					<li><label class="string"><%= link_to pos.name ,"/point_of_sales/#{pos.id}.html", class: "ordinaryLink", data: { :no_turbolink => true } %>
 	 						</label>
 	 					</li>
-	 					<li><label class="string">(<%= PointOfSale::POS_TYPE_NAMES[pos.posTypeId] %>)</label></li>
+	 					<li><label class="string">(<%= I18n.t("point_of_sale.pos_type_names")[pos.posTypeId] %>)</label></li>
 	 					<li>
 	 					<%= content_tag("label", Status.find(pos.status_id).name, class: "string #{Status.find(pos.status_id).name}") %>
 	 					</li>

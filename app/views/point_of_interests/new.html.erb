@@ -1,4 +1,4 @@
-<div class="infoDiv profileWrapper">
+<div class="infoDiv formWrapper">
 	<% if @point_of_interest.type == "PointOfSale" %>
 		<h1> 
 			<%= I18n.t("headers.new_selling_point") %> 
@@ -9,3 +9,4 @@
 		<%= render 'point_of_productions/form', object: @point_of_interest, locals: {parent: "new"}  %>
 	<% end %>
 </div>
+<%#= render partial: 'point_of_sales/new_form', object: @point_of_interest %>
