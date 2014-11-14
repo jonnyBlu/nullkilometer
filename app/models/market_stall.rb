@@ -2,12 +2,12 @@ class MarketStall < ActiveRecord::Base
 
   has_paper_trail
 
-  attr_accessible :name, :point_of_sale_id
+  attr_accessible :name, :point_of_sale_id, :status_id
   
   belongs_to :point_of_sale, :inverse_of => :market_stalls
   
   sells_products
-  has_detail_infos
+  has_detail_infos 
 
   validates :name, :presence => true
   validate :point_of_sale_must_be_market, :on => :create

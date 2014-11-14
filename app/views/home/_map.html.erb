@@ -50,19 +50,21 @@
 			<%= render 'addressLookupContainer' %>
 			</div>
 		</div>
-		<div class="row hidden-xs hidden-sm" id="mapFilter">
-    	<div class="what col-sm-6 col-md-4 col-lg-4"> 
-    		<p><%= I18n.t("filter.what") %></p>
-    		<%= render 'filter_what' %>
-    	</div>
-    	<div class="where col-xs-12 col-sm-6 col-md-4 col-lg-4"> 
-    		<p><%= I18n.t("filter.where") %></p>
-    		<%= render 'filter_where' %>
-    	</div>
-    	<div class="when col-sm-6 col-md-4 col-lg-4"> 
-    		<p><%= I18n.t("filter.when") %></p>
-				<%= render 'filter_when' %>
-    	</div>
+		<div id="mapFilter" class="row hidden-xs hidden-sm">
+			<div>
+	    	<div class="what col-sm-6 col-md-4 col-lg-4"> 
+	    		<p><%= I18n.t("filter.what") %></p>
+	    		<%= render 'filter_what' %>
+	    	</div>
+	    	<div class="where col-xs-12 col-sm-6 col-md-4 col-lg-4"> 
+	    		<p><%= I18n.t("filter.where") %></p>
+	    		<%= render 'filter_where' %>
+	    	</div>
+	    	<div class="when col-sm-6 col-md-4 col-lg-4"> 
+	    		<p><%= I18n.t("filter.when") %></p>
+					<%= render 'filter_when' %>
+	    	</div>
+	    </div>
 		</div>		
 <!-- end desktop only-->
 	</div>

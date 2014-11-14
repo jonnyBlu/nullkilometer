@@ -1,4 +1,35 @@
-<!-- takes @market_stalls from the controller's method "index" and passes as local variable-->
-<div class="infoDiv profileWrapper" >
-	<%= render partial: "market_stalls/index", locals: { market_stalls: @market_stalls } %>
+<div class = "infoDiv">
+	<h1> <%= I18n.t("headers.all_market_stalls") %> </h1>
+	<% if admin_signed_in? %>
+		<div class="table-responsive jumbotron places_overview"> 
+	    <table class="table table-striped">
+	      <thead>
+	        <tr>
+	          <th><%= link_to "ID", { sort: "id" }, class: "ordinaryLink"  %></th>
+	          <th><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  class: "ordinaryLink"  %></th>
+	          <th><%= link_to I18n.t("instructions.add_a_pos.parent_market_name"), { sort: "point_of_sale_id" }, class: "ordinaryLink"  %></th>
+	          <th><%= link_to I18n.t("properties.main_information.status"), { sort: "status_id" }, class: "ordinaryLink" %></th>
+	          <th><%= I18n.t("links.global.edit")%></th>
+	          <th><%= I18n.t("links.global.delete")%></th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	    	<% @market_stalls.each do |stall| %>
+	        <tr>
+	          <td><%= stall.id %></td>
+	          <td><%= link_to stall.name, market_stall_path(stall), class: "ordinaryLink" %></td>
+	          <td><% parent_market = PointOfSale.find(stall.point_of_sale_id) %>
+								<%= link_to parent_market.name, point_of_sale_path(parent_market), class: "ordinaryLink" %></td>
+	          <td><%= content_tag("label", Status.find(stall.status_id).name, class: "#{Status.find(stall.status_id).name.tr(" ", "-")}") %></td>
+	          <td><%= link_to I18n.t("links.global.edit"), edit_market_stall_path(stall), class: "ordinaryLink"  %></td>
+	          <td><%= link_to I18n.t("links.global.delete"), stall, class: 'ordinaryLink', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete_market_stall") }	%></td>
+	        </tr>
+	      <% end %>
+	      </tbody>
+	    </table>
+	    <%= button_to I18n.t("button.add_market_stall"), new_market_stall_path , method: :get, class: 'btn btn-info' %>
+		</div>
+	<% elsif %>
+		<p><%= I18n.t("devise.failure.unauthenticated") %></p>
+	<% end %>
 </div>

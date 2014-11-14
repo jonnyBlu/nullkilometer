@@ -1,47 +1,82 @@
-<div id="marketStallsTitle" class="row">
-	<div class="col-md-6">
-		<h4><%= I18n.t("point_of_sale.marketstalls") %></h4>
-	</div>
-</div>	
-<div id="marketStallsContainer_NOJS">
-	<% market_stalls.each do |stall| %>
-		<div class = "profileContainer">
-			<label><%= stall.name %></label>	
-			<div><%= I18n.t("headers.belongs_to_market") %> <%= link_to "\"#{stall.point_of_sale.name}\"", "/point_of_sales/#{stall.point_of_sale.id}.html", class: "ordinaryLink", data: { :no_turbolink => true } %></div>	
-			<%= render :partial => "market_stalls/infoList", :locals => {:stall => stall} %>
-			<ul>
-				<li><%= link_to I18n.t("links.global.edit"), "market_stalls/#{stall.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
-				</li>
-				<li> 
-					<%= link_to I18n.t("links.global.delete"), stall, class: 'ordinaryLink', method: :delete, 
-					data: { confirm: "#{I18n.t("instructions.add_a_pos.confirm_delete") }: #{stall.name}", :no_turbolink => true  } 
-					%>
-				</li>
- 			<ul>
+<div id="marketStallsContainer_NOJS" class="market_stalls_overview">
 
-		</div>
-	<% end %>
-</div>
-<div id="marketStallsContainer" style="display:none">	
-	<div class="accordion" id="accordion2">
-		<% market_stalls.each do |stall| %>
-		  	<div class="accordion-group">
-			    <div class="accordion-heading customButton">
-			      <a class="accordion-toggle ordinaryLink" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
-			        <%= stall.name %>
-			      </a>
-			    </div>
-			    <div id="<%= stall.id %>" class="accordion-body collapse">
-				    <div class="accordion-inner">
-				     	<!--<div><%= stall.point_of_sale.name %></div>-->
-						<%= render :partial => "market_stalls/infoList", :locals => {:stall => stall}  %>
-						<div id="editPosLinkWrapper">
-							<%= link_to I18n.t("links.global.edit"), "/market_stalls/#{stall.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
-						</div>
-			     	</div> 
-		    	</div>
-		    </div>
+	<h4><%= I18n.t("point_of_sale.marketstalls") %></h4>
+	<div class="table-responsive"> 
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  class: "ordinaryLink"  %></th>
+	        <% if admin_signed_in? %>
+						  <th><%= I18n.t("properties.main_information.status") %></th>
+					<% end %>
+	        <th><%= I18n.t("properties.main_information.product_categories") %></th>
+	        <th><%= I18n.t("properties.additional_information.website") %></th>
+	        <th><%= I18n.t("properties.additional_information.email") %></th>
+	        <th><%= I18n.t("properties.additional_information.phone") %></th>
+	        <th><%= I18n.t("properties.additional_information.cell_phone") %></th>
+	        <th><%= I18n.t("properties.additional_information.description") %></th>
+	        <th><%= I18n.t("links.global.edit")%></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	  	<% market_stalls.each do |stall| %>
+	  	<% if !admin_signed_in? && Status.find(stall.status_id).name != "approved" %>
+				<% else %>   
+		      <tr>
+		        <td><%= link_to stall.name, market_stall_path(stall), class: "ordinaryLink" %></td>
+		        <% if admin_signed_in? %>
+						  <td>
+						  	<%= content_tag(:b, Status.find(stall.status_id).name , class: "#{Status.find(stall.status_id).name.tr(" ", "-")}") %>					  	
+							</td>
+						<% end %>
+						<td>
+							<%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
+						</td>
+						<td><%= link_to stall.detail_info.website, "stall.detail_info.website", class: "ordinaryLink" %></td>
+						<td><%= stall.detail_info.mail  %></td>
+						<td><%= stall.detail_info.phone  %></td>
+						<td><%= stall.detail_info.cell_phone %></td>
+						<td><%= stall.detail_info.description  %></td>
+		        <td><%= link_to I18n.t("links.global.edit"), edit_market_stall_path(stall), class: "ordinaryLink"  %></td>
+		      </tr>
+		    <% end %>
 	    <% end %>
+	    </tbody>
+	  </table>
 	</div>
 </div>
+
+	<div id="marketStallsContainer" style="display:none" class="market_stalls_overview">	
+		<h4>
+			<%= I18n.t("point_of_sale.marketstalls") %>
+		</h4>
+		<div class="accordion" id="accordion2">
+			<% market_stalls.each do |stall| %>
+				<% if !admin_signed_in? && Status.find(stall.status_id).name != "approved" %>
+				<% else %>   		
+					<div class="accordion-group">
+				    <div class="accordion-heading customButton" >
+				    	<% if  Status.find(stall.status_id).name == "approved" %>
+				    		<a class="accordion-toggle ordinaryLink" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
+				      <% else %>
+				      	<a class="accordion-toggle ordinaryLink <%= Status.find(stall.status_id).name.tr(" ", "-") %>" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
+				      <% end %>
+				      	<%= stall.name %>
+				     	</a>
+				    </div>
+				    <div id="<%= stall.id %>" class="accordion-body collapse">
+					    <div class="accordion-inner">
+					     	<!--<div><%= stall.point_of_sale.name %></div>-->
+							<%= render :partial => "market_stalls/infoList", :locals => {:stall => stall}  %>
+							<div id="editPosLinkWrapper">
+								<%= link_to I18n.t("links.global.edit"), "/market_stalls/#{stall.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
+							</div>
+				     	</div> 
+			    	</div>
+			    </div>
+				<% end %>
+		  <% end %>
+		</div>
+	</div>
+
 

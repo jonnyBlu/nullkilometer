@@ -64,6 +64,19 @@ var Form = function(){
 	  		$(this).parents().eq(3).find(".error").addClass("hidden");
 	  	}
 		});
+
+		$(".openingDayContainer .point_of_sale_opening_times_from select").change(function(){
+	    var $selected = $(this).find('option:selected');
+	    console.log($(this).parents().eq(3).html());
+	    $(this).parents().eq(3).find(".point_of_sale_opening_times_to select")
+	   // $('#end_date')
+        .find('option')
+        .prop('disabled', true)
+        .eq($selected.index())
+        .nextAll()
+        .prop('disabled', false);
+		});
+
 	},
 	setValidator = function(formValidator){
 		formValidator.addCustomValidateMethods();

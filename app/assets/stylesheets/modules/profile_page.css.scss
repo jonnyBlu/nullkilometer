@@ -14,22 +14,7 @@ $mapWidth:	100%;
 	}
 }
 
-#marketStallsContainer{
-	ul{
-		margin-left: 0px;
-	}
-}
 
-/*.profileContainer {
-	margin: 0px;
-	margin-top: 20px;
-	margin-bottom:20px;
-	ul, address{
-		margin: 0px;
-		padding: 0px;
-	}
-}
-*/
 .bordered{
 	padding: 10px 0px 10px 0px;
 	border-bottom: 1px solid #eee;
@@ -79,7 +64,7 @@ span.openingTimeDay{
 	border: none;
 }
 .accordion-heading{
-	background: $buttonColor0;/*#eee;*/
+	background: $buttonColor0;
 	color: #444;
 	:hover{
 		background: #fff;

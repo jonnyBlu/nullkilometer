@@ -1,6 +1,9 @@
 .formWrapper{
 	max-width: 450px;
 	margin: auto;
+	h4{
+		text-align: center;
+	}
 }
 
 form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edit_market_stall {
@@ -19,7 +22,8 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			margin-left: -23px;
 		}
 
-		input[type="text"], textarea {
+		input[type="text"], /*TODO: maybe this is not needed, cuz the following is enough*/
+		input.string, textarea {
 			@media only screen and (min-width: 500px) { 
 				width: 400px;
 			}
@@ -36,7 +40,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			padding-left: 0px;
 			.openingDayContainer{
 				padding-left: 20px;
-				height: 70px;
+				min-height: 70px;
 				label {
 					font-weight: normal;
 				}
@@ -62,7 +66,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 			}
 			.grayedOut{
 				color: #666;
-				height: 25px;
+				min-height: 25px;
 			}
 		}
 		.marketStalls ul{
@@ -128,34 +132,23 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 }
 
 
-#point_of_sales_overview{
-	ul.horizontalList{
-		li{
-			width: 100px;
-		}
-		li:first-child{
-			width: 50px;
-		}
-		li:nth-child(2){
-			width: 200px;
-		}
-		li:nth-child(3){
-			width: 200px;
-		}
-		li:nth-child(4){
-			label{
-				//color: #ff0000; //red
-			}
-			label.approved{
-				color: #00aaaa; //green
-			}
-			label.pending{
-				color: #eeaa00; //yellow
-			}
-		}
-
+.places_overview, .market_stalls_overview{
+	.not-approved{
+		color: #ff0000 !important; //red
+	}
+	.approved{
+		color: #00aaaa !important; //green
+	}
+	.pending{
+		color: #eeaa00 !important; //yellow
 	}
 }	
 
+.market_stalls_overview{
+	font-size: small;
+	table{
+		font-size: small;
+	}
+}
 
 

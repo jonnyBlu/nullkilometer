@@ -20,10 +20,9 @@ class PointOfInterest < ActiveRecord::Base
   end
    
   def check_address 
-    puts "INIT LOCATION"
     if self.address
       latlon = Geocoder.coordinates(self.address)
-      puts "LAT LON of #{name}: #{latlon}"
+      puts "(Init) Location of #{name}: #{latlon}"
       if latlon
         self.lat=latlon[0]
         self.lon=latlon[1]

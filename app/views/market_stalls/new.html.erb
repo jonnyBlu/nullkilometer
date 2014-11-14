@@ -1,8 +1,13 @@
-<div class="infoDiv profileWrapper">
-	<h1> <%= I18n.t("button.add_market_stall") %>
-		  <% if !@parent_market.nil? %> 
-		  	<%= "#{I18n.t("instructions.add_a_pos.add_to")} \"#{@parent_market.name}\"" %>
-		  <% end %>
+<div class="infoDiv formWrapper">
+	<h1> 
+		<%= I18n.t("button.add_market_stall") %>
 	</h1>
+	<h4>
+		<b>
+			<% if !@parent_market.nil? %> 
+		  	<%= "#{I18n.t("instructions.add_a_pos.add_to")} \"#{@parent_market.name}\"" %>
+			<% end %>
+		</b>
+	</h4>
 	<%= render 'form', object: @market_stall, locals: {parent: "new"}  %>
 </div>

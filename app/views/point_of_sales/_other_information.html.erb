@@ -1,0 +1,6 @@
+<%= f.input :productCategoryIds,  label: "#{I18n.t("properties.main_information.product_categories")}:", collection: @product_categories_collection, as: :check_boxes, required: :true, input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
+<%= f.input :phone, label: "#{I18n.t("properties.additional_information.phone")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
+<%= f.input :cell_phone, label: "#{I18n.t("properties.additional_information.cell_phone")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
+<%= f.input :mail, label: "#{I18n.t("properties.additional_information.email")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
+<%= f.input :website, label: "#{I18n.t("properties.additional_information.website")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
+<%= f.input :description, label: "#{I18n.t("properties.additional_information.description")}:", :as => :text, input_html: { class: "form-control", :rows => "10"}, wrapper_html: { class: "form-group" } %>

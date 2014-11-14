@@ -1,5 +1,7 @@
-<% if @json_root == "pointOfSale" %>
-	<%= render 'point_of_sales/index', object: @point_of_interest %>
-<% elsif @json_root == "pointOfProduction" %>
-	<%= render 'point_of_productions/index', object: @point_of_interest %>
-<% end %>
+<div class="infoDiv">
+	<% if @json_root == "pointOfSale" %>
+		<%= render 'point_of_sales/index', object: @point_of_interest %>
+	<% elsif @json_root == "pointOfProduction" %>
+		<%= render 'point_of_productions/index', object: @point_of_interest %>
+	<% end %> 
+</div>

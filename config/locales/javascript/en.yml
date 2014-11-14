@@ -6,7 +6,7 @@ en:
         select_required: "You should select an option"
         check_required: "You should check at least one element"
         opening_day_required: "Please specify at least one opening day"
-        opening_times_required: "Please specify opening time(s) or deselect the day"
+        opening_times_required: "Please specify both opening time(s) or deselect the day"
   map:
     messages:
       select_one_address: "Choose an address from the list:"

@@ -10,11 +10,13 @@ $headerTextSize: 24px;
 */
 $darkTextColor: #444;
 $backgroundColor: #fff;//rgba(213, 208, 164, 1);
+$transparentBackground: rgba(255, 255, 255, 0.8);
+$buttonAndInputHeight: 34px;
+
+/*TODO: review*/
 $headerColor1: #5b483c;
 $headerColor2: #745948;
-$buttonAndInputHeight: 34px;
-$transparentBackground: rgba(255, 255, 255, 0.8);
-$buttonColor0: rgba(231, 231, 199, 1);
+$buttonColor0: rgba(216, 240, 219, 0.6);
 $buttonColor1: rgba(213, 208, 164, 0.8);  
 $grayDarker: #bbb;
 $grayLight: #ddd;

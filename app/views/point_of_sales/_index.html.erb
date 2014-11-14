@@ -1,45 +1,41 @@
-<!-- IF -->
-<h1> <%= I18n.t("headers.all_selling_points") %> </h1>
+<h1><%= I18n.t("headers.all_selling_points") %></h1>
 <% if admin_signed_in? %>
-	<div id="point_of_sales_overview">
-		<ul>
-			<li>
-				<ul class="horizontalList">
-
-					<li><label class="string"><%= link_to "ID", { sort: "id" },  :class=>"ordinaryLink"  %></label></li>
-					<li><label class="string"><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  :class=>"ordinaryLink"  %></label></li>
-					<li><label class="string"><%= link_to I18n.t("properties.main_information.selling_point_type"), { sort: "pos_type" }, class: "ordinaryLink" %></label></li>
-					<li><label class="string"><%= link_to I18n.t("properties.main_information.status"), { sort: "status_id" }, class: "ordinaryLink" %></label></li>
-					<li><label class="string"><%= I18n.t("links.global.edit")%></label></li>
-					<li><label class="string"><%= I18n.t("links.global.delete")%></label></li>
-				</ul>
-			</li>
-		 	<% @point_of_interests_all.each do |pos| %>
-	 			<li>
-	 				<ul class="horizontalList">
-	 					<li><%= pos.id %></li>
-	 					<li><label class="string"><%= link_to pos.name ,"/point_of_sales/#{pos.id}.html", class: "ordinaryLink", data: { :no_turbolink => true } %>
-	 						</label>
-	 					</li>
-	 					<li><label class="string">(<%= I18n.t("point_of_sale.pos_type_names")[pos.posTypeId] %>)</label></li>
-	 					<li>
-	 					<%= content_tag("label", Status.find(pos.status_id).name, class: "string #{Status.find(pos.status_id).name}") %>
-	 					</li>
-	 					<li><%= link_to I18n.t("links.global.edit"), "point_of_sales/#{pos.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
-	 					</li>
-	 					<li> 
-	 						<%= link_to I18n.t("links.global.delete"), pos, class: 'ordinaryLink', method: :delete, 
-	 						data: { confirm: "#{I18n.t("instructions.add_a_pos.confirm_delete") }: #{pos.name}", :no_turbolink => true  } 
-	 						%>
-	 					</li>
-	 				</ul>
-	 				<!-- IF --> 				
-	 			</li>
-		 	<% end %>
-		 	<!-- IF -->
-	 		<li><%= link_to I18n.t("button.add_selling_point"), "point_of_sales/new.html", class: 'ordinaryLink', role: 'button' %></li> 		
-	 	</ul>
+	<div class="table-responsive jumbotron places_overview"> 
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= link_to "ID", { sort: "id" }, class: "ordinaryLink"  %></th>
+          <th><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  class: "ordinaryLink"  %></th>
+          <th><%= link_to I18n.t("properties.main_information.selling_point_type"), { sort: "pos_type" }, class: "ordinaryLink" %></th>
+          <th><%= link_to I18n.t("properties.main_information.status"), { sort: "status_id" }, class: "ordinaryLink" %></th>
+          <th><%= I18n.t("links.global.edit")%></th>
+          <th><%= I18n.t("links.global.delete")%></th>
+        </tr>
+      </thead>
+      <tbody>
+    	<% @point_of_interests_all.each do |pos| %>
+        <tr>
+ 					<td><%= pos.id %></td>
+ 					<td><%= link_to pos.name, point_of_sale_path(pos), class: "ordinaryLink" %>
+ 					</td>
+ 					<td><%= I18n.t("point_of_sale.pos_type_names")[pos.posTypeId] %>
+ 					</td>
+ 					<td>
+ 						<%= content_tag("label", Status.find(pos.status_id).name, class: "#{Status.find(pos.status_id).name.tr(" ", "-")}") %>
+ 					</td>
+ 					<td>
+ 						<%= link_to I18n.t("links.global.edit"), edit_point_of_sale_path(pos), class: "ordinaryLink"  %>
+ 					</td>
+ 					<td> 
+ 						<%= link_to I18n.t("links.global.delete"), pos, class: 'ordinaryLink', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete") } 
+ 						%>
+	 				</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= button_to I18n.t("button.add_selling_point"), new_point_of_sale_path , method: :get, class: 'btn btn-info' %>
 	</div>
-<% elsif %>
+<% else %>
 	<p><%= I18n.t("devise.failure.unauthenticated") %></p>
 <% end %>

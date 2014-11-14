@@ -20,7 +20,7 @@ CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
 				 	:address => row[1], 
 					:posTypeId => row[2],
 			 		:productCategoryIds => row[3].split(",").map { |s| s.to_i },
- 					:openingTimes => row[4].split(",").map{ |day| {:dayId=>day.split("=")[0].to_i, :from=>day.split("=")[1].split("-")[0], :to=>day.split("=")[1].split("-")[1]}},
+ 					:openingTimes => row[4].split(",").map{ |day| {:day=>day.split("=")[0].to_i, :from=>day.split("=")[1].split("-")[0], :to=>day.split("=")[1].split("-")[1]}},
 					:description => row[5], 
 					:website => row[6],
 					:mail => row[7],

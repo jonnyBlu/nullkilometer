@@ -3,7 +3,7 @@ var FormValidator = function(){
 	var validateOptions = { // initialize the plugin
 		errorPlacement: function(error, element) {    	
 			if (element.prop("id") == "point_of_sale_productCategoryIds_0"){
-				var containerLabelElement = element.parents().eq(2).find("label").first();
+				var containerLabelElement = element.parents().eq(3).find("label").first();
 				error.insertAfter(containerLabelElement);
 			}
 	   	else if (element.prop("name")=="point_of_sale[opening_times_attributes][0][day]"){
@@ -15,9 +15,8 @@ var FormValidator = function(){
 				var containerLabelElement = element.parents().eq(2).find(".point_of_sale_opening_times_to");
 				error.insertAfter(containerLabelElement);
 			}
-			else { 
-				error.insertAfter(element);  // <- the default
-			}            
+			else  
+				error.insertAfter(element);  // <- the default           
 	  },
 	  rules: {
 	  	'point_of_sale[posTypeId]': {
@@ -28,7 +27,6 @@ var FormValidator = function(){
 	    }	        ,
 	    'point_of_sale[productCategoryIds][]': {
 	        required: true
-	//	            maxlength: 2
 	    },
 	    //this is a workaround for the current input structure of opening times
 	    'point_of_sale[opening_times_attributes][0][day]' : {
@@ -72,7 +70,6 @@ var FormValidator = function(){
 	    },
 	    'point_of_sale[productCategoryIds][]': {
 	        required: I18n.t("validate.messages.check_required")
-	//	            maxlength: "Check no more than {0} boxes"
 	    }
 	  },
 	  submitHandler: function(form) {  
@@ -82,6 +79,36 @@ var FormValidator = function(){
 	   }
 	   return false; // prevent normal form posting
 	  }
+	},
+	validateOptions_marketStall = { // initialize the plugin 
+		errorPlacement: function(error, element) {    	
+			if (element.prop("id") == "market_stall_productCategoryIds_0"){
+				var containerLabelElement = element.parents().eq(3).find("label").first();
+				error.insertAfter(containerLabelElement);
+			}
+			else  
+				error.insertAfter(element);  // <- the default            
+	  },
+    rules: {
+        'market_stall[productCategoryIds][]': {
+            required: true
+        }
+    },
+    messages: {
+    	'market_stall[name]' : {
+    		required: I18n.t("validate.messages.required")
+    	},
+        'market_stall[productCategoryIds][]': {
+            required: I18n.t("validate.messages.check_required")
+        }
+    },
+    submitHandler: function(form) {  
+       if ($(form).valid()) {
+       		alert("valid market form submit");
+           	form.submit(); 
+       }
+       return false; // prevent normal form posting
+    }
 	},
 	validateOpeningDays = function(){
 		return $(".point_of_sale_opening_times_day .checkbox input:checked").length > 0 ;
@@ -100,21 +127,16 @@ var FormValidator = function(){
 	//additional custom validate methods
 	addCustomValidateMethods = function(){
 		jQuery.validator.addMethod("openingDays", function(value, element) {
-
-			console.log("adding custom validator options: days");
-
 			return validateOpeningDays();	
 		}, I18n.t("validate.messages.opening_day_required"));
 
 		jQuery.validator.addMethod("openingTimes", function(value, element) {
-
-			console.log("adding custom validator options: times");
-
 			return validateOpeningTimes($(element).attr("id"));	
 		}, I18n.t("validate.messages.opening_times_required"));
 	};
 	return{
 		validateOptions: validateOptions,
+		validateOptions_marketStall: validateOptions_marketStall,
 		addCustomValidateMethods: addCustomValidateMethods
 	}
 }

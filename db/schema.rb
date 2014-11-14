@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922182952) do
+ActiveRecord::Schema.define(version: 20141113183217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140922182952) do
     t.integer  "point_of_sale_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "status_id"
   end
 
   add_index "market_stalls", ["point_of_sale_id"], :name => "index_market_stalls_on_point_of_sale_id"

@@ -1,21 +1,25 @@
-<div class= "infoDiv profileWrapper" >
-	<div class="row">
-		<div id="profilePageHeader" class="infoHeader col-md-8">
-			<ul>
-				<li><%= I18n.t("headers.market_stall") %></li>
-			  	<li><%= @market_stall.name %></li>
-			</ul>
-		</div>
-		<div class="col-md-4">
-			<div id="editPosLinkWrapper"><%= link_to I18n.t("links.global.edit"), "/market_stalls/#{@market_stall.id}/edit.html", class: 'ordinaryLink', data: { :no_turbolink => true } %>
+<div class= "infoDiv profileWrapper market_stalls_overview" >
+	<% if admin_signed_in? %>
+		<div class="row">
+			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
+				<%= I18n.t("headers.market_stall") %>
+				<h1><%= @market_stall.name %></h1>
+			</div>
+			<div class="col-xs-2 col-sm-4 col-md-2 col-lg-2"  id="editPosLinkWrapper">
+				<%= link_to I18n.t("links.global.edit"), :edit_market_stall, class: 'ordinaryLink' %>
 			</div>
 		</div>
-	</div>
-	<div class="profileContainer">
-		<div class="row bordered">
-			<%= "#{I18n.t("headers.belongs_to_market")}: "%>
-			<%= link_to "\"#{@market_stall.point_of_sale.name}\"", "/point_of_sales/#{@market_stall.point_of_sale.id}.html", class: 'ordinaryLink', data: { :no_turbolink => true } %>
+
+		<div class="row" >
+			<div class="col-sm-12 col-md-6 col-lg-6">
+				<%= render :partial =>'infoList', :locals => {:stall => @market_stall} %>
+			</div>
+			<!--<div class="col-sm-12 col-md-6 col-lg-6">
+				<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
+			</div>-->
 		</div>
-		<%= render :partial =>'infoList', :locals => {:stall => @market_stall} %>
-	</div>	
-</div>
+	<% else %>
+		<p><%= I18n.t("devise.failure.unauthenticated") %></p>
+	<% end %>
+</div>	
+ 

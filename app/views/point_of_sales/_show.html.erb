@@ -1,6 +1,7 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "point_of_interests/show.js" %>
     <%= javascript_include_tag "point_of_interests/profile_page_map.js" %>
+    <%= javascript_include_tag "bootstrap-rating-input.min.js" %>
 <% end %>
 
 <div class="infoDiv profileWrapper"><!-- id="profilePageWrapper">-->
@@ -23,7 +24,18 @@
 			<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
 		</div>
 	</div>
-	<% if @point_of_interest.pos_type == 0 && @point_of_interest.market_stalls.size > 0 %>
-		<%= render partial: 'market_stalls/index', locals: { market_stalls: @point_of_interest.market_stalls } %>
-	<% end %>
+	<div class="row">
+		<% if @point_of_interest.pos_type == 0 && @point_of_interest.market_stalls.size > 0 %>
+			<%= render partial: 'market_stalls/index', locals: { market_stalls: @point_of_interest.market_stalls } %>
+			<!-- TODO: partial Rate -->
+		<!--	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<h4>
+					Locality degree
+				</h4>
+				<p>Rate the "locality" of the place:</p>
+				<i class='glyphicon glyphicon-star'></i><i class='glyphicon glyphicon-star'></i><i class='glyphicon glyphicon-star'></i><i class='glyphicon glyphicon-star-empty'></i><i class='glyphicon glyphicon-star-empty'></i>
+			</div>-->
+		
+		<% end %>
+	</div>
 </div>

@@ -45,6 +45,7 @@ class PointOfInterestsController < ApplicationController
       if admin_signed_in? == false
         set_pending_status(@point_of_interest)   
       end    
+      
     end
     if @point_of_interest.save
       if params[:type] == "PointOfSale" && @point_of_interest.posTypeId == 0
@@ -69,10 +70,8 @@ class PointOfInterestsController < ApplicationController
           @point_of_interest.opening_times.build(day: i)
         end
       end
-
       @status_name = Status.find(@point_of_interest.status_id).name
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
-
       @sorted_opening_times =  @point_of_interest.opening_times.sort_by { |ot| ot[:day] }
      # require 'pp'
      # pp @sorted_opening_times
@@ -112,10 +111,10 @@ class PointOfInterestsController < ApplicationController
       end
       #validate if at least one opening time is here!!!
       if counter > 6
-        puts "ERROR: all values deleted"
+        #puts "ERROR: all values deleted"
         #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
       else
-        puts "OK: at least one opening time"
+        #puts "OK: at least one opening time"
       end
 
       set_pending_status(@point_of_interest)
@@ -129,11 +128,6 @@ class PointOfInterestsController < ApplicationController
         #redirect_to @point_of_interest
       end
     end
-  end
-
-  def set_pending_status(pos)
-      pending_status_id = Status.find_by_name('pending').id
-      pos.status_id = pending_status_id
   end
 
   def destroy
@@ -159,6 +153,11 @@ class PointOfInterestsController < ApplicationController
     @poi_versions = @poi.versions
     @detail_info_versions = @poi.detail_info.versions
     respond_with @poi
+  end
+  #TODO: global
+  def set_pending_status(pos)
+    pending_status_id = Status.find_by_name('pending').id
+    pos.status_id = pending_status_id
   end
 
   private

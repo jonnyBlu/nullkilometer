@@ -17,7 +17,7 @@ $minHeightMap: 600px;
 	}
 
 	#mapFilterContainer {
-		position: absolute;
+		//position: absolute;
 		margin-top:65px;
 		z-index: 2;
 
@@ -65,8 +65,10 @@ $minHeightMap: 600px;
 			border-bottom: none;
 			> div {
 				margin-left: 0px;
-				//TODO: shit
+			}
+			div {
 				z-index: 2;
+				background-color: white;
 			}
 		}
 		.what, .where, .when { 
