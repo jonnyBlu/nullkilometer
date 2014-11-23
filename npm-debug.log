@@ -1,0 +1,200 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'bootlint' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose cache add [ 'bootlint', null ]
+5 verbose cache add name=undefined spec="bootlint" args=["bootlint",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'bootlint',
+6 verbose parsed url   path: 'bootlint',
+6 verbose parsed url   href: 'bootlint' }
+7 silly lockFile bc46dd88-bootlint bootlint
+8 verbose lock bootlint /home/idegutyte/.npm/bc46dd88-bootlint.lock
+9 silly lockFile bc46dd88-bootlint bootlint
+10 silly lockFile bc46dd88-bootlint bootlint
+11 verbose addNamed [ 'bootlint', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 84044669-bootlint bootlint@
+14 verbose lock bootlint@ /home/idegutyte/.npm/84044669-bootlint.lock
+15 silly addNameRange { name: 'bootlint', range: '*', hasData: false }
+16 verbose request where is /bootlint
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id bdbcd127770a97b7
+19 verbose url raw /bootlint
+20 verbose url resolving [ 'https://registry.npmjs.org/', './bootlint' ]
+21 verbose url resolved https://registry.npmjs.org/bootlint
+22 verbose request where is https://registry.npmjs.org/bootlint
+23 info trying registry request attempt 1 at 21:23:12
+24 http GET https://registry.npmjs.org/bootlint
+25 http 200 https://registry.npmjs.org/bootlint
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Wed, 19 Nov 2014 20:23:11 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"BZZ7CMNVH52D2N7GLE0DSTV0K"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '27627',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     'x-served-by': 'cache-lcy1123-LCY',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1416428590.793402,VS0,VE447',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'bootlint', range: '*', hasData: true }
+28 silly addNameRange versions [ 'bootlint',
+28 silly addNameRange   [ '0.0.1',
+28 silly addNameRange     '0.1.0',
+28 silly addNameRange     '0.1.1',
+28 silly addNameRange     '0.2.0',
+28 silly addNameRange     '0.3.0',
+28 silly addNameRange     '0.4.0',
+28 silly addNameRange     '0.5.0',
+28 silly addNameRange     '0.6.0',
+28 silly addNameRange     '0.7.0',
+28 silly addNameRange     '0.8.0' ] ]
+29 verbose addNamed [ 'bootlint', '0.8.0' ]
+30 verbose addNamed [ '0.8.0', '0.8.0' ]
+31 silly lockFile f9366cb9-bootlint-0-8-0 bootlint@0.8.0
+32 verbose lock bootlint@0.8.0 /home/idegutyte/.npm/f9366cb9-bootlint-0-8-0.lock
+33 silly lockFile fd06f024--org-bootlint-bootlint-0-8-0-tgz https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz
+34 verbose lock https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz /home/idegutyte/.npm/fd06f024--org-bootlint-bootlint-0-8-0-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz',
+35 verbose addRemoteTarball   'd8a18772963fc86c21ab380294a8739e100287f1' ]
+36 info retry fetch attempt 1 at 21:23:13
+37 verbose fetch to= /tmp/npm-8031-VWqfGGiz/registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz
+38 http GET https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz
+39 http 200 https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz
+40 silly lockFile fd06f024--org-bootlint-bootlint-0-8-0-tgz https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz
+41 silly lockFile fd06f024--org-bootlint-bootlint-0-8-0-tgz https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz
+42 silly lockFile f9366cb9-bootlint-0-8-0 bootlint@0.8.0
+43 silly lockFile f9366cb9-bootlint-0-8-0 bootlint@0.8.0
+44 silly lockFile 84044669-bootlint bootlint@
+45 silly lockFile 84044669-bootlint bootlint@
+46 silly resolved [ { name: 'bootlint',
+46 silly resolved     version: '0.8.0',
+46 silly resolved     description: 'HTML linter for Bootstrap projects',
+46 silly resolved     keywords:
+46 silly resolved      [ 'bootstrap',
+46 silly resolved        'checker',
+46 silly resolved        'correctness',
+46 silly resolved        'html',
+46 silly resolved        'lint',
+46 silly resolved        'linter',
+46 silly resolved        'validator',
+46 silly resolved        'validity' ],
+46 silly resolved     homepage: 'https://github.com/twbs/bootlint',
+46 silly resolved     bugs: { url: 'https://github.com/twbs/bootlint/issues' },
+46 silly resolved     author:
+46 silly resolved      { name: 'Chris Rebert',
+46 silly resolved        email: 'code@rebertia.com',
+46 silly resolved        url: 'http://chrisrebert.com' },
+46 silly resolved     repository: { type: 'git', url: 'https://github.com/twbs/bootlint.git' },
+46 silly resolved     license: 'MIT',
+46 silly resolved     devDependencies:
+46 silly resolved      { coveralls: '^2.11.2',
+46 silly resolved        'grunt-banner': '^0.2.3',
+46 silly resolved        'grunt-browserify': '^3.2.0',
+46 silly resolved        'grunt-contrib-clean': '^0.6.0',
+46 silly resolved        'grunt-contrib-jshint': '^0.10.0',
+46 silly resolved        'grunt-contrib-nodeunit': '^0.4.1',
+46 silly resolved        'grunt-contrib-qunit': '^0.5.2',
+46 silly resolved        'grunt-contrib-watch': '^0.6.1',
+46 silly resolved        'grunt-eslint': '^2.0.0',
+46 silly resolved        'grunt-exec': '^0.4.6',
+46 silly resolved        'grunt-jscs': '^0.8.1',
+46 silly resolved        jquery: '~2.1.1',
+46 silly resolved        jscoverage: '^0.5.9',
+46 silly resolved        'load-grunt-tasks': '^1.0.0',
+46 silly resolved        nodeunit: '^0.9.0',
+46 silly resolved        'npm-shrinkwrap': '^4.0.0',
+46 silly resolved        'time-grunt': '^1.0.0' },
+46 silly resolved     dependencies:
+46 silly resolved      { 'binary-search': '^1.2.0',
+46 silly resolved        'body-parser': '^1.9.2',
+46 silly resolved        chalk: '^0.5.1',
+46 silly resolved        cheerio: '^0.18.0',
+46 silly resolved        commander: '^2.5.0',
+46 silly resolved        debug: '^2.1.0',
+46 silly resolved        express: '^4.10.1',
+46 silly resolved        glob: '^4.0.6',
+46 silly resolved        morgan: '^1.4.1',
+46 silly resolved        semver: '^4.1.0' },
+46 silly resolved     main: './src/bootlint.js',
+46 silly resolved     bin: { bootlint: './src/cli.js' },
+46 silly resolved     browser:
+46 silly resolved      { 'binary-search': false,
+46 silly resolved        cheerio: 'jquery',
+46 silly resolved        './cli': false,
+46 silly resolved        './location': false },
+46 silly resolved     files: [ 'bin', 'dist', 'src', 'app.js', 'LICENSE' ],
+46 silly resolved     scripts:
+46 silly resolved      { test: 'grunt test',
+46 silly resolved        coveralls: 'jscoverage src && BOOTLINT_COV=1 nodeunit --reporter=lcov test | coveralls',
+46 silly resolved        start: './bin/www' },
+46 silly resolved     gitHead: '31ab69de3ed87241c5ff2f2cbad4a2cc5457a767',
+46 silly resolved     _id: 'bootlint@0.8.0',
+46 silly resolved     _shasum: 'd8a18772963fc86c21ab380294a8739e100287f1',
+46 silly resolved     _from: 'bootlint@',
+46 silly resolved     _npmVersion: '2.1.6',
+46 silly resolved     _nodeVersion: '0.10.33',
+46 silly resolved     _npmUser: { name: 'cvrebert', email: 'npm@rebertia.com' },
+46 silly resolved     maintainers: [ [Object], [Object] ],
+46 silly resolved     dist:
+46 silly resolved      { shasum: 'd8a18772963fc86c21ab380294a8739e100287f1',
+46 silly resolved        tarball: 'http://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/bootlint/-/bootlint-0.8.0.tgz' } ]
+47 info install bootlint@0.8.0 into /usr/local/lib
+48 info installOne bootlint@0.8.0
+49 verbose lib/node_modules/bootlint unbuild
+50 verbose tar unpack /home/idegutyte/.npm/bootlint/0.8.0/package.tgz
+51 silly lockFile 1a278d78--local-lib-node-modules-bootlint tar:///usr/local/lib/node_modules/bootlint
+52 verbose lock tar:///usr/local/lib/node_modules/bootlint /home/idegutyte/.npm/1a278d78--local-lib-node-modules-bootlint.lock
+53 silly lockFile dc8f851c-e-npm-bootlint-0-8-0-package-tgz tar:///home/idegutyte/.npm/bootlint/0.8.0/package.tgz
+54 verbose lock tar:///home/idegutyte/.npm/bootlint/0.8.0/package.tgz /home/idegutyte/.npm/dc8f851c-e-npm-bootlint-0-8-0-package-tgz.lock
+55 silly gunzTarPerm modes [ '775', '664' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/bootlint'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/bootlint']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/bootlint',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/bootlint',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Linux 3.13.0-37-generic
+59 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "bootlint"
+60 error cwd /home/idegutyte/dev/nullkilometer
+61 error node -v v0.10.32
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/bootlint
+64 error fstream_path /usr/local/lib/node_modules/bootlint
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/bootlint'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]

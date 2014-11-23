@@ -4,12 +4,12 @@ class MarketStallsController < ApplicationController
 	def index
 		if pos_id = params[:point_of_sale_id] || params[:pointOfSale]
 			begin
-				@pos = PointOfSale.find(pos_id)
+				@parent_market = PointOfSale.find(pos_id)
 			rescue ActiveRecord::RecordNotFound
 				raise Errors::InvalidPointOfSale, "Couldn't find PointOfSale with id=#{pos_id}"
 			end
-			raise Errors::InvalidPointOfSale, "PointOfSale with id=#{pos_id} is not a Market" if @pos.pos_type != 0
-			@market_stalls = @pos.market_stalls
+			raise Errors::InvalidPointOfSale, "PointOfSale with id=#{pos_id} is not a Market" if @parent_market.pos_type != 0
+			@market_stalls = @parent_market.market_stalls
 		else
 			@market_stalls = MarketStall.all
       @market_stalls = @market_stalls.order(params[:sort])
@@ -44,7 +44,7 @@ class MarketStallsController < ApplicationController
 
     #assign pending status only if admin not signed in
     if admin_signed_in? == false
-      set_pending_status(@point_of_interest)   
+      set_pending_status(@market_stall)   
     end    
 
     #TODO:remove the if part, cuz there should always be pos_id
@@ -53,7 +53,7 @@ class MarketStallsController < ApplicationController
 	  end
 
 	 	if @market_stall.save	
-	    redirect_to @parent_market
+	    redirect_to @market_stall #@parent_market
 	  else
 	    generate_form_extras # should include @parent_market as well
 			render :new
@@ -92,12 +92,18 @@ class MarketStallsController < ApplicationController
         end
     end
 
- 		set_pending_status(@market_stall)
+
+ 		# assign pending status only if admin not signed in
+ 	  # TODO: commented because would be overwritten in the next step anyway? 
+    # if admin_signed_in? == false
+      set_pending_status(@market_stall)   
+    # end    
+
 
     if @market_stall.update_attributes!(params[:market_stall])
-        flash[:success] = "Market stall updated successfully"
-        #parent_market = @market_stall.point_of_sale
-		redirect_to action: 'show', id: @market_stall.id, format: 'html' 
+      flash[:success] = "Market stall updated successfully"
+      #parent_market = @market_stall.point_of_sale
+			redirect_to action: 'show', id: @market_stall.id, format: 'html' 
     else
         #flash[:error] = "Market stall not updated"
         redirect_to @market_stall 

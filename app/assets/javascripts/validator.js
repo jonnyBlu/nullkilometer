@@ -74,8 +74,8 @@ var FormValidator = function(){
 	  },
 	  submitHandler: function(form) {  
 	   if ($(form).valid()) {
-	   		alert("Valid form submit");
-	       	form.submit(); 
+	   		//console.log("Valid form submit");
+	      form.submit(); 
 	   }
 	   return false; // prevent normal form posting
 	  }

@@ -16,7 +16,8 @@ $mapWidth:	100%;
 
 
 .bordered{
-	padding: 10px 0px 10px 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	border-bottom: 1px solid #eee;
 }
 
@@ -72,6 +73,8 @@ span.openingTimeDay{
 	}
 	a, a:visited{
 		color: #444;
+		font-weight: bold;
+		font-size: large;
 	}
 	line-height: 35px;
 	vertical-align: middle;
@@ -79,9 +82,8 @@ span.openingTimeDay{
 }
 .accordion-inner{
 	padding: 15px;
+	border: 1px solid #e5e5e5;
 	border-top:0px;
-	border-left: 1px solid #e5e5e5;
-	border-bottom: 1px solid #e5e5e5;
 	label{
 		word-break: break-word;
 	}

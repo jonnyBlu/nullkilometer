@@ -1,10 +1,13 @@
 <div id="mapContainerParent" >
+	<div id="mapContainer">
+		<div id="map"></div>
+	</div> 
 	<div class="container" id="mapFilterContainer">
 <!-- mobile only -->
 		<nav class="navbar navbar-default hidden-md hidden-lg" role="navigation" id="mapFilterMobile">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		  		<div class="navbar-toggle collapsed btn" id="mapFilterButton" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		  		<div class="navbar-toggle collapsed btn" id="mapFilterButtonMobile" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				    <%= I18n.t('links.global.find_a_selling_place') %>
 				    <span class="caret"></span>
 				  </div>
@@ -68,9 +71,5 @@
 		</div>		
 <!-- end desktop only-->
 	</div>
-	<div id="mapContainer">
-		<!--<div id="sideBarForDragging"></div>-->
-		<div id="map"></div>
-	</div> 
 	<%= render 'addressSearchResults' %>
 </div>

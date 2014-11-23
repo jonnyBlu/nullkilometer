@@ -7,7 +7,7 @@ $transparentBackground: rgba(255, 255, 255, 0.8);
 $infoboxWrapperWidth: 420px;
 $infoboxWidth: 400px;
 
-$minHeightMap: 600px;
+$minHeightMap: 665px;
 
 .map {
 
@@ -17,7 +17,7 @@ $minHeightMap: 600px;
 	}
 
 	#mapFilterContainer {
-		//position: absolute;
+		position: relative;
 		margin-top:65px;
 		z-index: 2;
 
@@ -30,7 +30,7 @@ $minHeightMap: 600px;
 			ul {
 				padding-left: 10px;
 			}
-			#mapFilterButton{
+			#mapFilterButtonMobile{
 				border: none;
 				background-color: transparent;
 				width: 80%;
@@ -65,10 +65,6 @@ $minHeightMap: 600px;
 			border-bottom: none;
 			> div {
 				margin-left: 0px;
-			}
-			div {
-				z-index: 2;
-				background-color: white;
 			}
 		}
 		.what, .where, .when { 
@@ -115,22 +111,12 @@ $minHeightMap: 600px;
 		z-index: 0;
 		position: absolute;
 		top:0px;
-		// margin-top: 50px;
 		height: 100%;
 		min-height: $minHeightMap; //not less than an open filter
 		
 		width: 100%;
 		#map {
 			height: 100%;
-		}
-
-		#sideBarForDragging {
-			position: absolute;
-			right: 0px;
-			width: 34px;
-			height: 100%;
-			background-color: $backgroundColor;
-			z-index: 2;
 		}
 	}
 
@@ -177,16 +163,12 @@ $minHeightMap: 600px;
 		.leaflet-bar-part-bottom {
 			@include roundedCorners(0px);
 		}
-	}
+	} 
 
 	/* map infbox styling */
 
-	#hiddenInfoboxContentContainer{
-		display: none;
-	}
-
 	.leaflet-popup-content-wrapper{
-		width: $infoboxWrapperWidth;
+		width: 100%;//$infoboxWrapperWidth;
 	}
 
 	.leaflet-popup-content{
@@ -200,7 +182,7 @@ $minHeightMap: 600px;
 	}
 
 	#infoboxContent{
-		width: $infoboxWidth;
+		width: 100%;
 		font-size:13px;
 		div{
 			border-bottom: 1px solid #eee;
@@ -220,19 +202,6 @@ $minHeightMap: 600px;
 	} 
 
 	/* map infobox styling end */
-
-
-
-	@media only screen and (min-width: 500px) { 
-		#sideBarForDragging{
-			display: none;
-		}
-	}
-	@media only screen and (max-width: 500px) { 
-		#sideBarForDragging{
-			display: block;
-		}
-	}
 
 }	
 

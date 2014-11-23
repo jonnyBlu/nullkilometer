@@ -23,6 +23,13 @@ $(document).ready(function(){
 		});
 	},
 	loadFilterListeners = function(){
+		$("#find_a_selling_place").click(function(){
+			//trigger the button click which opens the filter and trigger the closing of the navbar (on small screens)
+			$("#mapFilterButtonMobile").click();
+			if($("#headerNavigationButton").is(":visible")) // click the button only if not hidden (means small screen)
+				$("#headerNavigationBar #headerNavigationButton").click();
+			
+		});
 		$("#mapFilterButton, #find_a_selling_place").click(function(){
 			desktopMapFilterPlaceholder.toggleClass("open");
 			desktopMapFilterPlaceholder.slideToggle("slow");								

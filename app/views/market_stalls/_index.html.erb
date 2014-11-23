@@ -51,12 +51,14 @@
 			<%= I18n.t("point_of_sale.marketstalls") %>
 		</h4>
 		<div class="accordion" id="accordion2">
+			<% displayed_market_stalls_counter=0 %>	
 			<% market_stalls.each do |stall| %>
 				<% if !admin_signed_in? && Status.find(stall.status_id).name != "approved" %>
-				<% else %>   		
+				<% else %>   
+					<% displayed_market_stalls_counter += 1 %>		
 					<div class="accordion-group">
-				    <div class="accordion-heading customButton" >
-				    	<% if  Status.find(stall.status_id).name == "approved" %>
+				    <div class="accordion-heading" >
+				    	<% if Status.find(stall.status_id).name == "approved" %>
 				    		<a class="accordion-toggle ordinaryLink" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
 				      <% else %>
 				      	<a class="accordion-toggle ordinaryLink <%= Status.find(stall.status_id).name.tr(" ", "-") %>" data-toggle="collapse" data-parent="#accordion2" href="#<%= stall.id %>">
@@ -76,6 +78,10 @@
 			    </div>
 				<% end %>
 		  <% end %>
+		  <% if displayed_market_stalls_counter == 0 %>
+		  	There is currently no approved market stalls to display. <br />
+				In order to see non-approved market stalls you need to be signed in as admin.
+			<% end %>
 		</div>
 	</div>
 

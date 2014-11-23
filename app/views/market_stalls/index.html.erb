@@ -1,7 +1,14 @@
 <div class = "infoDiv">
-	<h1> <%= I18n.t("headers.all_market_stalls") %> </h1>
+ 	<% if @parent_market.nil? %>
+		<h1> <%= I18n.t("headers.all_market_stalls") %> </h1>
+	<% else %>
+		<h1> 
+			<%= "#{I18n.t("headers.all_market_stalls")} #{I18n.t("instructions.add_a_pos.in")} " %> 
+			<%= link_to @parent_market.name, point_of_sale_path(@parent_market.id), class: "ordinaryLink"  %>
+		</h1>
+ 	<% end %>
 	<% if admin_signed_in? %>
-		<div class="table-responsive jumbotron places_overview"> 
+		<div class="table-responsive jumbotron places_overview">
 	    <table class="table table-striped">
 	      <thead>
 	        <tr>
@@ -27,9 +34,23 @@
 	      <% end %>
 	      </tbody>
 	    </table>
-	    <%= button_to I18n.t("button.add_market_stall"), new_market_stall_path , method: :get, class: 'btn btn-info' %>
+	    <% if !@parent_market.nil? %>
+
+	    	<%= button_to(new_point_of_sale_market_stall_path(@parent_market.id), method: :get, class: 'btn btn-info') do %>  	
+	    		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	    		<%= I18n.t("button.add_market_stall") %>
+	    	<% end %>
+
+	    <% else %>
+
+	    	<%= button_to(new_market_stall_path, method: :get, class: 'btn btn-info') do %>  	
+	    		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	    		<%= I18n.t("button.add_market_stall") %>
+	    	<% end %>
+
+	    <% end %>
 		</div>
-	<% elsif %>
+	<% elsif %> 
 		<p><%= I18n.t("devise.failure.unauthenticated") %></p>
 	<% end %>
 </div>

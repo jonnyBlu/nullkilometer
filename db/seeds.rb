@@ -13,7 +13,7 @@ PointOfSale.destroy_all
 #approved = Status.create!(
 #	:name => "approved"
 #)
-Status.create!([{ name: 'pending' }, { name: 'not approved' }])
+#Status.create!([{ name: 'pending' }, { name: 'not approved' }])
 
 CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
 	PointOfSale.create!( :name => row[0], 

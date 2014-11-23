@@ -6,7 +6,6 @@ class OpeningTime < ActiveRecord::Base
   attr_accessible :day, :to, :from
 
   validates :day, :to, :from, :presence => true
-  validates :to, :presence => true 
   validates :day, :numericality => { :only_integer => true, :less_than => 7}
   validates :from, :to, :format => { :with => /([0-1]\d|2[0-3]):[0-5]\d/ }
   validate :cant_close_before_open
@@ -15,6 +14,8 @@ class OpeningTime < ActiveRecord::Base
 
   protected
   def cant_close_before_open
+    #TODO does not work
+    errors.add(:to, "to is not defined") if to.nil? 
   	errors.add(:from, I18n.t("errors.messages.opening_time_before_closing_time")) if from.gsub(/:/,'').to_i >= to.gsub(/:/,'').to_i
   end
 

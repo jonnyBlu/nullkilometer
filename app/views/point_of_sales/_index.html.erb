@@ -34,7 +34,10 @@
       <% end %>
       </tbody>
     </table>
-    <%= button_to I18n.t("button.add_selling_point"), new_point_of_sale_path , method: :get, class: 'btn btn-info' %>
+    <%= button_to(new_point_of_sale_path, method: :get, class: 'btn btn-info') do %>    
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <%= I18n.t("button.add_selling_point") %>
+    <% end %>
 	</div>
 <% else %>
 	<p><%= I18n.t("devise.failure.unauthenticated") %></p>

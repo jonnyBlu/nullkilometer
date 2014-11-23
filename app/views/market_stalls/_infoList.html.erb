@@ -1,51 +1,53 @@
-<% if admin_signed_in? %>
-  <div class="row bordered">
+<div class="row">
+
+  <% if admin_signed_in? %>
+    <div class="bordered col-md-12">
+      <b class="<%= Status.find(stall.status_id).name.tr(" ", "-") %>"><%= I18n.t("properties.main_information.status") %>: <%= Status.find(stall.status_id).name %></b>
+    </div>
+  <% end %>
+
+  <div class="bordered col-md-12">
+      <%= "#{I18n.t("headers.belongs_to_market")}: "%>
+      <%= link_to stall.point_of_sale.name, point_of_sale_path(stall.point_of_sale), class: 'ordinaryLink' %>
+  </div>
+
+
+  <div class="bordered col-md-12 productCategories">
+  	 <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
+  </div>
+  <div class="bordered col-md-12">
+  	<% if stall.detail_info.website.nil? || stall.detail_info.website.empty? %>
+  		<%= "#{I18n.t("properties.additional_information.website")}: -" %>
+  	<%	else %>
+      	<%= link_to stall.detail_info.website, "stall.detail_info.website", class: "ordinaryLink" %>
+  	<% end %>
+  </div>
+  <div class="bordered col-md-12">
       <div>
-          <b class="<%= Status.find(stall.status_id).name.tr(" ", "-") %>"><%= I18n.t("properties.main_information.status") %>: <%= Status.find(stall.status_id).name %></b>
+  		<%= if stall.detail_info.mail.nil? || stall.detail_info.mail.empty? 
+  			"#{I18n.t("properties.additional_information.email")}: -"  
+  			else stall.detail_info.mail 
+  		end %>
+      </div>
+      <div>
+      	<%= if stall.detail_info.phone.nil? || stall.detail_info.phone.empty? 
+      		"#{I18n.t("properties.additional_information.phone")}: -"  
+      		else stall.detail_info.phone 
+      	end %>
+      </div>
+      <div>
+      	<%= if stall.detail_info.cell_phone.nil? || stall.detail_info.cell_phone.empty? 
+      		"#{I18n.t("properties.additional_information.cell_phone")}: -" 
+      		else stall.detail_info.cell_phone 
+      	end %>
       </div>
   </div>
-<% end %>
-
-<div class="row bordered">
-    <%= "#{I18n.t("headers.belongs_to_market")}: "%>
-    <%= link_to stall.point_of_sale.name, point_of_sale_path(stall.point_of_sale), class: 'ordinaryLink' %>
-</div>
-
-<div class="row bordered productCategories">
-	 <%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
-</div>
-<div class="row bordered">
-	<% if stall.detail_info.website.nil? || stall.detail_info.website.empty? %>
-		<%= "#{I18n.t("properties.additional_information.website")}: -" %>
-	<%	else %>
-    	<%= link_to stall.detail_info.website, "stall.detail_info.website", class: "ordinaryLink" %>
-	<% end %>
-</div>
-<div class="row bordered">
-    <div>
-		<%= if stall.detail_info.mail.nil? || stall.detail_info.mail.empty? 
-			"#{I18n.t("properties.additional_information.email")}: -"  
-			else stall.detail_info.mail 
-		end %>
-    </div>
-    <div>
-    	<%= if stall.detail_info.phone.nil? || stall.detail_info.phone.empty? 
-    		"#{I18n.t("properties.additional_information.phone")}: -"  
-    		else stall.detail_info.phone 
-    	end %>
-    </div>
-    <div>
-    	<%= if stall.detail_info.cell_phone.nil? || stall.detail_info.cell_phone.empty? 
-    		"#{I18n.t("properties.additional_information.cell_phone")}: -" 
-    		else stall.detail_info.cell_phone 
-    	end %>
-    </div>
-</div>
-<div class="row bordered">
-	<div>
-		<%= if stall.detail_info.description.nil? || stall.detail_info.description.empty? 
-        		"#{I18n.t("properties.additional_information.description")}: -" 
-        		else stall.detail_info.description 
-        	end %>
-	</div>
+  <div class="bordered col-md-12">
+  	<div>
+  		<%= if stall.detail_info.description.nil? || stall.detail_info.description.empty? 
+          		"#{I18n.t("properties.additional_information.description")}: -" 
+          		else stall.detail_info.description 
+          	end %>
+  	</div>
+  </div>
 </div>

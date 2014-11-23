@@ -1,5 +1,5 @@
 <div class= "infoDiv profileWrapper market_stalls_overview" >
-	<% if admin_signed_in? %>
+	<%# if admin_signed_in? %>
 		<div class="row">
 			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
 				<%= I18n.t("headers.market_stall") %>
@@ -18,8 +18,8 @@
 				<div id="profilePagePosMap">Map can be displayed only if JavaScript is enabled.</div>
 			</div>-->
 		</div>
-	<% else %>
-		<p><%= I18n.t("devise.failure.unauthenticated") %></p>
-	<% end %>
+	<%# else %>
+		<p><%#= I18n.t("devise.failure.unauthenticated") %></p>
+	<%# end %>
 </div>	
  

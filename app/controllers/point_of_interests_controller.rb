@@ -1,4 +1,5 @@
 class PointOfInterestsController < ApplicationController
+
 	respond_to :xml, :json, :html
   before_filter :set_poi_type 
   
@@ -12,7 +13,7 @@ class PointOfInterestsController < ApplicationController
 	    end
     else
       @point_of_interests = @poi_class.where(:status_id => approved_status_id).all # only approved - for the map
-			@point_of_interests_all = @poi_class.all #for global overview
+			@point_of_interests_all = @poi_class.all #for a global overview
       @point_of_interests_all = @point_of_interests_all.order(params[:sort])
 		end
     respond_with @point_of_interests
@@ -36,10 +37,21 @@ class PointOfInterestsController < ApplicationController
 
 	def create
     if params[:type] == "PointOfSale"
-      pars = params[:point_of_sale]
-      pars["productCategoryIds"].delete("")
+      pos_params = params[:point_of_sale]
+      pos_params["productCategoryIds"].delete("")
 
-      @point_of_interest = @poi_class.new(pars)
+
+     # pos_params["opening_times_attributes"].each do |ot_array| 
+     #   ot = ot_array[1]
+     #   if (ot[:from].nil? || ot[:to].nil?)
+     #       ot[:from] = ""
+     #       ot[:to] = ""
+     #   end
+     # end 
+
+      cleanup_opening_times(pos_params)
+
+      @point_of_interest = @poi_class.new(pos_params)
 
       #assign pending status only if admin not signed in
       if admin_signed_in? == false
@@ -73,8 +85,6 @@ class PointOfInterestsController < ApplicationController
       @status_name = Status.find(@point_of_interest.status_id).name
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
       @sorted_opening_times =  @point_of_interest.opening_times.sort_by { |ot| ot[:day] }
-     # require 'pp'
-     # pp @sorted_opening_times
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
@@ -92,30 +102,14 @@ class PointOfInterestsController < ApplicationController
       pos_params["productCategoryIds"].delete("")      
       prodCats = pos_params["productCategoryIds"]
 
-      @point_of_interest.products.each do |product|
-      # if product.category not in prodCats
-        unless prodCats.include?(product.category.to_s)
+      @point_of_interest.products.each do |product|      
+        unless prodCats.include?(product.category.to_s) # if product.category not in prodCats
           #TODO: change product's attributes in a more "direct" way
           @point_of_interest.products_attributes = { id: product.id, _destroy: true }
         end
       end
 
-      counter = 0
-      pos_params["opening_times_attributes"].each do |ot_array|
-        ot = ot_array[1]
-        if ot[:day].empty? #|| ( ot[:from].empty? && ot[:to].empty? ) || ot[:from] == ""
-          puts ot[:from]
-          ot['_destroy'] = true
-          counter = counter+1
-        end
-      end
-      #validate if at least one opening time is here!!!
-      if counter > 6
-        #puts "ERROR: all values deleted"
-        #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
-      else
-        #puts "OK: at least one opening time"
-      end
+      cleanup_opening_times(pos_params)
 
       set_pending_status(@point_of_interest)
 
@@ -182,6 +176,27 @@ class PointOfInterestsController < ApplicationController
       @point_of_interest.market_stalls.build
     end
   end 
+
+#TODO: better here or in the model?
+  def cleanup_opening_times(pos_params)
+    logger.debug "cleaning up opening times (destroying those with empty day): #{pos_params["opening_times_attributes"]}"
+    counter = 0
+    pos_params["opening_times_attributes"].each do |ot_array|
+      ot = ot_array[1]
+      if ot[:day].empty? #|| ( ot[:from].empty? && ot[:to].empty? ) || ot[:from] == ""
+        ot['_destroy'] = true
+        counter = counter+1
+      end
+    end
+    #validate if at least one opening time is here!!!
+    #solved via frontend validation
+    #if counter > 6
+      #puts "ERROR: all values deleted"
+      #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
+    #else
+      #puts "OK: at least one opening time"
+    #end
+  end
 
   
 end

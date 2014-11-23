@@ -67,9 +67,7 @@ var Form = function(){
 
 		$(".openingDayContainer .point_of_sale_opening_times_from select").change(function(){
 	    var $selected = $(this).find('option:selected');
-	    console.log($(this).parents().eq(3).html());
-	    $(this).parents().eq(3).find(".point_of_sale_opening_times_to select")
-	   // $('#end_date')
+	    $(this).parents().eq(2).find(".point_of_sale_opening_times_to select")
         .find('option')
         .prop('disabled', true)
         .eq($selected.index())

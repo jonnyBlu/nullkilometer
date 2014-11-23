@@ -1,9 +1,5 @@
 <% if admin_signed_in? %>
-  <div class= "col-md-6 col-sm-6 col-xs-6" style="padding: 0px">
-  	<%= link_to(I18n.t("devise.commands.edit_account"), edit_admin_registration_path, class: "ordinaryLink") %>
-  </div>
+  <%= link_to(I18n.t("devise.commands.edit_account"), edit_admin_registration_path, class: "ordinaryLink") %>
 <% else %>
-  <div class= "col-md-6 col-sm-6 col-xs-6">
  	<%= link_to(I18n.t("devise.commands.register"), new_admin_registration_path, class: "ordinaryLink")  %>
-  </div>
 <% end %>
