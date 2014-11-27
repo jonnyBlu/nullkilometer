@@ -6,10 +6,6 @@ var HomeMap = function(){
 	curPosMarkerLayer,
 	zoomLevel,
 	map,
-	markerIconWidth = 40,
-	markerIconHeight = 56,
-	curPosMarkerIconWidth = 40,
-	curPosMarkerIconHeight = 40,	
 	curPosMarkerIcon = L.icon({
     iconUrl: userIconImageLocation,
     iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
@@ -29,7 +25,8 @@ var HomeMap = function(){
 	initmap = function(lat, lon, zoomLevel){
 	    var options = {
     		center : new L.LatLng(lat, lon), 
-    		zoom : zoomLevel
+    		zoom : zoomLevel,
+    		scrollWheelZoom: false
 	    },     
 	    mapLayer = new L.TileLayer(osmTilesUrl);    
 	    map = new L.Map('map', options).addLayer(mapLayer);

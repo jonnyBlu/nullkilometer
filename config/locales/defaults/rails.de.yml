@@ -120,6 +120,7 @@ de:
       too_short: ist zu kurz (weniger als %{count} Zeichen)
       wrong_length: hat die falsche Länge (muss genau %{count} Zeichen haben)
       opening_time_before_closing_time: Öffnungszeit muss vor Ladenschluss liegen
+      at_least_one_opening_time: Mindestens ein Öffnungzeit ist nötig
       wrong_address: Adresse ist nicht gültig
     template:
       body: ! 'Bitte überprüfen Sie die folgenden Felder:'

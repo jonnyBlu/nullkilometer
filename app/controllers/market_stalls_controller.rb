@@ -125,7 +125,7 @@ class MarketStallsController < ApplicationController
 	      redirect_to @parent_market 
 	    else
 	    	#flash[:error] = "Market stall not deleted"
-	      	respond_with @market_stall
+	      respond_with @market_stall
 	    end 
 	end
 	#tODO:global

@@ -4,63 +4,66 @@
     <%= javascript_include_tag "validator.js" %>
 <% end %>
 
+
 <%= render :partial => "layouts/backend_errors", :locals => {:place => @market_stall} %>
 
-<%= simple_form_for(@market_stall) do |f| %>
+<div class="jumbotron singleStallFormWrapper">
+	<%= simple_form_for @market_stall do |f| %>
 
-  <div class="form-inputs">
+	  <div class="form-inputs">
 
-	  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
+		  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
 
-	  <% if @parent_market.nil? %>
-	 		<%= f.input :point_of_sale_id, label: I18n.t("instructions.add_a_pos.parent_market_name"), collection: @parent_market_collection, as: :select, prompt: I18n.t("headers.belongs_to_market"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
-	  <% else %>
-	  	<label>
-	  		<%= I18n.t("headers.belongs_to_market") %></label>
-	  	<p>
-	  		<%= link_to @parent_market.name, point_of_sale_path(@parent_market), class: "ordinaryLink" %></p> 
-	  	<%= f.input :point_of_sale_id, input_html: { class: "form-control", value: @parent_market.id }, wrapper_html: { class: "form-group" }, as: 'hidden' %>
-	  <% end %>
+		  <% if @parent_market.nil? %>
+		 		<%= f.input :point_of_sale_id, label: I18n.t("instructions.parent_market_name"), collection: @parent_market_collection, as: :select, prompt: I18n.t("headers.belongs_to_market"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
+		  <% else %>
+		  	<label class="control-label">
+		  		<%= I18n.t("headers.belongs_to_market") %>:</label>
+		  	<p>
+		  		<%= link_to @parent_market.name, point_of_sale_path(@parent_market), class: "ordinaryLink" %>
+		  	</p> 
+		  	<%= f.input :point_of_sale_id, input_html: { class: "form-control", value: @parent_market.id }, wrapper_html: { class: "form-group" }, as: 'hidden' %>
+		  <% end %>
 
-	  <% if admin_signed_in? %>	  <!-- Show status section only if admin logged in-->
-		  <%= f.input :status_id, label: "#{I18n.t("properties.main_information.status")}:", collection: @status_names_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_status"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
+		  <% if admin_signed_in? %>	  <!-- Show status section only if admin logged in-->
+			  <%= f.input :status_id, label: "#{I18n.t("properties.main_information.status")}:", collection: @status_names_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_status"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
+			<% end %>
+			
+			<%= render partial: "point_of_sales/other_information", locals: {f: f} %>
+	  </div>
+
+	 	<% if locals[:parent]=="new" %>
+
+	 	 	<%= button_tag( type: 'button', class: 'btn btn-default',  onclick: "location.href = '#{root_path}'") do %>  	
+	  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+	  		<%= I18n.t("button.back") %>
+	  	<% end %>
+
+	 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
+			  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<%= I18n.t("button.save_place") %>
+			<% end %>
+
+	  <% elsif locals[:parent]=="edit" %>
+
+	  	<%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@parent_market)}'") do %>  	
+	  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	  		<%= I18n.t("button.cancel_changes") %>
+	  	<% end %>
+
+
+	  	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
+			  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<%= I18n.t("button.save_changes") %>
+			<% end %>
+
 		<% end %>
-		
-		<%= render partial: "point_of_sales/other_information", locals: {f: f} %>
-  </div>
-
- 	<% if locals[:parent]=="new" %>
-
- 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
-		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-			<%= I18n.t("button.save_place") %>
-		<% end %>
- 	 	<%= button_tag( type: 'button', class: 'btn btn-default',  onclick: "location.href = '#{root_path}'") do %>  	
-  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-  		<%= I18n.t("button.back") %>
-  	<% end %>
-
-  <% elsif locals[:parent]=="edit" %>
-
-  	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
-		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-			<%= I18n.t("button.save_changes") %>
-		<% end %>
-
-
-	  <%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@parent_market)}'") do %>  	
-  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  		<%= I18n.t("button.cancel_changes") %>
-  	<% end %>
-
 	<% end %>
-<% end %>
-
-<% if admin_signed_in? && locals[:parent]=="edit" %>
-
-  <%= button_to(@market_stall, type: 'button', class: "btn btn-danger",  method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete_market_stall") }) do %>
-		<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-		<%= I18n.t("button.delete_market_stall") %>
+	<% if admin_signed_in? && locals[:parent]=="edit" %>
+	  <%= button_to(@market_stall, type: 'button', class: "btn btn-danger",  method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete_market_stall") }) do %>
+			<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+			<%= I18n.t("button.delete_market_stall") %>
+		<% end %>
 	<% end %>
+</div>
 
-<% end %>

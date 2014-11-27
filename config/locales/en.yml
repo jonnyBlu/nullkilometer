@@ -28,9 +28,13 @@ en:
     delete_market_stall: "Delete market stall"
     save_changes: "Save changes"
     save_place: "Save the new place"
+    save_place_exit: "Save and exit"
+    save_place_next_step: "Save and continue"
     cancel_changes: "Cancel changes"
     back: "Back"
     close: "Close"
+    add_later: "Add later"
+    skip: "Skip"
   input:
     commands:
         add_an_address: "Enter an address"
@@ -40,19 +44,13 @@ en:
   instructions:
     add_a_pos: 
         precise_the_location: "Precise the location"
-        precise_the_location_1: "Enter an Address or precise the location on the map"
-        precise_the_location_2: "To precise the location click and drag the marker"
         main_information: "Main information"
         additional_information: "Additional information"
         market_stalls: "Market stalls"
         parent_market_name: "Parent market name"
         confirm: "Confirm"
         overview: "Overview"
-        overview_and_confirm_1: "Check the information and confirm if it is correct."
-        overview_and_confirm_2: "Otherwise go back to the previous steps and edit the information."
         submit_text: "Thanks for the information. It will be checked and published online as soon as possible."
-        minimum_note_1: "(* min 1)"
-        minimum_note_2: "(* min 1 Day should be marked)"
         select_pos_type: "Select a type"
         select_status: "Select a status"
         from: "from"
@@ -62,7 +60,9 @@ en:
         in: "in"
         confirm_delete: "Are you sure you want to delete this shop?"
         confirm_edit: "Are you sure you want to edit this place?"
+        confirm_save: "Are you sure you want to save this place?"
         confirm_delete_market_stall: "Are you sure you want to delete this market stall?"
+        select_to_filter: "Select/deselect icons in order to show/hide places."
   links:
     global:
         about: "About"
@@ -95,3 +95,5 @@ en:
     belongs_to_market: "Belongs to market"
     errors: "Errors"
     address_search_results: "Address search results"
+  messages: 
+    no_approved_stalls: "There are currently no approved market stalls to display. <br />In order to see not-approved market stalls you need to be signed in as admin."

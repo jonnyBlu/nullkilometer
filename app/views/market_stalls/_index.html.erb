@@ -1,57 +1,59 @@
-<div id="marketStallsContainer_NOJS" class="market_stalls_overview">
-
+<div class="col-md-12">
 	<h4><%= I18n.t("point_of_sale.marketstalls") %></h4>
-	<div class="table-responsive"> 
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  class: "ordinaryLink"  %></th>
-	        <% if admin_signed_in? %>
-						  <th><%= I18n.t("properties.main_information.status") %></th>
-					<% end %>
-	        <th><%= I18n.t("properties.main_information.product_categories") %></th>
-	        <th><%= I18n.t("properties.additional_information.website") %></th>
-	        <th><%= I18n.t("properties.additional_information.email") %></th>
-	        <th><%= I18n.t("properties.additional_information.phone") %></th>
-	        <th><%= I18n.t("properties.additional_information.cell_phone") %></th>
-	        <th><%= I18n.t("properties.additional_information.description") %></th>
-	        <th><%= I18n.t("links.global.edit")%></th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	  	<% market_stalls.each do |stall| %>
-	  	<% if !admin_signed_in? && Status.find(stall.status_id).name != "approved" %>
-				<% else %>   
+</div>
+
+<div class="col-md-12">
+	<div id="marketStallsContainer_NOJS" class="market_stalls_overview">
+		<div class="table-responsive"> 
+		  <table class="table table-striped">
+		    <thead>
 		      <tr>
-		        <td><%= link_to stall.name, market_stall_path(stall), class: "ordinaryLink" %></td>
+		        <th><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  class: "ordinaryLink"  %></th>
 		        <% if admin_signed_in? %>
-						  <td>
-						  	<%= content_tag(:b, Status.find(stall.status_id).name , class: "#{Status.find(stall.status_id).name.tr(" ", "-")}") %>					  	
-							</td>
+							  <th><%= I18n.t("properties.main_information.status") %></th>
 						<% end %>
-						<td>
-							<%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
-						</td>
-						<td><%= link_to stall.detail_info.website, "stall.detail_info.website", class: "ordinaryLink" %></td>
-						<td><%= stall.detail_info.mail  %></td>
-						<td><%= stall.detail_info.phone  %></td>
-						<td><%= stall.detail_info.cell_phone %></td>
-						<td><%= stall.detail_info.description  %></td>
-		        <td><%= link_to I18n.t("links.global.edit"), edit_market_stall_path(stall), class: "ordinaryLink"  %></td>
+		        <th><%= I18n.t("properties.main_information.product_categories") %></th>
+		        <th><%= I18n.t("properties.additional_information.website") %></th>
+		        <th><%= I18n.t("properties.additional_information.email") %></th>
+		        <th><%= I18n.t("properties.additional_information.phone") %></th>
+		        <th><%= I18n.t("properties.additional_information.cell_phone") %></th>
+		        <th><%= I18n.t("properties.additional_information.description") %></th>
+		        <th><%= I18n.t("links.global.edit")%></th>
 		      </tr>
+		    </thead>
+		    <tbody>
+		  	<% market_stalls.each do |stall| %>
+		  	<% if !admin_signed_in? && Status.find(stall.status_id).name != "approved" %>
+					<% else %>   
+			      <tr>
+			        <td><%= link_to stall.name, market_stall_path(stall), class: "ordinaryLink" %></td>
+			        <% if admin_signed_in? %>
+							  <td>
+							  	<%= content_tag(:b, Status.find(stall.status_id).name , class: "#{Status.find(stall.status_id).name.tr(" ", "-")}") %>					  	
+								</td>
+							<% end %>
+							<td>
+								<%= render :partial => "point_of_sales/productCategoryImages", :locals => {:seller => stall} %>
+							</td>
+							<td><%= link_to stall.detail_info.website, "stall.detail_info.website", class: "ordinaryLink" %></td>
+							<td><%= stall.detail_info.mail  %></td>
+							<td><%= stall.detail_info.phone  %></td>
+							<td><%= stall.detail_info.cell_phone %></td>
+							<td><%= stall.detail_info.description  %></td>
+			        <td><%= link_to I18n.t("links.global.edit"), edit_market_stall_path(stall), class: "ordinaryLink"  %></td>
+			      </tr>
+			    <% end %>
 		    <% end %>
-	    <% end %>
-	    </tbody>
-	  </table>
+		    </tbody>
+		  </table>
+		</div>
 	</div>
 </div>
 
+<div class="col-md-12">
 	<div id="marketStallsContainer" style="display:none" class="market_stalls_overview">	
-		<h4>
-			<%= I18n.t("point_of_sale.marketstalls") %>
-		</h4>
+		<% displayed_market_stalls_counter=0 %>	
 		<div class="accordion" id="accordion2">
-			<% displayed_market_stalls_counter=0 %>	
 			<% market_stalls.each do |stall| %>
 				<% if !admin_signed_in? && Status.find(stall.status_id).name != "approved" %>
 				<% else %>   
@@ -71,18 +73,20 @@
 					     	<!--<div><%= stall.point_of_sale.name %></div>-->
 							<%= render :partial => "market_stalls/infoList", :locals => {:stall => stall}  %>
 							<div id="editPosLinkWrapper">
-								<%= link_to I18n.t("links.global.edit"), "/market_stalls/#{stall.id}/edit.html", class: "ordinaryLink", data: { :no_turbolink => true }  %>
+								<%= link_to I18n.t("links.global.edit"), edit_market_stall_path(stall), class: "ordinaryLink", data: { :no_turbolink => true }  %>
 							</div>
 				     	</div> 
 			    	</div>
 			    </div>
 				<% end %>
 		  <% end %>
-		  <% if displayed_market_stalls_counter == 0 %>
-		  	There is currently no approved market stalls to display. <br />
-				In order to see non-approved market stalls you need to be signed in as admin.
-			<% end %>
 		</div>
+	  <% if displayed_market_stalls_counter == 0 %>
+			<div class="col-md-12">
+				<%= simple_format(I18n.t("messages.no_approved_stalls"), {}, wrapper_tag: "div") %>
+			</div>
+		<% end %>
 	</div>
+</div>
 
 

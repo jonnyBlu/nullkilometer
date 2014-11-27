@@ -3,10 +3,10 @@
 de:
   devise:
     commands:
-      login: "Einloggen"
-      logout: "Ausloggen"
-      register: "Registerieren"
-      edit_account: "Account bearbeiten"
+      login: "Login"
+      logout: "Logout"
+      register: "Register"
+      edit_account: "Edit account"
     confirmations:
       confirmed: "Your account was successfully confirmed."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
@@ -62,3 +62,37 @@ de:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  custom:
+    confirmations:
+      resend_confirmation_instructions: "Resend confirmation instructions"
+    mailer:
+      welcome: "Welcome"
+      you_can_confirm: "You can confirm your account email through the link below:"
+      confim_my_account: "Confirm my account"
+      hello: "Hello"
+      password_change_message: "Someone has requested a link to change your password. You can do this through the link below."
+      change_my_password: "Change my password"
+      ignore_email: "If you didn't request this, please ignore this email."
+      password_wont_change: "Your password won't change until you access the link above and create a new one."
+      account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+      click_to_unlock: "Click the link below to unlock your account:"
+      unlock_account: "Unlock my account"
+    passwords:
+      new_password: "New password"
+      confirm: "Confirm your new password"
+      change: "Change my password"
+      send_reset_instructions: "Send reset instructions"
+      forgot_your_password: "Forgot your password?"
+    registrations:
+      leave_blank: "leave it blank if you don't want to change it"
+      need_password_to_confirm: "we need your current password to confirm your changes"
+      update: "Update"
+      cancel_account: "Cancel my account"
+      are_you_sure: "Are you sure?"
+    shared:
+      no_confirmation_instructions: "Didn't receive confirmation instructions?"
+      no_unlock_instructions: "Didn't receive unlock instructions?"
+      login_with: "Login with"
+    unlocks:
+      resend_unlock_instructions: "Resend unlock instructions"
+

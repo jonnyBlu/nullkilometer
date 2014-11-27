@@ -39,6 +39,6 @@ Nullkilometer::Application.configure do
     domain: 'nullkilometer.org',
     tls: false,
     enable_starttls_auto: false,
-}
+  }
 
 end

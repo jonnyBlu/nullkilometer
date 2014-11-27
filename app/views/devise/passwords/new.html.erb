@@ -1,5 +1,5 @@
 <div class="border-form-div infoDiv">
-	<h2>Forgot your password?</h2>
+	<h2><%= I18n.t("custom.psswords.forgot_your_password")%></h2>
 
 	<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 	  <%= f.error_notification %>
@@ -9,7 +9,7 @@
 	  </div>
 
 	  <div class="form-actions">
-	    <%= f.button :submit, "Send reset instructions" %>
+	    <%= f.button :submit, I18n.t("custom.psswords.send_reset_instructions") %>
 	  </div>
 	<% end %>
 

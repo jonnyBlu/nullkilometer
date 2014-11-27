@@ -62,6 +62,7 @@ Nullkilometer::Application.routes.draw do
     get '/imprint' => 'home#imprint'    
     
     get "*stuff", :to => "home#routing_error"
+
   end
 
 end

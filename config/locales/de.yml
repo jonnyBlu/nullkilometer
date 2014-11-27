@@ -28,9 +28,13 @@ de:
     delete_market_stall: "Marktstand löschen"
     save_changes: "Änderungen speichern"
     save_place: "Neuen Ort speichern"
+    save_place_exit: "Ort speichern und beenden"
+    save_place_next_step: "Ort speichern und weiter"
     cancel_changes: "Änderungen verwerfen"
     back: "Zurück"
     close: "Schließen"
+    add_later: "Später hinzufügen"
+    skip: "Skip"
   input:
     commands:
         add_an_address: "Adresse eingeben"
@@ -40,19 +44,13 @@ de:
   instructions:
     add_a_pos: 
         precise_the_location: "Ort bestimmen"
-        precise_the_location_1: "Gebe eine Adresse ein oder präzisiere die Lokation auf der Karte"
-        precise_the_location_2: "Um die die Lokation auf der Karte zu präzisieren, klicke und schiebe den Marker"
         main_information: "Hauptinformationen"
         additional_information: "Zusätzliche Informationen"
         market_stalls: "Marktstände"
         parent_market_name: "Name des Markts"
         confirm: "Bestätigen"
         overview: "Übersicht"
-        overview_and_confirm_1: "Bitte überprüfe deine Angaben und bestätige wenn sie korrekt sind."
-        overview_and_confirm_2: "Anderenfalls ändere die Angaben in den vorherigen schritten."
         submit_text: "Danke für die information, die Daten über den Verkaufsort werden bald online veröffentlicht werden."
-        minimum_note_1: "(* min 1)" 
-        minimum_note_2: "(* min 1 Tag markieren)"
         select_pos_type: "Bestimme Art des Verkaufsortes"
         select_status: "Bestimme Status des Verkaufsortes"
         from: "von"
@@ -62,7 +60,9 @@ de:
         in: "in"
         confirm_delete: "Sind Sie sicher, das sie diesen Laden löschen wollen?"
         confirm_edit: "Sind Sie sicher, das sie diesen Ort editieren wollen?"
+        confirm_save: "Sind Sie sicher, das sie diesen Ort speichern wollen?"
         confirm_delete_market_stall: "Sind Sie sicher, das sie diesen Marktstand löschen wollen?"
+        select_to_filter: "Klicken sie auf die Symbole um die Verkaufsorte ein- oder auszublenden."
   links:
     global:
         about: "Über"
@@ -95,3 +95,5 @@ de:
     belongs_to_market: "Gehört zum Markt"
     errors: "Fehĺer"
     address_search_results: "Ergebnisse der Adresssuche"
+  messages: 
+    no_approved_stalls: "Es gibt momentan keine bestätgte Marktstände zum anzeigen. <br /> Um die noch nicht-bestätigten Marktstände zu sehen, musst du als Admin eingelogged sein"

@@ -41,10 +41,10 @@
 	  <ul id = "openingTimesContainer">
 	  	<label class="control-label"><%= "#{I18n.t("properties.main_information.opening_times")}:" %></label>
 	  	<!-- record name, record_object, options, &block-->
-			<%= f.simple_fields_for :opening_times, @sorted_opening_times , :validate => :false do |ot| %>
+			<%= f.simple_fields_for :opening_times, @point_of_interest.all_opening_times , :validate => :false do |ot| %>
 			  	<li class = "openingDayContainer grayedOut">
 			  		<%= ot.input :day, label: false, as: :boolean, 
-			  			inline_label: I18n.t("date.day_names")[ot.object.day], 
+			  			inline_label: I18n.t("date.day_names")[ot.object.day || 0], 
 			  			checked_value: ot.object.day,
 			  		 	include_hidden: :false, 
 			  		 	unchecked_value: nil, 
@@ -94,28 +94,32 @@
   </div>
   <% if locals[:parent]== "new" %>
 
- 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
-		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-			<%= I18n.t("button.save_place") %>
-		<% end %>
-
  	 	<%= button_tag( type: 'button', class: 'btn btn-default',  onclick: "location.href = '#{root_path}'") do %>  	
   		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
   		<%= I18n.t("button.back") %>
   	<% end %>
 
+ 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_save")}, class: "btn-success" do %>
+		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			<%= I18n.t("button.save_place_exit") %>
+		<% end %>
+
+		<%#= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
+		  <!--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>-->
+			<%#= I18n.t("button.save_place_next_step") %>
+		<%# end %>
 
   <% elsif locals[:parent]== "edit" %>
+  
+	  <%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@point_of_interest)}'") do %>  	
+  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  		<%= I18n.t("button.cancel_changes") %>
+  	<% end %>
 
   	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
 		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 			<%= I18n.t("button.save_changes") %>
 		<% end %>
-
-	  <%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@point_of_interest)}'") do %>  	
-  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  		<%= I18n.t("button.cancel_changes") %>
-  	<% end %>
 
   <% end %>
 <% end %>

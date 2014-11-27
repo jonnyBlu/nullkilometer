@@ -25,7 +25,7 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 		input[type="text"], /*TODO: maybe this is not needed, cuz the following is enough*/
 		input.string, textarea {
 			@media only screen and (min-width: 500px) { 
-				width: 400px;
+				//width: 400px;
 			}
 			@media only screen and (max-width: 500px) { 
 				width: 250px;
@@ -131,6 +131,12 @@ form#new_point_of_sale, form.edit_point_of_sale, form#new_market_stall, form.edi
 	}
 }
 
+.singleStallFormWrapper{
+	padding: 10px !important;
+	p{
+		font-size: inherit;
+	}
+}
 
 .places_overview, .market_stalls_overview{
 	.not-approved{

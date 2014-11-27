@@ -40,15 +40,6 @@ class PointOfInterestsController < ApplicationController
       pos_params = params[:point_of_sale]
       pos_params["productCategoryIds"].delete("")
 
-
-     # pos_params["opening_times_attributes"].each do |ot_array| 
-     #   ot = ot_array[1]
-     #   if (ot[:from].nil? || ot[:to].nil?)
-     #       ot[:from] = ""
-     #       ot[:to] = ""
-     #   end
-     # end 
-
       cleanup_opening_times(pos_params)
 
       @point_of_interest = @poi_class.new(pos_params)
@@ -77,14 +68,9 @@ class PointOfInterestsController < ApplicationController
       @point_of_interest = @poi_class.find(params[:id])
       @pos_types_collection = I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
-      for i in 0..6
-        if !@point_of_interest.opening_times.where(day: i).exists?
-          @point_of_interest.opening_times.build(day: i)
-        end
-      end
       @status_name = Status.find(@point_of_interest.status_id).name
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
-      @sorted_opening_times =  @point_of_interest.opening_times.sort_by { |ot| ot[:day] }
+
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
     end
@@ -132,7 +118,8 @@ class PointOfInterestsController < ApplicationController
     end
     if @point_of_interest.destroy
       flash[:success] = "Point of interest destroyed"
-      redirect_to root_path
+      redirect_to action: 'index', format: 'html'
+
     else
       redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
     end  
@@ -170,9 +157,6 @@ class PointOfInterestsController < ApplicationController
       @pos_types_collection = I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
-      for i in 0..6
-        @point_of_interest.opening_times.build(day: i)
-      end
       @point_of_interest.market_stalls.build
     end
   end 

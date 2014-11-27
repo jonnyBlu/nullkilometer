@@ -3,10 +3,7 @@ function ProfileMap(){
         ajaxRequest,
         pos,
         curPosMarkerLayer,
-        markersOfTheMap=[],
-
-        curPosMarkerIconWidth = 40,
-        curPosMarkerIconHeight = 40,    
+        markersOfTheMap=[],    
         curPosMarkerIcon = L.icon({
             iconUrl: userIconImageLocation,
             iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
