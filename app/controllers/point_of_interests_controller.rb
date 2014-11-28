@@ -52,8 +52,14 @@ class PointOfInterestsController < ApplicationController
     end
     if @point_of_interest.save
       if params[:type] == "PointOfSale" && @point_of_interest.posTypeId == 0
-        #redirect to new market stall for that market
-        redirect_to controller: 'market_stalls', action: 'new',  point_of_sale_id: @point_of_interest.id, format: 'html', notice: 'addLater'
+        #redirect to new market stall for that market        
+        if(params[:button] == "continue")
+          logger.debug "Continue - #{params[:button]}"
+          redirect_to controller: 'market_stalls', action: 'new',  point_of_sale_id: @point_of_interest.id, format: 'html', notice: 'addLater'
+        else
+          logger.debug "Finish - #{params[:button]}"
+          redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
+        end
       else
         redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
       end 

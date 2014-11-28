@@ -1,24 +1,26 @@
 <div id="footer">
   <div class="container">
     <div class="row">
-      <ul class="list-unstyled">
         <div class="col-md-3 col-sm-4 col-xs-6">
-          <%= link_to I18n.t('links.global.contacts'), :contacts, class: "ordinaryLink" %>
-        </div>
-        <div class="col-md-3 col-sm-4 col-xs-6">
-          <%= link_to I18n.t('links.global.imprint'), :imprint, class: "ordinaryLink" %>
-        </div>
-        <div class="col-md-3 col-sm-4 col-xs-6">
-          Find us on social:
+          <%= I18n.t("links.global.find_us_on_social") %>
           <a target="_blank" href="https://www.facebook.com/nullkilometer"><i class="fa fa-facebook-square fa-lg"></i></a>
           <a target="_blank" href="https://plus.google.com/104859560535623200503/about"><i class="fa fa-google-plus-square fa-lg"></i></a>
           <a target="_blank" href="http://instagram.com/nullkilometer"><i class="fa fa-instagram fa-lg"></i></a>
         </div>
         <div class="col-md-3 col-sm-4 col-xs-6">
+          <%= link_to I18n.t('links.global.contacts'), :contacts, class: "ordinaryLink" %>/
+          <%= link_to I18n.t('links.global.legal_information'), :legal_information, class: "ordinaryLink" %>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <%= link_to I18n.t('links.global.general_terms_and_conditions'), :legal_information, class: "ordinaryLink" %>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <%= link_to I18n.t('links.global.copyright'), :legal_information, class: "ordinaryLink" %>
+        </div>        
+        <div class="col-md-2 col-sm-4 col-xs-6">
           <!--%#= render partial: 'devise/menu/registration_items' , locals: {f: f} %-->
           <%= render 'devise/menu/login_and_registration_items' %>
         </div>
-      </ul>
     </div><!--/row-->
   </div><!--/container-->
 </div>

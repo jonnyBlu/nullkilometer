@@ -14,6 +14,7 @@
 		    </div>
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    	<div id="filterInstructions"><%= I18n.t("instructions.add_a_pos.select_to_filter") %></div>
 		      <ul class="nav navbar-nav">
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= I18n.t("filter.what") %><span class="caret"></span></a>
@@ -54,7 +55,7 @@
 			</div>
 		</div>
 		<div id="mapFilter" class="row hidden-xs hidden-sm">
-			<div id="filerInstructions"><%= I18n.t("instructions.add_a_pos.select_to_filter") %></div>
+			<div id="filterInstructions"><%= I18n.t("instructions.add_a_pos.select_to_filter") %></div>
 			<div>
 	    	<div class="what col-sm-6 col-md-4 col-lg-4"> 
 	    		<p><%= I18n.t("filter.what") %></p>

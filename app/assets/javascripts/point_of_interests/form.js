@@ -40,6 +40,16 @@ var Form = function(){
 	  setLocationSearchListners(buttonSelector, inputSelector, addressResultsPlaceholder, getOSMAddress);
   },
 	setFormListeners = function(){
+		// if marketStall selected, unhide the button with "continue" option
+		$("select#point_of_sale_posTypeId").change(function(){
+			var selectedPosTypeId = $(this).find("option:selected").val();
+			$("#submitButton_continue").addClass("hidden");
+			if(selectedPosTypeId === "0"){
+				$("button#submitButton_continue").removeClass("hidden");
+
+			}
+		}).change();
+
 		//(Only for edit page) If one of the time values (we take "from") is not empty, the checkbox for the openingDay is selected
 		$(".openingDayContainer").find(".point_of_sale_opening_times_from").each(function(){
 			var value = $(this).find("select option:selected").val();
@@ -53,7 +63,7 @@ var Form = function(){
 				checkboxToCheck.parents().eq(3).find(".point_of_sale_opening_times_from, .point_of_sale_opening_times_to").removeClass("hidden");
 			}
 		});
-		//change style on OpeningTimes checkbox change
+		//changing style on OpeningTimes checkbox change
 		$(".openingDayContainer input[type='checkbox']").change(function() {
 	  	$(this).parents().eq(3).toggleClass("grayedOut");
 	  	if (!$(this).parents().eq(3).hasClass("grayedOut")){

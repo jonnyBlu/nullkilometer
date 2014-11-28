@@ -59,7 +59,7 @@ Nullkilometer::Application.routes.draw do
     root :to => 'home#index'
 
     get '/contacts' => 'home#contacts'
-    get '/imprint' => 'home#imprint'    
+    get '/legal_information' => 'home#legal_information'    
     
     get "*stuff", :to => "home#routing_error"
 

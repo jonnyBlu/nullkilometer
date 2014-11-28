@@ -1,18 +1,13 @@
 <div class="infoDiv formWrapper">
 	<% if @parent_market.nil? %>
 		<h1><%= I18n.t("button.add_market_stall") %></h1>
-
-	<% elsif !@parent_market.nil? %> 
-
-		<div style="border-bottom: 1px #ccc solid;">
-			<h1 style="text-align: left; margin-bottom: 20px;">
-				<%= link_to @parent_market.name, point_of_sale_path(@parent_market), class: "ordinaryLink" %>
-			</h1>
-			<%= I18n.t("point_of_sale.pos_type_names")[@parent_market.posTypeId] %>
-			<p><%= @parent_market.address %></p>
-		</div>
-
-		<h3><b><%= I18n.t("button.add_market_stall") %></b>
+	<% else %> 
+		<h1> 
+			<%= I18n.t("headers.new_selling_point") %> 
+		</h1>
+		<p style="text-align: center"><%= I18n.t("headers.step") %> 2/2</p>
+		<h3>
+			<b><%= I18n.t("button.add_market_stall") %></b>
 			<small style="float: right">		  	
 				<%= link_to(point_of_sale_path(@parent_market), class: "ordinaryLink") do %>
 					<%= I18n.t("button.skip") %>
@@ -20,8 +15,6 @@
 				<% end%>
 			</small>
 		</h3>
-
-	<% end %>
-	
+	<% end %>	
 	<%= render 'form', object: @market_stall, locals: {parent: "new"}  %>
 </div>

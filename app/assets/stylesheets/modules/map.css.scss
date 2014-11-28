@@ -35,6 +35,9 @@ $minHeightMap: 665px;
 				background-color: transparent;
 				width: 80%;
 			}
+			#filterInstructions{
+				font-size: 10px;
+			}
 		}
 		#mapFilterControls{
 			#addressLookupContainer, #mapFilterButton {
@@ -66,11 +69,10 @@ $minHeightMap: 665px;
 			> div {
 				margin-left: 0px;
 			}
-
-			#filerInstructions{
-				margin: 10px;
+		}
+		#filterInstructions{
+				margin: 10px 10px 0px 10px !important;
 				color: gray;
-			}
 		}
 		.what, .where, .when { 
 			p{

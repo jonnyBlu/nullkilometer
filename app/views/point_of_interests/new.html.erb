@@ -3,6 +3,7 @@
 		<h1> 
 			<%= I18n.t("headers.new_selling_point") %> 
 		</h1>
+		<p style="text-align: center"><%= I18n.t("headers.step") %> 1/2</p>
 		<%= render 'point_of_sales/form', object: @point_of_interest, locals: {parent: "new"}  %>
 		
 	<% elsif @point_of_interest.type == "PointOfProduction" %>

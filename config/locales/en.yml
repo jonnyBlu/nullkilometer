@@ -29,7 +29,7 @@ en:
     save_changes: "Save changes"
     save_place: "Save the new place"
     save_place_exit: "Save and exit"
-    save_place_next_step: "Save and continue"
+    save_place_next_step: "Save and to market stalls"
     cancel_changes: "Cancel changes"
     back: "Back"
     close: "Close"
@@ -67,7 +67,10 @@ en:
     global:
         about: "About"
         contacts: "Contacts"
-        imprint: "Legal information"
+        find_us_on_social: "Find us on social:"
+        legal_information: "Legal information"
+        general_terms_and_conditions: "General terms"
+        copyright: "Copyright"
         home: "Home"
         map: "Map"
         register: "Register"
@@ -95,5 +98,6 @@ en:
     belongs_to_market: "Belongs to market"
     errors: "Errors"
     address_search_results: "Address search results"
+    step: "Step"
   messages: 
     no_approved_stalls: "There are currently no approved market stalls to display. <br />In order to see not-approved market stalls you need to be signed in as admin."

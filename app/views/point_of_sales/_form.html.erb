@@ -71,7 +71,7 @@
   	<!-- if it s a market and it is being edited -->   	  
   	<% if locals[:parent]== "edit" && @point_of_interest.posTypeId == 0 %> 
 	  	
-  	  <label><%= I18n.t("properties.additional_information.market_stalls") %></label>		
+  	  <label class="control-label"><%= I18n.t("properties.additional_information.market_stalls") %></label>		
   	  <div class="marketStalls row jumbotron" style="padding: 20px;">  	
 		  	 	<% @point_of_interest.market_stalls.each do |stall| %>	
 	  	 			<div class="col-md-12">
@@ -88,38 +88,45 @@
 
 	  	 		</div> 			  	 
   	 	</div>
-  	  	<br />
+  	  <br />
   	<% end %>
   	<!-- end block -->
   </div>
+
   <% if locals[:parent]== "new" %>
 
- 	 	<%= button_tag( type: 'button', class: 'btn btn-default',  onclick: "location.href = '#{root_path}'") do %>  	
-  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-  		<%= I18n.t("button.back") %>
-  	<% end %>
+  	<p>
+	 	 	<%= button_tag( type: 'button', class: 'btn btn-default',  onclick: "location.href = '#{root_path}'") do %>  	
+	  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+	  		<%= I18n.t("button.back") %>
+	  	<% end %>
 
- 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_save")}, class: "btn-success" do %>
-		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-			<%= I18n.t("button.save_place_exit") %>
-		<% end %>
+	 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_save")}, value: 'finish', class: "btn-success" do %>
+			  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<%= I18n.t("button.save_place_exit") %>
+			<% end %>
+		</p>
 
-		<%#= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
-		  <!--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>-->
-			<%#= I18n.t("button.save_place_next_step") %>
-		<%# end %>
+		<p>
+			<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_save")}, value: 'continue', class: "btn-success hidden", id: "submitButton_continue" do %>
+				<%= I18n.t("button.save_place_next_step") %> 
+				<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+			<% end %>
+		</p>
 
   <% elsif locals[:parent]== "edit" %>
   
-	  <%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@point_of_interest)}'") do %>  	
-  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  		<%= I18n.t("button.cancel_changes") %>
-  	<% end %>
+  	<p>
+		  <%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@point_of_interest)}'") do %>  	
+	  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	  		<%= I18n.t("button.cancel_changes") %>
+	  	<% end %>
 
-  	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
-		  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-			<%= I18n.t("button.save_changes") %>
-		<% end %>
+	  	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_edit")}, class: "btn-success" do %>
+			  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<%= I18n.t("button.save_changes") %>
+			<% end %>
+		</p>
 
   <% end %>
 <% end %>
