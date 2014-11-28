@@ -44,9 +44,10 @@ var Form = function(){
 		$("select#point_of_sale_posTypeId").change(function(){
 			var selectedPosTypeId = $(this).find("option:selected").val();
 			$("#submitButton_continue").addClass("hidden");
+			$("#firstStepIndicator").addClass("hidden");
 			if(selectedPosTypeId === "0"){
-				$("button#submitButton_continue").removeClass("hidden");
-
+				$("#submitButton_continue").removeClass("hidden");
+				$("#firstStepIndicator").removeClass("hidden");
 			}
 		}).change();
 
