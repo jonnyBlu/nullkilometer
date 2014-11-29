@@ -101,7 +101,7 @@
 	  		<%= I18n.t("button.back") %>
 	  	<% end %>
 
-	 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_save")}, value: 'finish', class: "btn-success" do %>
+	 	 	<%= f.button :button, data: { confirm: I18n.t("instructions.add_a_pos.confirm_save"), toggle: "tooltip", placement: "top"}, title: I18n.t("button.tooltip.needs_to_be_confirmed"), value: 'finish', class: "btn-success" do %>
 			  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 				<%= I18n.t("button.save_place_exit") %>
 			<% end %>

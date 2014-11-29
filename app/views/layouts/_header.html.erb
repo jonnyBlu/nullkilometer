@@ -54,8 +54,19 @@
           <div class="btn-group">
             <button class="btn dropdown-toggle" data-toggle="dropdown"><%= current_admin.email %><span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><%= link_to I18n.t("headers.all_selling_points"), point_of_sales_path %></li>
-              <li><%= link_to I18n.t("headers.all_market_stalls"), market_stalls_path %></li>
+              <li>
+                <%= link_to(point_of_sales_path) do  %>
+                  <%= I18n.t("headers.all_selling_points") %>
+                  <span class="badge"><%= number_of_pending_selling_points %></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to(market_stalls_path) do  %>
+                  <%= I18n.t("headers.all_market_stalls") %>
+                  <span class="badge"><%= number_of_pending_market_stalls %></span>
+                <% end %>
+              </li>
+
               <li class="divider"></li>
               <li>
                 <%= link_to(I18n.t("devise.commands.logout"), destroy_admin_session_path, :method => :delete, class: "ordinaryLink") %>

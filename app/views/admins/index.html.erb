@@ -1,0 +1,39 @@
+<div class = "infoDiv">
+	<h1> <%= I18n.t("headers.all_admins") %> </h1>
+	<% if admin_signed_in? %>
+		<div class="table-responsive jumbotron places_overview">
+	    <table class="table table-striped">
+	      <thead>
+	        <tr>
+	          <th><%= link_to "ID", { sort: "id" }, class: "ordinaryLink"  %></th>
+	          <th><%= link_to I18n.t("properties.main_information.name"), { sort: "name" },  class: "ordinaryLink"  %></th>
+	          <th><%= I18n.t("links.global.delete")%></th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	    	<% @admins.each do |admin| %>
+	        <tr>
+	          <td><%= admin.id %></td>
+	          <td><%= admin.email %></td>
+	          <td><%#= link_to I18n.t("links.global.delete"), admin, class: 'ordinaryLink', method: :delete, data: { confirm: I18n.t("instructions.add_a_pos.confirm_delete_market_stall") }	%>
+	          <!-- <%= button_to(cancel_admin_registration_path, method: :delete, class: 'btn btn-info') do %>  	
+				  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				  		remove
+				  	<% end %> -->
+	          </td>
+	        </tr>
+	      <% end %>
+	      </tbody>
+	    </table>
+		</div>
+
+	  <!--<%= button_to(new_admin_registration_path, method: :get, class: 'btn btn-info') do %>  	
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  		<%= I18n.t("button.add_market_stall") %>
+  	<% end %>-->
+
+	<% else %> 
+		<p><%= I18n.t("devise.failure.unauthenticated") %></p>
+	<% end %>
+
+</div>

@@ -30,7 +30,7 @@ class PointOfInterestsController < ApplicationController
 	end
 
   def new
-    @point_of_interest= @poi_class.new()
+    @point_of_interest = @poi_class.new()
     generate_form_extras
     respond_with @point_of_interest
   end
@@ -58,9 +58,11 @@ class PointOfInterestsController < ApplicationController
           redirect_to controller: 'market_stalls', action: 'new',  point_of_sale_id: @point_of_interest.id, format: 'html', notice: 'addLater'
         else
           logger.debug "Finish - #{params[:button]}"
+          #TODO: a message that the place needs to be verified 
           redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
         end
       else
+        #TODO: a message that the place needs to be verified 
         redirect_to action: 'show', id: @point_of_interest.id, format: 'html'
       end 
     else
@@ -167,26 +169,16 @@ class PointOfInterestsController < ApplicationController
     end
   end 
 
-#TODO: better here or in the model?
   def cleanup_opening_times(pos_params)
     logger.debug "cleaning up opening times (destroying those with empty day): #{pos_params["opening_times_attributes"]}"
-    counter = 0
     pos_params["opening_times_attributes"].each do |ot_array|
       ot = ot_array[1]
       if ot[:day].empty? #|| ( ot[:from].empty? && ot[:to].empty? ) || ot[:from] == ""
         ot['_destroy'] = true
-        counter = counter+1
       end
     end
-    #validate if at least one opening time is here!!!
-    #solved via frontend validation
-    #if counter > 6
-      #puts "ERROR: all values deleted"
-      #errors.add(:from, "SET AT LEAST ONE OPENING DAY WITH OPENING TIMES")
-    #else
-      #puts "OK: at least one opening time"
-    #end
   end
+
 
   
 end

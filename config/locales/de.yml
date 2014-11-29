@@ -35,6 +35,8 @@ de:
     close: "Schließen"
     add_later: "Später hinzufügen"
     skip: "Skip"
+    tooltip:
+        needs_to_be_confirmed: "Nach der Speicherung dieses Orts, der wird von uns überprüft und dann auf der Karte angezeigt."
   input:
     commands:
         add_an_address: "Adresse eingeben"
@@ -90,6 +92,7 @@ de:
     new_production_point: "Neuer Herrstellungsort"  
     all_production_points: "Alle Herstellungsorte"
     all_market_stalls: "Alle Marktstände"
+    all_admins: "Alle User mit Admin Rechten"
     edit_selling_point: "Verkaufsort bearbeiten"
     edit_production_point: "Herrstellungsort ändern"  
     add_new_market_stall: "Neuen Marktstand hinzufügen"

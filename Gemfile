@@ -52,6 +52,7 @@ gem 'protected_attributes'
 
 gem "font-awesome-rails"
 
+
 #devise intructions
 #Some setup you must do manually if you haven't yet:
 

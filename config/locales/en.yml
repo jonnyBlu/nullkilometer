@@ -35,6 +35,8 @@ en:
     close: "Close"
     add_later: "Add later"
     skip: "Skip"
+    tooltip:
+      needs_to_be_confirmed: "After saving the place, it will be double-checked by our team and then shown on the map."
   input:
     commands:
         add_an_address: "Enter an address"
@@ -90,6 +92,7 @@ en:
     new_production_point: "New place of production"
     all_production_points: "All places of production"
     all_market_stalls: "All market stalls"
+    all_admins: "All users with admin rights"
     edit_selling_point: "Edit selling place"
     edit_production_point: "Edit this place of production"  
     add_new_market_stall: "Add a market stall"

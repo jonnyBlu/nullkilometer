@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
 #http://stackoverflow.com/questions/8390394/switch-language-with-url-rails-3
-  	before_filter :set_locale
+  before_filter :set_locale
 	def set_locale
    		I18n.locale = params[:locale] || I18n.default_locale
    		:export_i18n_messages
@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 	rescue_from Errors::NotFoundError do |e|
 		render :json => {:errors => e.message}, :status => 404
 	end
+
 
 	private
 	def object_representation_for_constant(constant, object_name)

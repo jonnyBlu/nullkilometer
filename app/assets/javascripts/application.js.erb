@@ -91,6 +91,12 @@ curPosMarkerIconHeight = 56;
 
 //global variables
 var shopTypeNames, productCategoryNames, weekDayNames, moreInfoLinkName, enterAnAddressText;
+
+
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
 /**
 * Is called in home.js file, which is the first js file to load
 * and it is loaded after the locale (I18n.locale) has been set

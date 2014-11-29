@@ -40,6 +40,7 @@ var Form = function(){
 	  setLocationSearchListners(buttonSelector, inputSelector, addressResultsPlaceholder, getOSMAddress);
   },
 	setFormListeners = function(){
+
 		// if marketStall selected, unhide the button with "continue" option
 		$("select#point_of_sale_posTypeId").change(function(){
 			var selectedPosTypeId = $(this).find("option:selected").val();

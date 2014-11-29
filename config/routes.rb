@@ -50,6 +50,7 @@ Nullkilometer::Application.routes.draw do
       get "pos_types", :to => "point_of_interests#pos_types"
 
       devise_for :admins
+      resources :admins, only: [:index]
   end
 
   get '/:locale' => "home#index"
