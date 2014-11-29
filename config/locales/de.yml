@@ -99,7 +99,7 @@ de:
     edit_market_stall: "Marktstand bearbeiten"
     market_stall: "Marktstand"
     belongs_to_market: "Gehört zum Markt"
-    errors: "Fehĺer"
+    errors: "Fehler"
     address_search_results: "Ergebnisse der Adresssuche"
     step: "Schritt"
   messages: 
