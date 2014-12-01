@@ -80,9 +80,9 @@ en:
         more_information: "More info >>"
         edit: "edit"
         delete: "delete"
-        add_new_point_of_sales: "Add a place"
+        add_new_point_of_sales: "New location"
         news: "News"
-        find_a_selling_place: "Find a place"
+        find_a_selling_place: "Search places"
   title:
     main: "local foods next door"
     by: "by Nullkilometer"

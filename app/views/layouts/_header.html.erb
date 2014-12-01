@@ -19,10 +19,11 @@
       <ul class="nav navbar-nav navbar-right">
       <% if current_page?(root_url) || current_page?('/')  %>
         <% isHomePage = true %>
+      <% else %>  
+        <li>
+          <%= link_to  I18n.t('links.global.find_a_selling_place'), isHomePage ? "#" : :root, id: "find_a_selling_place", data: { :no_turbolink => true} %>
+        </li> 
       <% end %>
-      <li>
-        <%= link_to  I18n.t('links.global.find_a_selling_place'), isHomePage ? "#" : :root, id: "find_a_selling_place", data: { :no_turbolink => true} %>
-      </li> 
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" id="linkToHomepageText" data-toggle="dropdown"><%= I18n.t('links.global.about') %><span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">

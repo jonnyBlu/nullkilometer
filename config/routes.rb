@@ -61,7 +61,8 @@ Nullkilometer::Application.routes.draw do
 
     get '/contacts' => 'home#contacts'
     get '/legal_information' => 'home#legal_information'    
-    
+    get '/admins/register', :to => 'admins#registration_instructions'
+
     get "*stuff", :to => "home#routing_error"
 
   end

@@ -1,7 +1,7 @@
 en:
   headers:
-    goal: "The goal"
+    goal: "Our Goal"
     localFood: "Local Food"
     map: "Map" 
-    addAPlace: "Adding places"
-    team: "Authors and contributors"
+    addAPlace: "Adding Locations"
+    team: "Authors and Contributors"
