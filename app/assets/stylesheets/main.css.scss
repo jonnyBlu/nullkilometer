@@ -103,8 +103,13 @@ ul{
     span{
       font-weight: bold;
     }
+    span.sd-muster-content{
+      font-weight: normal !important;
+    }
     min-height: 100%;
 }
+
+
 
 abbr[title], abbr[data-original-title] {
   cursor: auto;
