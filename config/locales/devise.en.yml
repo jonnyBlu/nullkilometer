@@ -38,7 +38,7 @@ en:
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      destroyed: "Bye! Your account was successfully deleted. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
@@ -53,6 +53,9 @@ en:
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
     custom:
+      main_information:
+        password: "Passwort"
+        email: "E-mail"
       confirmations:
         resend_confirmation_instructions: "Resend confirmation instructions"
       mailer:
@@ -69,15 +72,17 @@ en:
         unlock_account: "Unlock my account"
       passwords:
         new_password: "New password"
-        confirm: "Confirm your new password"
-        change: "Change my password"
+        confirm: "Confirm the new password"
+        current_password: "Current password"
+        change: "Change the password"
         send_reset_instructions: "Send reset instructions"
         forgot_your_password: "Forgot your password?"
       registrations:
+        remember_this: "remember this"
         leave_blank: "leave it blank if you don't want to change it"
         need_password_to_confirm: "we need your current password to confirm your changes"
         update: "Update"
-        cancel_account: "Cancel my account"
+        cancel_account: "Delete this account"
         are_you_sure: "Are you sure?"
         instructions: "The main functionalities of this website (searching places, adding a new location) are possible without being registered. <br /><br /> If you'd like to become a part of our editorial team, please send us an email:"
       shared:

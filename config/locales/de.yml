@@ -44,6 +44,7 @@ de:
         mark_all: "Alle markieren"
         all: "Alle"
   instructions:
+    confirm_edit: "Bist Du sicher, das Du diese Info editieren willst?"
     add_a_pos: 
         precise_the_location: "Ort bestimmen"
         main_information: "Hauptinformationen"
@@ -60,10 +61,10 @@ de:
         add_to: "zu dem"
         for: "für"
         in: "in"
-        confirm_delete: "Sind Sie sicher, das sie diesen Laden löschen wollen?"
-        confirm_edit: "Sind Sie sicher, das sie diesen Ort editieren wollen?"
-        confirm_save: "Sind Sie sicher, das sie diesen Ort speichern wollen?"
-        confirm_delete_market_stall: "Sind Sie sicher, das sie diesen Marktstand löschen wollen?"
+        confirm_delete: "Bist Du sicher, das Du diesen Laden löschen willst?"
+        confirm_edit: "Bist Du sicher, das Du diesen Ort editieren willst?"
+        confirm_save: "Bist Du sicher, das Du diesen Ort speichern willst?"
+        confirm_delete_market_stall: "Bist Du sicher, das Du diesen Marktstand löschen willst?"
         select_to_filter: "Klicke auf die Symbole um die Verkaufsorte ein- oder auszublenden."
   links:
     global:
@@ -97,6 +98,7 @@ de:
     edit_production_point: "Herrstellungsort ändern"  
     add_new_market_stall: "Neuen Marktstand hinzufügen"
     edit_market_stall: "Marktstand bearbeiten"
+    edit_admin_account: "Admin Account bearbeiten"
     market_stall: "Marktstand"
     belongs_to_market: "Gehört zum Markt"
     errors: "Fehler"

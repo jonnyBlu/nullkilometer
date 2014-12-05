@@ -44,6 +44,7 @@ en:
         mark_all: "Select all"
         all: "All"
   instructions:
+    confirm_edit: "Are you sure you want to edit this information?"
     add_a_pos: 
         precise_the_location: "Precise the location"
         main_information: "Main information"
@@ -97,6 +98,7 @@ en:
     edit_production_point: "Edit this place of production"  
     add_new_market_stall: "Add a market stall"
     edit_market_stall: "Edit market stall"
+    edit_admin_account: "Edit admin account"
     market_stall: "Market stall"
     belongs_to_market: "Belongs to market"
     errors: "Errors"

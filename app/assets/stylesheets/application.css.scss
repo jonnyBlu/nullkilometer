@@ -14,7 +14,6 @@
  *= require leaflet.css
  *= require jquery.timepicker.css
  *= require jquery-ui 
- *= require font-awesome
  */
 
  /**
@@ -30,6 +29,7 @@
 @import '_fonts';
 @import '_global-variables';
 
+
 /* main styling - like body, headlines, etc. */
 @import 'main';
 
@@ -37,6 +37,8 @@
 /* basic parts of the page */
 @import 'header';
 @import 'footer';
+@import 'forms';
+
 
 
 /* modules like Map, Homepage, other specific styles */

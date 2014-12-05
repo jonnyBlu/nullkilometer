@@ -1,12 +1,13 @@
-html {
-  overflow-y: scroll;
+html
+{
+   font-family: 'Open Sans', sans-serif !important;
+   overflow-y: scroll;
 }
 
 body {
   padding-top: 0px;
   background-color: $backgroundColor;  
   font-family: 'Open Sans', sans-serif !important;
-  /*font-family: $sans-serif;*/
 }
 
 .content-wrapper {
@@ -25,6 +26,7 @@ a:hover{
 }
 
 a.ordinaryLink, a.ordinaryLink:visited{
+  font-weight: $semi-bold;
   color: #444 !important;
 }
 
@@ -101,7 +103,7 @@ ul{
     line-height: 20px;
     font-size: 14px;
     span{
-      font-weight: bold;
+      font-weight: $semi-bold;
     }
     span.sd-muster-content{
       font-weight: normal !important;
@@ -159,3 +161,6 @@ ul.horizontalList{
   }  
 }
 
+.help-inline {
+  color: red;
+}

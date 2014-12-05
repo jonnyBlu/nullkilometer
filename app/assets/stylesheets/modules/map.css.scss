@@ -1,5 +1,4 @@
 $buttonColor1: #D5D0A4;
-$corner-radius: 5px;
 $mapFilterWidth: 670px;
 $mapFilterHeight: 470px;
 $zIndexMapElements: 1001;
@@ -79,6 +78,7 @@ $minHeightMap: 665px;
 				height: 45px;
 				line-height: 45px;
 				font-style: italic;
+				font-weight: $semi-bold;
 				margin: 0px;
 			}
 			ul {

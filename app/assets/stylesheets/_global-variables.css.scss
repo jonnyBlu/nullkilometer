@@ -2,8 +2,9 @@
 	typo
 */
 $serif: 		"Vollkorn", serif;
-$sans-serif: 	"Helvetica Neue", sans-serif; /*"Ubuntu-R";*/
+
 $headerTextSize: 24px;
+$semi-bold: 600; 
 
 /**
 	colors
@@ -30,7 +31,12 @@ $orangeTextColorTransparent: rgba(255, 181, 42, 0.8);
 
 
 /**
-	Hoehen und Weiten
+	widths and heights
 */
 $headerHeight: 50px;
 $textInputWidth: 400px;
+
+/**
+	shapes
+*/
+$corner-radius: 5px;
