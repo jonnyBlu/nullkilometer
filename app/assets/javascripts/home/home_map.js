@@ -2,7 +2,8 @@ var HomeMap = function(){
 	var 
 	ajaxRequest,
 	pos, 
-	markersOfTheMap=[],
+	markersOfTheMap= new Array(),
+	allMarkers,
 	curPosMarkerLayer,
 	zoomLevel,
 	map,
@@ -11,14 +12,6 @@ var HomeMap = function(){
     iconSize:     [curPosMarkerIconWidth, curPosMarkerIconHeight], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [curPosMarkerIconWidth/2, curPosMarkerIconHeight], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  
-    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
-	}),
-	markerIcon = L.icon({
-    iconUrl: shopTypeIconImageLocation+shopTypeIconImageUrlDefault,
-    iconSize:     [markerIconWidth, markerIconHeight], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  
     popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
 	}),
@@ -48,20 +41,33 @@ var HomeMap = function(){
 	onLocationError = function(e) {
 		console.log(e.message);
 	},
+
 	onSuccessLoadMarkers = function(results){
+
+		allMarkers = new L.LayerGroup();
+
 		var pos = results.pointOfSales;
 		removeMarkers();
+
 		for (i=0;i<pos.length;i++) {
-			var shopTypeId = pos[i].posTypeId;
-			markerIcon.options.iconUrl = shopTypeMapMarkerImageUrls[shopTypeId];
+			var 
+			shopTypeId = pos[i].posTypeId,
+			markerIcon = L.icon({
+		    iconUrl: shopTypeMapMarkerImageUrls[shopTypeId],
+		    iconSize:     [markerIconWidth, markerIconHeight], // size of the icon
+		    iconAnchor:   [markerIconWidth/2, markerIconHeight], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+			});
+			
 			var 
 			latlon = new L.LatLng(pos[i].lat,pos[i].lon, true),
 			marker = new L.Marker(latlon, {icon: markerIcon});
 			marker.data=pos[i];
-			map.addLayer(marker);
-			bindListeners(marker);
-			markersOfTheMap.push(marker);
+		//	map.addLayer(marker);
+			allMarkers.addLayer(marker);
+			bindListeners(marker);	
 		}
+		map.addLayer(allMarkers);
 	},
 	bindListeners = function(marker){
 		marker.on('click', function(evt) {	
@@ -116,10 +122,7 @@ var HomeMap = function(){
 		return htmlContent;
 	},
 	removeMarkers = function() {
-		for (i=0;i<markersOfTheMap.length;i++) {
-			map.removeLayer(markersOfTheMap[i]);
-		}
-		markersOfTheMap=[];
+		map.removeLayer(allMarkers);
 	},
 	zoomTo = function(lat, lon, zoomLevel){
 		var coordinates = new L.LatLng(lat, lon, true);
@@ -156,11 +159,14 @@ var HomeMap = function(){
 		marker.setIcon(newIcon);
 	},
 	setMarkerOpacity = function(checkedParameters){//, checkedParameterValues, parameterNamesToCheck){
+	console.log(allMarkers.getLayers()[0]);
+	var markersOfTheMap = allMarkers.getLayers();
 		for (i=0;i<markersOfTheMap.length;i++) {
 			var 
 			makeMarkerVisible1 = false,
 			makeMarkerVisible2 = false,
 			makeMarkerVisible3 = false;
+
 			$.each(checkedParameters, function(key, values){ // loops 3 times
 				if(key == "productCategory"){
 					var parameters = markersOfTheMap[i].data.productCategoryIds;
