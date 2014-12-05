@@ -19,9 +19,11 @@ class DetailInfo < ActiveRecord::Base
 	protected
 
 	def smart_add_url_protocol
-	  unless self.website[/\Ahttp:\/\//] || self.website[/\Ahttps:\/\//]
-	    self.website = "http://#{self.website}"
-	  end
+		unless self.website.blank?
+		  unless self.website[/\Ahttp:\/\//] || self.website[/\Ahttps:\/\//]
+		    self.website = "http://#{self.website}"
+		  end
+		end
 	end
 
 end

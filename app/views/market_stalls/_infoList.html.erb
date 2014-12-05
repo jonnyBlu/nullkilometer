@@ -19,7 +19,7 @@
   	<% if stall.detail_info.website.nil? || stall.detail_info.website.empty? %>
   		<%= "#{I18n.t("properties.additional_information.website")}: -" %>
   	<%	else %>
-      	<%= link_to stall.detail_info.website, "stall.detail_info.website", class: "ordinaryLink" %>
+      	<%= link_to stall.detail_info.website, stall.detail_info.website, class: "ordinaryLink" %>
   	<% end %>
   </div>
   <div class="bordered col-md-12">

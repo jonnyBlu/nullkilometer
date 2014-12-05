@@ -104,7 +104,7 @@ var FormValidator = function(){
     },
     submitHandler: function(form) {  
        if ($(form).valid()) {
-       		alert("valid market form submit");
+       		console.log("valid market form submit");
            	form.submit(); 
        }
        return false; // prevent normal form posting
