@@ -72,7 +72,7 @@ en:
         unlock_account: "Unlock my account"
       passwords:
         new_password: "New password"
-        confirm: "Confirm the new password"
+        confirm: "Confirm the password"
         current_password: "Current password"
         change: "Change the password"
         send_reset_instructions: "Send reset instructions"

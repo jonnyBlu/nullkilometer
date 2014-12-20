@@ -37,7 +37,7 @@
 
 	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
 
-		<%= f.input :place_feature_ids,  label: "#{I18n.t("properties.additional_information.additional_features")}:", collection: @place_feature_names_collection, as: :check_boxes, required: :false, input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
+		<%= f.input :place_feature_ids,  label: "#{I18n.t("properties.additional_information.additional_features")}:", collection: @place_feature_names_collection, as: :check_boxes, input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
 
 		<%= render partial: "point_of_sales/other_information", locals: {f: f} %>
 

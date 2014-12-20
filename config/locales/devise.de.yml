@@ -72,7 +72,7 @@ de:
         unlock_account: "Meinen Account entsperren"
       passwords:
         new_password: "Neues Passwort"
-        confirm: "Neues Passwort bestätigen"
+        confirm: "Passwort bestätigen"
         current_password: "Aktuelles Passwort"
         change: "Passwort ändern"
         send_reset_instructions: "Zurücksetzungsanleitung schicken"

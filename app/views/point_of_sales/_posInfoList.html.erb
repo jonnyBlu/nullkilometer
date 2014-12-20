@@ -4,14 +4,16 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
     <address property="address:streetAddress"><%= @point_of_interest.address %></address>
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
-   <% @point_of_interest.place_feature_ids.each do |place_feature_id| %>
-    <div>
-    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-       <%= I18n.t("point_of_interest.feature_names.#{PlaceFeature.find(place_feature_id).name}") %>
-    </div>
-   <% end %>
-</div>
+<% if @point_of_interest.place_feature_ids.length > 0 %>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
+     <% @point_of_interest.place_feature_ids.each do |place_feature_id| %>
+      <div>
+      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+         <%= I18n.t("point_of_interest.feature_names.#{PlaceFeature.find(place_feature_id).name}") %>
+      </div>
+     <% end %>
+  </div>
+<% end %>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bordered">
 	<ul>
   	<% @point_of_interest.opening_times.each do |day| %>
