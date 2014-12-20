@@ -3,6 +3,7 @@ class PointOfInterestsController < ApplicationController
 	respond_to :xml, :json, :html
   before_filter :set_poi_type 
   
+
 	def index
     approved_status_id = Status.find_by_name('approved').id
 		if params[:lat] && params[:lon] && params[:radius]
@@ -71,13 +72,18 @@ class PointOfInterestsController < ApplicationController
     end   
   end
 
+
   def edit
     begin
       @point_of_interest = @poi_class.find(params[:id])
+
+      # differs slightly from generate_from_extras
       @pos_types_collection = I18n.t("point_of_sale.pos_type_names").each_with_index.map{|name, index| [name, index]}
       @product_categories_collection = I18n.t("product.category_names").each_with_index.map{|name, index| [name, index]}
       @status_name = Status.find(@point_of_interest.status_id).name
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
+      @place_feature_names_collection = PlaceFeature.all.map { |s| [I18n.t("point_of_interest.feature_names.#{s.name}"),  s.id ]}
+
 
     rescue ActiveRecord::RecordNotFound
       raise Errors::InvalidPointOfInterest, "Couldn't find #{@poi_class} with id=#{params[:id]}"
@@ -167,6 +173,8 @@ class PointOfInterestsController < ApplicationController
       @status_names_collection = Status.all.map { |s| [s.name,  s.id ]}
       @point_of_interest.market_stalls.build
     end
+    @place_feature_names_collection = PlaceFeature.all.map { |s| [I18n.t("point_of_interest.feature_names.#{s.name}"),  s.id ]}
+      #@place_feature_names_collection = I18n.t("point_of_interest.feature_names").each_with_index.map{|name, index| [name, index]}
   end 
 
   def cleanup_opening_times(pos_params)

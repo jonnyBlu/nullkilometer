@@ -15,7 +15,7 @@
 		  <%= f.input :name, label: "#{I18n.t("properties.main_information.name")}:", input_html: { class: "form-control"}, wrapper_html: { class: "form-group" } %>
 
 		  <% if @parent_market.nil? %>
-		 		<%= f.input :point_of_sale_id, label: I18n.t("instructions.parent_market_name"), collection: @parent_market_collection, as: :select, prompt: I18n.t("headers.belongs_to_market"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
+		 		<%= f.input :point_of_sale_id, label: I18n.t("instructions.add_a_pos.parent_market_name"), collection: @parent_market_collection, as: :select, prompt: I18n.t("headers.belongs_to_market"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
 		  <% else %>
 		  	<label class="control-label">
 		  		<%= I18n.t("headers.belongs_to_market") %>:</label>

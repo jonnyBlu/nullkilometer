@@ -39,7 +39,7 @@ gem 'oj'
 gem 'paper_trail', '~> 3.0.3'
 gem  'i18n-js'
 
-#http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application
+# http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application
 gem 'jquery-turbolinks'
 gem 'turbolinks'
 
@@ -47,10 +47,11 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 
-#for rails4  
+# for rails4  
 gem 'protected_attributes'
 
 gem "font-awesome-rails"
+
 
 
 #devise intructions

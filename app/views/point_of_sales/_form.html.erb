@@ -36,6 +36,9 @@
 		<!--end-->
 
 	  <%= f.input :posTypeId, label: "#{I18n.t("properties.main_information.selling_point_type")}:", collection: @pos_types_collection, as: :select, prompt: I18n.t("instructions.add_a_pos.select_pos_type"), required: :true, input_html: { class: "btn btn-default" }, wrapper_html: { class: "form-group" } %>
+
+		<%= f.input :place_feature_ids,  label: "#{I18n.t("properties.additional_information.additional_features")}:", collection: @place_feature_names_collection, as: :check_boxes, required: :false, input_html: { class: "form-control" }, wrapper_html: { class: "form-group" } %>
+
 		<%= render partial: "point_of_sales/other_information", locals: {f: f} %>
 
 	  <ul id = "openingTimesContainer">
@@ -69,8 +72,7 @@
   	 </ul>
   	<!-- add JS: show the following block only if user clicks on market as pos type (adding a new pos) -->  	 
   	<!-- if it s a market and it is being edited -->   	  
-  	<% if locals[:parent]== "edit" && @point_of_interest.posTypeId == 0 %> 
-	  	
+  	<% if locals[:parent]== "edit" && @point_of_interest.posTypeId == 0 %> 	  	
   	  <label class="control-label"><%= I18n.t("properties.additional_information.market_stalls") %></label>		
   	  <div class="marketStalls row jumbotron" style="padding: 20px;">  	
 		  	 	<% @point_of_interest.market_stalls.each do |stall| %>	
@@ -94,7 +96,6 @@
   </div>
 
   <% if locals[:parent]== "new" %>
-
   	<p>
 	 	 	<%= button_tag( type: 'button', class: 'btn btn-default',  onclick: "location.href = '#{root_path}'") do %> 
 	  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
@@ -113,9 +114,7 @@
 				<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 			<% end %>
 		</p>
-
-  <% elsif locals[:parent]== "edit" %>
-  
+  <% elsif locals[:parent]== "edit" %>  
   	<p>
 		  <%= button_tag(type: 'button', class: "btn btn-warning", onclick: "location.href = '#{point_of_sale_path(@point_of_interest)}'") do %>  	
 	  		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -127,8 +126,8 @@
 				<%= I18n.t("button.save_changes") %>
 			<% end %>
 		</p>
-
   <% end %>
+  
 <% end %>
 
 

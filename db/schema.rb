@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113183217) do
+ActiveRecord::Schema.define(version: 20141215185742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 20141113183217) do
   end
 
   add_index "opening_times", ["point_of_sale_id"], :name => "index_opening_times_on_point_of_sale_id"
+
+  create_table "place_features", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "place_features_point_of_interests", id: false, force: true do |t|
+    t.integer "place_feature_id"
+    t.integer "point_of_interest_id"
+  end
 
   create_table "point_of_interests", force: true do |t|
     t.string   "name"

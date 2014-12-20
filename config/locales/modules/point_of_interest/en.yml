@@ -1,0 +1,5 @@
+en:
+  point_of_interest:
+    feature_names:
+      hasEatingPlace: 'Eating place'
+      isBio: 'Organic'

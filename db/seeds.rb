@@ -7,7 +7,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-PointOfSale.destroy_all
+
+PlaceFeature.create!([{ name: 'hasEatingPlace' }, { name: 'isBio' }])
+
+#PointOfSale.destroy_all
 #Status.delete_all
 
 #approved = Status.create!(
@@ -15,6 +18,7 @@ PointOfSale.destroy_all
 #)
 #Status.create!([{ name: 'pending' }, { name: 'not approved' }])
 
+=begin
 CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
 	PointOfSale.create!( :name => row[0], 
 				 	:address => row[1], 
@@ -39,7 +43,4 @@ CSV.foreach("lib/data/pos.csv", :headers => :first_row) do |row|
 					#]
 				)
 end
-
-
-
-
+=end

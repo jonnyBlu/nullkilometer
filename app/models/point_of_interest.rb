@@ -4,15 +4,17 @@ class PointOfInterest < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :status
+  has_and_belongs_to_many :place_features
 	
-  attr_accessible :name, :address, :lat, :lon, :type, :status_id
+  attr_accessible :name, :address, :lat, :lon, :type, :status_id, :place_feature_ids
   geocoded_by :address, :latitude  => :lat, :longitude => :lon	
 
   has_detail_infos
 
   after_initialize :init_location #everytime is saved
   before_update :check_address #only when updated
-  
+
+ 
   def init_location 
   	if self.lat==nil or self.lon==nil
       check_address

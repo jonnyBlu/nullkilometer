@@ -14,6 +14,7 @@ de:
         phone: "Telefonnummer"
         cell_phone: "Handynummer"
         market_stalls: "Marktstände"
+        additional_features: "Andere Eigenschaften"
   button:
     search_point_of_sales: "Nach Verkaufsort suchen"
     search_point_of_sales_open: "Filter ausblenden"

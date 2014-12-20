@@ -14,6 +14,7 @@ en:
         phone: "Phone number"
         cell_phone: "Cell phone number"
         market_stalls: "Market stalls"
+        additional_features: "Other Features"
   button:
     search_point_of_sales: "Look for selling places"
     search_point_of_sales_open: "Close filter"
