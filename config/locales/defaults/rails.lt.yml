@@ -1,0 +1,207 @@
+lt:
+  date:
+    abbr_day_names:
+    - Pirm
+    - Antr
+    - Treč
+    - Ketv
+    - Penkt
+    - Šešt
+    - Sekm
+    abbr_month_names:
+    -
+    - Sau
+    - Vas
+    - Kov
+    - Bal
+    - Geg
+    - Bir
+    - Lie
+    - Rugp
+    - Rugs
+    - Spa
+    - Lap
+    - Gru
+    day_names:
+    - Pirmadienis
+    - Antradienis
+    - Trečiadienis
+    - Ketvirtadienis
+    - Penktadienis
+    - Šeštadienis
+    - Sekmadienis
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
+    month_names:
+    -
+    - Sausis
+    - Vasaris
+    - Kovas
+    - Balandis
+    - Gegužė
+    - Birželis
+    - Liepa
+    - Rugpjūtis
+    - Rugsėjis
+    - Spalis
+    - Lapkritis
+    - Gruodis
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: apie 1 valandą
+        other: apie %{count} valandas
+      about_x_months:
+        one: apie 1 mėnesį
+        other: apie %{count} mėnesius
+      about_x_years:
+        one: apie 1 metus
+        other: apie %{count} metus
+      almost_x_years:
+        one: beveik 1 metus
+        other: beveik %{count} metus
+      half_a_minute: pusė minutės
+      less_than_x_minutes:
+        one: mažiau nei 1 minutė
+        other: mažiau nei %{count} minučių
+      less_than_x_seconds:
+        one: mažiau nei 1 sekundė
+        other: mažiau nei %{count} sekundžių
+      over_x_years:
+        one: daugiau nei 1 metai
+        other: daugiau nei %{count} metai
+      x_days:
+        one: 1 diena
+        other: ! '%{count} dienos'
+      x_minutes:
+        one: 1 minutė
+        other: ! '%{count} minutės'
+      x_months:
+        one: 1 mėnuo
+        other: ! '%{count} mėnesių'
+      x_seconds:
+        one: 1 sekundė
+        other: ! '%{count} sekundžių'
+    prompts:
+      day: Diena
+      hour: Valanda
+      minute: Minutė
+      month: Mėnuo
+      second: Sekundžių
+      year: Metai
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: privalote pasirinkti
+      blank: negali būti tuščias
+      present: privalo būti tuščias
+      confirmation: ! "nesutampa su %{attribute}"
+      empty: negali būti tuščias
+      equal_to: privalo sutapti su %{count}
+      even: privalo būti toks pats
+      exclusion: jau užrezervuota
+      greater_than: turi būti didesnis už %{count}
+      greater_than_or_equal_to: turi būti didesnis arba lygus %{count}
+      inclusion: nepriklauso sąrašui
+      invalid: netinkamas
+      less_than: turi būti mažiau nei %{count}
+      less_than_or_equal_to: turi būti mažiau arba lygu %{count}
+      not_a_number: tai nėra numeris
+      not_an_integer: privalo būti sveikas skaičius
+      odd: privalo būti nelyginis
+      record_invalid: ! 'Patvirtinimas nepavyko: %{errors}'
+      restrict_dependent_destroy:
+        one: "Negalima ištrinti, nes priklausomas %{record} egzistuoja"
+        many: "Negalima ištrinti, nes priklausomi %{record} egzistuoja"
+      taken: jau naudojamas
+      too_long:
+        one: per ilgas (max. 1 ženklas)
+        other: is too long (max. %{count} ženklai)
+      too_short:
+        one: per trumpas (min. 1 ženklas)
+        other: is too short (min. %{count} ženklai)
+      wrong_length:
+        one: netinkamo ilgio (turėtų būti 1 ženklas)
+        other: netinkamo ilgio (turėtų būti %{count} ženklai)
+      other_than: "turi būti kitoks nei %{count}"
+      opening_time_before_closing_time: Atsidarymo laikas turi būti ankstesnis už užsidarymo laiką
+      at_least_one_opening_time: Bent vienas atsidarymo laikas turi būti įvestas
+      wrong_address: Adresas netinkamas
+    template:
+      body: ! 'Neteisingai užpildyti šie laukai:'
+      header:
+        one: 1 klaida neleido šiam %{model} būti išsaugotam
+        other: ! '%{count} klaidos neleido šiam %{model} būti išsaugotam'
+  helpers:
+    select:
+      prompt: Prašom pasirinkti
+    submit:
+      create: Sukurti %{model}
+      submit: Išsaugoti %{model}
+      update: Atnaujinti %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: Milijardas
+          million: Milijonas
+          quadrillion: Kvadrilijonas
+          thousand: Tūkstantis
+          trillion: Trilijonas
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm

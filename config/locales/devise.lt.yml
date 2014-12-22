@@ -1,0 +1,104 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+lt:
+  devise:
+    commands:
+      login: "Prisijungti"
+      logout: "Atsijungti"
+      register: "Užsiregistruoti"
+      edit_account: "Pakeisti paskyrą"
+    confirmations:
+      confirmed: "Jūsų registracija yra patvirtinta."
+      send_instructions: "Per kelias minutes gausite elektroninį laišką su instrukcijomis kaip patvirtinti savo registraciją."
+      send_paranoid_instructions: "Jei jūsų elektroninis paštas yra mūsų duomenų bazėje, per kelias minutes jūs gausite elektroninį laišką su instrukcijomis kaip patvirtinti savo registraciją."
+    failure:
+      already_authenticated: "Jūs jau prisijungęs."
+      inactive: "Jūsų paskyra dar neaktyvuota."
+      invalid: "Neteisingai įvestas el. paštas arba slaptažodis."
+      locked: "Jūsų paskyra užblokuota."
+      last_attempt: "Jums liko vienas bandymas iki paskyros užblokavimo."
+      not_found_in_database: "Neteisingai įvestas el. paštas arba slaptažodis."
+      timeout: "Jūsų sesija pasibaigė. Prašome prisijungti iš naujo."
+      unauthenticated: "Jei norite tęsti, turite prisijungti arba užsiregistruoti."
+      unconfirmed: "Jūsų el. paštas dar nepatvirtintas."
+    mailer:
+      confirmation_instructions:
+        subject: "Kaip patvirtinti el. paštą?"
+      reset_password_instructions:
+        subject: "Kaip atnaujinti slaptažodį?"
+      unlock_instructions:
+        subject: "Kaip atblokuoti paskyrą?"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      updated: "Jūsų slaptažodis buvo sėkmingai pakeistas. Dabar jūs prisijungęs."
+      updated_not_active: "Jūsų slaptažodis sėkmingai pakeistas."
+    registrations:
+      destroyed: "Iki! Jūsų paskyra buvo sėkmingai ištrinta. Tikimės vėl jus pamatyti!"
+      signed_up: "Sveiki! Jūsu registracija buvo sėkminga."
+      signed_up_but_inactive: "Jūsų registracija buvo sėkminga, tačiau dar negalite prisijungti, nes jūsų paskyra dar neaktyvuota."
+      signed_up_but_locked: "Jūsų registracija sėkminga, tačiau dar negalite prisijungti, nes jūsų paskyra užblokuota."
+      signed_up_but_unconfirmed: "Žinutė su nuoroda į paskyros patvirtinimą buvo išsiųsta į jūsų el. paštą. Prašome atidaryti nuorodą, kad jūsų paskyra būtų aktyvuota."
+      update_needs_confirmation: "Jūs sėkmingai atnaujinote savo paskyrą, bet jūsų naujas el. pašto adresas turi būti patvirtintas. Patikrinkite savo el. paštą ir paspauskite ant atsiųstos nuorodos, kad jūsų naujas el. pašto adresas būtų patvirtintas"
+      updated: "Jūs sėkmingai atnaujinote savo paskyrą."
+    sessions:
+      signed_in: "Jūs sėkmingai prisijungėte."
+      signed_out: "Jūs sėkmingai atsijungėte."
+    unlocks:
+      send_instructions: "Per kelias minutes gausite el. laišką su instrukcijomis kaip atblokuoti savo paskyrą."
+      send_paranoid_instructions: "Jei jūsų paskyra jau sukurta, per kelias minutes gausite el. laišką su instrukcijomis kaip atblokuoti paskyrą."
+      unlocked: "Jūsų paskyra buvo sėkmingai atblokuota. Jei norite tęsti, prisijunkite."
+    custom:
+      main_information:
+        password: "Slaptažodis"
+        email: "El. pašto adresas"
+      confirmations:
+        resend_confirmation_instructions: "Iš naujo atsiusti paskyros patvirtinimo nuorodą"
+      mailer:
+        welcome: "Sveiki atvykę"
+        you_can_confirm: "Galite patvirtinti savo el. pašto adresą paspausdami šią nuorodą:"
+        confim_my_account: "Patvirtinti mano paskyrą"
+        hello: "Sveiki"
+        password_change_message: "Norite pakeisti slaptažodį? Tai galite padaryti paspaudę šią nuorodą:"
+        change_my_password: "Pakeisti slaptažodį"
+        ignore_email: "Jei ne jūs norėjote pakeisti slaptažodį, prašome į šį laišką nekreipti dėmėsio."
+        password_wont_change: "Jūsų slaptažodis nebus pakeistas kol jūs nepaspausite šios nuorodos ir nesukursite naujo:"
+        account_locked: "Jūsų paskyra buvo užblokuota dėl per didelio skaičiaus nesėkmingų bandymų prisijungti."
+        click_to_unlock: "Jei norite atblokuoti savo paskyrą, paspauskite šią nuorodą:"
+        unlock_account: "Atblokuoti mano paskyrą"
+      passwords:
+        new_password: "Naujas slaptažodis"
+        confirm: "Patvirtinti slaptažodį"
+        current_password: "Dabartinis slaptažodis"
+        change: "Pakeisti slaptažodį"
+        send_reset_instructions: "Nusiųsti atstatymo instrukcijas"
+        forgot_your_password: "Pamiršote slaptažodį?"
+      registrations:
+        remember_this: "prisiminti prisijungimą"
+        leave_blank: "palikite tuščią, jei nenorite keisti"
+        need_password_to_confirm: "mums reikalingas jūsų dabartinis slaptažodis, kad galėtume patvirtinti jūsų pakeitimus"
+        update: "Atnaujinti"
+        cancel_account: "Ištrinti paskyrą"
+        are_you_sure: "Ar jūs įsitikinęs?"
+        instructions: "Pagrindinės šio puslapio funkcijos (vietos paieškos, naujos vietos pridėjimas) yra galimi be registracijos. <br /><br /> Jei norėtumėte tapti dalimi mūsų komandos dalimi, atsiųskite mums el. laišką:"
+      shared:
+        no_confirmation_instructions: "Negavote patvirtinimo instrukcijų?"
+        no_unlock_instructions: "Negavote atblokavimo instrukcijų?"
+        login_with: "Prisijunkite su"
+      unlocks:
+        resend_unlock_instructions: "Iš naujo atsiųsti atblokavimo instrukcijas"
+  errors:
+    messages:
+      already_confirmed: "jau patvirtintas, prašome prisijungti"
+      confirmation_period_expired: "turėjo būti patvirtintas per %{period}, prašome bandyti iš naujo"
+      expired: "nuoroda baigė galioti, prašome bandyti iš naujo"
+      not_found: "nerasta"
+      not_locked: "paskyra nebuvo užblokuota"
+      not_saved:
+        one: "1 klaida neleido šiam %{resource} būti išsaugotam:"
+        other: "%{count} klaidos neleido šiam %{resource} būti išsaugotam:"
+
+

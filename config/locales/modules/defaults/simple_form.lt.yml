@@ -1,0 +1,26 @@
+lt:
+  simple_form:
+    "yes": 'Taip'
+    "no": 'Ne'
+    required:
+      text: 'privalomi užpildyti laukeliai'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Prašome peržiūrėti šias klaidas:"
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: 'slaptažodis'
+    #   user:
+    #     new:
+    #       email: 'El. paštas prisijungimui.'
+    #     edit:
+    #       email: 'El.paštas.'
+    # hints:
+    #   defaults:
+    #     username: 'Vartotojo vardas.'
+    #     password: 'Prašome nenaudoti jokių ypatingų ženklų.'
+

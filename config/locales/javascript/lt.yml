@@ -1,0 +1,17 @@
+#run "rake i18n:js:export" after adding anything new
+lt:
+  validate:
+    messages:
+        required: "Šis laukelis negali būti tuščias"
+        select_required: "Prašome pasirinkti opciją"
+        check_required: "Patikrinkite elementą"
+        opening_day_required: "Prašome įvesti bent vieną atsidarymo dieną"
+        opening_times_required: "Prašome įvesti atsidarymo laiką arba panaikinti pasirinktą dieną"
+  map:
+    messages:
+      select_one_address: "Pasirinkite adresą iš sarašo:"
+      no_results: "Nėra paieškos rezultatų"
+      cannot_parse: "Nepavyko rasti adreso, adresą įveskite patys"
+      error_osm: "Oops! Kažkas nutiko susisiekiant su nomination.openstreetmaps.org"
+      drag_marker: "Pastumkite žymeklį kad patikslintumėte vietą"
+      use_map: "Naudokitės žemėlapiu, kad rastumėt vietą"

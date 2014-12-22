@@ -1,0 +1,10 @@
+lt:
+  point_of_sale:
+    pos_type_names:
+    - "Turgus"
+    - "Prekybos centras"
+    - "Parduotuvė"
+    - "Kioskas"
+    - "Parduotuvė ūkyje"
+    - "Vieta pavalgyti"
+    marketstalls: "Turgaus paviljonas"

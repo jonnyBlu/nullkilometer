@@ -1,0 +1,17 @@
+#run "rake i18n:js:export" after adding anything new
+de:
+  validate:
+    messages:
+        required: "Dieses Feld muss ausgefüllt werden"
+        select_required: "Eine option muss ausgewählt werden"
+        check_required: "Mindestens ein Element muss markiert werden"
+        opening_day_required: "Mindestens ein Öffnungstag muss markiert werden"
+        opening_times_required: "Bitte Öffnungszeit(en) auswählen oder den Öffnungstag deselektieren"
+  map:
+    messages:
+      select_one_address: "Wähle eine Adresse aus der Liste aus:"
+      no_results: "Keine Suchergebnisse"
+      cannot_parse: "Die Adresse konnte nicht geparset werden, manuell eintragen"
+      error_osm: "In der Kommunikation mit nomination.openstreetmaps.org ist etwas schief gegangen"
+      drag_marker: "Um den Ort zu präzisieren, schiebe den Marker"
+      use_map: "Benutze die Karte, um nach der Adresse zu suchen"

@@ -13,7 +13,7 @@ Nullkilometer::Application.routes.draw do
   # get ':controller(/:action(/:id))(.:format)'
 
 
-  scope "(:locale)", :locale => /en|de/ do
+  scope "(:locale)", :locale => /en|de|lt/ do
   #  scope "/", :defaults => {:format => :json} do
       resources :point_of_sales, :controller => "point_of_interests", :defaults => { :type => "PointOfSale" } do
         resources :market_stalls#, :only => [:index, :create]
@@ -56,7 +56,7 @@ Nullkilometer::Application.routes.draw do
   get '/:locale' => "home#index"
 
   #http://stackoverflow.com/questions/8390394/switch-language-with-url-rails-3
-  scope "(:locale)", :locale => /en|de/ do
+  scope "(:locale)", :locale => /en|de|lt/ do
     root :to => 'home#index'
 
     get '/contacts' => 'home#contacts'

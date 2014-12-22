@@ -7,7 +7,6 @@ class PointOfSale < PointOfInterest
   alias_attribute :openingTimes, :opening_times_attributes
   alias_attribute :marketStalls, :market_stalls_attributes
 
-
   #relations
   has_many :opening_times, :dependent => :destroy
 

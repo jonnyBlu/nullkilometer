@@ -54,7 +54,7 @@ en:
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
     custom:
       main_information:
-        password: "Passwort"
+        password: "Password"
         email: "E-mail"
       confirmations:
         resend_confirmation_instructions: "Resend confirmation instructions"

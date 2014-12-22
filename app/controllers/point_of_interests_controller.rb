@@ -36,11 +36,13 @@ class PointOfInterestsController < ApplicationController
     respond_with @point_of_interest
   end
 
+    
 	def create
     if params[:type] == "PointOfSale"
       pos_params = params[:point_of_sale]
-      pos_params["productCategoryIds"].delete("")
+      pos_params["productCategoryIds"].delete("")   
 
+      set_default_product_category_for_eating_place(pos_params)
       cleanup_opening_times(pos_params)
 
       @point_of_interest = @poi_class.new(pos_params)
@@ -48,9 +50,9 @@ class PointOfInterestsController < ApplicationController
       #assign pending status only if admin not signed in
       if admin_signed_in? == false
         set_pending_status(@point_of_interest)   
-      end    
-      
+      end        
     end
+
     if @point_of_interest.save
       if params[:type] == "PointOfSale" && @point_of_interest.posTypeId == 0
         #redirect to new market stall for that market        
@@ -99,9 +101,11 @@ class PointOfInterestsController < ApplicationController
     end
     if params[:type] == "PointOfSale"
       pos_params = params[:point_of_sale]
-      pos_params["productCategoryIds"].delete("")      
-      prodCats = pos_params["productCategoryIds"]
+      pos_params["productCategoryIds"].delete("")  
 
+      set_default_product_category_for_eating_place(pos_params)
+
+      prodCats = pos_params["productCategoryIds"]
       @point_of_interest.products.each do |product|      
         unless prodCats.include?(product.category.to_s) # if product.category not in prodCats
           #TODO: change product's attributes in a more "direct" way
@@ -110,6 +114,9 @@ class PointOfInterestsController < ApplicationController
       end
 
       cleanup_opening_times(pos_params)
+
+      puts "UPDATED PARAMETERS"
+      puts params[:point_of_sale]
 
       set_pending_status(@point_of_interest)
 
@@ -187,6 +194,13 @@ class PointOfInterestsController < ApplicationController
     end
   end
 
-
+  def set_default_product_category_for_eating_place(pos_params) 
+    logger.debug "Replacing all product category ids with one representing category 'other'"
+    # If eating place, leave "other" as the only product category 
+    if pos_params["posTypeId"] == "5"
+      pos_params["productCategoryIds"].clear
+      pos_params["productCategoryIds"].push("9") # "other"
+    end
+  end
   
 end

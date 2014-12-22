@@ -1,0 +1,5 @@
+lt:
+  point_of_interest:
+    feature_names:
+      hasEatingPlace: 'Valgymo vieta'
+      isBio: 'Ekologiška'
