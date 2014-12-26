@@ -23,8 +23,8 @@ var HomeMap = function(){
 	    },     
 	    mapLayer = new L.TileLayer(osmTilesUrl);    
 	    map = new L.Map('map', options).addLayer(mapLayer);
-	    map.on('locationfound', onLocationFound);
-		map.on('locationerror', onLocationError);
+	    //map.on('locationfound', onLocationFound);
+			map.on('locationerror', onLocationError);
 	},
 	locateUser = function(zoomLevel){
 		this.zoomLevel = zoomLevel;

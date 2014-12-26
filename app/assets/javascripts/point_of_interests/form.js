@@ -41,14 +41,37 @@ var Form = function(){
   },
 	setFormListeners = function(){
 
-		// if marketStall selected, unhide the button with "continue" option
+		// if market selected, unhide the button with "continue" option
+		// if eating place selected, disable the product categories options
 		$("select#point_of_sale_posTypeId").change(function(){
 			var selectedPosTypeId = $(this).find("option:selected").val();
 			$("#submitButton_continue").addClass("hidden");
 			$("#firstStepIndicator").addClass("hidden");
+
+
+			$("label[name='point_of_sale[productCategoryIds]']").removeClass("grayedOut");	
+			$(".point_of_sale_productCategoryIds input[name='point_of_sale[productCategoryIds][]']").attr("disabled", false);			
+			$("#point_of_sale_place_feature_ids_1").attr("disabled", false);
+			$("label[for='point_of_sale_place_feature_ids_1'").removeClass("grayedOut");
+
 			if(selectedPosTypeId === "0"){
 				$("#submitButton_continue").removeClass("hidden");
 				$("#firstStepIndicator").removeClass("hidden");
+			} else if (selectedPosTypeId === "5"){ // if eating place selected
+					// disable feature repesenting eating place and most of the product categories, except "other"
+					$("label[for='point_of_sale_place_feature_ids_1'").addClass("grayedOut");
+					$("#point_of_sale_place_feature_ids_1").attr("disabled", true);
+					$("#point_of_sale_place_feature_ids_1").prop('checked', false);
+
+					$(".point_of_sale_productCategoryIds input[name='point_of_sale[productCategoryIds][]']").each(function(){						
+						if(this.value != 9){
+							this.disabled=true;
+							this.checked=false;
+							$("label[for='point_of_sale_productCategoryIds_"+this.value+"']").addClass("grayedOut");
+						} else {	
+							this.checked=true;	
+						}			
+					});					
 			}
 		}).change();
 
@@ -85,6 +108,10 @@ var Form = function(){
         .eq($selected.index())
         .nextAll()
         .prop('disabled', false);
+		});
+
+		$("input[name='point_of_sale[opening_times_attributes][0][from]']").change(function(){
+
 		});
 
 	},
