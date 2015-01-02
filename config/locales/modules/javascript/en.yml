@@ -7,6 +7,7 @@ en:
         check_required: "You should check at least one element"
         opening_day_required: "Please specify at least one opening day"
         opening_times_required: "Please specify both opening time(s) or deselect the day"
+        product_category_required: "At least one product category must be selected"
   map:
     messages:
       select_one_address: "Choose an address from the list:"

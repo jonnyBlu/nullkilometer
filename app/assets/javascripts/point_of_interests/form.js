@@ -110,9 +110,29 @@ var Form = function(){
         .prop('disabled', false);
 		});
 
-		$("input[name='point_of_sale[opening_times_attributes][0][from]']").change(function(){
-
+		// setting opening times on monday the first time sets them everywhere
+		var alreadyClicked_from = false, alreadyClicked_to = false;
+		$("select[name='point_of_sale[opening_times_attributes][0][from]']").change(function(){			
+			if (!alreadyClicked_from){
+				var openingFrom = $(this).val();
+				$("select.timeTextInput").each(function(){
+					if($(this).prop("name").indexOf('[from]') !== -1 )
+						$(this).val(openingFrom);
+				});
+				alreadyClicked_from = true;
+			}
 		});
+		$("select[name='point_of_sale[opening_times_attributes][0][to]']").change(function(){			
+			if (!alreadyClicked_to){		
+				var openingTo = $(this).val();	
+				$("select.timeTextInput").each(function(){
+					if($(this).prop("name").indexOf('[to]') !== -1 )
+					    $(this).val(openingTo);								
+				});
+				alreadyClicked_to = true;
+			}
+		});
+		// end
 
 	},
 	setValidator = function(formValidator){

@@ -113,7 +113,8 @@ ul{
 
 @-moz-document url-prefix() {
   .infoDiv{
-    height: 100%;
+  // TODO: only in those info pages where infoDiv is short 
+  // height: 100%; 
   }
 }
 

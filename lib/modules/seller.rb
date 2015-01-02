@@ -26,7 +26,7 @@ module Seller
   protected
   def validate_presence_of_product_categories
     if self.products.reject(&:marked_for_destruction?).length < 1
-      self.errors.add(:productCategoryIds, "at least one productCategorieId must be given")
+      self.errors.add(:productCategoryIds, I18n.t("validate.messages.product_category_required"))
     end
   end
 end
