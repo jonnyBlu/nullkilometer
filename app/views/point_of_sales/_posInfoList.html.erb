@@ -58,7 +58,7 @@
   <div>
     <%= if  @point_of_interest.detail_info.description.nil? || @point_of_interest.detail_info.description.empty? 
             "#{I18n.t("properties.additional_information.description")}: -" 
-      else simple_format(@point_of_interest.detail_info.description, {}, wrapper_tag: "div") 
+      else simple_format(@point_of_interest.detail_info.description)
       end %>
   </div>
 </div>
