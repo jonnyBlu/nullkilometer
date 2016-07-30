@@ -35,9 +35,9 @@
           <li><%= link_to I18n.t("headers.team"), isHomePage ? "#about_team" : root_path(anchor: "about_team") %></li>
         </ul>
       </li>
-      <li>
-        <%= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org", class: "ordinaryLink" %>
-      </li> 
+<!--       <li>
+        <%#= link_to I18n.t('links.global.news' ), "http://blog.nullkilometer.org", class: "ordinaryLink" %>
+      </li>  -->
       <li>
         <%= link_to I18n.t('links.global.add_new_point_of_sales'), :new_point_of_sale, data: { :no_turbolink => true}, class: "ordinaryLink" %>
       </li> 
